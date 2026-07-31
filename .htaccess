@@ -1,0 +1,76 @@
+# =============================================================================
+# .htaccess for the cPanel host
+#
+# This ships with the site, so /ebook works as soon as the files are uploaded.
+# Nothing here needs editing except the HTTPS block near the bottom.
+#
+# In cPanel's File Manager, tick Settings → "Show Hidden Files (dotfiles)" to
+# see this file.
+#
+# Works whether the site sits at the domain root or in a subdirectory; the
+# rules derive the base from the request rather than hard-coding it.
+# =============================================================================
+
+DirectoryIndex index.php
+
+# --- Pretty URLs -------------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # 1. /index.php  ->  /          (and /sub/index.php -> /sub/)
+    #    Do this before rule 2, or the home page would land on /index.
+    RewriteCond %{THE_REQUEST} !/download\.php[\s?] [NC]
+    RewriteCond %{THE_REQUEST} \s([^?\s]*/)index\.php[\s?] [NC]
+    RewriteRule ^ %1 [R=301,L]
+
+    # 2. /ebook.php  ->  /ebook     so each page has one canonical URL.
+    #    download.php is an endpoint, not a page — redirecting it would add a
+    #    pointless hop to every file download, so it is excluded.
+    RewriteCond %{THE_REQUEST} !/download\.php[\s?] [NC]
+    RewriteCond %{THE_REQUEST} \s([^?\s]*/[^/?\s]+)\.php[\s?] [NC]
+    RewriteRule ^ %1 [R=301,L]
+
+    # 3. /ebook  ->  ebook.php      the rewrite that actually serves the page.
+    #    Query strings and #fragments carry through untouched.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.php -f
+    RewriteRule ^(.+?)/?$ $1.php [L]
+</IfModule>
+
+# --- Force HTTPS -------------------------------------------------------------
+# OFF by default: turning this on before the domain has a certificate would
+# redirect every request to an address that does not answer, taking the site
+# down. Once https:// loads correctly in a browser, delete the four # marks.
+#<IfModule mod_rewrite.c>
+#    RewriteCond %{HTTPS} !=on
+#    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#</IfModule>
+
+# --- Internals are not pages -------------------------------------------------
+<FilesMatch "^(header|footer|counters)\.php$">
+    Require all denied
+</FilesMatch>
+
+# The counter store and the counter library are read by PHP, never served.
+# data/.htaccess denies the store too; this is belt and braces if that is lost.
+<IfModule mod_alias.c>
+    RedirectMatch 404 ^/(.*/)?(data|lib|partials)/
+</IfModule>
+
+# --- Compression -------------------------------------------------------------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/json
+</IfModule>
+
+# --- Caching -----------------------------------------------------------------
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css               "access plus 7 days"
+    ExpiresByType application/javascript "access plus 7 days"
+    ExpiresByType image/png              "access plus 30 days"
+    ExpiresByType image/webp             "access plus 30 days"
+    ExpiresByType image/svg+xml          "access plus 30 days"
+    ExpiresByType application/pdf        "access plus 30 days"
+    ExpiresByType text/html              "access plus 0 seconds"
+</IfModule>

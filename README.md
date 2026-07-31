@@ -54,9 +54,9 @@ data/counters.json      the tally; created automatically, not in git
 chapters/*.pdf          the volume split by chapter
 cder_exemplar_cs1_cs2.pdf   the full volume (288 pp)
 
+.htaccess               pretty URLs, protects internals — ships ready to use
 deploy/
-  htaccess-for-cpanel.txt   drop into public_html as .htaccess
-  apache-pdc.conf           for serving this working tree from local Apache
+  apache-pdc.conf       for serving this working tree from local Apache
 ```
 
 The six pages match the agreed sitemap one-to-one, and so does the navigation bar.
@@ -105,17 +105,34 @@ python3 -m json.tool content/news.json > /dev/null && echo OK
 ### First deploy to cPanel
 
 1. Upload the **contents** of this folder into `public_html` (not the folder itself). If the site
-   lives under a path, upload into that subdirectory instead — all internal links are relative.
-2. Copy `deploy/htaccess-for-cpanel.txt` into `public_html` and rename it to `.htaccess`. This forces
-   HTTPS, serves `/ebook` instead of `/ebook.php`, blocks direct requests to the partials and the
-   counter store, and turns on compression and cache headers. The site works without it, but the
-   URLs are nicer with it.
+   lives under a path, upload into that subdirectory instead — all internal links are relative and
+   the rewrite rules derive the base from the request, so both work unchanged.
+2. **Make sure `.htaccess` came across.** It is a dotfile, so most upload tools and cPanel's File
+   Manager hide it by default — in File Manager, tick Settings → "Show Hidden Files (dotfiles)".
+   This one file is what gives you `/ebook` instead of `/ebook.php`. Without it the site still
+   works, but only at the `.php` addresses.
 3. Make sure PHP can write `data/`. It is created on first request; if the host blocks that,
    `chmod 755 data` after uploading.
-4. Load the site and confirm the home page shows figures under "Usage".
+4. Once `https://` loads correctly, enable the HTTPS redirect: uncomment the four lines in the
+   "Force HTTPS" block near the bottom of `.htaccess`. It ships disabled on purpose — turning it on
+   before a certificate exists redirects every request to an address that does not answer.
+5. Load the site and confirm the home page shows figures under "Usage".
 
 Nothing else needs configuring. Every cPanel host runs PHP, and the site uses no extension beyond
 the defaults.
+
+### If URLs still need `.php`
+
+Almost always one of these:
+
+- **`.htaccess` did not upload.** Check for hidden files; this is by far the most common cause.
+- **`AllowOverride` is off.** Rare on shared cPanel, but if the host disables `.htaccess` overrides
+  the rules are ignored silently. Ask support to enable `AllowOverride All` for the directory.
+- **`mod_rewrite` is unavailable.** Also rare. The rules are wrapped in `<IfModule>`, so they are
+  skipped rather than erroring — which looks identical to the file being missing.
+
+To confirm the file is being read at all, add a deliberate typo as the first line and reload: a
+500 error means Apache is reading it, and any other result means it is not.
 
 ### Updating
 
