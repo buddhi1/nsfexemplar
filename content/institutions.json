@@ -1,0 +1,45 @@
+{
+  "_comment": "Partner institutions shown on the home page. index.php reads this server-side. To show an institution's logo, drop the file into assets/logos/institutions/ and put its filename in \"logo\" — otherwise a monogram is drawn from \"mono\". The eBook explorer uses the fuller records in assets/data.js; keep the \"id\" values matching so the cards deep-link correctly.",
+  "items": [
+    {
+      "id": "tntech", "name": "Tennessee Technological University", "short": "Tennessee Tech",
+      "place": "Tennessee", "role": "Development team",
+      "setting": "Mid-sized public", "langs": "C++", "mono": "TT", "logo": "ttu.svg"
+    },
+    {
+      "id": "knox", "name": "Knox College", "short": "Knox College",
+      "place": "Illinois", "role": "Development team",
+      "setting": "Liberal arts", "langs": "Java", "mono": "K", "logo": "knox.svg"
+    },
+    {
+      "id": "usi", "name": "University of Southern Indiana", "short": "Southern Indiana",
+      "place": "Indiana", "role": "Testing team",
+      "setting": "Public master's", "langs": "Java", "mono": "USI", "logo": "usi.webp"
+    },
+    {
+      "id": "unl", "name": "University of Nebraska–Lincoln", "short": "Nebraska–Lincoln",
+      "place": "Nebraska", "role": "Testing team",
+      "setting": "R1", "langs": "C, Java", "mono": "UNL", "logo": "unl.png"
+    },
+    {
+      "id": "webster", "name": "Webster University", "short": "Webster University",
+      "place": "Missouri", "role": "Testing team",
+      "setting": "Private undergraduate", "langs": "C++", "mono": "W", "logo": "webster.svg"
+    },
+    {
+      "id": "casper", "name": "Casper College", "short": "Casper College",
+      "place": "Wyoming", "role": "Testing team",
+      "setting": "Community college", "langs": "C++, Python", "mono": "CC", "logo": "casper.png"
+    },
+    {
+      "id": "hpu", "name": "Hawai‘i Pacific University", "short": "Hawai‘i Pacific",
+      "place": "Hawai‘i", "role": "Testing team",
+      "setting": "Private undergraduate", "langs": "Java", "mono": "HPU", "logo": "hpu.png"
+    },
+    {
+      "id": "msu", "name": "Montclair State University", "short": "Montclair State",
+      "place": "New Jersey", "role": "Testing team",
+      "setting": "Public university", "langs": "Java", "mono": "MSU", "logo": "msu.png"
+    }
+  ]
+}

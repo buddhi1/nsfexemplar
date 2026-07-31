@@ -1,0 +1,59 @@
+# ── Runtime state ────────────────────────────────────────────────────────────
+# The counter tally is written by the live site. Keeping it out of the repo
+# means deploys never overwrite real numbers and pulls never conflict.
+# data/.htaccess IS tracked, so the store stays protected on a fresh deploy.
+/data/*
+!/data/.htaccess
+
+# PHP sessions, if the host is ever configured to write them locally
+/sessions/
+sess_*
+
+# ── Local scratch ────────────────────────────────────────────────────────────
+# Throwaway probe pages used while testing (_p.php, _t.php, …)
+/_*.php
+/_*.html
+*.local.php
+
+# ── Logs and dumps ───────────────────────────────────────────────────────────
+*.log
+error_log
+php_errors.log
+*.bak
+*.orig
+*.rej
+*~
+
+# ── Editors and IDEs ─────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# ── Operating systems ────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# ── Archives and build leftovers ─────────────────────────────────────────────
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+node_modules/
+vendor/
+
+# ── Secrets ──────────────────────────────────────────────────────────────────
+# Nothing here needs credentials today, but make it hard to add them by accident.
+.env
+.env.*
+*.pem
+*.key
+config.local.php

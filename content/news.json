@@ -1,0 +1,61 @@
+{
+  "_comment": "Project news shown on the home page. Newest first. index.php reads this file server-side, so no build step and no JavaScript is needed to render it. Fields: date (ISO, used by <time datetime>), label (what the reader sees), title, body, and an optional link {href,text}.",
+  "items": [
+    {
+      "date": "2026-07",
+      "label": "Jul 2026",
+      "title": "CS1 release published",
+      "body": "Eight institutional CS1 exemplars, classroom tested and evaluated, released ahead of the full volume so instructors can plan Fall terms. 288 pages, free, with every chapter separately downloadable.",
+      "link": { "href": "ebook.php#chapters", "text": "Download by chapter" }
+    },
+    {
+      "date": "2026-06",
+      "label": "Jun 2026",
+      "title": "Instructional material repository opened",
+      "body": "Syllabi, handouts, slides, assignments, starter code, surveys and anonymized evaluation data are now public, organized by chapter under CS1/.",
+      "link": { "href": "https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1", "text": "Browse the repository" }
+    },
+    {
+      "date": "2026-06",
+      "label": "Jun 2026",
+      "title": "CS2 chapters in preparation",
+      "body": "CS2 course packages are drafted and being finalized for subsequent-term adoption. They will be added to this site as they are released.",
+      "link": { "href": "ebook.php#cs2", "text": "What CS2 will cover" }
+    },
+    {
+      "date": "2026-05",
+      "label": "May 2026",
+      "title": "Cross-institution analysis under way",
+      "body": "Baseline and intervention runs are complete across the testing institutions, with coordinated data collection designed for cross-team comparison from the start.",
+      "link": { "href": "research.php#findings", "text": "Selected results" }
+    },
+    {
+      "date": "2026-03",
+      "label": "Mar 2026",
+      "title": "Codeless PDC modules at SIGCSE",
+      "body": "Chris Bourke presented the low-code pathway — modules that introduce PDC concepts with no code reading or writing at all — at the 57th ACM Technical Symposium on Computer Science Education.",
+      "link": { "href": "research.php#publications", "text": "See the publications" }
+    },
+    {
+      "date": "2026-01",
+      "label": "Jan 2026",
+      "title": "Follow-on NSF award",
+      "body": "Additional instructor training workshops will further infuse AI and Big Data, together with PDC, into CS1, CS2 and Computer Systems courses through the CDER center.",
+      "link": null
+    },
+    {
+      "date": "2025-11",
+      "label": "Nov 2025",
+      "title": "Flag Maker reported at EduHPC",
+      "body": "A visual unplugged activity to introduce PDC — the Flag Maker study across five institutions — was presented at the Workshop on Education for High-Performance Computing.",
+      "link": { "href": "research.php#presentations", "text": "Where the work is presented" }
+    },
+    {
+      "date": "2025-06",
+      "label": "Jun 2025",
+      "title": "Peachy parallel assignments at EduPar-25",
+      "body": "Project material featured in the Peachy Assignments programme at the 15th NSF/TCPP Workshop on Parallel and Distributed Computing Education, in Milan.",
+      "link": null
+    }
+  ]
+}

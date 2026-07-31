@@ -1,0 +1,2 @@
+# The counter store is read and written by PHP only — never served.
+Require all denied
