@@ -23,14 +23,17 @@ $PROJECT_NAME  = 'Modern Course Exemplars infused with Parallel and Distributed 
 $PROJECT_SHORT = 'Modern Course Exemplars';
 $PROJECT_TAG   = 'Infused with Parallel &amp; Distributed Computing for the Introductory Computing Course Sequence';
 
+/* The brandmark is the route home, so Home is not repeated in the bar. */
 $NAV = [
-    'home'      => ['index.php',     'Home'],
     'project'   => ['project.php',   'Project'],
     'ebook'     => ['ebook.php',     'eBook'],
     'team'      => ['team.php',      'Team'],
     'research'  => ['research.php',  'Research'],
     'resources' => ['resources.php', 'Resources'],
 ];
+
+/* Set apart from the page links: this one leaves the site. */
+$CDER_HOME = 'https://cdercenter.org/';
 
 $PAGE       = $PAGE       ?? 'home';
 $PAGE_TITLE = $PAGE_TITLE ?? null;
@@ -69,6 +72,7 @@ function brand_glyph(): string {
 <script>
 /* Apply a stored theme before first paint — site.js runs at the end of the
    body, which would otherwise flash the wrong theme on every navigation. */
+document.documentElement.classList.add('js');
 try{var t=sessionStorage.getItem('theme');if(t){var r=document.documentElement;
 r.classList.toggle('dark',t==='dark');r.style.colorScheme=t;r.dataset.themeLocked='true';}}catch(e){}
 </script>
@@ -100,6 +104,16 @@ r.classList.toggle('dark',t==='dark');r.style.colorScheme=t;r.dataset.themeLocke
 <?php foreach ($NAV as $key => [$href, $label]): ?>
         <li><a class="nav-link" href="<?= e($href) ?>"<?= $key === $PAGE ? ' aria-current="page"' : '' ?>><?= e($label) ?></a></li>
 <?php endforeach; ?>
+        <li class="nav-out">
+          <a class="nav-link nav-link--cder" href="<?= e($CDER_HOME) ?>">
+            <img src="assets/logos/cder.png" alt="" width="290" height="70" aria-hidden="true">
+            <span>Back to CDER</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17 17 7M9 7h8v8"/>
+            </svg>
+          </a>
+        </li>
       </ul>
     </nav>
 

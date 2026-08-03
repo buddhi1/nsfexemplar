@@ -39,22 +39,18 @@ include 'partials/header.php';
         find it difficult to visualize what a different approach would look like. What the workshops heard
         repeatedly was: <em>&ldquo;someone else needs to go first.&rdquo;</em></p>
     </div>
-    <div class="grid" style="align-content:start">
-      <article class="card"><h4>Goal 1 &mdash; Build</h4><p>Design a modern first-year sequence based on a
-        conceptual model that includes the fundamental elements of parallel and distributed computation as
-        found in current systems.</p></article>
-      <article class="card"><h4>Goal 2 &mdash; Generalize</h4><p>Implement it at two colleges using two
-        different programming languages, to demonstrate that the model is not language- or
-        context-specific.</p></article>
-      <article class="card"><h4>Goal 3 &mdash; Evaluate</h4><p>Develop pre- and post-treatment instruments
-        grounded in education science. Evaluate unmodified courses first as a control, then the modified
-        courses.</p></article>
-      <article class="card"><h4>Goal 4 &mdash; Transfer</h4><p>Recruit six additional institutions selected for
-        diversity of size, schedule and student population to adopt, adapt and evaluate the sequence &mdash;
-        and discover the enhancements that make it widely usable.</p></article>
-      <article class="card"><h4>Goal 5 &mdash; Disseminate</h4><p>Publish everything: course sequences,
-        supporting materials, book chapters and evaluation results, through active outreach.</p></article>
-    </div>
+    <ol class="goal-list">
+      <li><span class="goal-n">1</span><span><b>Build</b> a modern first-year sequence around a computing
+        model that includes parallelism and distribution as found in current systems.</span></li>
+      <li><span class="goal-n">2</span><span><b>Generalize</b> it across two colleges and two languages, to
+        show the model is not language- or context-specific.</span></li>
+      <li><span class="goal-n">3</span><span><b>Evaluate</b> with pre/post instruments grounded in education
+        science, measuring unmodified courses first as a control.</span></li>
+      <li><span class="goal-n">4</span><span><b>Transfer</b> to six further institutions chosen for diversity
+        of size, schedule and student population, and find what makes it widely usable.</span></li>
+      <li><span class="goal-n">5</span><span><b>Disseminate</b> everything &mdash; course sequences,
+        materials, chapters and results &mdash; through active outreach.</span></li>
+    </ol>
   </div>
 </div>
 
@@ -150,21 +146,21 @@ include 'partials/header.php';
   <p class="eyebrow mt-6">Project timeline</p>
   <h3 class="mt-2 mb-4">Four years, from recruitment to publication</h3>
   <ol class="timeline timeline--major">
-    <li><span class="year">Year 1 · 2023</span><h4>Recruitment and kickoff</h4>
+    <li><span class="year">2023</span><h4>Recruitment and kickoff</h4>
       <p>A webinar for potential recruits laid out goals, significance, application requirements and expected
         outcomes. Applications were assessed on whether the applicant taught a target course, whether the
         institution was open to modifying CS1 and CS2, and which language was used. A kickoff meeting was
         followed by biweekly meetings on institutional context, syllabi and IRB planning, then an in-person
         summer workshop.</p></li>
-    <li><span class="year">Year 2</span><h4>CS1 transfer, IRB and baselines</h4>
+    <li><span class="year">2024</span><h4>CS1 transfer, IRB and baselines</h4>
       <p>CS1 exemplars were presented and refined through collaboration with the testing teams. Teams applied
         for IRB approval and developed institution-specific research questions with coordinated data
         collection designed for cross-team analysis. Baseline offerings with no intervention were taught and
         measured.</p></li>
-    <li><span class="year">Year 3</span><h4>CS2 development and intervention runs</h4>
+    <li><span class="year">2025</span><h4>CS2 development and intervention runs</h4>
       <p>Baseline data and initial experimental CS1 runs were presented at the second summer meeting; focus
         turned to CS2 exemplars. Effort shifted to running the new courses and gathering data.</p></li>
-    <li><span class="year">Year 4 · to 2027</span><h4>Analysis, publication and dissemination</h4>
+    <li><span class="year">2026–27</span><h4>Analysis, publication and dissemination</h4>
       <p>Cross-institution analysis, this e-book, conference reports and continued outreach &mdash; including
         a follow-on NSF award extending instructor training to AI and Big Data alongside PDC.</p></li>
   </ol>
@@ -213,42 +209,42 @@ include 'partials/header.php';
 
   <ol class="timeline timeline--compact mt-5">
     <li>
-      <button class="era" type="button" aria-expanded="false">
+      <button class="era" type="button" aria-expanded="false" data-disclose>
         <span class="year">2010&ndash;2020</span>
         <span class="era-title">The IEEE TCPP Curriculum Initiative</span>
-        <span class="more" aria-hidden="true">+</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
       </button>
       <div class="detail"><div><p>Began with a single question: what should every computing undergraduate know about parallel and distributed computing? The resulting guidelines identified PDC topics across programming, architecture, algorithms and cross-cutting areas, and mapped them to levels of coverage. Version I was released in 2012; Version II&beta; in 2020, with expanded attention to Big Data, energy and distributed computing. ACM/IEEE CS2013 linked to it explicitly, and CS2023 includes a dedicated PDC knowledge area citing the Version II&beta; effort.</p></div></div>
     </li>
     <li>
-      <button class="era" type="button" aria-expanded="false">
+      <button class="era" type="button" aria-expanded="false" data-disclose>
         <span class="year">Ongoing</span>
         <span class="era-title">Early adopters</span>
-        <span class="more" aria-hidden="true">+</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
       </button>
       <div class="detail"><div><p>Curriculum guidelines alone do not change courses. The CDER early adopter competitions incentivized instructors to incorporate PDC into existing courses and report their experiences. More than 140 early adopters have been supported, and the broader community of early adopters and trained instructors has grown to roughly 300 participants or institutions nationally and internationally. They demonstrated PDC could be infused widely &mdash; and revealed a persistent need for complete, coherent, classroom-tested course exemplars, especially for early courses.</p></div></div>
     </li>
     <li>
-      <button class="era" type="button" aria-expanded="false">
+      <button class="era" type="button" aria-expanded="false" data-disclose>
         <span class="year">Vols 1&ndash;3</span>
         <span class="era-title">The CDER book series</span>
-        <span class="more" aria-hidden="true">+</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
       </button>
       <div class="detail"><div><p>The first two volumes, published by Morgan Kaufmann and Springer, gathered chapters on introductory parallelism, threads, fork-join parallelism, performance, scalability, energy efficiency, MapReduce, GPU computing, mobile concurrency and integrative GUI applications, available as free preprints and collectively reaching tens of thousands of downloads. A third volume, focused on adopter experience and resources, is expected from Springer in late 2026.</p></div></div>
     </li>
     <li>
-      <button class="era" type="button" aria-expanded="false">
+      <button class="era" type="button" aria-expanded="false" data-disclose>
         <span class="year">EduPar · EduHPC · EduHiPC</span>
         <span class="era-title">The Edu* workshop series</span>
-        <span class="more" aria-hidden="true">+</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
       </button>
       <div class="detail"><div><p>EduPar (with IPDPS) began as a venue for early adopters to report experiences and discuss curricular and pedagogical issues. EduHPC (with SC) created a complementary venue connected to the HPC community; EduHiPC (with HiPC, in India) extended the model internationally. Together they transformed isolated adoption efforts into an ongoing professional community.</p></div></div>
     </li>
     <li>
-      <button class="era" type="button" aria-expanded="false">
+      <button class="era" type="button" aria-expanded="false" data-disclose>
         <span class="year">Training</span>
         <span class="era-title">Instructor workshops</span>
-        <span class="more" aria-hidden="true">+</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
       </button>
       <div class="detail"><div><p>Distinct from the Edu* research workshops, CDER has organized instructor-facing training: NSF CyberTraining week-long summer workshops, tutorials and special sessions at SIGCSE, training associated with EduHiPC, and hybrid or online events. <strong>All of this project&rsquo;s development and testing team members were past trainees or early adopters</strong> &mdash; the training pipeline is how the project staffed itself.</p></div></div>
     </li>

@@ -114,68 +114,118 @@ include 'partials/header.php';
   <h2 class="mt-2">Before You Adopt</h2>
   <div class="faq-wrap mt-4">
     <div class="faq-list">
-    <details class="faq"><summary>I have one class period. What should I run?</summary>
-      <div class="faq-body"><p>Flag Maker or Penny Search, unplugged. Both need only paper, markers or coins,
+      <div class="faq">
+        <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
+          <span>I have one class period. What should I run?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+        <div class="disclose-panel"><div><div class="inner"><p>Flag Maker or Penny Search, unplugged. Both need only paper, markers or coins,
         run in a single 40&ndash;75&nbsp;minute session, require no programming background, and surface
         speedup, load balance and race conditions concretely. Start with Chapter 1, then look at whichever
         institutional chapter most resembles your class size.</p>
-        <p><a href="ebook.php#activities">Browse activities by duration &rarr;</a></p></div></details>
-    <details class="faq"><summary>Will adding PDC hurt my core learning outcomes?</summary>
-      <div class="faq-body"><p>That was the explicit design constraint &mdash; the basic CS1 learning outcomes
+        <p><a href="ebook.php#activities">Browse activities by duration &rarr;</a></p></div></div></div>
+      </div>
+      <div class="faq">
+        <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
+          <span>Will adding PDC hurt my core learning outcomes?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+        <div class="disclose-panel"><div><div class="inner"><p>That was the explicit design constraint &mdash; the basic CS1 learning outcomes
         are preserved. Two checks are available. Casper&rsquo;s data shows perception of learning gains in
         non-PDC topics stayed broadly flat between baseline and intervention semesters while PDC gains rose.
         MSU compared a no-intervention semester against the Flag Maker intervention semester and found gains
-        across all basic programming categories in both, with comparable post-survey means.</p></div></details>
-    <details class="faq"><summary>There is no room in my syllabus. How did others make space?</summary>
-      <div class="faq-body"><p>Three broad strategies, often combined: selectively reducing or deferring
+        across all basic programming categories in both, with comparable post-survey means.</p></div></div></div>
+      </div>
+      <div class="faq">
+        <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
+          <span>There is no room in my syllabus. How did others make space?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+        <div class="disclose-panel"><div><div class="inner"><p>Three broad strategies, often combined: selectively reducing or deferring
         existing content, modifying current assignments and activities, and adding short PDC-focused modules.
         Topics commonly reduced included binary and random-access files, C-style strings and arrays, detailed
         output formatting, two-dimensional arrays and advanced class relationships &mdash; usually judged
         coverable more briefly or revisitable in CS2.</p>
         <p>Some institutions removed nothing at all. One placed three asynchronous PDC modules outside class
           time; another used existing lab and recitation periods. Scheduled PDC instructional time ranged from
-          none to about seven hours.</p></div></details>
-    <details class="faq"><summary>My course is in Python. Is anything usable?</summary>
-      <div class="faq-body"><p>Yes. All unplugged activities &mdash; Flag Maker, Penny Search and Sorting,
+          none to about seven hours.</p></div></div></div>
+      </div>
+      <div class="faq">
+        <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
+          <span>My course is in Python. Is anything usable?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+        <div class="disclose-panel"><div><div class="inner"><p>Yes. All unplugged activities &mdash; Flag Maker, Penny Search and Sorting,
         Coin Addition, the More Processors writing activity &mdash; are language-neutral, as are the
         animations and the codeless modules. Casper College&rsquo;s physical computing projects use
         Python&rsquo;s multiprocessing package. A Python CS2 package covering threading, multiprocessing,
-        OpenCV image processing and performance engineering is planned for the CS2 release.</p></div></details>
-    <details class="faq"><summary>How much faculty effort should I budget?</summary>
-      <div class="faq-body"><p>The development teams reported more than 100 hours across the initial
+        OpenCV image processing and performance engineering is planned for the CS2 release.</p></div></div></div>
+      </div>
+      <div class="faq">
+        <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
+          <span>How much faculty effort should I budget?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+        <div class="disclose-panel"><div><div class="inner"><p>The development teams reported more than 100 hours across the initial
         development year &mdash; creating examples, finding curriculum insertion points, revising
         assignments, testing software and datasets, and refining materials. Adopting already-developed
         modular materials substantially reduces that, but still requires local adaptation, instructor
         preparation and refinement based on student responses.</p>
         <p>Budget separately for coordinating with lab instructors and teaching assistants: they need enough
           familiarity with the concepts and tooling to guide students, and this was repeatedly named as one
-          of the harder parts.</p></div></details>
+          of the harder parts.</p></div></div></div>
+      </div>
       <div class="faq-more" id="faq-more" data-faq-more>
-    <details class="faq"><summary>Do I need IRB approval to use these materials?</summary>
-      <div class="faq-body"><p>Not to teach them. You need IRB approval if you intend to collect and publish
+      <div class="faq">
+        <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
+          <span>Do I need IRB approval to use these materials?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+        <div class="disclose-panel"><div><div class="inner"><p>Not to teach them. You need IRB approval if you intend to collect and publish
         student data. Each testing team&rsquo;s IRB experience and instrument design is documented in the
-        chapters if you want to run your own study.</p></div></details>
-    <details class="faq"><summary>What if my institution is nothing like any of these?</summary>
-      <div class="faq-body"><p>The set was chosen to span community college, liberal arts, private
+        chapters if you want to run your own study.</p></div></div></div>
+      </div>
+      <div class="faq">
+        <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
+          <span>What if my institution is nothing like any of these?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+        <div class="disclose-panel"><div><div class="inner"><p>The set was chosen to span community college, liberal arts, private
         undergraduate, public master&rsquo;s, mid-sized public and R1, on both semester and quarter calendars,
         with class sizes from about 24 to about 100 and student populations including dual-credit high-school
         students and part-time adult learners. Filter by the constraint that binds hardest for you &mdash;
-        usually preparation time or class size, not institution type.</p></div></details>
-    <details class="faq"><summary>Is the technical setup going to bite me?</summary>
-      <div class="faq-body"><p>Anticipate differences among student computers, compiler configurations,
+        usually preparation time or class size, not institution type.</p></div></div></div>
+      </div>
+      <div class="faq">
+        <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
+          <span>Is the technical setup going to bite me?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+        <div class="disclose-panel"><div><div class="inner"><p>Anticipate differences among student computers, compiler configurations,
         OpenMP support and execution timing &mdash; all of which the teams hit. Before using any resource,
         verify that software versions, API links, datasets and institutional assessment requirements are
         still current. The unplugged and codeless pathways exist precisely to avoid this class of
-        problem.</p></div></details>
-    <details class="faq"><summary>When is CS2 available?</summary>
-      <div class="faq-body"><p>CS2 chapters are drafted and being finalized for subsequent-term adoption.
+        problem.</p></div></div></div>
+      </div>
+      <div class="faq">
+        <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
+          <span>When is CS2 available?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+        <div class="disclose-panel"><div><div class="inner"><p>CS2 chapters are drafted and being finalized for subsequent-term adoption.
         Each institutional exemplar already lists its planned CS2 activities &mdash; open any exemplar in the
         search and look under <em>Planned for the CS2 release</em>.</p>
-        <p><a href="ebook.php#cs2">What CS2 will cover &rarr;</a></p></div></details>
-    <details class="faq"><summary>Can I get help choosing?</summary>
-      <div class="faq-body"><p>Yes &mdash; some consultation from project personnel is available to help
+        <p><a href="ebook.php#cs2">What CS2 will cover &rarr;</a></p></div></div></div>
+      </div>
+      <div class="faq">
+        <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
+          <span>Can I get help choosing?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+        <div class="disclose-panel"><div><div class="inner"><p>Yes &mdash; some consultation from project personnel is available to help
         adopters select and adapt materials.
-        <a href="mailto:contact@nsfexemplar.cdercenter.org">contact@nsfexemplar.cdercenter.org</a>.</p></div></details>
+        <a href="mailto:contact@nsfexemplar.cdercenter.org">contact@nsfexemplar.cdercenter.org</a>.</p></div></div></div>
+      </div>
       </div>
     </div>
     <button class="btn btn--ghost btn--sm mt-3" type="button"

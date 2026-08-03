@@ -98,6 +98,25 @@
   /* ------------------------------------------------- generic year stamp -- */
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
+  /* ------------------------------------------------------------- reveal --
+     One-shot: reveal on first sight, then stop watching. Never reverses. */
+  (() => {
+    const items = $$('.reveal');
+    if (!items.length) return;
+    if (reducedMotion() || !('IntersectionObserver' in window)) {
+      items.forEach((el) => el.setAttribute('data-shown', ''));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        en.target.setAttribute('data-shown', '');
+        io.unobserve(en.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    items.forEach((el) => io.observe(el));
+  })();
+
   /* ------------------------------------------- scroll-past helper (shared) --
      Scroll events are unreliable to depend on (and are not delivered at all in
      some headless environments), so both the shrinking header and the
@@ -121,7 +140,9 @@
   (() => {
     const header = $('.site-header');
     if (!header) return;
-    watchScrollPast(24, (past) => header.toggleAttribute('data-scrolled', past));
+    /* 72px rather than a couple of pixels, so a nudge of the wheel does not
+       toggle the header back and forth. */
+    watchScrollPast(72, (past) => header.toggleAttribute('data-scrolled', past));
   })();
 
   /* --------------------------------------------------------- back to top -- */
@@ -804,6 +825,18 @@
       }, { threshold: 0.2 }).observe(win);
     }
   })();
+
+  /* ------------------------------------------------------------ disclosure --
+     One handler for the prior-work timeline rows and the FAQ. Click toggles
+     [data-open] on the row; CSS animates the 0fr -> 1fr grid.               */
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-disclose]');
+    if (!btn) return;
+    const row = btn.parentElement;
+    const open = !row.hasAttribute('data-open');
+    row.toggleAttribute('data-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+  });
 
   /* ----------------------------------------------------------- FAQ reveal --
      Progressive enhancement: without JS all questions are visible and there is

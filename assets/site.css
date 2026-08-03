@@ -285,6 +285,27 @@
   .nav-link:hover:not([aria-current]) { background: var(--bg-subtle); color: var(--fg); }
   .nav-link[aria-current="page"] { color: var(--brand-deep); background: var(--brand-tint); font-weight: 600; }
 
+  /* leaves the site, so it is styled apart from the page links */
+  .nav-out { margin-inline-start: 0.45rem; padding-inline-start: 0.45rem; border-inline-start: 1px solid var(--line); }
+  .nav-link--cder {
+    gap: 0.45rem;
+    border: 1px solid color-mix(in oklab, var(--accent) 45%, var(--line));
+    background: color-mix(in oklab, var(--accent) 12%, transparent);
+    color: var(--fg);
+  }
+  .nav-link--cder:hover:not([aria-current]) {
+    background: color-mix(in oklab, var(--accent) 22%, transparent);
+    border-color: var(--accent);
+    color: var(--fg);
+  }
+  .nav-link--cder img { block-size: 1rem; inline-size: auto; max-inline-size: none; }
+  .nav-link--cder svg { inline-size: 0.8rem; block-size: 0.8rem; opacity: 0.7; }
+  @media (width < 62rem) {
+    .nav-out { margin-inline-start: 0; padding-inline-start: 0; border-inline-start: 0;
+               margin-block-start: 0.4rem; padding-block-start: 0.4rem;
+               border-block-start: 1px solid var(--line); }
+  }
+
   .nav-toggle { display: none; }
 
   @media (width < 62rem) {
@@ -638,6 +659,31 @@
   .book-cover a:any-link { color: inherit; text-decoration-color: oklch(1 0 0 / 0.5); }
   .book-cover a:any-link:hover { color: oklch(1 0 0); text-decoration-color: currentColor; }
 
+  /* --- goals ---------------------------------------------------------------
+     Five cards were taller than the prose beside them. A numbered list keeps
+     the same information at roughly the height of the column it sits next to. */
+  .goal-list {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: 0; align-content: start;
+    border: 1px solid var(--line); border-radius: var(--radius-m);
+    background: var(--bg-raised);
+    overflow: clip;
+  }
+  .goal-list > li {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--sp-3);
+    align-items: start;
+    padding: 0.8rem var(--sp-4);
+    font-size: 0.94rem; color: var(--fg-muted); line-height: 1.5;
+  }
+  .goal-list > li + li { border-block-start: 1px solid var(--line); }
+  .goal-list b { color: var(--fg); font-weight: 600; }
+  .goal-n {
+    inline-size: 1.55rem; block-size: 1.55rem; flex: none;
+    display: grid; place-items: center; border-radius: 50%;
+    background: var(--brand-tint); color: var(--brand-deep);
+    font-size: 0.78rem; font-weight: 700; font-variant-numeric: tabular-nums;
+  }
+
   /* --- panel --- */
   .panel {
     background: var(--bg-raised); border: 1px solid var(--line);
@@ -791,12 +837,25 @@
     border: 3px solid var(--bg);
     font-family: var(--font-body); font-size: 0.82rem; font-weight: 700;
   }
-  /* connecting rule between cards on one row */
+  /* connector with an arrow head, so the sequence reads left to right */
   @media (width >= 60rem) {
     .timeline--major > li::after {
-      content: ""; position: absolute; inset-block-start: -1px;
-      inset-inline-start: 100%; inline-size: var(--sp-4); block-size: 3px;
-      background: color-mix(in oklab, var(--brand) 30%, var(--line));
+      content: ""; position: absolute; inset-block-start: -8px;
+      inset-inline-start: calc(100% + 1px); inline-size: var(--sp-4); block-size: 17px;
+      background: color-mix(in oklab, var(--brand) 45%, var(--line));
+      clip-path: polygon(0 41%, calc(100% - 9px) 41%, calc(100% - 9px) 0,
+                         100% 50%, calc(100% - 9px) 100%, calc(100% - 9px) 59%, 0 59%);
+    }
+    .timeline--major > li:last-child::after { display: none; }
+  }
+  /* on narrow screens the cards stack, so point downward instead */
+  @media (width < 60rem) {
+    .timeline--major > li::after {
+      content: ""; position: absolute; inset-block-end: calc(-1 * var(--sp-4) - 2px);
+      inset-inline-start: calc(var(--sp-4) + 0.35rem); inline-size: 17px; block-size: var(--sp-4);
+      background: color-mix(in oklab, var(--brand) 45%, var(--line));
+      clip-path: polygon(41% 0, 41% calc(100% - 9px), 0 calc(100% - 9px),
+                         50% 100%, 100% calc(100% - 9px), 59% calc(100% - 9px), 59% 0);
     }
     .timeline--major > li:last-child::after { display: none; }
   }
@@ -821,8 +880,8 @@
     padding: 0.85rem 0.6rem; border: 0; background: none; cursor: pointer;
     transition: background var(--dur) var(--ease);
   }
-  .timeline--compact > li:hover .era,
-  .timeline--compact > li:focus-within .era { background: var(--brand-tint); }
+  .timeline--compact .era:hover { background: color-mix(in oklab, var(--brand) 6%, transparent); }
+  .timeline--compact > li[data-open] .era { background: var(--brand-tint); }
   .timeline--compact .era .year { color: var(--accent); }
   /* a <button> may only contain phrasing content, so this is a span styled
      to match the surrounding headings */
@@ -830,26 +889,24 @@
     font-family: var(--font-display); font-weight: 600; font-size: 1rem;
     line-height: 1.2; color: var(--fg);
   }
-  .timeline--compact .era .more {
-    font-family: var(--font-mono); font-size: 1.1rem; line-height: 1;
-    color: var(--brand); transition: rotate var(--dur) var(--ease);
+  /* a chevron that turns to point down when the row is open */
+  .timeline--compact .era .chev {
+    inline-size: 1.05rem; block-size: 1.05rem; flex: none;
+    color: var(--brand); transition: rotate 320ms var(--ease);
   }
+  .timeline--compact > li[data-open] .era .chev { rotate: 90deg; }
   .timeline--compact .detail {
     display: grid; grid-template-rows: 0fr;
     transition: grid-template-rows 320ms var(--ease);
   }
   .timeline--compact .detail > div { overflow: hidden; }
+  @media (prefers-reduced-motion: reduce) { .timeline--compact .detail { transition: none; } }
   .timeline--compact .detail p {
     margin: 0; padding: 0 0.6rem 1rem 9.6rem;
     font-size: 0.92rem; color: var(--fg-muted);
   }
-  /* open on hover, and on keyboard focus so it is not mouse-only */
-  .timeline--compact > li:hover .detail,
-  .timeline--compact > li:focus-within .detail,
+  /* opens on click only — hovering past a row no longer expands it */
   .timeline--compact > li[data-open] .detail { grid-template-rows: 1fr; }
-  .timeline--compact > li:hover .more,
-  .timeline--compact > li:focus-within .more,
-  .timeline--compact > li[data-open] .more { rotate: 45deg; }
   @media (width < 46rem) {
     .timeline--compact .era { grid-template-columns: 1fr auto; }
     .timeline--compact .era .year { grid-column: 1 / -1; }
@@ -892,20 +949,28 @@
   table.data--glance .col-start { inline-size: 34%; }
   table.data--glance thead th:nth-child(3) { white-space: nowrap; }
 
-  /* --- publications --- */
-  .pubs { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; counter-reset: pub; }
+  /* --- publications ------------------------------------------------------
+     One line each: authors, title, venue. Three stacked blocks per entry with
+     a bold title made a nine-item list far taller than it needed to be.     */
+  .pubs { list-style: none; padding: 0; margin: 0; counter-reset: pub; }
+  /* Not a grid: the three spans must stay on one flowing line, so the counter
+     is positioned instead of taking a column of its own. */
   .pubs > li {
-    display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: var(--sp-3);
-    padding-block: var(--sp-3); border-block-end: 1px solid var(--line);
+    position: relative;
+    padding: 0.5rem 0 0.5rem 2.4rem;
+    border-block-end: 1px solid var(--line);
+    font-size: 0.92rem; line-height: 1.5;
+    text-wrap: pretty;
   }
   .pubs > li::before {
-    counter-increment: pub; content: counter(pub);
-    font-family: var(--font-mono); font-size: 0.8rem; color: var(--fg-faint);
-    padding-block-start: 0.18rem;
+    counter-increment: pub; content: counter(pub) ".";
+    position: absolute; inset-inline-start: 0; inset-block-start: 0.62rem;
+    inline-size: 1.8rem; text-align: end;
+    font-family: var(--font-mono); font-size: 0.78rem; color: var(--fg-faint);
   }
-  .pubs .pub-title { font-weight: 600; }
-  .pubs .pub-authors { font-size: 0.9rem; color: var(--fg-muted); }
-  .pubs .pub-venue { font-size: 0.85rem; color: var(--fg-faint); margin-block-start: 0.2rem; }
+  .pubs .pub-authors { color: var(--fg-muted); }
+  .pubs .pub-title { color: var(--fg); }
+  .pubs .pub-venue { color: var(--fg-faint); }
 
   /* --- repository list --- */
   .repo-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
@@ -916,34 +981,44 @@
   .repo-list .repo-who { font-weight: 600; min-inline-size: 9rem; }
   .repo-list a { font-family: var(--font-mono); font-size: 0.84rem; overflow-wrap: anywhere; }
 
-  /* --- accordion ---------------------------------------------------------
-     One bordered list with dividers rather than ten separate cards: the gaps
-     and repeated borders were most of the height.                          */
+  /* --- disclosure ----------------------------------------------------------
+     One mechanism for the prior-work rows and the FAQ. <details> cannot
+     animate its own height (its content is not rendered while closed), so
+     this is a button plus a 0fr -> 1fr grid, which can.                    */
   .faq-list {
     border: 1px solid var(--line); border-radius: var(--radius-m);
     background: var(--bg-raised); overflow: clip;
   }
-  .faq-list .faq { border: 0; border-radius: 0; background: none; }
-  .faq-list .faq + .faq,
-  .faq-list .faq-more .faq:first-child { border-block-start: 1px solid var(--line); }
+  .faq { border: 0; background: none; }
+  .faq + .faq, .faq-more .faq:first-child { border-block-start: 1px solid var(--line); }
   .faq-more { display: contents; }
   .faq-more[hidden] { display: none; }
-  .faq { border: 1px solid var(--line); border-radius: var(--radius-m); background: var(--bg-raised); overflow: clip; }
-  .faq + .faq { margin-block-start: 0; }
-  .faq summary {
-    padding: 0.7rem var(--sp-4); cursor: pointer; font-weight: 600; font-size: 0.96rem;
-    display: flex; gap: var(--sp-3); align-items: center; list-style: none; min-block-size: 2.6rem;
+
+  .disclose-btn {
+    inline-size: 100%; text-align: start; cursor: pointer;
+    display: flex; gap: var(--sp-3); align-items: center;
+    padding: 0.7rem var(--sp-4); min-block-size: 2.6rem;
+    border: 0; background: none;
+    font-weight: 600; font-size: 0.96rem; color: var(--fg);
+    transition: background var(--dur) var(--ease);
   }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after {
-    content: "+"; margin-inline-start: auto; font-family: var(--font-mono);
-    font-size: 1.3rem; color: var(--brand); line-height: 1;
-    transition: rotate var(--dur) var(--ease);
+  .disclose-btn:hover { background: color-mix(in oklab, var(--brand) 6%, transparent); }
+  [data-open] > .disclose-btn { background: var(--brand-tint); }
+  .disclose-btn .chev {
+    inline-size: 1.05rem; block-size: 1.05rem; flex: none; margin-inline-start: auto;
+    color: var(--brand); transition: rotate 320ms var(--ease);
   }
-  .faq[open] summary::after { rotate: 45deg; }
-  .faq summary:hover { background: var(--bg-subtle); }
-  .faq .faq-body { padding: 0 var(--sp-4) var(--sp-3); color: var(--fg-muted); font-size: 0.93rem; }
-  .faq .faq-body > * + * { margin-block-start: var(--sp-2); }
+  [data-open] > .disclose-btn .chev { rotate: 90deg; }
+
+  .disclose-panel {
+    display: grid; grid-template-rows: 0fr;
+    transition: grid-template-rows 320ms var(--ease);
+  }
+  .disclose-panel > div { overflow: hidden; }
+  [data-open] > .disclose-panel { grid-template-rows: 1fr; }
+  .disclose-panel .inner { padding: 0 var(--sp-4) var(--sp-3); color: var(--fg-muted); font-size: 0.93rem; }
+  .disclose-panel .inner > * + * { margin-block-start: var(--sp-2); }
+  @media (prefers-reduced-motion: reduce) { .disclose-panel { transition: none; } }
 
   /* --- notice / callout --- */
   .callout {
@@ -1049,16 +1124,18 @@
   dialog.sheet .sheet-head strong { font-family: var(--font-display); font-size: 1.1rem; }
   dialog.sheet .sheet-body { padding: var(--sp-4) var(--sp-5) var(--sp-5); }
 
-  /* subtle scroll reveal, motion-safe only */
+  /* Subtle reveal, motion-safe only.
+     This used `animation-timeline: view()`, which is bidirectional — scrolling
+     back up replayed it in reverse and elements visibly faded out again. It is
+     now a one-shot transition driven by an observer that unobserves after
+     firing, so an element reveals once and stays put.
+     Gated on .js so nothing is ever left invisible if the script fails. */
   @media (prefers-reduced-motion: no-preference) {
-    @supports (animation-timeline: view()) {
-      .reveal {
-        animation: reveal-in linear both;
-        animation-timeline: view();
-        animation-range: entry 5% cover 22%;
-      }
-      @keyframes reveal-in { from { opacity: 0; translate: 0 1.25rem; } }
+    .js .reveal {
+      opacity: 0; translate: 0 1.25rem;
+      transition: opacity 520ms var(--ease), translate 520ms var(--ease);
     }
+    .js .reveal[data-shown] { opacity: 1; translate: 0 0; }
   }
 
   /* --- footer -------------------------------------------------------------

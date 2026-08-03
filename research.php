@@ -24,73 +24,19 @@ include 'partials/header.php';
     cited in the volume&rsquo;s chapter bibliographies. Most recent first.</p>
 
   <ol class="pubs mt-4">
-    <li>
-      <div>
-        <span class="pub-title">Engaging first and second year undergraduates with parallel and distributed computing: lessons from unplugged and game-based activities</span>
-        <div class="pub-authors">X. Suo, T. Dangol</div>
-        <div class="pub-venue">2026, pp. 104–114</div>
-      </div>
-    </li>
-    <li>
-      <div>
-        <span class="pub-title">Making room for parallel and distributed computing in CS1: approaches, tradeoffs, and faculty effort</span>
-        <div class="pub-authors">A. R. Crockett, G. C. Gannod, X. Suo, C. Bourke, M. L. Smith, S. Srivastava, D. P. Bunde, J. Spacco, J. Wang, M. Zhu, N. Thota, C. C. Weems, R. Vaidyanathan, A. Sussman, S. K. Prasad</div>
-        <div class="pub-venue">Frontiers in Education (FIE), IEEE, 2026</div>
-      </div>
-    </li>
-    <li>
-      <div>
-        <span class="pub-title">Codeless modules for parallel and distributed computing in early computing curriculum</span>
-        <div class="pub-authors">C. Bourke</div>
-        <div class="pub-venue">Proc. 57th ACM Technical Symposium on Computer Science Education (SIGCSE TS), 2026, pp. 141–147</div>
-      </div>
-    </li>
-    <li>
-      <div>
-        <span class="pub-title"><a href="https://cdercenter.org/peachy-assignments/">Peachy parallel assignments</a></span>
-        <div class="pub-authors">H. M. Bücker, J. Schoder, X. Suo, D. Bunde</div>
-        <div class="pub-venue">EduPar-25: 15th NSF/TCPP Workshop on Parallel and Distributed Computing Education, Milan, June 2025 · with IPDPS</div>
-      </div>
-    </li>
-    <li>
-      <div>
-        <span class="pub-title">A visual unplugged activity to introduce PDC</span>
-        <div class="pub-authors">M. Smith, S. Srivastava, D. P. Bunde, A. Crockett, M. Gerten, P. Maher, J. Spacco, X. Suo, J. Wang, M. Zhu</div>
-        <div class="pub-venue">Workshop on Education for High-Performance Computing (EduHPC) · IPDPSW 2025, pp. 658–665</div>
-      </div>
-    </li>
-    <li>
-      <div>
-        <span class="pub-title">Codeless PDC modules for early computing curriculum</span>
-        <div class="pub-authors">C. Bourke, J. Firestone</div>
-        <div class="pub-venue">IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW), 2024, pp. 357–364</div>
-      </div>
-    </li>
-    <li>
-      <div>
-        <span class="pub-title">WIP: Updating CS1 to a 21st-century model of computing</span>
-        <div class="pub-authors">D. P. Bunde, A. R. Crockett, G. C. Gannod, J. Spacco, N. Thota, C. C. Weems</div>
-        <div class="pub-venue">Proc. Frontiers in Education (FIE), 2024</div>
-      </div>
-    </li>
+    <li><span class="pub-authors">X. Suo, T. Dangol.</span> <span class="pub-title">Engaging first and second year undergraduates with parallel and distributed computing: lessons from unplugged and game-based activities.</span> <span class="pub-venue">2026, pp. 104–114</span></li>
+    <li><span class="pub-authors">A. R. Crockett, G. C. Gannod, X. Suo, C. Bourke, M. L. Smith, S. Srivastava, D. P. Bunde, J. Spacco, J. Wang, M. Zhu, N. Thota, C. C. Weems, R. Vaidyanathan, A. Sussman, S. K. Prasad.</span> <span class="pub-title">Making room for parallel and distributed computing in CS1: approaches, tradeoffs, and faculty effort.</span> <span class="pub-venue">Frontiers in Education (FIE), IEEE, 2026</span></li>
+    <li><span class="pub-authors">C. Bourke.</span> <span class="pub-title">Codeless modules for parallel and distributed computing in early computing curriculum.</span> <span class="pub-venue">Proc. 57th ACM Technical Symposium on Computer Science Education (SIGCSE TS), 2026, pp. 141–147</span></li>
+    <li><span class="pub-authors">H. M. Bücker, J. Schoder, X. Suo, D. Bunde.</span> <span class="pub-title"><a href="https://cdercenter.org/peachy-assignments/">Peachy parallel assignments</a>.</span> <span class="pub-venue">EduPar-25: 15th NSF/TCPP Workshop on Parallel and Distributed Computing Education, Milan, June 2025 · with IPDPS</span></li>
+    <li><span class="pub-authors">M. Smith, S. Srivastava, D. P. Bunde, A. Crockett, M. Gerten, P. Maher, J. Spacco, X. Suo, J. Wang, M. Zhu.</span> <span class="pub-title">A visual unplugged activity to introduce PDC.</span> <span class="pub-venue">Workshop on Education for High-Performance Computing (EduHPC) · IPDPSW 2025, pp. 658–665</span></li>
+    <li><span class="pub-authors">C. Bourke, J. Firestone.</span> <span class="pub-title">Codeless PDC modules for early computing curriculum.</span> <span class="pub-venue">IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW), 2024, pp. 357–364</span></li>
+    <li><span class="pub-authors">D. P. Bunde, A. R. Crockett, G. C. Gannod, J. Spacco, N. Thota, C. C. Weems.</span> <span class="pub-title">WIP: Updating CS1 to a 21st-century model of computing.</span> <span class="pub-venue">Proc. Frontiers in Education (FIE), 2024</span></li>
   </ol>
 
   <h3 class="mt-6">Earlier Related Work by Team Members</h3>
   <ol class="pubs mt-3">
-    <li>
-      <div>
-        <span class="pub-title">Assessing the integration of parallel and distributed computing in early undergraduate computer science curriculum using unplugged activities</span>
-        <div class="pub-authors">S. Srivastava, M. Smith, A. Ghimire, S. Gao</div>
-        <div class="pub-venue">IEEE/ACM Workshop on Education for High-Performance Computing (EduHPC), 2019, pp. 17–24</div>
-      </div>
-    </li>
-    <li>
-      <div>
-        <span class="pub-title">A survey of teaching PDC content in undergraduate curriculum</span>
-        <div class="pub-authors">X. Suo, O. Glebova, D. Liu, A. Lazar, D. Bein</div>
-        <div class="pub-venue">IEEE 11th Annual Computing and Communication Workshop and Conference (CCWC), 2021, pp. 1306–1312</div>
-      </div>
-    </li>
+    <li><span class="pub-authors">S. Srivastava, M. Smith, A. Ghimire, S. Gao.</span> <span class="pub-title">Assessing the integration of parallel and distributed computing in early undergraduate computer science curriculum using unplugged activities.</span> <span class="pub-venue">IEEE/ACM Workshop on Education for High-Performance Computing (EduHPC), 2019, pp. 17–24</span></li>
+    <li><span class="pub-authors">X. Suo, O. Glebova, D. Liu, A. Lazar, D. Bein.</span> <span class="pub-title">A survey of teaching PDC content in undergraduate curriculum.</span> <span class="pub-venue">IEEE 11th Annual Computing and Communication Workshop and Conference (CCWC), 2021, pp. 1306–1312</span></li>
   </ol>
 
   <div class="callout mt-5">
