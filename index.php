@@ -40,12 +40,21 @@ include 'partials/header.php';
       <div class="cluster hero-actions">
         <a class="btn btn--primary" href="download.php?f=book">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M8 11l4 4 4-4M5 19h14"/></svg>
-          Read the e-book
+          Download eBook
+        </a>
+        <a class="btn btn--ghost" href="ebook.php">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v15H6.5A2.5 2.5 0 0 0 4 20.5Z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H19v3H6.5A2.5 2.5 0 0 1 4 20.5Z"/></svg>
+          Go to eBook
         </a>
         <a class="btn btn--ghost" href="ebook.php#activities">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
           Find an activity
         </a>
+        <button class="btn btn--ghost btn--icon" type="button"
+                data-copy="<?= e($CITATION) ?>" title="Copy the citation for this volume">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          <span class="visually-hidden">Copy citation</span>
+        </button>
       </div>
     </div>
 

@@ -685,6 +685,36 @@
     font-size: 0.78rem; font-weight: 700; font-variant-numeric: tabular-nums;
   }
 
+  /* --- citation ------------------------------------------------------------ */
+  .cite-card {
+    display: grid; gap: var(--sp-4);
+    grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+    align-items: start;
+    padding: var(--sp-4) var(--sp-5);
+    background: var(--bg-raised); border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+  }
+  @media (width < 56rem) { .cite-card { grid-template-columns: 1fr; } }
+  .cite-text {
+    margin: 0; padding: var(--sp-3);
+    background: var(--bg-sunken); border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    font-size: 0.88rem; line-height: 1.6; color: var(--fg);
+    /* hanging indent, the way a reference list sets */
+    padding-inline-start: calc(var(--sp-3) + 1.4rem); text-indent: -1.4rem;
+    overflow-wrap: break-word;
+  }
+
+  /* --- copy button ---------------------------------------------------------
+     Swaps to a tick for a moment after a successful copy.                   */
+  .btn--icon { padding-inline: 0.7rem; }
+  .btn[data-copy][data-copied] {
+    background: color-mix(in oklab, var(--flag-4) 22%, var(--bg-raised));
+    border-color: color-mix(in oklab, var(--flag-4) 55%, var(--line));
+    color: var(--fg);
+  }
+  .btn[data-copy][data-copied] svg { color: var(--flag-4); }
+
   /* --- panel --- */
   .panel {
     background: var(--bg-raised); border: 1px solid var(--line);

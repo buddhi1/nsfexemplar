@@ -23,6 +23,21 @@ $PROJECT_NAME  = 'Modern Course Exemplars infused with Parallel and Distributed 
 $PROJECT_SHORT = 'Modern Course Exemplars';
 $PROJECT_TAG   = 'Infused with Parallel &amp; Distributed Computing for the Introductory Computing Course Sequence';
 
+/* ---------------------------------------------------------------- citation --
+   The volume does not print a suggested citation of its own, so this is
+   assembled from its title page. Edit here if the project settles on
+   different wording — it is used on the home page and the resources page.
+   The URL follows whatever host the site is served from, so it stays correct
+   after a move; set $CITE_URL explicitly to pin it. */
+$BOOK_TITLE    = 'Toward Modern Models of Introductory Computing Courses: '
+               . 'CS1 and CS2 Course Exemplars Infused with Parallel and Distributed Computing Concepts';
+$CITE_YEAR     = '2026';
+$CITE_EDITORS  = 'Prasad, S. K., Sussman, A., Thota, N., Vaidyanathan, R., & Weems, C. (Eds.)';
+$CITE_HOST     = preg_replace('/[^A-Za-z0-9.:\-]/', '', $_SERVER['HTTP_HOST'] ?? 'nsfexemplar.cdercenter.org');
+$CITE_URL      = 'https://' . $CITE_HOST . '/ebook';
+$CITATION      = sprintf('%s. (%s). %s (First release: CS1). CDER Center. NSF Award #2321015. %s',
+                         $CITE_EDITORS, $CITE_YEAR, $BOOK_TITLE, $CITE_URL);
+
 $NAV = [
     'home'      => ['index.php',     'Home'],
     'project'   => ['project.php',   'Project'],

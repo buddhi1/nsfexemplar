@@ -98,6 +98,55 @@
   /* ------------------------------------------------- generic year stamp -- */
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
+  /* --------------------------------------------------------------- copy --
+     Any [data-copy] button copies its value and confirms briefly. Falls back
+     to a hidden textarea where the async clipboard API is unavailable, which
+     includes pages served over plain http. */
+  (() => {
+    const buttons = $$('[data-copy]');
+    if (!buttons.length) return;
+
+    const legacyCopy = (text) => {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:-1000px;opacity:0';
+      document.body.appendChild(ta);
+      ta.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch { ok = false; }
+      ta.remove();
+      return ok;
+    };
+
+    buttons.forEach((btn) => {
+      const label = btn.querySelector('span:not(.visually-hidden)');
+      const original = label ? label.textContent : null;
+      let timer = null;
+
+      const confirm = (ok) => {
+        clearTimeout(timer);
+        btn.toggleAttribute('data-copied', ok);
+        if (label) label.textContent = ok ? 'Copied' : 'Press Ctrl+C';
+        btn.setAttribute('aria-label', ok ? 'Citation copied' : 'Copy failed — select the text instead');
+        timer = setTimeout(() => {
+          btn.removeAttribute('data-copied');
+          if (label && original !== null) label.textContent = original;
+          btn.setAttribute('aria-label', 'Copy citation');
+        }, 2200);
+      };
+
+      btn.addEventListener('click', async () => {
+        const text = btn.dataset.copy || '';
+        if (navigator.clipboard && window.isSecureContext) {
+          try { await navigator.clipboard.writeText(text); return confirm(true); }
+          catch { /* fall through to the legacy path */ }
+        }
+        confirm(legacyCopy(text));
+      });
+    });
+  })();
+
   /* ------------------------------------------------------------- reveal --
      One-shot: reveal on first sight, then stop watching. Never reverses. */
   (() => {
