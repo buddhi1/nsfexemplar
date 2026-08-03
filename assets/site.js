@@ -879,12 +879,22 @@
       const count = DL_COUNTS[key] || 0;
       const hasDetail = c.sections.length || c.authors;
 
-      const secs = c.sections.map((s) => `
-        <li>
-          <span class="sec-n">${esc(s.n)}</span>
-          <span class="sec-t">${esc(s.t)}${s.sub.length ? `
-            <span class="sec-sub">${s.sub.map((x) => esc(x[1])).join(' · ')}</span>` : ''}</span>
-        </li>`).join('');
+      /* A section with subsections becomes its own disclosure — chapter,
+         section, subsection, collapsed at each step. */
+      const secs = c.sections.map((s) => (s.sub.length ? `
+        <li class="sec">
+          <button class="sec-btn" type="button" aria-expanded="false" data-disclose>
+            ${chev}<span class="sec-n">${esc(s.n)}</span><span class="sec-t">${esc(s.t)}</span>
+          </button>
+          <div class="disclose-panel"><div>
+            <ol class="sec-subs">${s.sub.map((x) => `
+              <li><span class="sec-n">${esc(x[0])}</span><span class="sec-t">${esc(x[1])}</span></li>`).join('')}
+            </ol>
+          </div></div>
+        </li>` : `
+        <li class="sec sec--leaf">
+          <span class="sec-n">${esc(s.n)}</span><span class="sec-t">${esc(s.t)}</span>
+        </li>`)).join('');
 
       return `
       <tr class="ch-row"${hasDetail ? ` id="ch-${i}"` : ''}>
