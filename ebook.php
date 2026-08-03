@@ -10,12 +10,18 @@ include 'partials/header.php';
 <section class="hero hero--page">
   <div class="shell">
     <p class="eyebrow">The eBook</p>
-    <h1 class="mt-3">Find the Exemplar &mdash; or the Activity &mdash; That Matches Your Course</h1>
+    <h1 class="mt-3">Find the Exemplar or the Activity That Matches Your Course</h1>
     <p class="lede mt-4">Search by institution or by activity. Filter by language, institution type, activity
       style and duration, then download just the chapter you need.</p>
     <div class="cluster hero-actions">
       <a class="btn btn--primary" href="download.php?f=book">Download the full PDF · 288 pp</a>
       <a class="btn btn--ghost" href="#chapters">Download by chapter</a>
+      
+       <button class="btn btn--primary btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
+                aria-label="Copy citation">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          <span>Copy citation</span>
+        </button>
     </div>
   </div>
 </section>
@@ -235,6 +241,32 @@ include 'partials/header.php';
     </div>
   </div>
 </div>
+
+
+<!-- ──────────────────────────────────────────────────────── citation ──── -->
+<div class="shell section--tight" id="cite">
+  <div class="cite-card">
+    <div>
+      <p class="eyebrow">Cite this volume</p>
+      <p class="tiny faint mt-2">Copy it, or select the text if you would rather edit it into your own
+        style. This is the wording the project uses, so please keep it as it stands.</p>
+    </div>
+    <div>
+      <p class="cite-text" data-cite-text><?= e($CITATION) ?></p>
+      <div class="cluster mt-3">
+        <button class="btn btn--primary btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
+                aria-label="Copy citation">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          <span>Copy citation</span>
+        </button>
+        <a class="btn btn--ghost btn--sm" href="download.php?f=book">Download the volume</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────────────────────────────────────────────────── assessments ─── -->
+
 
 </main>
 

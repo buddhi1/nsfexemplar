@@ -410,7 +410,8 @@
   /* Landing hero: two columns so the headline never leaves half the fold empty */
   .hero--split .hero-grid {
     display: grid; gap: var(--sp-6);
-    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    /* grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr); */
+    grid-template-columns: minmax(0, 2.00fr) minmax(0, 0.98fr);
     align-items: center;
   }
   .hero--split h1 { max-inline-size: 15ch; }

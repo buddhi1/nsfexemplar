@@ -50,12 +50,19 @@ include 'partials/header.php';
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
           Find an activity
         </a>
-        <button class="btn btn--ghost btn--icon" type="button"
+
+         <button class="btn btn--primary btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
+                aria-label="Copy citation">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          <span>Copy citation</span>
+        </button>
+
+        <!-- <button class="btn btn--ghost btn--icon" type="button"
                 data-copy="<?= e($CITATION) ?>" aria-label="Copy citation"
                 title="Copy the citation for this volume">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
           <span class="visually-hidden">Copy citation</span>
-        </button>
+        </button> -->
       </div>
     </div>
 
