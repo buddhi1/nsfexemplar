@@ -13,6 +13,16 @@ include 'partials/header.php';
     <h1 class="mt-3">Find the Exemplar or the Activity That Matches Your Course</h1>
     <p class="lede mt-4">Search by institution or by activity. Filter by language, institution type, activity
       style and duration, then download just the chapter you need.</p>
+    <!-- Row one identifies the volume, row two acts on it. -->
+    <div class="cluster hero-meta">
+      <button class="btn btn--quiet btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
+              aria-label="Copy citation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+        <span data-copy-label>Copy citation</span>
+      </button>
+      <?= doi_badge($DOI, $DOI_URL) ?>
+    </div>
+
     <div class="cluster hero-actions">
       <a class="btn btn--primary" href="download.php?f=book">Download the full PDF · 288 pp</a>
       <a class="btn btn--ghost" href="#chapters">Download by chapter</a>
@@ -20,12 +30,6 @@ include 'partials/header.php';
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4l2 2.5h7A1.5 1.5 0 0 1 19 10v7.5A1.5 1.5 0 0 1 17.5 19h-13A1.5 1.5 0 0 1 3 17.5Z"/></svg>
         Appendices &amp; material
       </a>
-
-       <button class="btn btn--primary btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
-                aria-label="Copy citation">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-          <span data-copy-label>Copy citation</span>
-        </button>
     </div>
   </div>
 </section>

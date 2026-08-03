@@ -367,6 +367,15 @@
   .btn--ghost:any-link { color: var(--fg); }
   .btn--ghost:hover:not(:disabled) { background: var(--bg-subtle); }
   .btn--sm { padding: 0.42rem 0.85rem; min-block-size: 2.25rem; font-size: 0.86rem; }
+  /* Quieter than --ghost: a barely-there surface for controls that are about
+     the document rather than actions on it. Lighter, not darker — a darker
+     chip would pull the eye to the citation ahead of the download below it. */
+  .btn--quiet {
+    background: light-dark(oklch(1 0 0 / 0.62), oklch(1 0 0 / 0.05));
+    border-color: var(--line); color: var(--fg-muted); box-shadow: none;
+  }
+  .btn--quiet:any-link { color: var(--fg-muted); }
+  .btn--quiet:hover:not(:disabled) { background: var(--bg-raised); color: var(--fg); }
 
   /* --- eyebrow / labels --- */
   .eyebrow {
@@ -406,6 +415,12 @@
   }
   .hero > * { position: relative; z-index: 1; }
   .hero-actions { margin-block-start: var(--sp-4); }
+  /* Two rows: what identifies the volume, then what you can do with it. The
+     meta row is set quiet so the download call to action still leads, and the
+     badge is stretched to the small-button height so the row lines up. */
+  .hero-meta { gap: 0.55rem; margin-block-start: var(--sp-4); }
+  .hero-meta + .hero-actions { margin-block-start: var(--sp-3); }
+  .hero-meta .doi { min-block-size: 2.25rem; }
 
   /* Landing hero: two columns so the headline never leaves half the fold empty */
   .hero--split .hero-grid {
@@ -751,8 +766,11 @@
 
   /* --- DOI badge -----------------------------------------------------------
      Two segments in the Zenodo/shields idiom: a neutral label, then the
-     identifier. The wrapper draws the pill rather than clipping it, so the
-     "Copied" bubble can sit outside the badge without being cut off. */
+     identifier. Tinted rather than filled with brand — the badge says what the
+     volume is, it is not the call to action, and a solid brand pill here would
+     carry the same weight as the Download button beside it. Pill radius so it
+     belongs in a row of buttons. The wrapper draws no clip, so the "Copied"
+     bubble can sit outside the badge without being cut off. */
   .doi { display: inline-flex; align-items: stretch; vertical-align: middle; }
   /* the sentence that introduces the badge on the home page */
   .doi-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem;
@@ -761,29 +779,34 @@
     display: inline-flex; align-items: center; gap: 0.4rem;
     border: 0; padding: 0.42rem 0.6rem; cursor: pointer;
     font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.15;
+    background: var(--brand-tint); color: var(--brand-deep);
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--brand) 24%, transparent);
     transition: background var(--dur) var(--ease);
   }
-  .doi-badge { position: relative; padding-inline-start: 0; border-start-start-radius: var(--radius-s); border-end-start-radius: var(--radius-s); background: var(--brand); color: var(--on-brand); }
+  .doi-badge {
+    position: relative; padding-inline-start: 0;
+    border-start-start-radius: var(--radius-pill); border-end-start-radius: var(--radius-pill);
+  }
   .doi-label {
     align-self: stretch; display: inline-flex; align-items: center;
-    padding: 0 0.55rem; margin-inline-end: 0.1rem;
+    padding: 0 0.6rem 0 0.75rem; margin-inline-end: 0.45rem;
     background: light-dark(oklch(0.33 0.012 260), oklch(0.26 0.012 260));
     color: oklch(1 0 0); font-weight: 700; letter-spacing: 0.1em;
-    border-start-start-radius: var(--radius-s); border-end-start-radius: var(--radius-s);
+    border-start-start-radius: var(--radius-pill); border-end-start-radius: var(--radius-pill);
   }
   /* Nothing here may shrink: a squeezed identifier is unreadable and a
      squeezed arrow drops under the 24px target floor. */
   .doi-label, .doi-open, .doi-ico { flex: none; }
   .doi-value { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600;
                white-space: nowrap; }
-  .doi-badge:hover, .doi-open:hover { background: var(--brand-deep); }
+  .doi-badge:hover, .doi-open:hover { background: color-mix(in oklab, var(--brand) 16%, var(--bg-raised)); }
   .doi-open {
-    background: var(--brand); color: var(--on-brand); text-decoration: none;
-    border-start-end-radius: var(--radius-s); border-end-end-radius: var(--radius-s);
-    padding-inline: 0.5rem; box-shadow: inset 1px 0 0 oklch(0 0 0 / 0.16);
-    min-inline-size: 1.75rem; justify-content: center;
+    text-decoration: none;
+    border-start-end-radius: var(--radius-pill); border-end-end-radius: var(--radius-pill);
+    padding-inline: 0.5rem 0.7rem; min-inline-size: 1.9rem; justify-content: center;
   }
-  .doi-ico { inline-size: 0.86rem; block-size: 0.86rem; flex: none; opacity: 0.9; }
+  .doi-open:any-link { color: var(--brand-deep); }
+  .doi-ico { inline-size: 0.86rem; block-size: 0.86rem; flex: none; opacity: 0.75; }
   .doi-open svg { inline-size: 0.86rem; block-size: 0.86rem; }
   /* the tick replaces the copy glyph, so the identifier itself never moves */
   .doi-ico--done, .doi-badge[data-copied] .doi-ico--copy { display: none; }

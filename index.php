@@ -37,6 +37,16 @@ include 'partials/header.php';
       <p class="lede mt-4">Modern software is parallel, distributed, event-driven and API-based. Introductory
         computing mostly still isn&rsquo;t. Eight institutions changed that in their own CS1, then measured
         whether it worked, and published everything.</p>
+      <!-- Row one identifies the volume, row two acts on it. -->
+      <div class="cluster hero-meta">
+        <button class="btn btn--quiet btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
+                aria-label="Copy citation">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          <span data-copy-label>Copy citation</span>
+        </button>
+        <?= doi_badge($DOI, $DOI_URL) ?>
+      </div>
+
       <div class="cluster hero-actions">
         <a class="btn btn--primary" href="download.php?f=book">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M8 11l4 4 4-4M5 19h14"/></svg>
@@ -50,12 +60,6 @@ include 'partials/header.php';
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
           Find an activity
         </a>
-
-         <button class="btn btn--primary btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
-                aria-label="Copy citation">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-          <span data-copy-label>Copy citation</span>
-        </button>
 
         <!-- <button class="btn btn--ghost btn--icon" type="button"
                 data-copy="<?= e($CITATION) ?>" aria-label="Copy citation"
@@ -211,12 +215,12 @@ include 'partials/header.php';
 
         <p class="doi-line mt-3">Cite the volume by its DOI: <?= doi_badge($DOI, $DOI_URL) ?></p>
 
-        <div class="callout callout--info mt-4">
+        <!-- <div class="callout callout--info mt-4">
           <strong>This first release covers CS1.</strong> It is published early to support Fall-term
           adoption, and includes eight institutional CS1 exemplars that have been classroom tested and
           evaluated, together with shared activities and instructional resources. CS2 chapters are expected
           soon for subsequent-term adoption.
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
