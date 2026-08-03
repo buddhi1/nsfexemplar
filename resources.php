@@ -27,8 +27,9 @@ include 'partials/header.php';
     <div>
       <p class="cite-text" data-cite-text><?= e($CITATION) ?></p>
       <div class="cluster mt-3">
-        <button class="btn btn--primary btn--sm" type="button" data-copy="<?= e($CITATION) ?>">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+        <button class="btn btn--primary btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
+                aria-label="Copy citation">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
           <span>Copy citation</span>
         </button>
         <a class="btn btn--ghost btn--sm" href="download.php?f=book">Download the volume</a>
@@ -138,7 +139,7 @@ include 'partials/header.php';
       <div class="faq">
         <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
           <span>I have one class period. What should I run?</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
         </button>
         <div class="disclose-panel"><div><div class="inner"><p>Flag Maker or Penny Search, unplugged. Both need only paper, markers or coins,
         run in a single 40&ndash;75&nbsp;minute session, require no programming background, and surface
@@ -149,7 +150,7 @@ include 'partials/header.php';
       <div class="faq">
         <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
           <span>Will adding PDC hurt my core learning outcomes?</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
         </button>
         <div class="disclose-panel"><div><div class="inner"><p>That was the explicit design constraint &mdash; the basic CS1 learning outcomes
         are preserved. Two checks are available. Casper&rsquo;s data shows perception of learning gains in
@@ -160,7 +161,7 @@ include 'partials/header.php';
       <div class="faq">
         <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
           <span>There is no room in my syllabus. How did others make space?</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
         </button>
         <div class="disclose-panel"><div><div class="inner"><p>Three broad strategies, often combined: selectively reducing or deferring
         existing content, modifying current assignments and activities, and adding short PDC-focused modules.
@@ -174,7 +175,7 @@ include 'partials/header.php';
       <div class="faq">
         <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
           <span>My course is in Python. Is anything usable?</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
         </button>
         <div class="disclose-panel"><div><div class="inner"><p>Yes. All unplugged activities &mdash; Flag Maker, Penny Search and Sorting,
         Coin Addition, the More Processors writing activity &mdash; are language-neutral, as are the
@@ -185,7 +186,7 @@ include 'partials/header.php';
       <div class="faq">
         <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
           <span>How much faculty effort should I budget?</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
         </button>
         <div class="disclose-panel"><div><div class="inner"><p>The development teams reported more than 100 hours across the initial
         development year &mdash; creating examples, finding curriculum insertion points, revising
@@ -200,7 +201,7 @@ include 'partials/header.php';
       <div class="faq">
         <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
           <span>Do I need IRB approval to use these materials?</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
         </button>
         <div class="disclose-panel"><div><div class="inner"><p>Not to teach them. You need IRB approval if you intend to collect and publish
         student data. Each testing team&rsquo;s IRB experience and instrument design is documented in the
@@ -209,7 +210,7 @@ include 'partials/header.php';
       <div class="faq">
         <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
           <span>What if my institution is nothing like any of these?</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
         </button>
         <div class="disclose-panel"><div><div class="inner"><p>The set was chosen to span community college, liberal arts, private
         undergraduate, public master&rsquo;s, mid-sized public and R1, on both semester and quarter calendars,
@@ -220,7 +221,7 @@ include 'partials/header.php';
       <div class="faq">
         <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
           <span>Is the technical setup going to bite me?</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
         </button>
         <div class="disclose-panel"><div><div class="inner"><p>Anticipate differences among student computers, compiler configurations,
         OpenMP support and execution timing &mdash; all of which the teams hit. Before using any resource,
@@ -231,7 +232,7 @@ include 'partials/header.php';
       <div class="faq">
         <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
           <span>When is CS2 available?</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
         </button>
         <div class="disclose-panel"><div><div class="inner"><p>CS2 chapters are drafted and being finalized for subsequent-term adoption.
         Each institutional exemplar already lists its planned CS2 activities &mdash; open any exemplar in the
@@ -241,7 +242,7 @@ include 'partials/header.php';
       <div class="faq">
         <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
           <span>Can I get help choosing?</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
         </button>
         <div class="disclose-panel"><div><div class="inner"><p>Yes &mdash; some consultation from project personnel is available to help
         adopters select and adapt materials.

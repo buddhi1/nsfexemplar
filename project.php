@@ -64,20 +64,20 @@ include 'partials/header.php';
 
     <div class="grid grid--auto mt-5">
       <article class="card">
-        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3.5" y="5" width="7" height="6" rx="1"/><rect x="13.5" y="5" width="7" height="6" rx="1"/><rect x="3.5" y="13" width="7" height="6" rx="1"/><rect x="13.5" y="13" width="7" height="6" rx="1"/></svg></span>
+        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="7" height="6" rx="1"/><rect x="13.5" y="5" width="7" height="6" rx="1"/><rect x="3.5" y="13" width="7" height="6" rx="1"/><rect x="13.5" y="13" width="7" height="6" rx="1"/></svg></span>
         <h3>Data parallelism</h3>
         <p>Attaches to loops, arrays, searching and sorting. A range-based <code>for</code> loop already
           models dependence-free processing of a collection &mdash; a candidate for parallelism sitting in
           plain sight.</p>
       </article>
       <article class="card">
-        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="6.5" r="2.6"/><circle cx="18" cy="17.5" r="2.6"/><path d="M8.4 10.8 15.6 7.6M8.4 13.2l7.2 3.2"/></svg></span>
+        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="6.5" r="2.6"/><circle cx="18" cy="17.5" r="2.6"/><path d="M8.4 10.8 15.6 7.6M8.4 13.2l7.2 3.2"/></svg></span>
         <h3>Distributed data access</h3>
         <p>Modern file and user I/O APIs read and write serialized objects, even from remote repositories.
           Students pull live data from a real remote service instead of parsing console text.</p>
       </article>
       <article class="card">
-        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 13h6l-1 8 8-10h-6Z"/></svg></span>
+        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 3 5 13h6l-1 8 8-10h-6Z"/></svg></span>
         <h3>Event-driven processing</h3>
         <p>Graphical interfaces exemplify event-driven processing, which illustrates many of the basic ideas
           behind control parallelism &mdash; and is the paradigm internet-native students already inhabit.</p>
@@ -219,7 +219,7 @@ include 'partials/header.php';
       <button class="era" type="button" aria-expanded="false" data-disclose>
         <span class="year">2010&ndash;2020</span>
         <span class="era-title">The IEEE TCPP Curriculum Initiative</span>
-        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
       </button>
       <div class="detail"><div><p>Began with a single question: what should every computing undergraduate know about parallel and distributed computing? The resulting guidelines identified PDC topics across programming, architecture, algorithms and cross-cutting areas, and mapped them to levels of coverage. Version I was released in 2012; Version II&beta; in 2020, with expanded attention to Big Data, energy and distributed computing. ACM/IEEE CS2013 linked to it explicitly, and CS2023 includes a dedicated PDC knowledge area citing the Version II&beta; effort.</p></div></div>
     </li>
@@ -227,7 +227,7 @@ include 'partials/header.php';
       <button class="era" type="button" aria-expanded="false" data-disclose>
         <span class="year">Ongoing</span>
         <span class="era-title">Early adopters</span>
-        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
       </button>
       <div class="detail"><div><p>Curriculum guidelines alone do not change courses. The CDER early adopter competitions incentivized instructors to incorporate PDC into existing courses and report their experiences. More than 140 early adopters have been supported, and the broader community of early adopters and trained instructors has grown to roughly 300 participants or institutions nationally and internationally. They demonstrated PDC could be infused widely &mdash; and revealed a persistent need for complete, coherent, classroom-tested course exemplars, especially for early courses.</p></div></div>
     </li>
@@ -235,7 +235,7 @@ include 'partials/header.php';
       <button class="era" type="button" aria-expanded="false" data-disclose>
         <span class="year">Vols 1&ndash;3</span>
         <span class="era-title">The CDER book series</span>
-        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
       </button>
       <div class="detail"><div><p>The first two volumes, published by Morgan Kaufmann and Springer, gathered chapters on introductory parallelism, threads, fork-join parallelism, performance, scalability, energy efficiency, MapReduce, GPU computing, mobile concurrency and integrative GUI applications, available as free preprints and collectively reaching tens of thousands of downloads. A third volume, focused on adopter experience and resources, is expected from Springer in late 2026.</p></div></div>
     </li>
@@ -243,7 +243,7 @@ include 'partials/header.php';
       <button class="era" type="button" aria-expanded="false" data-disclose>
         <span class="year">EduPar · EduHPC · EduHiPC</span>
         <span class="era-title">The Edu* workshop series</span>
-        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
       </button>
       <div class="detail"><div><p>EduPar (with IPDPS) began as a venue for early adopters to report experiences and discuss curricular and pedagogical issues. EduHPC (with SC) created a complementary venue connected to the HPC community; EduHiPC (with HiPC, in India) extended the model internationally. Together they transformed isolated adoption efforts into an ongoing professional community.</p></div></div>
     </li>
@@ -251,7 +251,7 @@ include 'partials/header.php';
       <button class="era" type="button" aria-expanded="false" data-disclose>
         <span class="year">Training</span>
         <span class="era-title">Instructor workshops</span>
-        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
       </button>
       <div class="detail"><div><p>Distinct from the Edu* research workshops, CDER has organized instructor-facing training: NSF CyberTraining week-long summer workshops, tutorials and special sessions at SIGCSE, training associated with EduHiPC, and hybrid or online events. <strong>All of this project&rsquo;s development and testing team members were past trainees or early adopters</strong> &mdash; the training pipeline is how the project staffed itself.</p></div></div>
     </li>

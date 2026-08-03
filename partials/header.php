@@ -24,19 +24,14 @@ $PROJECT_SHORT = 'Modern Course Exemplars';
 $PROJECT_TAG   = 'Infused with Parallel &amp; Distributed Computing for the Introductory Computing Course Sequence';
 
 /* ---------------------------------------------------------------- citation --
-   The volume does not print a suggested citation of its own, so this is
-   assembled from its title page. Edit here if the project settles on
-   different wording — it is used on the home page and the resources page.
-   The URL follows whatever host the site is served from, so it stays correct
-   after a move; set $CITE_URL explicitly to pin it. */
-$BOOK_TITLE    = 'Toward Modern Models of Introductory Computing Courses: '
-               . 'CS1 and CS2 Course Exemplars Infused with Parallel and Distributed Computing Concepts';
-$CITE_YEAR     = '2026';
-$CITE_EDITORS  = 'Prasad, S. K., Sussman, A., Thota, N., Vaidyanathan, R., & Weems, C. (Eds.)';
-$CITE_HOST     = preg_replace('/[^A-Za-z0-9.:\-]/', '', $_SERVER['HTTP_HOST'] ?? 'nsfexemplar.cdercenter.org');
-$CITE_URL      = 'https://' . $CITE_HOST . '/ebook';
-$CITATION      = sprintf('%s. (%s). %s (First release: CS1). CDER Center. NSF Award #2321015. %s',
-                         $CITE_EDITORS, $CITE_YEAR, $BOOK_TITLE, $CITE_URL);
+   The citation supplied by the project, used verbatim on the home page and
+   the resources page. Edit here and both follow. */
+$CITATION = 'Prasad, S. K., Weems, C., Thota, N., Sussman, A., Vaidyanathan, R., Gannod, G., '
+          . 'Crockett, A., Bunde, D., Spacco, J., Srivastava, S., Bourke, C., Suo, X., Maher, P., '
+          . 'Gruner, C., Smith, M., Zhu, M., and Wang, J. Aug. 2026 (early release). '
+          . 'Toward Modern Models of Introductory Computing Courses – CS1 and CS2 Course '
+          . 'Exemplars infused with Parallel and Distributed Computing Concepts. CDER Center. '
+          . 'NSF Award #2321015. https://NSFexemplar.CDERcenter.org/. pages 291.';
 
 $NAV = [
     'home'      => ['index.php',     'Home'],
@@ -67,7 +62,7 @@ function e(string $s): string {
 
 /* The brand glyph is used in both the header and the footer. */
 function brand_glyph(): string {
-    return '<svg viewBox="0 0 24 24" fill="currentColor">'
+    return '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">'
          . '<rect x="4" y="4.5" width="6.6" height="6.6" rx="1.4"/>'
          . '<rect x="13.4" y="4.5" width="6.6" height="6.6" rx="1.4"/>'
          . '<rect x="4" y="12.9" width="6.6" height="6.6" rx="1.4"/>'
@@ -110,7 +105,7 @@ r.classList.toggle('dark',t==='dark');r.style.colorScheme=t;r.dataset.themeLocke
     </a>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       Menu
     </button>
 
@@ -124,7 +119,7 @@ r.classList.toggle('dark',t==='dark');r.style.colorScheme=t;r.dataset.themeLocke
             <img src="assets/logos/cder.png" alt="" width="290" height="70" aria-hidden="true">
             <span>Back to CDER</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
               <path d="M7 17 17 7M9 7h8v8"/>
             </svg>
           </a>
@@ -133,8 +128,8 @@ r.classList.toggle('dark',t==='dark');r.style.colorScheme=t;r.dataset.themeLocke
     </nav>
 
     <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to dark theme">
-      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
-      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
     </button>
   </div>
 </header>
