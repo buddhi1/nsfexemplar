@@ -33,7 +33,7 @@ include 'partials/header.php';
   <div class="shell hero-grid">
     <div>
       <p class="eyebrow">CDER Center · <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2321015">NSF Award #2321015</a></p>
-      <h1 class="mt-3">A First Course Where Computation Isn&rsquo;t Only Sequential.</h1>
+      <h1 class="mt-3">A First Course Where Computation Isn&rsquo;t Only Sequential</h1>
       <p class="lede mt-4">Modern software is parallel, distributed, event-driven and API-based. Introductory
         computing mostly still isn&rsquo;t. Eight institutions changed that in their own CS1, then measured
         whether it worked, and published everything.</p>
@@ -71,7 +71,7 @@ include 'partials/header.php';
     <!-- Two exemplars from the volume, animated and crossfading.
          Each renders a static fallback if the script never runs. -->
     <div class="showcase" data-showcase>
-      <div class="showcase-track">
+      <!-- <div class="showcase-track">
 
         <figure class="flagmaker showcase-slide" data-active style="margin:0"
                 data-title="Flag Maker" data-caption="Flag Maker — Chapter 1 § 1.3.1 · run at five institutions">
@@ -108,7 +108,7 @@ include 'partials/header.php';
           </div>
         </figure>
 
-      </div>
+      </div> -->
       <div class="showcase-dots" role="tablist" aria-label="Featured activity" data-showcase-dots></div>
       <p class="showcase-label" data-showcase-label></p>
     </div>
@@ -220,7 +220,7 @@ include 'partials/header.php';
   </div>
 
   <!-- download history, inside the same highlighted band -->
-  <div class="shell section--tight">
+  <!-- <div class="shell section--tight">
     <div class="usage">
     <div class="usage-head">
       <p class="eyebrow">Usage</p>
@@ -246,7 +246,8 @@ include 'partials/header.php';
     </div>
       <p class="usage-foot"><a href="ebook.php#chapters">Downloads per chapter &rarr;</a></p>
     </div>
-  </div>
+  </div> -->
+  
 </div>
 
 <?php /* ---------------------------------------------------------------------
