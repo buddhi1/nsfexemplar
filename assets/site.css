@@ -777,7 +777,9 @@
               font-size: 0.86rem; color: var(--fg-muted); }
   .doi-badge, .doi-open {
     display: inline-flex; align-items: center; gap: 0.4rem;
-    border: 0; padding: 0.42rem 0.6rem; cursor: pointer;
+    border: 0; 
+    /* padding: 0.42rem 0.6rem;  */
+    cursor: pointer;
     font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.15;
     background: var(--brand-tint); color: var(--brand-deep);
     box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--brand) 24%, transparent);

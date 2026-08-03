@@ -1,9 +1,12 @@
 # ── Runtime state ────────────────────────────────────────────────────────────
 # The counter tally is written by the live site. Keeping it out of the repo
 # means deploys never overwrite real numbers and pulls never conflict.
-# data/.htaccess IS tracked, so the store stays protected on a fresh deploy.
+# Two files here ARE tracked: .htaccess, so the store stays protected on a
+# fresh deploy, and counters_example.json, which documents the shape of the
+# tally without carrying any real figures.
 /data/*
 !/data/.htaccess
+!/data/counters_example.json
 
 # PHP sessions, if the host is ever configured to write them locally
 /sessions/

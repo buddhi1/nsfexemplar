@@ -1,0 +1,18 @@
+{
+  "started": "2026-01-01",
+  "visits": 0,
+  "downloads": {
+    "book": 0,
+    "00-front-matter": 0,
+    "01-overview-roadmap": 0,
+    "02-common-cs1": 0,
+    "03-cs1-tntech": 0,
+    "04-cs1-knox": 0,
+    "05-cs1-usi": 0,
+    "06-cs1-unl": 0,
+    "07-cs1-webster": 0,
+    "08-cs1-casper": 0,
+    "09-cs1-hpu": 0,
+    "10-cs1-msu": 0
+  }
+}

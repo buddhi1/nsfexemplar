@@ -50,7 +50,8 @@ assets/
   book_cover/           the front cover shown in "Featured e-book" on the home page
 
 lib/counters.php        download and visit counters (JSON store, file-locked)
-data/counters.json      the tally; created automatically, not in git
+data/counters.json      the live tally; created automatically, never in git
+data/counters_example.json  the shape of that file, all zeros — tracked, for reference
 
 chapters/*.pdf          the volume split by chapter
 cder_exemplar_cs1_cs2.pdf   the full volume (288 pp)
@@ -242,6 +243,13 @@ per-chapter breakdown in the eBook chapter table.
   pages.
 - **Resetting** — delete `data/counters.json`; it is recreated empty on the next request. To seed
   historical figures, edit `visits` and `downloads` while the site is idle.
+
+`data/counters.json` is deliberately **not** tracked: it is live state, so committing it would
+mean every deploy overwrote real figures with whatever numbers the last developer happened to
+have locally. `data/counters_example.json` is tracked in its place — same structure, every count
+zero — so the format is documented in the repo without any figure in git ever being mistaken for
+a real one. It is reference only; nothing reads it at runtime, and the live file is created on
+first request whether or not it exists.
 
 ---
 
