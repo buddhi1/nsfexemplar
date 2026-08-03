@@ -167,7 +167,7 @@ include 'partials/header.php';
   <p class="lede mt-2">Take only what you need. The full 288-page volume is also available if you want the
     whole thing.</p>
   <div class="table-wrap mt-4">
-    <table class="data">
+    <table class="data data--chapters">
       <caption>Chapter-level downloads. Page numbers refer to the printed pages of the first release.</caption>
       <thead><tr><th scope="col">Chapter</th><th scope="col">Part</th><th scope="col">Pages</th><th scope="col">Downloads</th><th scope="col">Get it</th></tr></thead>
       <tbody id="chapter-rows">
