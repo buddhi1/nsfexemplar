@@ -1311,25 +1311,31 @@
     font-weight: 700; color: var(--ft-faint); flex: none;
   }
   .sponsor-logos { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-4) var(--sp-6); list-style: none; margin: 0; padding: 0; }
+  /* Each mark sits on a light plate. The footer is dark in both themes, and
+     these logos are not all light-on-transparent — the TCPP mark is mostly
+     dark ink and the NSF seal has a dark blue globe, so on the gradient they
+     sank into it. A plate is also future-proof: any logo dropped in later
+     reads correctly without needing a special variant. */
   .sponsor {
-    display: flex; align-items: center; gap: 0.7rem;
-    text-decoration: none; opacity: 0.9;
-    transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+    display: inline-flex; align-items: center;
+    text-decoration: none;
+    transition: transform var(--dur) var(--ease);
   }
-  .sponsor:hover { opacity: 1; transform: translateY(-1px); }
-  .sponsor img { display: block; }
-  .sponsor .seal { inline-size: 2.5rem; block-size: 2.5rem; flex: none; }
-  /* sized by width: the wordmark is 640x38, so a height alone gets clamped
-     by the reset's max-inline-size and collapses */
-  .sponsor .wordmark { inline-size: 11.5rem; block-size: auto; max-inline-size: none; }
-  .sponsor .cder-mark { block-size: 1.7rem; inline-size: auto; }
-  .sponsor .stack { display: grid; gap: 0.15rem; }
-  .sponsor .sponsor-note { font-size: 0.7rem; letter-spacing: 0.06em; color: var(--ft-faint); font-family: var(--font-mono); }
-  /* typographic mark where no official asset is available */
-  .sponsor .textmark {
-    font-family: var(--font-display); font-weight: 600; font-size: 1.05rem;
-    letter-spacing: 0.02em; color: var(--ft-fg); line-height: 1.1;
+  .sponsor:hover { transform: translateY(-1px); }
+  .plate {
+    display: grid; place-items: center;
+    block-size: 3.2rem;                 /* one height, so the row lines up */
+    padding-inline: 0.8rem;
+    background: oklch(0.99 0 0);
+    border-radius: var(--radius-s);
+    box-shadow: 0 1px 0 oklch(1 0 0 / 0.35), 0 2px 8px oklch(0 0 0 / 0.28);
+    transition: box-shadow var(--dur) var(--ease);
   }
+  .sponsor:hover .plate { box-shadow: 0 1px 0 oklch(1 0 0 / 0.5), 0 4px 14px oklch(0 0 0 / 0.36); }
+  .plate img { display: block; block-size: 1.85rem; inline-size: auto; max-inline-size: none; }
+  /* a square seal needs to be taller than a wordmark to look the same weight */
+  .plate--seal { padding-inline: 0.55rem; }
+  .plate--seal img { block-size: 2.4rem; }
   @media (forced-colors: active) { .sponsor { forced-color-adjust: none; color: LinkText; } }
 
   .colophon { margin-block-start: var(--sp-5); font-size: 0.82rem; color: var(--ft-faint); display: flex; flex-wrap: wrap; gap: var(--sp-3); }

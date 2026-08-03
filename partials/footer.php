@@ -78,20 +78,27 @@ function icon_github(): string {
       <span class="sponsors-label">Supported by</span>
       <ul class="sponsor-logos">
         <li>
-          <a class="sponsor" href="https://www.nsf.gov">
-            <img class="seal" src="assets/logos/nsf-seal.png" alt="" width="320" height="320" loading="lazy">
+          <a class="sponsor" href="https://www.nsf.gov" title="U.S. National Science Foundation">
+            <span class="plate plate--seal">
+              <img src="assets/logos/nsf-seal.png" alt="U.S. National Science Foundation"
+                   width="320" height="320" loading="lazy">
+            </span>
           </a>
         </li>
         <li>
-          <a class="sponsor" href="https://cdercenter.org/">
-            <img class="cder-mark" src="assets/logos/cder.png" alt="CDER Center"
-                 width="290" height="70" loading="lazy">
+          <a class="sponsor" href="https://cdercenter.org/" title="CDER Center">
+            <span class="plate">
+              <img src="assets/logos/cder.png" alt="CDER Center"
+                   width="290" height="70" loading="lazy">
+            </span>
           </a>
         </li>
         <li>
-          <a class="sponsor" href="https://tc.computer.org/tcpp/">
-            <img class="cder-mark" src="assets/logos/tcpp.webp" alt="TCPP"
-                 width="290" height="70" loading="lazy">
+          <a class="sponsor" href="https://tc.computer.org/tcpp/" title="IEEE TCPP">
+            <span class="plate">
+              <img src="assets/logos/tcpp.webp" alt="IEEE Technical Committee on Parallel Processing"
+                   width="220" height="73" loading="lazy">
+            </span>
           </a>
         </li>
       </ul>
