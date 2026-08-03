@@ -931,7 +931,7 @@
   .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-m); background: var(--bg-raised); scrollbar-gutter: stable; }
   table.data { inline-size: 100%; border-collapse: collapse; font-size: 0.9rem; }
   table.data caption { text-align: start; padding: var(--sp-3) var(--sp-4); color: var(--fg-faint); font-size: 0.85rem; border-block-end: 1px solid var(--line); }
-  table.data :is(th, td) { padding: 0.72rem 1rem; text-align: start; vertical-align: top; border-block-start: 1px solid var(--line); }
+  table.data :is(th, td) { padding: 0.55rem 1rem; text-align: start; vertical-align: top; border-block-start: 1px solid var(--line); }
   table.data thead th { background: var(--bg-sunken); font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-faint); border-block-start: 0; position: sticky; inset-block-start: 0; }
   table.data tbody tr:hover { background: var(--brand-tint); }
   /* the detail row is content, not a target — it should not light up */
@@ -957,8 +957,10 @@
   .ch-toggle {
     display: inline-flex; inline-size: auto; justify-content: flex-start;
     padding: 0; min-block-size: 0; gap: 0.45rem;
-    font-weight: 500; font-size: inherit; text-align: start;
+    font-weight: 500; font-size: inherit; line-height: 1.35; text-align: start;
   }
+  .data--chapters :is(th, td) { padding-block: 0.42rem; }
+  .data--chapters .btn--sm { min-block-size: 2rem; padding-block: 0.28rem; }
   /* the row highlight is the hover cue; the title does not change too */
   .ch-toggle:hover { background: none; }
   /* The shared .disclose-btn pushes its chevron right with margin-inline-start:
@@ -971,15 +973,15 @@
   .ch-row[data-open] { background: var(--brand-tint); }
   .ch-plain { color: var(--fg-muted); }
 
-  /* author + placement line under the chapter title */
-  .ch-sub {
-    display: flex; flex-wrap: wrap; gap: 0.15rem 0.5rem;
+  /* Part and pages, shown only once those columns drop out. Authors are not
+     repeated here — they read as clutter beside the titles, and the full list
+     with institution is in the expanded detail. */
+  .ch-meta {
+    display: none; color: var(--fg-faint);
     margin-block-start: 0.1rem; padding-inline-start: 1.35rem;
     font-size: 0.78rem; line-height: 1.35;
   }
-  .ch-by { color: var(--fg-muted); }
-  .ch-meta { color: var(--fg-faint); display: none; }   /* shown when columns drop */
-  tr:has(.ch-plain) .ch-sub { padding-inline-start: 0; }
+  tr:has(.ch-plain) .ch-meta { padding-inline-start: 0; }
 
   /* --- responsive ---------------------------------------------------------
      Below 56rem the Part and Pages columns are dropped and folded into the
@@ -989,7 +991,7 @@
     .data--chapters thead th:nth-child(3),
     .data--chapters tbody td:nth-child(2),
     .data--chapters tbody td:nth-child(3) { display: none; }
-    .data--chapters .ch-meta { display: inline; }
+    .data--chapters .ch-meta { display: block; }
     .data--chapters :is(th, td) { padding-inline: 0.7rem; }
     .data--chapters .ch-title { font-size: 0.94rem; }
   }

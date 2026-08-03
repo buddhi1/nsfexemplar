@@ -870,16 +870,6 @@
     const body = $('#chapter-rows');
     if (!body || typeof CHAPTERS === 'undefined') return;
 
-    /* Surnames only, and "et al." past two — a full author list would need a
-       column of its own and would wrap badly. The complete list is in the
-       expanded detail. */
-    const shortAuthors = (a) => {
-      if (!a) return '';
-      const names = a.split('\u00b7').map((n) => n.trim()).filter(Boolean);
-      const last = names.map((n) => n.replace(/\(.*?\)/g, ' ').trim().split(/\s+/).pop());
-      return last.length > 2 ? `${last[0]} et al.` : last.join(' & ');
-    };
-
     const chev = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"'
       + ' stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
       + '<path d="m9 6 6 6-6 6"/></svg>';
@@ -915,10 +905,7 @@
                  ${chev}<span class="ch-title">${c.title}</span>
                </button>`
             : `<span class="ch-plain">${c.title}</span>`}
-          <span class="ch-sub">
-            ${c.authors ? `<span class="ch-by">${esc(shortAuthors(c.authors))}</span>` : ''}
-            <span class="ch-meta">${c.part} &middot; pp ${c.pages}</span>
-          </span>
+          <span class="ch-meta">${c.part} &middot; pp ${c.pages}</span>
         </th>
         <td class="small faint">${c.part}</td>
         <td class="small faint nowrap">${c.pages}</td>

@@ -23,8 +23,8 @@ $PROJECT_NAME  = 'Modern Course Exemplars infused with Parallel and Distributed 
 $PROJECT_SHORT = 'Modern Course Exemplars';
 $PROJECT_TAG   = 'Infused with Parallel &amp; Distributed Computing for the Introductory Computing Course Sequence';
 
-/* The brandmark is the route home, so Home is not repeated in the bar. */
 $NAV = [
+    'home'      => ['index.php',     'Home'],
     'project'   => ['project.php',   'Project'],
     'ebook'     => ['ebook.php',     'eBook'],
     'team'      => ['team.php',      'Team'],
