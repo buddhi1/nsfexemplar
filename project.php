@@ -145,24 +145,31 @@ include 'partials/header.php';
 
   <p class="eyebrow mt-6">Project timeline</p>
   <h3 class="mt-2 mb-4">Four years, from recruitment to publication</h3>
-  <ol class="timeline timeline--major">
-    <li><span class="year">2023</span><h4>Recruitment and kickoff</h4>
-      <p>A webinar for potential recruits laid out goals, significance, application requirements and expected
-        outcomes. Applications were assessed on whether the applicant taught a target course, whether the
-        institution was open to modifying CS1 and CS2, and which language was used. A kickoff meeting was
-        followed by biweekly meetings on institutional context, syllabi and IRB planning, then an in-person
-        summer workshop.</p></li>
-    <li><span class="year">2024</span><h4>CS1 transfer, IRB and baselines</h4>
-      <p>CS1 exemplars were presented and refined through collaboration with the testing teams. Teams applied
-        for IRB approval and developed institution-specific research questions with coordinated data
-        collection designed for cross-team analysis. Baseline offerings with no intervention were taught and
-        measured.</p></li>
-    <li><span class="year">2025</span><h4>CS2 development and intervention runs</h4>
-      <p>Baseline data and initial experimental CS1 runs were presented at the second summer meeting; focus
-        turned to CS2 exemplars. Effort shifted to running the new courses and gathering data.</p></li>
-    <li><span class="year">2026–27</span><h4>Analysis, publication and dissemination</h4>
-      <p>Cross-institution analysis, this e-book, conference reports and continued outreach &mdash; including
-        a follow-on NSF award extending instructor training to AI and Big Data alongside PDC.</p></li>
+  <ol class="timeline timeline--rail">
+    <li>
+      <span class="year">2023</span>
+      <h4>Recruitment and kickoff</h4>
+      <p>Six testing teams recruited and selected on course fit, institutional willingness and language,
+        then brought together at an in-person summer workshop.</p>
+    </li>
+    <li>
+      <span class="year">2024</span>
+      <h4>CS1 transfer and baselines</h4>
+      <p>CS1 exemplars transferred to the testing teams. IRB approval obtained, research questions agreed,
+        and baseline offerings taught and measured with no intervention.</p>
+    </li>
+    <li>
+      <span class="year">2025</span>
+      <h4>CS2 work and intervention runs</h4>
+      <p>Baseline data and the first experimental CS1 runs presented; focus turned to CS2 while the new
+        courses ran and evidence accumulated.</p>
+    </li>
+    <li>
+      <span class="year">2026&ndash;27</span>
+      <h4>Analysis and publication</h4>
+      <p>Cross-institution analysis, this e-book and conference reports &mdash; plus a follow-on NSF award
+        extending training to AI and Big Data.</p>
+    </li>
   </ol>
 </div>
 
