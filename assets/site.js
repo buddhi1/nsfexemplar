@@ -863,18 +863,67 @@
     });
   })();
 
-  /* =================================================== chapter table (ebook) */
+  /* =================================================== chapter table (ebook)
+     Each chapter is one row. A second row underneath holds the authors and the
+     chapter's own contents, collapsed by default so the table stays short.   */
   (() => {
     const body = $('#chapter-rows');
     if (!body || typeof CHAPTERS === 'undefined') return;
-    body.innerHTML = CHAPTERS.map(([title, part, pages, href, pp]) => `
-      <tr>
-        <th scope="row" style="font-weight:500">${title}</th>
-        <td class="small faint">${part}</td>
-        <td class="small faint nowrap">${pages}</td>
-        <td class="small faint nowrap dl-count">${(DL_COUNTS[dlKey(href)] || 0).toLocaleString()}</td>
-        <td><a class="btn btn--ghost btn--sm" href="${dl(href)}">PDF <span class="tiny faint">${pp}</span></a></td>
-      </tr>`).join('');
+
+    const chev = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"'
+      + ' stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+      + '<path d="m9 6 6 6-6 6"/></svg>';
+
+    body.innerHTML = CHAPTERS.map((c, i) => {
+      const key = c.file;
+      const count = DL_COUNTS[key] || 0;
+      const hasDetail = c.sections.length || c.authors;
+
+      const secs = c.sections.map((s) => `
+        <li>
+          <span class="sec-n">${esc(s.n)}</span>
+          <span class="sec-t">${esc(s.t)}${s.sub.length ? `
+            <span class="sec-sub">${s.sub.map((x) => esc(x[1])).join(' · ')}</span>` : ''}</span>
+        </li>`).join('');
+
+      return `
+      <tr class="ch-row"${hasDetail ? ` id="ch-${i}"` : ''}>
+        <th scope="row" style="font-weight:500">
+          ${hasDetail
+            ? `<button class="ch-toggle disclose-btn" type="button" aria-expanded="false"
+                       aria-controls="ch-detail-${i}" data-ch="${i}">
+                 ${chev}<span>${c.title}</span>
+               </button>`
+            : `<span class="ch-plain">${c.title}</span>`}
+        </th>
+        <td class="small faint">${c.part}</td>
+        <td class="small faint nowrap">${c.pages}</td>
+        <td class="small faint nowrap dl-count">${count.toLocaleString()}</td>
+        <td><a class="btn btn--ghost btn--sm" href="${dl('chapters/' + key + '.pdf')}">PDF <span class="tiny faint">${c.pp}</span></a></td>
+      </tr>
+      ${hasDetail ? `
+      <tr class="ch-detail-row" hidden>
+        <td colspan="5">
+          <div class="ch-detail" id="ch-detail-${i}">
+            ${c.authors ? `<p class="ch-authors">${esc(c.authors)}<span class="ch-inst">${esc(c.inst)}</span></p>` : ''}
+            ${secs ? `<ol class="ch-sections">${secs}</ol>` : ''}
+          </div>
+        </td>
+      </tr>` : ''}`;
+    }).join('');
+
+    /* Rows are siblings, not nested, so the toggle walks to the next row. */
+    body.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-ch]');
+      if (!btn) return;
+      const row = btn.closest('tr');
+      const detail = row.nextElementSibling;
+      if (!detail || !detail.classList.contains('ch-detail-row')) return;
+      const open = detail.hasAttribute('hidden');
+      detail.toggleAttribute('hidden', !open);
+      row.toggleAttribute('data-open', open);
+      btn.setAttribute('aria-expanded', String(open));
+    });
   })();
 
 })();

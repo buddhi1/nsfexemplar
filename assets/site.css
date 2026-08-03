@@ -947,6 +947,57 @@
   table.data--glance .col-start { inline-size: 34%; }
   table.data--glance thead th:nth-child(3) { white-space: nowrap; }
 
+  /* --- chapter table detail ------------------------------------------------
+     The contents of a chapter, revealed in a row beneath it. Kept dense on
+     purpose: this is a reference list, not prose.                          */
+  /* inline-flex so it shrink-wraps and sits at the start of the cell rather
+     than filling it and centring on the button's default text-align */
+  .ch-toggle {
+    display: inline-flex; inline-size: auto; justify-content: flex-start;
+    padding: 0; min-block-size: 0; gap: 0.45rem;
+    font-weight: 500; font-size: inherit; text-align: start;
+  }
+  .ch-toggle:hover { background: none; color: var(--brand-deep); }
+  /* The shared .disclose-btn pushes its chevron right with margin-inline-start:
+     auto, and is declared later. Here the chevron leads, so that auto margin
+     has to be cancelled with enough specificity to win. */
+  .ch-row .ch-toggle .chev {
+    margin-inline-start: 0; inline-size: 0.9rem; block-size: 0.9rem;
+  }
+  [data-open] .ch-toggle .chev { rotate: 90deg; }
+  .ch-row[data-open] { background: var(--brand-tint); }
+  .ch-plain { color: var(--fg-muted); }
+
+  .ch-detail-row > td { padding: 0 1rem 0.9rem; background: var(--bg-sunken); }
+  .ch-detail-row[hidden] { display: none; }
+  .ch-authors {
+    margin: 0 0 0.6rem; font-size: 0.85rem; color: var(--fg-muted);
+    display: flex; flex-wrap: wrap; gap: 0.15rem 0.6rem; align-items: baseline;
+  }
+  .ch-authors .ch-inst { color: var(--fg-faint); font-size: 0.8rem; }
+  .ch-authors .ch-inst::before { content: "— "; }
+
+  .ch-sections {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: 0.3rem 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(21rem, 100%), 1fr));
+  }
+  .ch-sections > li {
+    display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: 0.5rem;
+    font-size: 0.84rem; line-height: 1.45;
+  }
+  .ch-sections .sec-n {
+    font-family: var(--font-mono); font-size: 0.76rem; color: var(--brand);
+    text-align: end;
+  }
+  .ch-sections .sec-t { color: var(--fg); }
+  .ch-sections .sec-sub {
+    display: block; font-size: 0.78rem; color: var(--fg-faint); line-height: 1.4;
+  }
+  @media (width < 46rem) {
+    .ch-sections > li { grid-template-columns: 2.2rem minmax(0, 1fr); }
+  }
+
   /* --- publications ------------------------------------------------------
      One line each: authors, title, venue. Three stacked blocks per entry with
      a bold title made a nine-item list far taller than it needed to be.     */
