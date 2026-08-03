@@ -900,7 +900,7 @@
       <tr class="ch-row"${hasDetail ? ` id="ch-${i}"` : ''}>
         <th scope="row" style="font-weight:500">
           ${hasDetail
-            ? `<button class="ch-toggle disclose-btn" type="button" aria-expanded="false"
+            ? `<button class="ch-toggle" type="button" aria-expanded="false"
                        aria-controls="ch-detail-${i}" data-ch="${i}">
                  ${chev}<span class="ch-title">${c.title}</span>
                </button>`

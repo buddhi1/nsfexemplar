@@ -954,15 +954,19 @@
      purpose: this is a reference list, not prose.                          */
   /* inline-flex so it shrink-wraps and sits at the start of the cell rather
      than filling it and centring on the button's default text-align */
+  /* Deliberately not a .disclose-btn: that component tints itself on hover and
+     when open, which would highlight column one on top of the row highlight.
+     The row is the only hover cue here, so this button stays transparent. */
   .ch-toggle {
     display: inline-flex; inline-size: auto; justify-content: flex-start;
-    padding: 0; min-block-size: 0; gap: 0.45rem;
-    font-weight: 500; font-size: inherit; line-height: 1.35; text-align: start;
+    align-items: center; gap: 0.45rem;
+    padding: 0; min-block-size: 0; border: 0; background: none; cursor: pointer;
+    font-weight: 600; font-size: inherit; line-height: 1.35; text-align: start;
+    color: var(--fg);
   }
   .data--chapters :is(th, td) { padding-block: 0.42rem; }
   .data--chapters .btn--sm { min-block-size: 2rem; padding-block: 0.28rem; }
-  /* the row highlight is the hover cue; the title does not change too */
-  .ch-toggle:hover { background: none; }
+  /* no hover styling at all — the row highlight does the work */
   /* The shared .disclose-btn pushes its chevron right with margin-inline-start:
      auto, and is declared later. Here the chevron leads, so that auto margin
      has to be cancelled with enough specificity to win. */
