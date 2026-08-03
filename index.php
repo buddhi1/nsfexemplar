@@ -104,7 +104,7 @@ include 'partials/header.php';
     <div class="metric"><span class="metric-value">14</span><span class="metric-label">Activities</span></div>
     <div class="metric"><span class="metric-value">4</span><span class="metric-label">Languages</span></div>
     <div class="metric"><span class="metric-value">288</span><span class="metric-label">Pages, free</span></div>
-    <div class="metric"><span class="metric-value">11</span><span class="metric-label">Chapters</span></div>
+    <div class="metric"><span class="metric-value">10</span><span class="metric-label">Chapters</span></div>
   </div>
 </div>
 
@@ -224,6 +224,11 @@ include 'partials/header.php';
   </div>
 </div>
 
+<?php /* ---------------------------------------------------------------------
+   News section — commented out for now; the project timeline on the project
+   page carries this for the moment. content/news.json is still maintained and
+   still read above, so removing this wrapper brings the section straight back.
+
 <!-- ───────────────────────────────────────────────────────────── news ─── -->
 <div class="shell section">
   <div class="grid grid--aside">
@@ -258,6 +263,8 @@ include 'partials/header.php';
     </div>
   </div>
 </div>
+
+--------------------------------------------------------------------------- */ ?>
 
 <!-- ─────────────────────────────────────────────── what gets taught ───── -->
 <div class="band band--tint">

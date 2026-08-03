@@ -736,7 +736,11 @@
   .deflist dt { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--fg-faint); padding-block-start: 0.12rem; }
   .deflist dd { margin: 0; font-size: 0.9rem; color: var(--fg-muted); }
 
-  /* --- timeline --- */
+  /* --- timelines ---------------------------------------------------------
+     Two flavours. `.timeline--major` is the project's own arc: a horizontal
+     track of cards, given room because it is the page's spine. `.timeline--compact`
+     is the CDER back-story: one line per era, expanding on hover or focus so it
+     costs almost no height until someone wants it.                          */
   .timeline { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--sp-4); }
   .timeline > li {
     position: relative; padding-inline-start: 2.6rem;
@@ -754,6 +758,106 @@
   }
   .timeline h4 { margin-block: 0.15rem 0.3rem; font-size: 1.06rem; }
   .timeline p { font-size: 0.93rem; color: var(--fg-muted); margin: 0; }
+
+  /* --- major: the project's own timeline --- */
+  .timeline--major {
+    grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+    gap: var(--sp-4);
+    counter-reset: phase;
+  }
+  .timeline--major > li {
+    padding: var(--sp-4); padding-block-start: var(--sp-5);
+    border: 1px solid var(--line);
+    border-inline-start: 0;
+    border-block-start: 3px solid color-mix(in oklab, var(--brand) 55%, var(--line));
+    border-radius: var(--radius-m);
+    background: var(--bg-raised);
+    box-shadow: var(--shadow-s);
+    transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
+                border-block-start-color var(--dur) var(--ease);
+  }
+  .timeline--major > li:hover {
+    transform: translateY(-3px); box-shadow: var(--shadow-m);
+    border-block-start-color: var(--brand);
+  }
+  /* the marker becomes a numbered chip riding the top edge */
+  .timeline--major > li::before {
+    counter-increment: phase;
+    content: counter(phase);
+    inset-inline-start: var(--sp-4); inset-block-start: -0.95rem;
+    inline-size: 1.9rem; block-size: 1.9rem; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--brand); color: var(--on-brand);
+    border: 3px solid var(--bg);
+    font-family: var(--font-body); font-size: 0.82rem; font-weight: 700;
+  }
+  /* connecting rule between cards on one row */
+  @media (width >= 60rem) {
+    .timeline--major > li::after {
+      content: ""; position: absolute; inset-block-start: -1px;
+      inset-inline-start: 100%; inline-size: var(--sp-4); block-size: 3px;
+      background: color-mix(in oklab, var(--brand) 30%, var(--line));
+    }
+    .timeline--major > li:last-child::after { display: none; }
+  }
+  .timeline--major .year {
+    display: block; font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--brand); font-weight: 700;
+  }
+  .timeline--major h4 { font-size: 1.12rem; margin-block: 0.3rem 0.45rem; }
+
+  /* --- compact: the CDER back-story, expanding on demand --- */
+  .timeline--compact { gap: 0; }
+  .timeline--compact > li {
+    padding: 0; border-inline-start: 0;
+    border-block-end: 1px solid var(--line);
+  }
+  .timeline--compact > li::before { display: none; }
+  .timeline--compact > li:first-child { border-block-start: 1px solid var(--line); }
+  .timeline--compact .era {
+    display: grid; grid-template-columns: 9rem minmax(0, 1fr) auto;
+    gap: var(--sp-3); align-items: baseline;
+    inline-size: 100%; text-align: start;
+    padding: 0.85rem 0.6rem; border: 0; background: none; cursor: pointer;
+    transition: background var(--dur) var(--ease);
+  }
+  .timeline--compact > li:hover .era,
+  .timeline--compact > li:focus-within .era { background: var(--brand-tint); }
+  .timeline--compact .era .year { color: var(--accent); }
+  /* a <button> may only contain phrasing content, so this is a span styled
+     to match the surrounding headings */
+  .timeline--compact .era-title {
+    font-family: var(--font-display); font-weight: 600; font-size: 1rem;
+    line-height: 1.2; color: var(--fg);
+  }
+  .timeline--compact .era .more {
+    font-family: var(--font-mono); font-size: 1.1rem; line-height: 1;
+    color: var(--brand); transition: rotate var(--dur) var(--ease);
+  }
+  .timeline--compact .detail {
+    display: grid; grid-template-rows: 0fr;
+    transition: grid-template-rows 320ms var(--ease);
+  }
+  .timeline--compact .detail > div { overflow: hidden; }
+  .timeline--compact .detail p {
+    margin: 0; padding: 0 0.6rem 1rem 9.6rem;
+    font-size: 0.92rem; color: var(--fg-muted);
+  }
+  /* open on hover, and on keyboard focus so it is not mouse-only */
+  .timeline--compact > li:hover .detail,
+  .timeline--compact > li:focus-within .detail,
+  .timeline--compact > li[data-open] .detail { grid-template-rows: 1fr; }
+  .timeline--compact > li:hover .more,
+  .timeline--compact > li:focus-within .more,
+  .timeline--compact > li[data-open] .more { rotate: 45deg; }
+  @media (width < 46rem) {
+    .timeline--compact .era { grid-template-columns: 1fr auto; }
+    .timeline--compact .era .year { grid-column: 1 / -1; }
+    .timeline--compact .detail p { padding-inline-start: 0.6rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .timeline--compact .detail { transition: none; }
+  }
 
   /* --- people --- */
   .person { display: flex; gap: var(--sp-3); align-items: center; }
@@ -812,12 +916,23 @@
   .repo-list .repo-who { font-weight: 600; min-inline-size: 9rem; }
   .repo-list a { font-family: var(--font-mono); font-size: 0.84rem; overflow-wrap: anywhere; }
 
-  /* --- accordion --- */
+  /* --- accordion ---------------------------------------------------------
+     One bordered list with dividers rather than ten separate cards: the gaps
+     and repeated borders were most of the height.                          */
+  .faq-list {
+    border: 1px solid var(--line); border-radius: var(--radius-m);
+    background: var(--bg-raised); overflow: clip;
+  }
+  .faq-list .faq { border: 0; border-radius: 0; background: none; }
+  .faq-list .faq + .faq,
+  .faq-list .faq-more .faq:first-child { border-block-start: 1px solid var(--line); }
+  .faq-more { display: contents; }
+  .faq-more[hidden] { display: none; }
   .faq { border: 1px solid var(--line); border-radius: var(--radius-m); background: var(--bg-raised); overflow: clip; }
-  .faq + .faq { margin-block-start: var(--sp-2); }
+  .faq + .faq { margin-block-start: 0; }
   .faq summary {
-    padding: var(--sp-3) var(--sp-4); cursor: pointer; font-weight: 600;
-    display: flex; gap: var(--sp-3); align-items: center; list-style: none; min-block-size: 3rem;
+    padding: 0.7rem var(--sp-4); cursor: pointer; font-weight: 600; font-size: 0.96rem;
+    display: flex; gap: var(--sp-3); align-items: center; list-style: none; min-block-size: 2.6rem;
   }
   .faq summary::-webkit-details-marker { display: none; }
   .faq summary::after {
@@ -827,7 +942,7 @@
   }
   .faq[open] summary::after { rotate: 45deg; }
   .faq summary:hover { background: var(--bg-subtle); }
-  .faq .faq-body { padding: 0 var(--sp-4) var(--sp-4); color: var(--fg-muted); font-size: 0.95rem; }
+  .faq .faq-body { padding: 0 var(--sp-4) var(--sp-3); color: var(--fg-muted); font-size: 0.93rem; }
   .faq .faq-body > * + * { margin-block-start: var(--sp-2); }
 
   /* --- notice / callout --- */

@@ -692,19 +692,6 @@
     fromQuery();
   })();
 
-  /* ==================================================== partner table (project) */
-  (() => {
-    const body = $('#partner-rows');
-    if (!body || typeof EX === 'undefined') return;
-    body.innerHTML = EX.map((r) => `
-      <tr>
-        <th scope="row">${esc(r.name)}<br><span class="tiny faint">${esc(r.place)}</span></th>
-        <td>${esc(r.role)}</td>
-        <td>${esc(r.setting)}</td>
-        <td>${r.lang.map(esc).join(', ')}</td>
-        <td>${r.team.map(esc).join(', ')}</td>
-      </tr>`).join('');
-  })();
 
   /* ======================================================== team cards (team) */
   (() => {
@@ -816,6 +803,31 @@
         });
       }, { threshold: 0.2 }).observe(win);
     }
+  })();
+
+  /* ----------------------------------------------------------- FAQ reveal --
+     Progressive enhancement: without JS all questions are visible and there is
+     no button. With JS, the tail collapses behind one.                       */
+  (() => {
+    const more = $('[data-faq-more]');
+    const btn  = $('[data-faq-toggle]');
+    if (!more || !btn) return;
+
+    const extra = more.children.length;
+    let open = false;
+    const sync = () => {
+      more.toggleAttribute('hidden', !open);
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Show fewer questions' : `Show ${extra} more questions`;
+    };
+    sync();
+    btn.removeAttribute('hidden');
+
+    btn.addEventListener('click', () => {
+      open = !open;
+      sync();
+      if (open) more.querySelector('summary')?.focus({ preventScroll: true });
+    });
   })();
 
   /* =================================================== chapter table (ebook) */

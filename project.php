@@ -88,7 +88,13 @@ include 'partials/header.php';
       </article>
     </div>
 
-    <div class="grid grid--halves mt-5">
+<?php /* ---------------------------------------------------------------------
+   Commented out: both objections are answered at more length in the Resources
+   FAQ ("There is no room in my syllabus…" and "Will adding PDC hurt my core
+   learning outcomes?"), so repeating them here only cost page height.
+   Remove this <?php /* wrapper and the closing marker to bring them back.
+
+<div class="grid grid--halves mt-5">
       <div class="panel">
         <h3>&ldquo;There&rsquo;s no room in the syllabus&rdquo;</h3>
         <p class="muted mt-3">Institutions created space in three broad, sometimes overlapping ways:
@@ -115,6 +121,8 @@ include 'partials/header.php';
           parallel execution.</p>
       </div>
     </div>
+
+--------------------------------------------------------------------------- */ ?>
   </div>
 </div>
 
@@ -139,7 +147,9 @@ include 'partials/header.php';
         facilitated discussion, and provided PDC domain expertise.</p></article>
   </div>
 
-  <ol class="timeline mt-6">
+  <p class="eyebrow mt-6">Project timeline</p>
+  <h3 class="mt-2 mb-4">Four years, from recruitment to publication</h3>
+  <ol class="timeline timeline--major">
     <li><span class="year">Year 1 · 2023</span><h4>Recruitment and kickoff</h4>
       <p>A webinar for potential recruits laid out goals, significance, application requirements and expected
         outcomes. Applications were assessed on whether the applicant taught a target course, whether the
@@ -199,40 +209,49 @@ include 'partials/header.php';
   <p class="eyebrow">Prior work</p>
   <h2 class="mt-2">This Did Not Arise in Isolation</h2>
   <p class="lede mt-2">The CDER Center has worked for more than a decade to integrate PDC concepts into
-    undergraduate computing curricula, with particular emphasis on early and core courses.</p>
+    undergraduate computing curricula. Hover or tab through any row for the detail.</p>
 
-  <ol class="timeline mt-5">
-    <li><span class="year">2010&ndash;2020</span><h4>The IEEE TCPP Curriculum Initiative</h4>
-      <p>Began with a single question: what should every computing undergraduate know about parallel and
-        distributed computing? The resulting guidelines identified PDC topics across programming,
-        architecture, algorithms and cross-cutting areas, and mapped them to levels of coverage. Version I was
-        released in 2012; Version II&beta; in 2020, with expanded attention to Big Data, energy and
-        distributed computing. ACM/IEEE CS2013 linked to it explicitly, and CS2023 includes a dedicated PDC
-        knowledge area citing the Version II&beta; effort.</p></li>
-    <li><span class="year">Ongoing</span><h4>Early adopters</h4>
-      <p>Curriculum guidelines alone do not change courses. The CDER early adopter competitions incentivized
-        instructors to incorporate PDC into existing courses and report their experiences. More than 140 early
-        adopters have been supported, and the broader community of early adopters and trained instructors has
-        grown to roughly 300 participants or institutions nationally and internationally. They demonstrated
-        PDC could be infused widely &mdash; and revealed a persistent need for complete, coherent,
-        classroom-tested course exemplars, especially for early courses.</p></li>
-    <li><span class="year">Vols 1&ndash;3</span><h4>The CDER book series</h4>
-      <p>The first two volumes, published by Morgan Kaufmann and Springer, gathered chapters on introductory
-        parallelism, threads, fork-join parallelism, performance, scalability, energy efficiency, MapReduce,
-        GPU computing, mobile concurrency and integrative GUI applications, available as free preprints and
-        collectively reaching tens of thousands of downloads. A third volume, focused on adopter experience
-        and resources, is expected from Springer in late 2026.</p></li>
-    <li><span class="year">EduPar · EduHPC · EduHiPC</span><h4>The Edu* workshop series</h4>
-      <p>EduPar (with IPDPS) began as a venue for early adopters to report experiences and discuss curricular
-        and pedagogical issues. EduHPC (with SC) created a complementary venue connected to the HPC community;
-        EduHiPC (with HiPC, in India) extended the model internationally. Together they transformed isolated
-        adoption efforts into an ongoing professional community.</p></li>
-    <li><span class="year">Training</span><h4>Instructor workshops</h4>
-      <p>Distinct from the Edu* research workshops, CDER has organized instructor-facing training: NSF
-        CyberTraining week-long summer workshops, tutorials and special sessions at SIGCSE, training
-        associated with EduHiPC, and hybrid or online events. <strong>All of this project&rsquo;s development
-        and testing team members were past trainees or early adopters</strong> &mdash; the training pipeline
-        is how the project staffed itself.</p></li>
+  <ol class="timeline timeline--compact mt-5">
+    <li>
+      <button class="era" type="button" aria-expanded="false">
+        <span class="year">2010&ndash;2020</span>
+        <span class="era-title">The IEEE TCPP Curriculum Initiative</span>
+        <span class="more" aria-hidden="true">+</span>
+      </button>
+      <div class="detail"><div><p>Began with a single question: what should every computing undergraduate know about parallel and distributed computing? The resulting guidelines identified PDC topics across programming, architecture, algorithms and cross-cutting areas, and mapped them to levels of coverage. Version I was released in 2012; Version II&beta; in 2020, with expanded attention to Big Data, energy and distributed computing. ACM/IEEE CS2013 linked to it explicitly, and CS2023 includes a dedicated PDC knowledge area citing the Version II&beta; effort.</p></div></div>
+    </li>
+    <li>
+      <button class="era" type="button" aria-expanded="false">
+        <span class="year">Ongoing</span>
+        <span class="era-title">Early adopters</span>
+        <span class="more" aria-hidden="true">+</span>
+      </button>
+      <div class="detail"><div><p>Curriculum guidelines alone do not change courses. The CDER early adopter competitions incentivized instructors to incorporate PDC into existing courses and report their experiences. More than 140 early adopters have been supported, and the broader community of early adopters and trained instructors has grown to roughly 300 participants or institutions nationally and internationally. They demonstrated PDC could be infused widely &mdash; and revealed a persistent need for complete, coherent, classroom-tested course exemplars, especially for early courses.</p></div></div>
+    </li>
+    <li>
+      <button class="era" type="button" aria-expanded="false">
+        <span class="year">Vols 1&ndash;3</span>
+        <span class="era-title">The CDER book series</span>
+        <span class="more" aria-hidden="true">+</span>
+      </button>
+      <div class="detail"><div><p>The first two volumes, published by Morgan Kaufmann and Springer, gathered chapters on introductory parallelism, threads, fork-join parallelism, performance, scalability, energy efficiency, MapReduce, GPU computing, mobile concurrency and integrative GUI applications, available as free preprints and collectively reaching tens of thousands of downloads. A third volume, focused on adopter experience and resources, is expected from Springer in late 2026.</p></div></div>
+    </li>
+    <li>
+      <button class="era" type="button" aria-expanded="false">
+        <span class="year">EduPar · EduHPC · EduHiPC</span>
+        <span class="era-title">The Edu* workshop series</span>
+        <span class="more" aria-hidden="true">+</span>
+      </button>
+      <div class="detail"><div><p>EduPar (with IPDPS) began as a venue for early adopters to report experiences and discuss curricular and pedagogical issues. EduHPC (with SC) created a complementary venue connected to the HPC community; EduHiPC (with HiPC, in India) extended the model internationally. Together they transformed isolated adoption efforts into an ongoing professional community.</p></div></div>
+    </li>
+    <li>
+      <button class="era" type="button" aria-expanded="false">
+        <span class="year">Training</span>
+        <span class="era-title">Instructor workshops</span>
+        <span class="more" aria-hidden="true">+</span>
+      </button>
+      <div class="detail"><div><p>Distinct from the Edu* research workshops, CDER has organized instructor-facing training: NSF CyberTraining week-long summer workshops, tutorials and special sessions at SIGCSE, training associated with EduHiPC, and hybrid or online events. <strong>All of this project&rsquo;s development and testing team members were past trainees or early adopters</strong> &mdash; the training pipeline is how the project staffed itself.</p></div></div>
+    </li>
   </ol>
 </div>
 
@@ -243,18 +262,33 @@ include 'partials/header.php';
     <h2 class="mt-2">Eight Institutions, Deliberately Unalike</h2>
     <p class="lede mt-2">No single model fits all languages, calendars, class sizes, student populations or
       instructor backgrounds. This project emphasizes multiple pathways for PDC infusion.</p>
-    <div class="table-wrap mt-4">
-      <table class="data">
-        <caption>Participating institutions and their role in the project.</caption>
+    <div class="table-wrap mt-4" id="glance">
+      <table class="data data--glance">
+        <caption>Quick comparison of CS1 institutional exemplars for potential adopters (Table 1, Chapter 0).</caption>
+        <colgroup>
+          <col class="col-ch"><col class="col-ctx"><col class="col-lang">
+          <col class="col-style"><col class="col-start">
+        </colgroup>
         <thead><tr>
-          <th scope="col">Institution</th><th scope="col">Role</th><th scope="col">Setting</th>
-          <th scope="col">Language</th><th scope="col">Chapter authors</th>
+          <th scope="col">Chapter</th><th scope="col">Institutional context</th><th scope="col">Lang.</th>
+          <th scope="col">Primary PDC infusion style</th><th scope="col">Good starting point for</th>
         </tr></thead>
-        <tbody id="partner-rows"></tbody>
+        <tbody>
+          <tr><th scope="row">2 · TNTECH</th><td>Mid-sized public university; large CS1 lecture/lab setting</td><td>C++</td><td>Unplugged Penny and Flag Maker activities; OpenMP/data-parallel programming; remote-data/API assignment</td><td>Large-section CS1 adoption; programming-linked PDC infusion; multi-semester evidence</td></tr>
+          <tr><th scope="row">3 · Knox</th><td>Small residential liberal arts college; Java-based introductory sequence</td><td>Java</td><td>Conceptual and programming-oriented CS1 activities adapted to a small-college context</td><td>Liberal-arts setting; smaller classes; Java-based adaptation</td></tr>
+          <tr><th scope="row">4 · USI</th><td>Public master&rsquo;s-level institution; introductory object-oriented CS1 course</td><td>Java</td><td>Unplugged Flag Maker and Penny activities, plugged-in Flag Maker and Parallel Sort, Greenfoot, and activity-level assessment</td><td>Structured activity adoption; evidence-rich unplugged and plugged-in examples</td></tr>
+          <tr><th scope="row">5 · UNL</th><td>Large R1 institution; multiple CS1 sections and computing majors</td><td>C, Java</td><td>Codeless modules, visual and conceptual activities, remote-data ideas, scalable conceptual infusion</td><td>Low-code pathway; large-institution adaptation; conceptual modules; online classes</td></tr>
+          <tr><th scope="row">6 · Webster</th><td>Private primarily undergraduate institution; small-to-moderate CS1 sections</td><td>C++</td><td>Animations, visualizations, performance examples, and game/simulation-oriented activities</td><td>Visualization-first adoption; low-barrier conceptual entry points</td></tr>
+          <tr><th scope="row">7 · Casper</th><td>Two-year public community college; small cohorts and mixed student pathways</td><td>C++, Python</td><td>Custom digital-textbook material, unplugged activities, OpenMP, remote data, and physical computing</td><td>Community-college setting; small cohorts; varied delivery formats</td></tr>
+          <tr><th scope="row">8 · HPU</th><td>Private undergraduate-serving institution with small class sizes</td><td>Java</td><td>Flag Maker, Penny Sorting, lightweight plugged/code-review extension, and low-resource activities</td><td>Small-scale first adoption; low-preparation unplugged activities</td></tr>
+          <tr><th scope="row">9 · MSU</th><td>Public university; focused CS1 intervention</td><td>Java</td><td>Flag Maker-centered data-parallelism activity with supporting animations and assessment</td><td>Minimal-infusion model; short, focused CS1 intervention</td></tr>
+        </tbody>
       </table>
     </div>
+    <p class="small faint mt-3">Chapter authors for each institution are listed on the
+      <a href="team.php#authors">team page</a>.</p>
     <div class="cluster mt-4">
-      <a class="btn btn--primary" href="ebook.php#explorer">Compare the exemplars</a>
+      <a class="btn btn--primary" href="ebook.php#explorer">Search the exemplars</a>
       <a class="btn btn--ghost" href="team.php">Meet the team</a>
     </div>
   </div>

@@ -102,28 +102,11 @@ include 'partials/header.php';
     &ldquo;which language matches mine?&rdquo; but &ldquo;which activity scale, preparation level, evidence
     type and implementation style match my course?&rdquo;</p>
 
-  <div class="table-wrap mt-4" id="glance">
-    <table class="data data--glance">
-      <caption>Quick comparison of CS1 institutional exemplars for potential adopters (Table 1, Chapter 0).</caption>
-      <colgroup>
-        <col class="col-ch"><col class="col-ctx"><col class="col-lang">
-        <col class="col-style"><col class="col-start">
-      </colgroup>
-      <thead><tr>
-        <th scope="col">Chapter</th><th scope="col">Institutional context</th><th scope="col">Lang.</th>
-        <th scope="col">Primary PDC infusion style</th><th scope="col">Good starting point for</th>
-      </tr></thead>
-      <tbody>
-        <tr><th scope="row">2 · TNTECH</th><td>Mid-sized public university; large CS1 lecture/lab setting</td><td>C++</td><td>Unplugged Penny and Flag Maker activities; OpenMP/data-parallel programming; remote-data/API assignment</td><td>Large-section CS1 adoption; programming-linked PDC infusion; multi-semester evidence</td></tr>
-        <tr><th scope="row">3 · Knox</th><td>Small residential liberal arts college; Java-based introductory sequence</td><td>Java</td><td>Conceptual and programming-oriented CS1 activities adapted to a small-college context</td><td>Liberal-arts setting; smaller classes; Java-based adaptation</td></tr>
-        <tr><th scope="row">4 · USI</th><td>Public master&rsquo;s-level institution; introductory object-oriented CS1 course</td><td>Java</td><td>Unplugged Flag Maker and Penny activities, plugged-in Flag Maker and Parallel Sort, Greenfoot, and activity-level assessment</td><td>Structured activity adoption; evidence-rich unplugged and plugged-in examples</td></tr>
-        <tr><th scope="row">5 · UNL</th><td>Large R1 institution; multiple CS1 sections and computing majors</td><td>C, Java</td><td>Codeless modules, visual and conceptual activities, remote-data ideas, scalable conceptual infusion</td><td>Low-code pathway; large-institution adaptation; conceptual modules; online classes</td></tr>
-        <tr><th scope="row">6 · Webster</th><td>Private primarily undergraduate institution; small-to-moderate CS1 sections</td><td>C++</td><td>Animations, visualizations, performance examples, and game/simulation-oriented activities</td><td>Visualization-first adoption; low-barrier conceptual entry points</td></tr>
-        <tr><th scope="row">7 · Casper</th><td>Two-year public community college; small cohorts and mixed student pathways</td><td>C++, Python</td><td>Custom digital-textbook material, unplugged activities, OpenMP, remote data, and physical computing</td><td>Community-college setting; small cohorts; varied delivery formats</td></tr>
-        <tr><th scope="row">8 · HPU</th><td>Private undergraduate-serving institution with small class sizes</td><td>Java</td><td>Flag Maker, Penny Sorting, lightweight plugged/code-review extension, and low-resource activities</td><td>Small-scale first adoption; low-preparation unplugged activities</td></tr>
-        <tr><th scope="row">9 · MSU</th><td>Public university; focused CS1 intervention</td><td>Java</td><td>Flag Maker-centered data-parallelism activity with supporting animations and assessment</td><td>Minimal-infusion model; short, focused CS1 intervention</td></tr>
-      </tbody>
-    </table>
+  <div class="callout callout--info mt-4" id="glance">
+    <strong>Comparing the eight exemplars side by side?</strong> The quick-comparison table
+    &mdash; institutional context, language, infusion style and what each is a good starting point
+    for &mdash; lives on the project page, so it is in one place rather than two.
+    <a href="project.php#partners">See the comparison &rarr;</a>
   </div>
 
   <div class="callout mt-4">

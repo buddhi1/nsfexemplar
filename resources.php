@@ -27,23 +27,23 @@ include 'partials/header.php';
     <article class="card"><h4>Pre- and post-course surveys</h4>
       <p>The shared course-wide instrument: student background and demographics, self-reported experience
         with general computing and with PDC topics, interest, perceived importance and understanding.</p>
-      <p class="card-foot">Used at all eight institutions</p></article>
+      <p class="card-foot">Used at all eight institutions &middot; <a href="#survey-design">what it asks</a> &middot; <a href="download.php?f=02-common-cs1">Chapter 1 &sect; 1.5 (PDF)</a></p></article>
     <article class="card"><h4>Activity pre/post quizzes</h4>
       <p>Short knowledge checks bracketing an individual activity, so its effect can be isolated from the
         rest of the semester.</p>
-      <p class="card-foot">MSU · USI · HPU</p></article>
+      <p class="card-foot"><a href="download.php?f=10-cs1-msu">MSU</a> &middot; <a href="download.php?f=05-cs1-usi">USI</a> &middot; <a href="download.php?f=09-cs1-hpu">HPU</a> (PDF)</p></article>
     <article class="card"><h4>Adapted ASPECT engagement survey</h4>
       <p>An engagement instrument adapted for unplugged activities, with results grouped by aspect category.
         Used with Penny Sorting and Flag Maker.</p>
-      <p class="card-foot">Chapter 1 · HPU · TNTECH</p></article>
+      <p class="card-foot"><a href="download.php?f=02-common-cs1">Chapter 1</a> &middot; <a href="download.php?f=09-cs1-hpu">HPU</a> &middot; <a href="download.php?f=03-cs1-tntech">TNTECH</a> (PDF)</p></article>
     <article class="card"><h4>Bloom-level mapping tables</h4>
       <p>Per institution, a table mapping each PDC concept to the Bloom level reached by each activity &mdash;
         the fastest way to check an activity against your own learning outcomes.</p>
-      <p class="card-foot">Tables 2.1, 4.1, 5.1, 6.1, 7.1, 8.1, 9.1</p></article>
+      <p class="card-foot">Tables 2.1, 4.1, 5.1, 6.1, 7.1, 8.1, 9.1 &middot; <a href="ebook.php#chapters">find the chapter &rarr;</a></p></article>
     <article class="card"><h4>Activity timing tables</h4>
       <p>Approximate instructional time for each activity phase, so you can fit an activity into a real class
         period rather than discovering the overrun live.</p>
-      <p class="card-foot">USI (Tables 4.9–4.13) · HPU (Tables 8.3, 8.6, 8.8, 8.12)</p></article>
+      <p class="card-foot"><a href="download.php?f=05-cs1-usi">USI, Tables 4.9&ndash;4.13</a> &middot; <a href="download.php?f=09-cs1-hpu">HPU, Tables 8.3&ndash;8.12</a> (PDF)</p></article>
     <article class="card"><h4>Anonymized datasets &amp; analysis</h4>
       <p>Every chapter repository carries an <code>Evaluation_Data_and_Analysis</code> directory with survey
         instruments, de-identified responses, evaluation metrics and statistical analyses.</p>
@@ -52,11 +52,11 @@ include 'partials/header.php';
       <p>Pre-selection, post-selection, annual and post-adoption instruments for the instructors themselves
         &mdash; prior PDC background, perceived effectiveness, students taught, and whether interventions
         will be retained, reduced or expanded.</p>
-      <p class="card-foot">Chapter 0, evaluation methods</p></article>
+      <p class="card-foot"><a href="download.php?f=01-overview-roadmap">Chapter 0, evaluation methods (PDF)</a></p></article>
     <article class="card"><h4>Consent and IRB material</h4>
       <p>Informed-consent forms alongside the surveys, quizzes, lab reports and programming-assignment
         reports collected between Spring 2024 and Spring 2026.</p>
-      <p class="card-foot">Chapter appendices</p></article>
+      <p class="card-foot"><a href="ebook.php#chapters">Chapter appendices &rarr;</a> &middot; <a href="ebook.php#repos">repositories</a></p></article>
   </div>
 </div>
 
@@ -112,22 +112,20 @@ include 'partials/header.php';
 <div class="shell section" id="faqs">
   <p class="eyebrow">FAQs</p>
   <h2 class="mt-2">Before You Adopt</h2>
-  <div class="mt-4" style="max-inline-size:min(100%, 62rem)">
-
+  <div class="faq-wrap mt-4">
+    <div class="faq-list">
     <details class="faq"><summary>I have one class period. What should I run?</summary>
       <div class="faq-body"><p>Flag Maker or Penny Search, unplugged. Both need only paper, markers or coins,
         run in a single 40&ndash;75&nbsp;minute session, require no programming background, and surface
         speedup, load balance and race conditions concretely. Start with Chapter 1, then look at whichever
         institutional chapter most resembles your class size.</p>
         <p><a href="ebook.php#activities">Browse activities by duration &rarr;</a></p></div></details>
-
     <details class="faq"><summary>Will adding PDC hurt my core learning outcomes?</summary>
       <div class="faq-body"><p>That was the explicit design constraint &mdash; the basic CS1 learning outcomes
         are preserved. Two checks are available. Casper&rsquo;s data shows perception of learning gains in
         non-PDC topics stayed broadly flat between baseline and intervention semesters while PDC gains rose.
         MSU compared a no-intervention semester against the Flag Maker intervention semester and found gains
         across all basic programming categories in both, with comparable post-survey means.</p></div></details>
-
     <details class="faq"><summary>There is no room in my syllabus. How did others make space?</summary>
       <div class="faq-body"><p>Three broad strategies, often combined: selectively reducing or deferring
         existing content, modifying current assignments and activities, and adding short PDC-focused modules.
@@ -137,14 +135,12 @@ include 'partials/header.php';
         <p>Some institutions removed nothing at all. One placed three asynchronous PDC modules outside class
           time; another used existing lab and recitation periods. Scheduled PDC instructional time ranged from
           none to about seven hours.</p></div></details>
-
     <details class="faq"><summary>My course is in Python. Is anything usable?</summary>
       <div class="faq-body"><p>Yes. All unplugged activities &mdash; Flag Maker, Penny Search and Sorting,
         Coin Addition, the More Processors writing activity &mdash; are language-neutral, as are the
         animations and the codeless modules. Casper College&rsquo;s physical computing projects use
         Python&rsquo;s multiprocessing package. A Python CS2 package covering threading, multiprocessing,
         OpenCV image processing and performance engineering is planned for the CS2 release.</p></div></details>
-
     <details class="faq"><summary>How much faculty effort should I budget?</summary>
       <div class="faq-body"><p>The development teams reported more than 100 hours across the initial
         development year &mdash; creating examples, finding curriculum insertion points, revising
@@ -154,37 +150,38 @@ include 'partials/header.php';
         <p>Budget separately for coordinating with lab instructors and teaching assistants: they need enough
           familiarity with the concepts and tooling to guide students, and this was repeatedly named as one
           of the harder parts.</p></div></details>
-
+      <div class="faq-more" id="faq-more" data-faq-more>
     <details class="faq"><summary>Do I need IRB approval to use these materials?</summary>
       <div class="faq-body"><p>Not to teach them. You need IRB approval if you intend to collect and publish
         student data. Each testing team&rsquo;s IRB experience and instrument design is documented in the
         chapters if you want to run your own study.</p></div></details>
-
     <details class="faq"><summary>What if my institution is nothing like any of these?</summary>
       <div class="faq-body"><p>The set was chosen to span community college, liberal arts, private
         undergraduate, public master&rsquo;s, mid-sized public and R1, on both semester and quarter calendars,
         with class sizes from about 24 to about 100 and student populations including dual-credit high-school
         students and part-time adult learners. Filter by the constraint that binds hardest for you &mdash;
         usually preparation time or class size, not institution type.</p></div></details>
-
     <details class="faq"><summary>Is the technical setup going to bite me?</summary>
       <div class="faq-body"><p>Anticipate differences among student computers, compiler configurations,
         OpenMP support and execution timing &mdash; all of which the teams hit. Before using any resource,
         verify that software versions, API links, datasets and institutional assessment requirements are
         still current. The unplugged and codeless pathways exist precisely to avoid this class of
         problem.</p></div></details>
-
     <details class="faq"><summary>When is CS2 available?</summary>
       <div class="faq-body"><p>CS2 chapters are drafted and being finalized for subsequent-term adoption.
         Each institutional exemplar already lists its planned CS2 activities &mdash; open any exemplar in the
         search and look under <em>Planned for the CS2 release</em>.</p>
         <p><a href="ebook.php#cs2">What CS2 will cover &rarr;</a></p></div></details>
-
     <details class="faq"><summary>Can I get help choosing?</summary>
       <div class="faq-body"><p>Yes &mdash; some consultation from project personnel is available to help
         adopters select and adapt materials.
         <a href="mailto:contact@nsfexemplar.cdercenter.org">contact@nsfexemplar.cdercenter.org</a>.</p></div></details>
-
+      </div>
+    </div>
+    <button class="btn btn--ghost btn--sm mt-3" type="button"
+            data-faq-toggle aria-expanded="true" aria-controls="faq-more" hidden>
+      Show 5 more questions
+    </button>
   </div>
 </div>
 

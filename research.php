@@ -21,42 +21,14 @@ include 'partials/header.php';
   <p class="eyebrow">Publications</p>
   <h2 class="mt-2">Papers from This Project</h2>
   <p class="lede mt-2">Work arising directly from the exemplar project and its immediate predecessors, as
-    cited in the volume&rsquo;s chapter bibliographies.</p>
+    cited in the volume&rsquo;s chapter bibliographies. Most recent first.</p>
 
   <ol class="pubs mt-4">
     <li>
       <div>
-        <span class="pub-title">WIP: Updating CS1 to a 21st-century model of computing</span>
-        <div class="pub-authors">D. P. Bunde, A. R. Crockett, G. C. Gannod, J. Spacco, N. Thota, C. C. Weems</div>
-        <div class="pub-venue">Proc. Frontiers in Education (FIE), 2024</div>
-      </div>
-    </li>
-    <li>
-      <div>
-        <span class="pub-title">Codeless PDC modules for early computing curriculum</span>
-        <div class="pub-authors">C. Bourke, J. Firestone</div>
-        <div class="pub-venue">IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW), 2024, pp. 357–364</div>
-      </div>
-    </li>
-    <li>
-      <div>
-        <span class="pub-title">A visual unplugged activity to introduce PDC</span>
-        <div class="pub-authors">M. Smith, S. Srivastava, D. P. Bunde, A. Crockett, M. Gerten, P. Maher, J. Spacco, X. Suo, J. Wang, M. Zhu</div>
-        <div class="pub-venue">Workshop on Education for High-Performance Computing (EduHPC) · IPDPSW 2025, pp. 658–665</div>
-      </div>
-    </li>
-    <li>
-      <div>
-        <span class="pub-title"><a href="https://cdercenter.org/peachy-assignments/">Peachy parallel assignments</a></span>
-        <div class="pub-authors">H. M. Bücker, J. Schoder, X. Suo, D. Bunde</div>
-        <div class="pub-venue">EduPar-25: 15th NSF/TCPP Workshop on Parallel and Distributed Computing Education, Milan, June 2025 · with IPDPS</div>
-      </div>
-    </li>
-    <li>
-      <div>
-        <span class="pub-title">Codeless modules for parallel and distributed computing in early computing curriculum</span>
-        <div class="pub-authors">C. Bourke</div>
-        <div class="pub-venue">Proc. 57th ACM Technical Symposium on Computer Science Education (SIGCSE TS), 2026, pp. 141–147</div>
+        <span class="pub-title">Engaging first and second year undergraduates with parallel and distributed computing: lessons from unplugged and game-based activities</span>
+        <div class="pub-authors">X. Suo, T. Dangol</div>
+        <div class="pub-venue">2026, pp. 104–114</div>
       </div>
     </li>
     <li>
@@ -68,9 +40,37 @@ include 'partials/header.php';
     </li>
     <li>
       <div>
-        <span class="pub-title">Engaging first and second year undergraduates with parallel and distributed computing: lessons from unplugged and game-based activities</span>
-        <div class="pub-authors">X. Suo, T. Dangol</div>
-        <div class="pub-venue">2026, pp. 104–114</div>
+        <span class="pub-title">Codeless modules for parallel and distributed computing in early computing curriculum</span>
+        <div class="pub-authors">C. Bourke</div>
+        <div class="pub-venue">Proc. 57th ACM Technical Symposium on Computer Science Education (SIGCSE TS), 2026, pp. 141–147</div>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="pub-title"><a href="https://cdercenter.org/peachy-assignments/">Peachy parallel assignments</a></span>
+        <div class="pub-authors">H. M. Bücker, J. Schoder, X. Suo, D. Bunde</div>
+        <div class="pub-venue">EduPar-25: 15th NSF/TCPP Workshop on Parallel and Distributed Computing Education, Milan, June 2025 · with IPDPS</div>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="pub-title">A visual unplugged activity to introduce PDC</span>
+        <div class="pub-authors">M. Smith, S. Srivastava, D. P. Bunde, A. Crockett, M. Gerten, P. Maher, J. Spacco, X. Suo, J. Wang, M. Zhu</div>
+        <div class="pub-venue">Workshop on Education for High-Performance Computing (EduHPC) · IPDPSW 2025, pp. 658–665</div>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="pub-title">Codeless PDC modules for early computing curriculum</span>
+        <div class="pub-authors">C. Bourke, J. Firestone</div>
+        <div class="pub-venue">IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW), 2024, pp. 357–364</div>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="pub-title">WIP: Updating CS1 to a 21st-century model of computing</span>
+        <div class="pub-authors">D. P. Bunde, A. R. Crockett, G. C. Gannod, J. Spacco, N. Thota, C. C. Weems</div>
+        <div class="pub-venue">Proc. Frontiers in Education (FIE), 2024</div>
       </div>
     </li>
   </ol>
