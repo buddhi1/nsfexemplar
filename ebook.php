@@ -16,7 +16,11 @@ include 'partials/header.php';
     <div class="cluster hero-actions">
       <a class="btn btn--primary" href="download.php?f=book">Download the full PDF · 288 pp</a>
       <a class="btn btn--ghost" href="#chapters">Download by chapter</a>
-      
+      <a class="btn btn--ghost" href="#repos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4l2 2.5h7A1.5 1.5 0 0 1 19 10v7.5A1.5 1.5 0 0 1 17.5 19h-13A1.5 1.5 0 0 1 3 17.5Z"/></svg>
+        Appendices &amp; material
+      </a>
+
        <button class="btn btn--primary btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
                 aria-label="Copy citation">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
@@ -190,21 +194,26 @@ include 'partials/header.php';
 <!-- ─────────────────────────────────────────────────────── repositories ── -->
 <div class="band band--sunken">
   <div class="shell section" id="repos">
-    <p class="eyebrow">GitHub</p>
-    <h2 class="mt-2">Instructional Material Repository</h2>
-    <p class="lede mt-2">The chapters describe the activities. The repositories contain the material you
-      actually teach from &mdash; and are curated periodically as adopters revise and extend them.</p>
+    <p class="eyebrow">Appendices &amp; GitHub</p>
+    <h2 class="mt-2">Appendices and Instructional Material</h2>
+    <p class="lede mt-2">Each chapter closes with an appendix that points here. The chapters describe the
+      activities; these repositories hold the material you actually teach from &mdash; and are curated
+      periodically as adopters revise and extend them.</p>
 
+    <!-- One panel for the shared repository, one for what individual teams
+         publish elsewhere. These were previously two panels that both
+         described the same repository layout in slightly different words. -->
     <div class="grid grid--halves mt-4">
       <article class="panel">
         <div class="cluster mb-3">
           <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg></span>
           <div><h3 style="font-size:1.2rem">CDER-Center / CS1-CS2_Exemplar_Ebook</h3>
-            <p class="tiny faint">The main project repository</p></div>
+            <p class="tiny faint">The shared project repository</p></div>
         </div>
-        <p class="muted">Organized by chapter under <code>CS1/chapterN-NAME/</code>. Each chapter directory
-          follows the same layout, so material is where you expect it regardless of which exemplar you
-          open.</p>
+        <p class="muted">Everything lives in this one repository, under <code>CS1/</code>, in a directory per
+          chapter named <code>chapterN-INSTITUTION</code> &mdash; matching the chapter numbers in the volume.
+          Every chapter directory follows the same five-folder layout, so material is where you expect it
+          regardless of which exemplar you open.</p>
         <ul class="mt-3 muted small" style="padding-inline-start:1.1rem; display:grid; gap:.4rem">
           <li><code>Detailed_Pre_and_Post_Syllabus</code> &mdash; the course before and after, plus a
             description of the changes made</li>
@@ -218,25 +227,33 @@ include 'partials/header.php';
             intervention semesters can be compared</li>
         </ul>
         <div class="cluster mt-4">
-          <a class="btn btn--primary btn--sm" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main">Open the repository</a>
+          <a class="btn btn--primary btn--sm" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">Browse the CS1 chapters</a>
+          <a class="btn btn--ghost btn--sm" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main">Repository root</a>
         </div>
       </article>
 
       <article class="panel">
-        <h3 style="font-size:1.2rem">Per-chapter material</h3>
-        <p class="muted mt-3">Everything lives in the one repository, under <code>CS1/</code>, with a
-          directory per chapter named <code>chapterN-INSTITUTION</code> &mdash; matching the chapter numbers
-          in the volume.</p>
-        <div class="cluster mt-4">
-          <a class="btn btn--primary btn--sm" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">Browse the CS1 chapters</a>
-          <a class="btn btn--ghost btn--sm" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main">Repository root</a>
-        </div>
-        <p class="small muted mt-4">Some teams also host material of their own: the UNL codeless modules
-          have a live demo at <a href="https://go.unl.edu/PDCatUNL">go.unl.edu/PDCatUNL</a> alongside
-          <a href="https://github.com/cbourke/PDCatUNL">cbourke/PDCatUNL</a>; Casper&rsquo;s custom zyBooks
-          section is at <a href="https://github.com/charlottegruner/CDER_CC_CS1">charlottegruner/CDER_CC_CS1</a>;
-          and Webster&rsquo;s teaching material is at
-          <a href="https://github.com/xiaoyuansuo51-webster/teaching-PDC-HPC">xiaoyuansuo51-webster/teaching-PDC-HPC</a>.</p>
+        <h3 style="font-size:1.2rem">Material Hosted by the Teams</h3>
+        <p class="muted mt-3">Some institutions publish additional material of their own, outside the shared
+          repository. These are worth reading alongside that chapter&rsquo;s appendix.</p>
+        <dl class="deflist mt-4">
+          <div>
+            <dt>UNL</dt>
+            <dd>Codeless modules, with a live demo at
+              <a href="https://go.unl.edu/PDCatUNL">go.unl.edu/PDCatUNL</a> and source at
+              <a href="https://github.com/cbourke/PDCatUNL">cbourke/PDCatUNL</a>.</dd>
+          </div>
+          <div>
+            <dt>Casper</dt>
+            <dd>A custom zyBooks section at
+              <a href="https://github.com/charlottegruner/CDER_CC_CS1">charlottegruner/CDER_CC_CS1</a>.</dd>
+          </div>
+          <div>
+            <dt>Webster</dt>
+            <dd>Teaching material at
+              <a href="https://github.com/xiaoyuansuo51-webster/teaching-PDC-HPC">xiaoyuansuo51-webster/teaching-PDC-HPC</a>.</dd>
+          </div>
+        </dl>
       </article>
     </div>
   </div>

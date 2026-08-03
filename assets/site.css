@@ -421,6 +421,21 @@
     .hero--split h1, .hero--split .lede { max-inline-size: 30ch; }
     .hero--split .lede { max-inline-size: 54ch; }
   }
+  /* With the showcase slides commented out of index.php the second column has
+     nothing in it, which left the headline boxed into the left half of a full
+     width bar. Detecting the track rather than a modifier class means the two
+     column layout comes back on its own the moment the markup is restored. */
+  .hero--split .hero-grid:not(:has(.showcase-track)) {
+    grid-template-columns: 1fr;
+  }
+  /* 34ch sets the headline on two lines here; tighter measures push it to
+     three and it stops reading like a full width hero. */
+  .hero--split .hero-grid:not(:has(.showcase-track)) h1 { max-inline-size: 34ch; }
+  /* Wide, but still short of the full bar — a lede running the whole width of
+     a 1400px viewport is a genuinely hard line to read back. */
+  .hero--split .hero-grid:not(:has(.showcase-track)) .lede { max-inline-size: 72ch; }
+  /* the dots and the caption have nothing left to describe */
+  .hero-grid:not(:has(.showcase-track)) .showcase { display: none; }
   /* Interior page heroes stay single-column and shallower */
   .hero--page { padding-block: clamp(2.25rem, 1.5rem + 4vw, 4rem); }
   .hero--page h1 { max-inline-size: 20ch; }
