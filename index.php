@@ -54,14 +54,14 @@ include 'partials/header.php';
          <button class="btn btn--primary btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
                 aria-label="Copy citation">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-          <span>Copy citation</span>
+          <span data-copy-label>Copy citation</span>
         </button>
 
         <!-- <button class="btn btn--ghost btn--icon" type="button"
                 data-copy="<?= e($CITATION) ?>" aria-label="Copy citation"
                 title="Copy the citation for this volume">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-          <span class="visually-hidden">Copy citation</span>
+          <span class="visually-hidden" data-copy-label>Copy citation</span>
         </button> -->
       </div>
     </div>
@@ -208,6 +208,8 @@ include 'partials/header.php';
             Repository
           </a>
         </div>
+
+        <p class="doi-line mt-3">Cite the volume by its DOI: <?= doi_badge($DOI, $DOI_URL) ?></p>
 
         <div class="callout callout--info mt-4">
           <strong>This first release covers CS1.</strong> It is published early to support Fall-term

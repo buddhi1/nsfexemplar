@@ -33,6 +33,45 @@ $CITATION = 'Prasad, S. K., Weems, C., Thota, N., Sussman, A., Vaidyanathan, R.,
           . 'Exemplars infused with Parallel and Distributed Computing Concepts. CDER Center. '
           . 'NSF Award #2321015. https://NSFexemplar.CDERcenter.org/. pages 291.';
 
+/* -------------------------------------------------------------------- DOI --
+   The registered identifier for the volume. Change it here and the badge
+   changes on the home, eBook and resources pages. */
+$DOI     = '10.14809/4mcf-5jmt';
+$DOI_URL = 'https://doi.org/' . $DOI;
+
+/**
+ * A two-segment DOI badge in the Zenodo/shields idiom: a neutral label, then
+ * the identifier itself. The identifier is a button that copies the resolver
+ * URL; the arrow beside it opens the record, since a DOI you cannot follow is
+ * not much use. They are siblings rather than nested because a link inside a
+ * button is not valid content — the pill shape is drawn by the wrapper.
+ */
+function doi_badge(string $doi, string $url, string $class = ''): string {
+    $copy = '<svg class="doi-ico doi-ico--copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+          . 'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" '
+          . 'focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/>'
+          . '<path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
+    $done = '<svg class="doi-ico doi-ico--done" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+          . 'stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" '
+          . 'focusable="false"><path d="M4 12.5 9 17.5 20 6.5"/></svg>';
+    $out  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" '
+          . 'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'
+          . '<path d="M7 17 17 7M9 7h8v8"/></svg>';
+
+    return '<span class="doi ' . e($class) . '">'
+         . '<button class="doi-badge" type="button" data-copy="' . e($url) . '"'
+         . ' data-copy-noun="DOI link"'
+         . ' aria-label="Copy the DOI link, ' . e($url) . '" title="Copy the DOI link">'
+         . '<span class="doi-label">DOI</span>'
+         . '<span class="doi-value">' . e($doi) . $copy . $done . '</span>'
+         /* role=status so the copy is announced; the icon swap covers everyone else */
+         . '<span class="visually-hidden" role="status" data-copy-label></span>'
+         . '</button>'
+         . '<a class="doi-open" href="' . e($url) . '" title="Open the DOI record">'
+         . $out . '<span class="visually-hidden">Open the DOI record at doi.org</span>'
+         . '</a></span>';
+}
+
 $NAV = [
     'home'      => ['index.php',     'Home'],
     'project'   => ['project.php',   'Project'],

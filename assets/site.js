@@ -120,19 +120,26 @@
     };
 
     buttons.forEach((btn) => {
-      const label = btn.querySelector('span:not(.visually-hidden)');
+      /* Marked explicitly, because not every copy control wants its text
+         swapped: the DOI badge points this at a visually-hidden status span so
+         the identifier stays put and only the icon changes. */
+      const label = btn.querySelector('[data-copy-label]');
       const original = label ? label.textContent : null;
+      /* Restore whatever this button was called, rather than assuming. */
+      const originalAria = btn.getAttribute('aria-label');
+      const noun = btn.dataset.copyNoun || 'Citation';
       let timer = null;
 
       const confirm = (ok) => {
         clearTimeout(timer);
         btn.toggleAttribute('data-copied', ok);
         if (label) label.textContent = ok ? 'Copied' : 'Press Ctrl+C';
-        btn.setAttribute('aria-label', ok ? 'Citation copied' : 'Copy failed — select the text instead');
+        btn.setAttribute('aria-label', ok ? `${noun} copied` : 'Copy failed — select the text instead');
         timer = setTimeout(() => {
           btn.removeAttribute('data-copied');
           if (label && original !== null) label.textContent = original;
-          btn.setAttribute('aria-label', 'Copy citation');
+          if (originalAria !== null) btn.setAttribute('aria-label', originalAria);
+          else btn.removeAttribute('aria-label');
         }, 2200);
       };
 

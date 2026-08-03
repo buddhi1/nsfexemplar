@@ -190,6 +190,9 @@ include 'partials/header.php';
 - **Book filename** — `BOOK_FILE` in `lib/counters.php` and `SITE.book.pdf` in `assets/data.js`.
 - **Citation** — `$CITATION` in `partials/header.php`. The home page copy button and the
   citation card on the resources page both read from it.
+- **DOI** — `$DOI` in `partials/header.php`. `doi_badge($DOI, $DOI_URL)` renders the badge;
+  it appears in the featured e-book block on the home page and in the citation card on the
+  eBook and resources pages.
 - **Book cover** — `assets/book_cover/`. The page serves the WebP and falls back to the PNG,
   so replace both. After dropping in a new `book_cover.png`, regenerate the WebP with:
 
