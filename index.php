@@ -163,12 +163,20 @@ include 'partials/header.php';
     <h2 class="mt-2 mb-4">Toward Modern Models of Introductory Computing Courses</h2>
 
     <div class="feature-book">
-      <div class="book-cover reveal">
-        <span class="bc-kicker">CDER · First release</span>
-        <span class="bc-title">Toward Modern Models of Introductory Computing Courses</span>
-        <span class="bc-sub">CS1 and CS2 Course Exemplars infused with Parallel and Distributed Computing Concepts</span>
-        <span class="bc-foot">288 pp · <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2321015">NSF #2321015</a></span>
-      </div>
+      <!-- The cover art already carries the title, subtitle and author list, and
+           the heading above repeats them, so the image itself is decorative and
+           the link takes its name from the hidden span. -->
+      <figure class="book-cover reveal">
+        <a class="book-cover-link" href="download.php?f=book">
+          <picture>
+            <source srcset="assets/book_cover/book_cover.webp" type="image/webp">
+            <img src="assets/book_cover/book_cover.png" alt="" width="576" height="864"
+                 decoding="async" loading="lazy">
+          </picture>
+          <span class="visually-hidden">Download the e-book (PDF, 288 pages)</span>
+        </a>
+        <figcaption>288 pp &middot; <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2321015">NSF #2321015</a></figcaption>
+      </figure>
 
       <div>
         <div class="prose">

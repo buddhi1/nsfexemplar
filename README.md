@@ -47,6 +47,7 @@ assets/
   data.js               exemplars, activities, chapter manifest
   logos/                NSF, CDER, TCPP marks
   logos/institutions/   partner logos (see the README in there)
+  book_cover/           the front cover shown in "Featured e-book" on the home page
 
 lib/counters.php        download and visit counters (JSON store, file-locked)
 data/counters.json      the tally; created automatically, not in git
@@ -187,6 +188,20 @@ include 'partials/header.php';
 - **Project name** — `$PROJECT_NAME`, `$PROJECT_SHORT`, `$PROJECT_TAG` at the top of
   `partials/header.php`. Masthead, page titles and footer all follow.
 - **Book filename** — `BOOK_FILE` in `lib/counters.php` and `SITE.book.pdf` in `assets/data.js`.
+- **Citation** — `$CITATION` in `partials/header.php`. The home page copy button and the
+  citation card on the resources page both read from it.
+- **Book cover** — `assets/book_cover/`. The page serves the WebP and falls back to the PNG,
+  so replace both. After dropping in a new `book_cover.png`, regenerate the WebP with:
+
+  ```bash
+  python3 -c "from PIL import Image; \
+    Image.open('assets/book_cover/book_cover.png').convert('RGB') \
+      .save('assets/book_cover/book_cover.webp','WEBP',quality=90,method=6)"
+  ```
+
+  Quality 90 keeps the author list on the cover legible; lower settings smear it. If the new
+  art is not 576×864, update the `width`/`height` on the `<img>` in `index.php` to match, or the
+  browser will reserve the wrong space while it loads.
 
 The copyright year comes from `date('Y')`, so it never goes stale.
 

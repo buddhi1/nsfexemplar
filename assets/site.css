@@ -659,26 +659,34 @@
   /* --- featured e-book band --- */
   .feature-book { display: grid; gap: var(--sp-6); grid-template-columns: 20rem minmax(0, 1fr); align-items: start; }
   @media (width < 58rem) { .feature-book { grid-template-columns: 1fr; gap: var(--sp-4); } }
-  .book-cover {
-    position: relative; aspect-ratio: 3 / 4; border-radius: var(--radius-m);
-    padding: var(--sp-5) var(--sp-4);
-    display: flex; flex-direction: column; gap: var(--sp-3);
-    background: linear-gradient(158deg, var(--brand-deep), var(--brand) 55%, color-mix(in oklab, var(--accent) 55%, var(--brand)) 130%);
-    color: var(--on-brand);
-    box-shadow: var(--shadow-l);
-    overflow: clip;
+  /* The artwork carries the title, subtitle, author list and NSF seal itself,
+     so the frame around it stays out of the way: a radius, a shadow, and a
+     spine down the binding edge so it reads as a book rather than a picture.
+     Capped at the width of its own grid column, so the single-column layout
+     below 58rem does not blow it up to full width. */
+  .book-cover { margin: 0; display: grid; gap: var(--sp-3); justify-items: center; }
+  .book-cover-link {
+    position: relative; display: block; inline-size: 100%; max-inline-size: 20rem;
+    border-radius: var(--radius-m); overflow: clip; box-shadow: var(--shadow-l);
+    transition: translate var(--dur) var(--ease);
   }
-  .book-cover::after {
-    content: ""; position: absolute; inset-block: 0; inset-inline-start: 0;
-    inline-size: 0.5rem; background: oklch(0 0 0 / 0.22);
+  .book-cover-link:hover { translate: 0 -4px; }
+  .book-cover img { display: block; inline-size: 100%; block-size: auto; }
+  /* The spine, plus a hairline ring — the cover is dark, and without it the
+     edge disappears into the band in dark mode. */
+  .book-cover-link::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    border-radius: inherit;
+    background: linear-gradient(90deg, oklch(0 0 0 / 0.40) 0, oklch(0 0 0 / 0.08) 0.5rem, transparent 0.5rem);
+    box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.16);
   }
-  .book-cover .bc-kicker { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.82; font-weight: 700; }
-  .book-cover .bc-title { font-family: var(--font-display); font-size: 1.5rem; line-height: 1.15; font-weight: 600; }
-  .book-cover .bc-sub { font-size: 0.86rem; opacity: 0.88; line-height: 1.45; }
-  .book-cover .bc-foot { margin-block-start: auto; font-size: 0.76rem; opacity: 0.85; font-family: var(--font-mono); }
-  /* the cover is a dark brand surface — links on it must not use the brand colour */
-  .book-cover a:any-link { color: inherit; text-decoration-color: oklch(1 0 0 / 0.5); }
-  .book-cover a:any-link:hover { color: oklch(1 0 0); text-decoration-color: currentColor; }
+  .book-cover figcaption {
+    font-size: 0.76rem; font-family: var(--font-mono); color: var(--fg-faint);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .book-cover-link { transition: none; }
+    .book-cover-link:hover { translate: none; }
+  }
 
   /* --- goals ---------------------------------------------------------------
      Five cards were taller than the prose beside them. A numbered list keeps
