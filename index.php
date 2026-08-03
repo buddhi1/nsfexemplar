@@ -213,8 +213,6 @@ include 'partials/header.php';
           </a>
         </div>
 
-        <p class="doi-line mt-3">Cite the volume by its DOI: <?= doi_badge($DOI, $DOI_URL) ?></p>
-
         <!-- <div class="callout callout--info mt-4">
           <strong>This first release covers CS1.</strong> It is published early to support Fall-term
           adoption, and includes eight institutional CS1 exemplars that have been classroom tested and
