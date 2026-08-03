@@ -66,7 +66,7 @@ function icon_github(): string {
         </ul>
       </div>
 <?php foreach ($FOOTER_COLS as $heading => $links): ?>
-      <div><h5><?= $heading ?></h5><ul>
+      <div><h2><?= $heading ?></h2><ul>
 <?php foreach ($links as [$href, $label]): ?>
         <li><a href="<?= e($href) ?>"><?= e($label) ?></a></li>
 <?php endforeach; ?>

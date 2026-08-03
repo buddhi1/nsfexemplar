@@ -774,7 +774,7 @@
     };
     box.innerHTML = EX.map((r) => `
       <article class="card">
-        <div class="split"><h4>${esc(r.short)}</h4><span class="pill pill--brand push">${esc(r.role)}</span></div>
+        <div class="split"><h3>${esc(r.short)}</h3><span class="pill pill--brand push">${esc(r.role)}</span></div>
         <p class="tiny faint">${esc(r.name)} · ${esc(r.place)}</p>
         <div class="grid mt-3" style="gap:.75rem">
           ${r.team.map((p) => `<div class="person"><span class="avatar" aria-hidden="true">${initials(p)}</span><span><span class="who">${esc(p)}</span><span class="where">${r.lang.map(esc).join(' / ')} · ${esc(r.setting)}</span></span></div>`).join('')}

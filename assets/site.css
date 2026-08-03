@@ -71,6 +71,11 @@
     --brand-deep: light-dark(oklch(0.40 0.17 12), oklch(0.88 0.10 8));
     --brand-tint: light-dark(oklch(0.965 0.022 18), oklch(0.28 0.07 10));
     --accent: light-dark(oklch(0.64 0.17 48), oklch(0.80 0.15 55));
+    /* --accent is tuned for borders and fills; as small text on a light
+       background it only reaches 3.44:1. This darker mix clears 4.5:1 against
+       every surface it lands on — the worst being --brand-tint behind an open
+       timeline row, where it measures 4.60:1. Dark mode is already at 9.2:1. */
+    --accent-ink: light-dark(oklch(0.55 0.17 48), oklch(0.80 0.15 55));
     /* Foreground for anything sitting ON --brand. In dark mode --brand is a
        light rose, so white-on-brand would fail contrast — flip to near-black. */
     --on-brand: light-dark(oklch(0.99 0 0), oklch(0.16 0.02 260));
@@ -269,7 +274,12 @@
   .site-header[data-scrolled] .brandmark .tag {
     max-block-size: 0; opacity: 0; margin-block-start: 0;
   }
-  @media (width < 48rem) { .brandmark .tag { display: none; } }
+  /* Hidden below 48rem (no room at all) and again from 60rem to 75rem, where
+     the horizontal nav squeezes the brand column enough that the tagline
+     wraps past its max-block-size and gets clipped mid-sentence. */
+  @media (width < 48rem), (60rem <= width < 75rem) {
+    .brandmark .tag { display: none; }
+  }
 
   /* --- primary nav --- */
   .primary-nav { margin-inline-start: auto; }
@@ -441,20 +451,24 @@
   .dots { display: flex; align-items: center; gap: 0.5rem; }
   .dots--center { justify-content: center; }
   .dot {
-    inline-size: 2.25rem; block-size: 0.4rem; padding: 0; cursor: pointer;
+    inline-size: 2.25rem; block-size: 0.4rem; cursor: pointer;
     border: 0; border-radius: var(--radius-pill);
     background: var(--line-strong);
+    /* WCAG 2.5.8 wants a 24px target. The visible pill stays 6px tall; the
+       padding enlarges the hit area and is clipped out of the paint. */
+    padding-block: 0.6rem; padding-inline: 0; box-sizing: content-box;
+    background-clip: content-box;
     transition: background var(--dur) var(--ease), inline-size var(--dur) var(--ease);
   }
-  .dot:hover { background: color-mix(in oklab, var(--brand) 55%, var(--line-strong)); }
-  .dot[aria-selected="true"] { background: var(--brand); inline-size: 3.25rem; }
+  .dot:hover { background-color: color-mix(in oklab, var(--brand) 55%, var(--line-strong)); }
+  .dot[aria-selected="true"] { background-color: var(--brand); inline-size: 3.25rem; }
   .showcase-dots { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-block-start: var(--sp-3); }
   .showcase-label {
     text-align: center; font-size: 0.78rem; color: var(--fg-faint);
     margin-block-start: 0.5rem;
   }
   @media (forced-colors: active) {
-    .dot[aria-selected="true"] { background: Highlight; }
+    .dot[aria-selected="true"] { background-color: Highlight; }
   }
 
   /* --- Penny Sorting stage ----------------------------------------------
@@ -618,7 +632,12 @@
     background: var(--brand-tint); color: var(--brand-deep);
   }
   .card-icon svg { inline-size: 1.3rem; block-size: 1.3rem; }
-  .card-foot { margin-block-start: auto; padding-block-start: var(--sp-2); font-size: 0.86rem; color: var(--fg-faint); }
+  /* These links sit inline among other text, so colour alone cannot carry
+     the distinction — the brand pink is only 1.85:1 against the muted grey
+     beside it. An underline satisfies 1.4.1 without a colour change. */
+  .card-foot a { text-decoration: underline; text-underline-offset: 0.18em;
+                 text-decoration-thickness: from-font; }
+  .card-foot { margin-block-start: auto; padding-block-start: var(--sp-2); font-size: 0.86rem; line-height: 1.7; color: var(--fg-faint); }
 
   .card--feature { background: linear-gradient(160deg, var(--brand-tint), var(--bg-raised) 62%); }
 
@@ -630,10 +649,11 @@
     border-radius: var(--radius-m);
     border-inline-start: 3px solid var(--brand);
   }
-  .path .path-effort { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+  .path .path-effort { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-ink); }
   .path h3 { font-size: 1.1rem; }
   .path p { font-size: 0.9rem; color: var(--fg-muted); margin: 0; }
-  .path a { font-size: 0.88rem; font-weight: 600; text-decoration: none; }
+  .path a { font-size: 0.88rem; font-weight: 600; text-decoration: none;
+            display: inline-flex; align-items: center; min-block-size: 1.5rem; }
   .path a:hover { text-decoration: underline; }
 
   /* --- featured e-book band --- */
@@ -694,7 +714,7 @@
     background: var(--bg-raised); border: 1px solid var(--line);
     border-radius: var(--radius-l);
   }
-  @media (width < 56rem) { .cite-card { grid-template-columns: 1fr; } }
+  @media (width < 56rem) { .cite-card { grid-template-columns: minmax(0, 1fr); } }
   .cite-text {
     margin: 0; padding: var(--sp-3);
     background: var(--bg-sunken); border: 1px solid var(--line);
@@ -702,7 +722,7 @@
     font-size: 0.88rem; line-height: 1.6; color: var(--fg);
     /* hanging indent, the way a reference list sets */
     padding-inline-start: calc(var(--sp-3) + 1.4rem); text-indent: -1.4rem;
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
   }
 
   /* --- copy button ---------------------------------------------------------
@@ -807,7 +827,7 @@
   }
 
   /* --- definition rows used inside activity cards & dialogs --- */
-  .deflist { display: grid; gap: 0.55rem; margin: 0; }
+  .deflist { display: grid; gap: 0.55rem; margin: 0; container-type: inline-size; }
   .deflist > div { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: var(--sp-3); }
   @container (inline-size < 24rem) { .deflist > div { grid-template-columns: 1fr; gap: 0.15rem; } }
   .deflist dt { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--fg-faint); padding-block-start: 0.12rem; }
@@ -831,7 +851,7 @@
   }
   .timeline .year {
     font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600;
-    color: var(--accent); letter-spacing: 0.04em;
+    color: var(--accent-ink); letter-spacing: 0.04em;
   }
   .timeline h4 { margin-block: 0.15rem 0.3rem; font-size: 1.06rem; }
   .timeline p { font-size: 0.93rem; color: var(--fg-muted); margin: 0; }
@@ -911,7 +931,7 @@
   }
   .timeline--compact .era:hover { background: color-mix(in oklab, var(--brand) 6%, transparent); }
   .timeline--compact > li[data-open] .era { background: var(--brand-tint); }
-  .timeline--compact .era .year { color: var(--accent); }
+  .timeline--compact .era .year { color: var(--accent-ink); }
   /* a <button> may only contain phrasing content, so this is a span styled
      to match the surrounding headings */
   .timeline--compact .era-title {
@@ -991,7 +1011,7 @@
   .ch-toggle {
     display: inline-flex; inline-size: auto; justify-content: flex-start;
     align-items: center; gap: 0.45rem;
-    padding: 0; min-block-size: 0; border: 0; background: none; cursor: pointer;
+    padding: 0; min-block-size: 1.5rem; border: 0; background: none; cursor: pointer;
     font-weight: 600; font-size: inherit; line-height: 1.35; text-align: start;
     color: var(--fg);
   }
@@ -1325,8 +1345,10 @@
   /* wider brand column so the contact address sits on one line */
   @media (width >= 68rem) { .footer-grid { grid-template-columns: 21rem repeat(4, 1fr); } }
   .footer-contact { font-size: 0.86rem; overflow-wrap: normal; }
-  .footer-grid h5 { font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ft-faint); margin: 0 0 var(--sp-2); font-weight: 700; }
+  .footer-grid h2 { font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ft-faint); margin: 0 0 var(--sp-2); font-weight: 700; }
   .footer-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.42rem; }
+  /* a column of links is not a sentence, so WCAG 2.5.8 applies in full */
+  .footer-grid li a { display: inline-flex; align-items: center; min-block-size: 1.5rem; }
   .footer-grid a { font-size: 0.92rem; color: var(--ft-muted); text-decoration: none; }
   .footer-grid a:hover { color: oklch(1 0 0); text-decoration: underline; }
 
@@ -1422,6 +1444,23 @@
     .to-top:hover svg { animation: none; }
   }
   @media print { .to-top { display: none !important; } }
+
+  /* --- target size (WCAG 2.5.8) ---------------------------------------------
+     These links stand alone in their block rather than sitting inside a
+     sentence, so the "inline" exception does not cover them and they need a
+     24px target. An inline box is only as tall as its font metrics — raising
+     line-height leaves the hit area untouched — so they take real padding.
+     Padding on an inline box does not push the surrounding lines apart, which
+     is why the enclosing line-height is set loose enough to absorb it. */
+  :is(.card-foot, .callout, .usage-foot, .footer-contact) a { padding-block: 0.18rem; }
+  /* .eyebrow is a flex container, so its link is a block-level flex item and
+     takes a minimum height rather than padding. */
+  .eyebrow a { display: inline-flex; align-items: center; min-block-size: 1.5rem; }
+  /* A link that is the entire content of its paragraph or heading is a
+     standalone target too. Padding on an inline box changes nothing
+     visually — there is no background to grow — it only widens the hit
+     area, so this can be stated broadly without risk. */
+  :is(p, dd, figcaption, h2, h3, h4, h5, h6) > a:only-child { padding-block: 0.2rem; }
 }
 
 /* ------------------------------------------------------------ utilities -- */

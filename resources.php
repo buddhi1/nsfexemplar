@@ -22,7 +22,7 @@ include 'partials/header.php';
     <div>
       <p class="eyebrow">Cite this volume</p>
       <p class="tiny faint mt-2">Copy it, or select the text if you would rather edit it into your own
-        style. The URL follows wherever the site is hosted.</p>
+        style. This is the wording the project uses, so please keep it as it stands.</p>
     </div>
     <div>
       <p class="cite-text" data-cite-text><?= e($CITATION) ?></p>
@@ -46,36 +46,36 @@ include 'partials/header.php';
     between sites &mdash; and so you can compare yours against theirs.</p>
 
   <div class="grid grid--auto mt-5">
-    <article class="card"><h4>Pre- and post-course surveys</h4>
+    <article class="card"><h3>Pre- and post-course surveys</h3>
       <p>The shared course-wide instrument: student background and demographics, self-reported experience
         with general computing and with PDC topics, interest, perceived importance and understanding.</p>
       <p class="card-foot">Used at all eight institutions &middot; <a href="#survey-design">what it asks</a> &middot; <a href="download.php?f=02-common-cs1">Chapter 1 &sect; 1.5 (PDF)</a></p></article>
-    <article class="card"><h4>Activity pre/post quizzes</h4>
+    <article class="card"><h3>Activity pre/post quizzes</h3>
       <p>Short knowledge checks bracketing an individual activity, so its effect can be isolated from the
         rest of the semester.</p>
       <p class="card-foot"><a href="download.php?f=10-cs1-msu">MSU</a> &middot; <a href="download.php?f=05-cs1-usi">USI</a> &middot; <a href="download.php?f=09-cs1-hpu">HPU</a> (PDF)</p></article>
-    <article class="card"><h4>Adapted ASPECT engagement survey</h4>
+    <article class="card"><h3>Adapted ASPECT engagement survey</h3>
       <p>An engagement instrument adapted for unplugged activities, with results grouped by aspect category.
         Used with Penny Sorting and Flag Maker.</p>
       <p class="card-foot"><a href="download.php?f=02-common-cs1">Chapter 1</a> &middot; <a href="download.php?f=09-cs1-hpu">HPU</a> &middot; <a href="download.php?f=03-cs1-tntech">TNTECH</a> (PDF)</p></article>
-    <article class="card"><h4>Bloom-level mapping tables</h4>
+    <article class="card"><h3>Bloom-level mapping tables</h3>
       <p>Per institution, a table mapping each PDC concept to the Bloom level reached by each activity &mdash;
         the fastest way to check an activity against your own learning outcomes.</p>
       <p class="card-foot">Tables 2.1, 4.1, 5.1, 6.1, 7.1, 8.1, 9.1 &middot; <a href="ebook.php#chapters">find the chapter &rarr;</a></p></article>
-    <article class="card"><h4>Activity timing tables</h4>
+    <article class="card"><h3>Activity timing tables</h3>
       <p>Approximate instructional time for each activity phase, so you can fit an activity into a real class
         period rather than discovering the overrun live.</p>
       <p class="card-foot"><a href="download.php?f=05-cs1-usi">USI, Tables 4.9&ndash;4.13</a> &middot; <a href="download.php?f=09-cs1-hpu">HPU, Tables 8.3&ndash;8.12</a> (PDF)</p></article>
-    <article class="card"><h4>Anonymized datasets &amp; analysis</h4>
+    <article class="card"><h3>Anonymized datasets &amp; analysis</h3>
       <p>Every chapter repository carries an <code>Evaluation_Data_and_Analysis</code> directory with survey
         instruments, de-identified responses, evaluation metrics and statistical analyses.</p>
       <p class="card-foot"><a href="ebook.php#repos">Browse the repositories &rarr;</a></p></article>
-    <article class="card"><h4>Faculty surveys</h4>
+    <article class="card"><h3>Faculty surveys</h3>
       <p>Pre-selection, post-selection, annual and post-adoption instruments for the instructors themselves
         &mdash; prior PDC background, perceived effectiveness, students taught, and whether interventions
         will be retained, reduced or expanded.</p>
       <p class="card-foot"><a href="download.php?f=01-overview-roadmap">Chapter 0, evaluation methods (PDF)</a></p></article>
-    <article class="card"><h4>Consent and IRB material</h4>
+    <article class="card"><h3>Consent and IRB material</h3>
       <p>Informed-consent forms alongside the surveys, quizzes, lab reports and programming-assignment
         reports collected between Spring 2024 and Spring 2026.</p>
       <p class="card-foot"><a href="ebook.php#chapters">Chapter appendices &rarr;</a> &middot; <a href="ebook.php#repos">repositories</a></p></article>
@@ -292,23 +292,23 @@ include 'partials/header.php';
   <p class="eyebrow">Beyond this project</p>
   <h2 class="mt-2">Wider CDER Resources</h2>
   <div class="grid grid--auto mt-4">
-    <article class="card"><h4>PDC curriculum guideline</h4>
+    <article class="card"><h3>PDC curriculum guideline</h3>
       <p>The NSF/IEEE-TCPP topic list with Bloom levels that defines the scope this project draws from.
         Version I (2012) and Version II&beta; (2020).</p>
       <p class="card-foot"><a href="https://cdercenter.org/pdc-curriculum/">Read the guideline &rarr;</a></p></article>
-    <article class="card"><h4>Courseware</h4>
+    <article class="card"><h3>Courseware</h3>
       <p>The wider CDER collection of community-contributed teaching material &mdash; syllabi, slides,
         assignments and labs across the undergraduate curriculum, beyond this project's exemplars.</p>
       <p class="card-foot"><a href="https://cdercenter.org/courseware/">Browse the courseware &rarr;</a></p></article>
-    <article class="card"><h4>Peachy Assignments</h4>
+    <article class="card"><h3>Peachy Assignments</h3>
       <p>Peer-reviewed parallel programming assignments, selected and presented each year at EduPar and
         EduHPC &mdash; ready to drop into a course once students are past the introductory sequence.</p>
       <p class="card-foot"><a href="https://cdercenter.org/peachy-assignments/">See the assignments &rarr;</a></p></article>
-    <article class="card"><h4>CDER book series</h4>
+    <article class="card"><h3>CDER book series</h3>
       <p>Volumes 1 and 2 (Morgan Kaufmann, Springer) available as free preprint chapters; Volume 3, focused
         on adopter experience and resources, expected from Springer in late 2026.</p>
       <p class="card-foot"><a href="https://cdercenter.org/">Centre home &rarr;</a></p></article>
-    <article class="card"><h4>Project repository</h4>
+    <article class="card"><h3>Project repository</h3>
       <p>Syllabi, handouts, slides, assignments, starter code, surveys and anonymized evaluation data for
         every chapter &mdash; curated periodically as adopters revise and extend them.</p>
       <p class="card-foot"><a href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main">GitHub &rarr;</a></p></article>

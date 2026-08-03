@@ -286,33 +286,33 @@ include 'partials/header.php';
       class sizes.</p>
 
     <div class="grid grid--three mt-5">
-      <article class="card reveal"><span class="pill pill--brand">Unplugged</span><h4 class="mt-2"><a class="stretch" href="ebook.php?activity=flag-maker#explorer">Flag Maker</a></h4>
+      <article class="card reveal"><span class="pill pill--brand">Unplugged</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=flag-maker#explorer">Flag Maker</a></h3>
         <p>Students act as processors coloring flag-grid cells in sequential and parallel scenarios. Surfaces
           speedup, task decomposition, contention, pipelining, critical path and race conditions &mdash; with
           paper and markers.</p>
         <p class="card-foot">40&ndash;60 min · 5 institutions</p></article>
 
-      <article class="card reveal"><span class="pill pill--brand">Unplugged</span><h4 class="mt-2"><a class="stretch" href="ebook.php?activity=penny#explorer">Penny Search / Penny Sorting</a></h4>
+      <article class="card reveal"><span class="pill pill--brand">Unplugged</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=penny#explorer">Penny Search / Penny Sorting</a></h3>
         <p>Students search or sort pennies under sequential, balanced-parallel and load-imbalanced scenarios,
           then compare measured times against ideal speedup.</p>
         <p class="card-foot">Fits a 50- or 75-min class · 4 institutions</p></article>
 
-      <article class="card reveal"><span class="pill">Visualization</span><h4 class="mt-2"><a class="stretch" href="ebook.php?activity=animations#explorer">Animations &amp; simulations</a></h4>
+      <article class="card reveal"><span class="pill">Visualization</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=animations#explorer">Animations &amp; simulations</a></h3>
         <p>Parallel search, parallel linked lists, flag coloring and Zombie Attack &mdash; codeless visuals
           that need no setup and no programming background, with prediction before code.</p>
         <p class="card-foot">10&ndash;15 min each</p></article>
 
-      <article class="card reveal"><span class="pill pill--accent">Plugged-in</span><h4 class="mt-2"><a class="stretch" href="ebook.php?activity=earthquake#explorer">Earthquake Tracker &amp; remote data</a></h4>
+      <article class="card reveal"><span class="pill pill--accent">Plugged-in</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=earthquake#explorer">Earthquake Tracker &amp; remote data</a></h3>
         <p>Students retrieve live USGS data, parse JSON, filter events and display results &mdash; distributed
           data access against a real service instead of parsing console text.</p>
         <p class="card-foot">~1.25 hours · 3 institutions</p></article>
 
-      <article class="card reveal"><span class="pill pill--accent">Plugged-in</span><h4 class="mt-2"><a class="stretch" href="ebook.php?activity=openmp#explorer">OpenMP data parallelism</a></h4>
+      <article class="card reveal"><span class="pill pill--accent">Plugged-in</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=openmp#explorer">OpenMP data parallelism</a></h3>
         <p>A few pragmas on array creation, summing or sorting, plus benchmarking &mdash; high conceptual
           return for very little added cognitive load.</p>
         <p class="card-foot">One lab plus homework</p></article>
 
-      <article class="card reveal"><span class="pill pill--accent">Plugged-in</span><h4 class="mt-2"><a class="stretch" href="ebook.php?activity=greenfoot#explorer">Greenfoot &amp; event-driven work</a></h4>
+      <article class="card reveal"><span class="pill pill--accent">Plugged-in</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=greenfoot#explorer">Greenfoot &amp; event-driven work</a></h3>
         <p>Code attached to sprites and invoked by system events rather than called from <code>main</code>,
           ending in open-ended student games.</p>
         <p class="card-foot">75-min demo to a full project · 4 institutions</p></article>

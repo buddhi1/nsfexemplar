@@ -128,17 +128,17 @@ include 'partials/header.php';
   <h2 class="mt-2">Three Sets of Teams, Working Closely Together</h2>
   <div class="grid grid--auto mt-5">
     <article class="card"><span class="pill pill--brand">Development</span>
-      <h4 class="mt-2">Two institutions, two languages</h4>
+      <h3 class="mt-2">Two institutions, two languages</h3>
       <p>Tennessee Tech (C++, semester system, large lecture and lab CS1) and Knox College (Java, quarter
         system, classes of about 24) each created exemplars for their first-year sequence, coordinating so
         the same PDC concepts were covered in context-specific ways.</p></article>
     <article class="card"><span class="pill pill--brand">Testing</span>
-      <h4 class="mt-2">Six adopting institutions</h4>
+      <h3 class="mt-2">Six adopting institutions</h3>
       <p>Recruited through the CDER community and the Edu* and SIGCSE networks, then selected to balance
         language and institution type. Each transferred the exemplars into their own courses, identified
         opportunities and challenges, and fed the experience back to improve both sets of teams.</p></article>
     <article class="card"><span class="pill pill--brand">Backbone</span>
-      <h4 class="mt-2">Coordination &amp; expertise</h4>
+      <h3 class="mt-2">Coordination &amp; expertise</h3>
       <p>Prasad, Sussman, Thota, Vaidyanathan and Weems ran the training workshops and biweekly meetings,
         facilitated discussion, and provided PDC domain expertise.</p></article>
   </div>
@@ -187,18 +187,18 @@ include 'partials/header.php';
         changes and accompanying materials, while demonstrating their effectiveness and transferability.</p>
 
       <div class="grid grid--auto mt-5">
-        <div class="card"><h4>Where the need was identified</h4>
+        <div class="card"><h3>Where the need was identified</h3>
           <p>NSF CyberTraining Institute Conceptualization Award <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2002649"><strong>#2002649</strong></a> supported the
             2020&ndash;23 stakeholder workshops that examined the systemic barriers to PDC adoption and
             produced the &ldquo;someone needs to go first&rdquo; conclusion this project answers.</p></div>
-        <div class="card"><h4>Prior support that made this possible</h4>
+        <div class="card"><h3>Prior support that made this possible</h3>
           <p>The earlier CDER center grant (curriculum guidelines, dissemination, early adoption) and an NSF
             CyberTraining implementation grant for broader instructor training in incorporating PDC into
             undergraduate CS and CE curricula.</p></div>
-        <div class="card"><h4>Foundational grants</h4>
+        <div class="card"><h3>Foundational grants</h3>
           <p>IIS 1143533 · CCF 1135124 · CCF 1048711 · CNS 0950432 &mdash; supporting the NSF/IEEE-TCPP
             curriculum initiative, with additional support from IEEE TCPP, Intel, NVIDIA and IBM.</p></div>
-        <div class="card"><h4>What comes next</h4>
+        <div class="card"><h3>What comes next</h3>
           <p>A new NSF award will organize additional instructor training workshops to further infuse AI and
             Big Data, together with PDC, into CS1, CS2 and Computer Systems courses through the CDER
             center.</p></div>
