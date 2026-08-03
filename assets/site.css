@@ -419,9 +419,10 @@
      order a given number of "processors" would colour them. Static and
      complete without JS; animated by assets/site.js when allowed.         */
   .flagmaker {
+    max-inline-size: 30rem; margin-inline: auto;
     background: var(--bg-raised); border: 1px solid var(--line);
-    border-radius: var(--radius-l); padding: var(--sp-4);
-    box-shadow: var(--shadow-l);
+    border-radius: var(--radius-l); padding: var(--sp-3) var(--sp-4);
+    box-shadow: var(--shadow-m);
   }
   .flagmaker-head { display: flex; flex-wrap: wrap; gap: var(--sp-2); align-items: baseline; margin-block-end: var(--sp-3); }
   .flagmaker-head .fm-title { font-family: var(--font-display); font-weight: 600; font-size: 1.02rem; }
@@ -433,7 +434,7 @@
   .showcase-slide {
     grid-area: 1 / 1; margin: 0;
     opacity: 0; visibility: hidden;
-    transition: opacity 420ms var(--ease);
+    transition: opacity 620ms var(--ease);
   }
   .showcase-slide[data-active] { opacity: 1; visibility: visible; }
   /* shared pager dots — used by the hero carousel and the news list */
@@ -461,7 +462,7 @@
      the point: total work is unchanged but the slowest lane sets the pace. */
   .penny-stage {
     display: grid; gap: 0.55rem; align-content: center;
-    aspect-ratio: 3 / 2; padding: var(--sp-3);
+    aspect-ratio: 16 / 10; padding: var(--sp-3);
     border-radius: var(--radius-s); outline: 1px solid var(--line);
     background: var(--bg-subtle);
   }
@@ -472,23 +473,23 @@
   }
   .penny-coins { display: flex; flex-wrap: nowrap; gap: 0.2rem; min-inline-size: 0; }
   .penny-coin {
-    inline-size: 0.85rem; block-size: 0.85rem; border-radius: 50%; flex: none;
+    inline-size: 0.8rem; block-size: 0.8rem; border-radius: 50%; flex: none;
     background: var(--line-strong);
-    transition: background 200ms linear, scale 200ms var(--ease);
+    transition: background 320ms var(--ease);
   }
-  .penny-coin[data-done] { background: var(--flag-3); scale: 1.12; }
+  .penny-coin[data-done] { background: var(--flag-3); }
   .penny-lane[data-idle] .who { opacity: 0.4; }
   .penny-note {
     grid-column: 1 / -1; margin-block-start: 0.2rem;
     font-size: 0.76rem; color: var(--fg-muted); text-align: center; min-block-size: 1.2em;
   }
 
-  .fm-stage { position: relative; aspect-ratio: 3 / 2; border-radius: var(--radius-s); overflow: clip; outline: 1px solid var(--line); }
+  .fm-stage { position: relative; aspect-ratio: 16 / 10; border-radius: var(--radius-s); overflow: clip; outline: 1px solid var(--line); }
   .fm-grid {
     display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(8, 1fr);
     gap: 2px; block-size: 100%; background: var(--line);
   }
-  .fm-cell { background: var(--bg-subtle); transition: background 200ms linear; }
+  .fm-cell { background: var(--bg-subtle); transition: background 320ms var(--ease); }
   .fm-cell[data-on="1"] { background: var(--flag-1); }
   .fm-cell[data-on="2"] { background: var(--flag-2); }
   .fm-cell[data-on="3"] { background: var(--flag-3); }
@@ -496,8 +497,8 @@
   /* partition boundaries between processors */
   .fm-split {
     position: absolute; inset-inline: 0; block-size: 0;
-    border-block-start: 2px dashed oklch(1 0 0 / 0.85);
-    mix-blend-mode: difference; pointer-events: none;
+    border-block-start: 2px solid oklch(1 0 0 / 0.55);
+    pointer-events: none;
   }
   .fm-fallback { block-size: 100%; }
 

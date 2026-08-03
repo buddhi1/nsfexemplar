@@ -275,8 +275,8 @@
         hold = setTimeout(() => {
           if (last && onDone) onDone();            // hand back to the carousel
           else run((index + 1) % MODES.length);
-        }, 1400);
-      }, Math.max(22, 900 / steps + 14));
+        }, 2000);
+      }, Math.max(34, 1500 / steps + 22));
     }
 
     return {
@@ -391,8 +391,8 @@
         hold = setTimeout(() => {
           if (last && onDone) onDone();
           else run((index + 1) % SCENARIOS.length);
-        }, 1500);
-      }, Math.max(70, 1500 / rounds));
+        }, 2000);
+      }, Math.max(105, 2100 / rounds));
     }
 
     return {
