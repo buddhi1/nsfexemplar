@@ -8,10 +8,11 @@
    there is one file now, so those three collapse into one honest figure.
    ========================================================================== */
 
-$USAGE_TOTAL  = counters_downloads_total($COUNTS);
-/* Downloads counted under the old chapter keys. Those links still resolve, to
-   the volume, so the figure is real — it just predates the single-file move. */
-$USAGE_LEGACY = counters_chapter_total($COUNTS);
+/* Every key counts towards this: the old per-chapter links still resolve, to
+   the volume, so those downloads are real — they just predate the move to a
+   single file. counters_chapter_total() can still separate them if the split
+   is ever wanted again. */
+$USAGE_TOTAL = counters_downloads_total($COUNTS);
 ?>
 <div class="shell section--tight">
   <div class="usage">
@@ -29,9 +30,6 @@ $USAGE_LEGACY = counters_chapter_total($COUNTS);
         <span class="metric-label">E-book downloads</span>
       </div>
     </div>
-<?php if ($USAGE_LEGACY > 0): ?>
-    <p class="usage-foot tiny faint">Includes <?= counters_fmt($USAGE_LEGACY) ?> counted while chapters
-      were published as separate files. Those links now open the full volume.</p>
-<?php endif; ?>
+
   </div>
 </div>

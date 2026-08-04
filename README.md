@@ -239,8 +239,8 @@ per-chapter breakdown in the eBook chapter table.
   same file, so links published before chapters were merged keep working.
 - **The figures shown** are site visits and one download total, rendered by `partials/usage.php` and
   shared by any page that includes it. Splitting volume from chapters stopped meaning anything once
-  there was one file; where old chapter keys have a tally, a note says so rather than quietly folding
-  them in.
+  there was one file. The total counts every key, including the old per-chapter ones, since they all
+  resolve to the same file now; `counters_chapter_total()` can still separate them if wanted.
 - **Visits** are counted once per browser session, not per page view. This sets a session cookie.
 - **Crawlers** are filtered by user agent — including `curl`, `wget` and headless Chrome. Edit the
   pattern in `counters_is_bot()`.

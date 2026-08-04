@@ -29,7 +29,7 @@ $FOOTER_COLS = [
         ['research.php#presentations', 'Presentations'],
         ['research.php#methodology',   'Methodology'],
         ['team.php#authors',           'Authors'],
-        ['contact.php',                'Adoption &amp; contact'],
+        ['contact.php',                'Contact Us'],
     ],
     'CDER Center' => [
         ['https://cdercenter.org/',                'Center home'],
