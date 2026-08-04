@@ -55,7 +55,7 @@ const EX = [
     ],
     evidence: 'Baseline Spring 2024 against four combined intervention semesters (Fall 2024, Spring 2025, Fall 2025, Spring 2026), plus per-assignment agreement data and time-on-task for the Earthquake Tracker and OpenMP labs.',
     ch: [['Chapter 2 — CS1', 64]],
-    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
+    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1/chapter2-TTU',
     repoNote: 'Material in CS1/chapter2-TTU/',
   },
   {
@@ -86,7 +86,7 @@ const EX = [
     ],
     evidence: 'Course calendar and materials published for the Fall 2025 offering, with the flag-maker, Knoxcraft and Greenfoot activity materials in the repository.',
     ch: [['Chapter 3 — CS1', 108]],
-    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
+    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1/chapter3-Knox',
     repoNote: 'Material in CS1/chapter3-Knox/',
   },
   {
@@ -121,7 +121,7 @@ const EX = [
     ],
     evidence: 'Fall 2024 benchmark (N = 24) and Fall 2025 PDC intervention (N = 33) cohorts, compared item by item, with improvement measured per item from benchmark to intervention and pre-to-post gains on four PDC measures. Includes diverging Likert distributions of engagement items and thematic analysis of open responses.',
     ch: [['Chapter 4 — CS1', 123]],
-    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
+    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1/chapter4-USI',
     repoNote: 'Material in CS1/chapter4-USI/',
   },
   {
@@ -149,7 +149,7 @@ const EX = [
     ],
     evidence: 'n = 125 across fall 2024 and fall 2025. Pre/post means with differences, Wilcoxon signed-rank tests, p-values, Cliff\'s delta effect sizes and their interpretation (negligible, small, medium, large).',
     ch: [['Chapter 5 — CS1', 166]],
-    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
+    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1/chapter5-UNL',
     repoNote: 'Material in CS1/chapter5-UNL/ · Author-hosted too: cbourke/PDCatUNL · live demo go.unl.edu/PDCatUNL',
   },
   {
@@ -179,7 +179,7 @@ const EX = [
     ],
     evidence: 'Pre/post comparison of self-reported experience with PDC concepts and with core C++ topics on a seven-point scale, plus attitudes, interest and perceived importance, and post-survey ratings of learning activities and outcomes.',
     ch: [['Chapter 6 — CS1', 182]],
-    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
+    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1/chapter6-Webster',
     repoNote: 'Material in CS1/chapter6-Webster/ · Author-hosted too: xiaoyuansuo51-webster/teaching-PDC-HPC',
   },
   {
@@ -214,7 +214,7 @@ const EX = [
     ],
     evidence: 'Baseline semester with no interventions against intervention semesters (Summer 2025 and Spring 2026). Preliminary analysis indicates student perception of learning gains in non-PDC topics stayed broadly the same, while perception of gains in PDC topics was higher in the intervention semester.',
     ch: [['Chapter 7 — CS1', 202]],
-    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
+    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1/chapter7-Casper',
     repoNote: 'Material in CS1/chapter7-Casper/ · Custom zyBooks section: charlottegruner/CDER_CC_CS1',
   },
   {
@@ -240,7 +240,7 @@ const EX = [
     cs2: [['CS2 package', 'In preparation — see the forthcoming CS2 release.']],
     evidence: 'Pre-test and post-test performance by question, adapted ASPECT engagement results grouped by category, estimated instructional time for each activity, and Bloom-level mapping per activity across Fall 2024, Fall 2025 and Spring 2026.',
     ch: [['Chapter 8 — CS1', 236]],
-    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
+    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1/chapter8-HPU',
     repoNote: 'Material in CS1/chapter8-HPU/',
   },
   {
@@ -269,7 +269,7 @@ const EX = [
     ],
     evidence: 'Matched pre/post course survey results for basic computing concepts, PDC concepts and attitudes, plus a Flag Maker post-activity survey with thematic coding of open responses. A no-intervention semester is compared against the Flag Maker intervention semester to confirm core programming outcomes were not displaced.',
     ch: [['Chapter 9 — CS1', 275]],
-    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
+    repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1/chapter9-MSU',
     repoNote: 'Material in CS1/chapter9-MSU/ · Michelle Zhu is at Kennesaw State University.',
   },
 ];
@@ -286,6 +286,9 @@ const ACTIVITIES = [
     duration: '40–60 minutes to one 75-minute class',
     setup: 'Paper and markers. No programming background required.',
     used: ['usi', 'hpu', 'tntech', 'msu', 'knox'],
+    time: 'One class', prep: 'Classroom materials', lang: ['Language-independent'],
+    topic: ['Data parallelism', 'Performance & speedup', 'Synchronization'], anchor: ['Loops', 'Graphics & output'],
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
   },
   {
     id: 'penny', name: 'Penny Search / Penny Sorting', kind: 'Unplugged', family: 'Unplugged, visual and simulation',
@@ -296,6 +299,9 @@ const ACTIVITIES = [
     duration: 'Fits a 50- or 75-minute class',
     setup: 'A box of coins and a timer.',
     used: ['tntech', 'usi', 'hpu', 'casper'],
+    time: 'One class', prep: 'Classroom materials', lang: ['Language-independent'],
+    topic: ['Data parallelism', 'Performance & speedup'], anchor: ['Arrays & collections'],
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
   },
   {
     id: 'animations', name: 'Animations and simulations', kind: 'Visualization', family: 'Unplugged, visual and simulation',
@@ -306,6 +312,9 @@ const ACTIVITIES = [
     duration: '10–15 minutes each',
     setup: 'Browser only. No setup, no programming background.',
     used: ['webster', 'msu'],
+    time: 'Under 30 minutes', prep: 'Browser only', lang: ['Language-independent'],
+    topic: ['Data parallelism', 'Performance & speedup', 'Synchronization'], anchor: ['Arrays & collections', 'Loops'],
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
   },
   {
     id: 'prog-flag-maker', name: 'Programming Flag Maker', kind: 'Plugged-in', family: 'Plugged-in programming',
@@ -316,6 +325,9 @@ const ACTIVITIES = [
     duration: '75-minute launch plus about one week of paired programming',
     setup: 'Java or C++ with a graphics library; starter code in the repositories.',
     used: ['knox', 'usi'],
+    time: 'Multi-session', prep: 'Software setup', lang: ['Java', 'C++'],
+    topic: ['Data parallelism'], anchor: ['Loops', 'Arrays & collections', 'Graphics & output'],
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
   },
   {
     id: 'greenfoot', name: 'Greenfoot / event-driven work', kind: 'Plugged-in', family: 'Plugged-in programming',
@@ -326,6 +338,9 @@ const ACTIVITIES = [
     duration: 'Optional 75-minute demo, or a multi-week project',
     setup: 'Greenfoot IDE.',
     used: ['knox', 'usi', 'casper', 'msu'],
+    time: 'Multi-session', prep: 'Software setup', lang: ['Java'],
+    topic: ['Event-driven processing'], anchor: ['Objects & classes', 'Conditionals', 'Graphics & output'],
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
   },
   {
     id: 'earthquake', name: 'Earthquake Tracker / remote data', kind: 'Plugged-in', family: 'Plugged-in programming',
@@ -336,6 +351,9 @@ const ACTIVITIES = [
     duration: 'About 1.25 hours for the UNL encapsulation lab; larger as a full assignment',
     setup: 'Network access and a JSON library.',
     used: ['tntech', 'casper', 'unl'],
+    time: 'Multi-session', prep: 'Software setup', lang: ['C++', 'C', 'Java', 'Python'],
+    topic: ['Distributed data access'], anchor: ['Functions', 'Loops', 'Arrays & collections', 'Libraries & data'],
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
   },
   {
     id: 'surveys', name: 'Course-wide pre/post surveys', kind: 'Assessment', family: 'Assessment and evidence',
@@ -346,6 +364,9 @@ const ACTIVITIES = [
     duration: 'Administered near course start and end',
     setup: 'Any survey platform. Instruments are in the chapter appendices.',
     used: ['tntech', 'knox', 'usi', 'unl', 'webster', 'casper', 'hpu', 'msu'],
+    time: 'Course-wide', prep: 'Browser only', lang: ['Language-independent'],
+    topic: ['Data parallelism', 'Distributed data access', 'Event-driven processing'], anchor: [],
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
   },
   {
     id: 'openmp', name: 'OpenMP data parallelism', kind: 'Plugged-in', family: 'Additional institutional activities',
@@ -356,6 +377,9 @@ const ACTIVITIES = [
     duration: 'One lab session plus homework',
     setup: 'A C or C++ toolchain with OpenMP support.',
     used: ['tntech', 'casper'],
+    time: 'Multi-session', prep: 'Software setup', lang: ['C', 'C++'],
+    topic: ['Data parallelism', 'Performance & speedup'], anchor: ['Arrays & collections', 'Loops', 'Variables & expressions'],
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
   },
   {
     id: 'codeless', name: 'Codeless PDC modules', kind: 'Codeless', family: 'Additional institutional activities',
@@ -366,6 +390,9 @@ const ACTIVITIES = [
     duration: 'Asynchronous; no scheduled class time required',
     setup: 'Browser only.',
     used: ['unl'],
+    time: 'Asynchronous', prep: 'Browser only', lang: ['Language-independent'],
+    topic: ['Data parallelism', 'Distributed data access', 'Performance & speedup'], anchor: [],
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1/chapter5-UNL',
   },
   {
     id: 'zombie', name: 'Zombie Attack', kind: 'Plugged-in', family: 'Additional institutional activities',
@@ -376,6 +403,9 @@ const ACTIVITIES = [
     duration: 'A homework assignment',
     setup: 'C++; assignment materials in the Webster repository.',
     used: ['webster'],
+    time: 'Multi-session', prep: 'Software setup', lang: ['C++'],
+    topic: ['Data parallelism'], anchor: ['Arrays & collections', 'Loops', 'Conditionals', 'Objects & classes'],
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1/chapter6-Webster',
   },
   {
     id: 'physical', name: 'Physical computing projects', kind: 'Plugged-in', family: 'Additional institutional activities',
@@ -386,6 +416,9 @@ const ACTIVITIES = [
     duration: 'Three linked projects across the term',
     setup: 'Raspberry Pi hardware. Framed as optional or experimental because of the setup burden.',
     used: ['casper'],
+    time: 'Multi-session', prep: 'Hardware', lang: ['Python'],
+    topic: ['Event-driven processing'], anchor: ['Functions', 'Libraries & data'],
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1/chapter7-Casper',
   },
   {
     id: 'more-processors', name: 'More Processors Are Not Always the Best', kind: 'Unplugged', family: 'Additional institutional activities',
@@ -396,6 +429,9 @@ const ACTIVITIES = [
     duration: 'A short follow-up exercise',
     setup: 'None.',
     used: ['usi', 'hpu'],
+    time: 'Under 30 minutes', prep: 'No preparation', lang: ['Language-independent'],
+    topic: ['Performance & speedup'], anchor: [],
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
   },
   {
     id: 'coin-addition', name: 'Coin Addition', kind: 'Unplugged', family: 'Additional institutional activities',
@@ -406,6 +442,9 @@ const ACTIVITIES = [
     duration: 'Part of a class period',
     setup: 'Coins.',
     used: ['casper'],
+    time: 'Under 30 minutes', prep: 'Classroom materials', lang: ['Language-independent'],
+    topic: ['Synchronization'], anchor: ['Variables & expressions'],
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1/chapter7-Casper',
   },
   {
     id: 'knoxcraft', name: 'Knoxcraft &amp; interactive servers', kind: 'Plugged-in', family: 'Additional institutional activities',
@@ -416,6 +455,9 @@ const ACTIVITIES = [
     duration: 'A lab and assignment',
     setup: 'A provided server; materials in the Knox repository.',
     used: ['knox'],
+    time: 'Multi-session', prep: 'Software setup', lang: ['Java'],
+    topic: ['Event-driven processing', 'Distributed data access'], anchor: ['Objects & classes'],
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1/chapter3-Knox',
   },
 ];
 
@@ -601,6 +643,17 @@ const FACETS = {
   role:    ['Development team', 'Testing team'],
 };
 
+/* Activity facets. The order here is the order they appear in the filter
+   panel — what the activity is, then the three practical questions an adopter
+   asks (how long, what setup, which language), then what it teaches. */
 const ACT_FACETS = {
   kind:   ['Unplugged', 'Plugged-in', 'Visualization', 'Codeless', 'Assessment'],
+  time:   ['Under 30 minutes', 'One class', 'Multi-session', 'Asynchronous', 'Course-wide'],
+  prep:   ['No preparation', 'Classroom materials', 'Browser only', 'Software setup', 'Hardware'],
+  lang:   ['Language-independent', 'Java', 'C++', 'C', 'Python'],
+  topic:  ['Data parallelism', 'Distributed data access', 'Event-driven processing',
+           'Performance & speedup', 'Synchronization'],
+  anchor: ['Loops', 'Arrays & collections', 'Variables & expressions', 'Functions',
+           'Objects & classes', 'Conditionals', 'Graphics & output', 'Libraries & data'],
+  used:   ['tntech', 'knox', 'usi', 'unl', 'webster', 'casper', 'hpu', 'msu'],
 };

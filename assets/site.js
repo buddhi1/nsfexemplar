@@ -534,13 +534,19 @@
     const buildFacets = () => {
       const defs = mode === 'inst' ? FACETS : ACT_FACETS;
       const rows = mode === 'inst' ? EX : ACTIVITIES;
-      const labels = { lang: 'Language', setting: 'Institution type', style: 'Activity style', role: 'Team', kind: 'Activity type' };
+      const labels = {
+        lang: 'Language', setting: 'Institution type', style: 'Activity style', role: 'Team',
+        kind: 'Activity type', time: 'Time needed', prep: 'Preparation',
+        topic: 'PDC topic', anchor: 'CS1 anchor', used: 'Institution',
+      };
+      /* The institution facet stores ids, which are no use as labels. */
+      const show = (key, val) => (key === 'used' ? (byId[val]?.short || val) : val);
       facetBox.innerHTML = Object.entries(defs).map(([key, vals]) => {
         const chips = vals.map((val, i) => {
           const n = rows.filter((r) => has(r, key, val)).length;
           if (!n) return '';
           const id = `x-${key}-${i}`;
-          return `<label class="chip" for="${id}"><input type="checkbox" id="${id}" name="${key}" value="${esc(val)}"><span>${esc(val)}</span><span class="count">${n}</span></label>`;
+          return `<label class="chip" for="${id}"><input type="checkbox" id="${id}" name="${key}" value="${esc(val)}"><span>${esc(show(key, val))}</span><span class="count">${n}</span></label>`;
         }).join('');
         if (!chips) return '';
         return `<fieldset class="facet"><legend>${esc(labels[key] || key)}</legend><div class="cluster">${chips}</div></fieldset>`;
@@ -555,6 +561,7 @@
 
     const actBlob = (a) => norm([
       a.name, a.kind, a.family, a.desc, a.anchors, a.duration, a.setup, a.section,
+      a.time, a.prep, (a.lang || []).join(' '), (a.topic || []).join(' '), (a.anchor || []).join(' '),
       a.pdc.join(' '), a.used.map((id) => `${byId[id]?.short} ${byId[id]?.name}`).join(' '),
     ].join(' '));
 
@@ -585,13 +592,18 @@
         </div>
         <h3 style="margin-block-start:.4rem">${a.name}</h3>
         <p>${a.desc}</p>
+        <div class="cluster mt-3">
+          <span class="meta-tag">${esc(a.time)}</span>
+          <span class="meta-tag">${esc(a.prep)}</span>
+          ${(a.lang || []).slice(0, 2).map((l) => `<span class="meta-tag">${esc(l)}</span>`).join('')}
+        </div>
         <dl class="deflist mt-3">
           <div><dt>PDC ideas</dt><dd>${a.pdc.slice(0, 4).map(esc).join(' · ')}</dd></div>
           <div><dt>CS1 anchors</dt><dd>${esc(a.anchors)}</dd></div>
-          <div><dt>Duration</dt><dd>${esc(a.duration)}</dd></div>
         </dl>
         <div class="cluster mt-3">
           <button class="btn btn--primary btn--sm" type="button" data-open-act="${a.id}">Full details</button>
+          ${a.materials ? `<a class="btn btn--ghost btn--sm" href="${esc(a.materials)}">See materials</a>` : ''}
         </div>
         <p class="card-foot">Used at ${a.used.map((id) => esc(byId[id]?.short || id)).join(' · ')}</p>
       </article>`;
@@ -690,16 +702,19 @@
 
         <h4 class="mt-5">Running it</h4>
         <div class="table-wrap mt-2"><table class="data"><tbody>
-          <tr><th scope="row" style="inline-size:11rem">Duration</th><td>${esc(a.duration)}</td></tr>
-          <tr><th scope="row">Setup</th><td>${esc(a.setup)}</td></tr>
+          <tr><th scope="row" style="inline-size:11rem">Duration</th><td>${esc(a.duration)} <span class="tiny faint">(${esc(a.time)})</span></td></tr>
+          <tr><th scope="row">Setup</th><td>${esc(a.setup)} <span class="tiny faint">(${esc(a.prep)})</span></td></tr>
+          <tr><th scope="row">Language</th><td>${(a.lang || []).map(esc).join(', ')}</td></tr>
           <tr><th scope="row">Described in</th><td>Chapter 1, ${esc(a.section)}</td></tr>
         </tbody></table></div>
+        ${a.materials ? `<p class="mt-3"><a class="btn btn--primary btn--sm" href="${esc(a.materials)}">Open teaching materials</a></p>` : ''}
 
         <h4 class="mt-5">Institutions that ran it</h4>
         <div class="grid grid--auto mt-2">
           ${where.map((r) => `<article class="card"><h4>${esc(r.short)}</h4>
             <p class="tiny faint">${esc(r.setting)} · ${r.lang.map(esc).join(', ')}</p>
-            <p class="card-foot"><a href="download.php?f=book&p=${r.ch[0][1]}">${esc(r.ch[0][0])} &middot; p.&nbsp;${r.ch[0][1]}</a></p></article>`).join('')}
+            <p class="card-foot"><a href="download.php?f=book&p=${r.ch[0][1]}">${esc(r.ch[0][0])} &middot; p.&nbsp;${r.ch[0][1]}</a>
+              &middot; <a href="${esc(r.repo)}">materials</a></p></article>`).join('')}
         </div>`);
     };
 

@@ -322,6 +322,33 @@ so links published before this change keep working.
 
 ---
 
+## Activity facets
+
+The activity finder filters on seven fields, defined in `ACT_FACETS` in `assets/data.js`. Five of them
+are bucket values every activity carries, so a new activity needs all of them or it will not appear
+under any filter:
+
+| Field | Kind | Values |
+|---|---|---|
+| `kind` | single | Unplugged · Plugged-in · Visualization · Codeless · Assessment |
+| `time` | single | Under 30 minutes · One class · Multi-session · Asynchronous · Course-wide |
+| `prep` | single | No preparation · Classroom materials · Browser only · Software setup · Hardware |
+| `lang` | list | Language-independent · Java · C++ · C · Python |
+| `topic` | list | Data parallelism · Distributed data access · Event-driven processing · Performance & speedup · Synchronization |
+| `anchor` | list | Loops · Arrays & collections · Variables & expressions · Functions · Objects & classes · Conditionals · Graphics & output · Libraries & data |
+| `used` | list | institution ids, rendered as their short names |
+
+`time` and `prep` are buckets for the prose in `duration` and `setup`, which are still shown in full on
+the card and in the detail sheet — the bucket is for filtering, the prose is for reading. Adding a value
+that is not in `ACT_FACETS` means the activity is simply never matched by that filter, silently, so keep
+the two in step.
+
+Each activity also carries `materials`, a repository URL. Activities run at one institution point at
+that institution's chapter folder; ones run at several point at `CS1/`, and the detail sheet then links
+each institution's own folder through `EX[].repo`.
+
+---
+
 ## When the CS2 release lands
 
 1. Replace `cder_exemplar_cs1_cs2.pdf` and update the page numbers as above.

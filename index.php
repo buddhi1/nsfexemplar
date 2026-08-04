@@ -37,6 +37,10 @@ include 'partials/header.php';
       <p class="lede mt-4">Modern software is parallel, distributed, event-driven and API-based. Introductory
         computing mostly still isn&rsquo;t. Eight institutions changed that in their own CS1, then measured
         whether it worked, and published everything.</p>
+      <p class="release-note mt-3">
+        <span class="pill pill--brand">Early release</span>
+        <span>The CS1 chapters are published and complete. CS2 chapters are expected soon.</span>
+      </p>
       <!-- Row one identifies the volume, row two acts on it. -->
       <div class="cluster hero-meta">
         <button class="btn btn--quiet btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
@@ -50,23 +54,20 @@ include 'partials/header.php';
       <div class="cluster hero-actions">
         <a class="btn btn--primary" href="download.php?f=book">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M8 11l4 4 4-4M5 19h14"/></svg>
-          Download eBook
-        </a>
-        <a class="btn btn--ghost" href="ebook.php">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v15H6.5A2.5 2.5 0 0 0 4 20.5Z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H19v3H6.5A2.5 2.5 0 0 1 4 20.5Z"/></svg>
-          Go to eBook
+          Download the full e-book
         </a>
         <a class="btn btn--ghost" href="ebook.php#activities">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
           Find an activity
         </a>
-
-        <!-- <button class="btn btn--ghost btn--icon" type="button"
-                data-copy="<?= e($CITATION) ?>" aria-label="Copy citation"
-                title="Copy the citation for this volume">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-          <span class="visually-hidden" data-copy-label>Copy citation</span>
-        </button> -->
+        <a class="btn btn--ghost" href="ebook.php#chapters">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v15H6.5A2.5 2.5 0 0 0 4 20.5Z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H19v3H6.5A2.5 2.5 0 0 1 4 20.5Z"/></svg>
+          Browse chapters
+        </a>
+        <a class="btn btn--ghost" href="contact.php">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6.5h16v11H4z"/><path d="m4 7 8 6 8-6"/></svg>
+          Request adoption help
+        </a>
       </div>
     </div>
 
@@ -310,32 +311,32 @@ include 'partials/header.php';
         <p>Students act as processors coloring flag-grid cells in sequential and parallel scenarios. Surfaces
           speedup, task decomposition, contention, pipelining, critical path and race conditions &mdash; with
           paper and markers.</p>
-        <p class="card-foot">40&ndash;60 min · 5 institutions</p></article>
+        <p class="card-foot">40&ndash;60 min · 5 institutions &middot; <a href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">See materials</a></p></article>
 
       <article class="card reveal"><span class="pill pill--brand">Unplugged</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=penny#explorer">Penny Search / Penny Sorting</a></h3>
         <p>Students search or sort pennies under sequential, balanced-parallel and load-imbalanced scenarios,
           then compare measured times against ideal speedup.</p>
-        <p class="card-foot">Fits a 50- or 75-min class · 4 institutions</p></article>
+        <p class="card-foot">Fits a 50- or 75-min class · 4 institutions &middot; <a href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">See materials</a></p></article>
 
       <article class="card reveal"><span class="pill">Visualization</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=animations#explorer">Animations &amp; simulations</a></h3>
         <p>Parallel search, parallel linked lists, flag coloring and Zombie Attack &mdash; codeless visuals
           that need no setup and no programming background, with prediction before code.</p>
-        <p class="card-foot">10&ndash;15 min each</p></article>
+        <p class="card-foot">10&ndash;15 min each &middot; <a href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">See materials</a></p></article>
 
       <article class="card reveal"><span class="pill pill--accent">Plugged-in</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=earthquake#explorer">Earthquake Tracker &amp; remote data</a></h3>
         <p>Students retrieve live USGS data, parse JSON, filter events and display results &mdash; distributed
           data access against a real service instead of parsing console text.</p>
-        <p class="card-foot">~1.25 hours · 3 institutions</p></article>
+        <p class="card-foot">~1.25 hours · 3 institutions &middot; <a href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">See materials</a></p></article>
 
       <article class="card reveal"><span class="pill pill--accent">Plugged-in</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=openmp#explorer">OpenMP data parallelism</a></h3>
         <p>A few pragmas on array creation, summing or sorting, plus benchmarking &mdash; high conceptual
           return for very little added cognitive load.</p>
-        <p class="card-foot">One lab plus homework</p></article>
+        <p class="card-foot">One lab plus homework &middot; <a href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">See materials</a></p></article>
 
       <article class="card reveal"><span class="pill pill--accent">Plugged-in</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=greenfoot#explorer">Greenfoot &amp; event-driven work</a></h3>
         <p>Code attached to sprites and invoked by system events rather than called from <code>main</code>,
           ending in open-ended student games.</p>
-        <p class="card-foot">75-min demo to a full project · 4 institutions</p></article>
+        <p class="card-foot">75-min demo to a full project · 4 institutions &middot; <a href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">See materials</a></p></article>
     </div>
 
     <div class="cluster mt-5">
@@ -373,17 +374,33 @@ include 'partials/header.php';
 <?php endforeach; ?>
   </div>
 
-  <div class="panel panel--sunken mt-5">
-    <div class="split">
-      <div style="max-inline-size:52ch">
-        <h3>Adopt, adapt, report back</h3>
-        <p class="muted mt-3">Some consultation from project personnel is available to help adopters select
-          and adapt materials. If you adopt an exemplar, the community&rsquo;s strong preference is that you
-          report the experience &mdash; including what didn&rsquo;t work.</p>
+</div>
+
+<!-- ────────────────────────────────────────────────────── get in touch ─── -->
+<div class="band band--feature">
+  <div class="shell section--tight" id="contact">
+    <div class="grid grid--halves">
+      <div class="prose">
+        <p class="eyebrow">Get in touch</p>
+        <h2 class="mt-2">Thinking of Adopting?</h2>
+        <p>The material is free and needs no permission to use. Tell us what you are considering and we can
+          point you at the right chapter, help you scope a first adoption, or arrange a short consultation.</p>
+        <p class="muted">Knowing where the exemplars travel also lets the project report to NSF.</p>
       </div>
-      <div class="cluster push">
-        <a class="btn btn--primary" href="https://discord.gg/xdh3uvD3b">Join the Discord</a>
-        <a class="btn btn--ghost" href="mailto:contact@nsfexemplar.cdercenter.org">Contact the project</a>
+      <div class="panel">
+        <div class="cluster">
+          <a class="btn btn--primary" href="contact.php">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6.5h16v11H4z"/><path d="m4 7 8 6 8-6"/></svg>
+            Request adoption help
+          </a>
+          <a class="btn btn--ghost" href="https://discord.gg/xdh3uvD3b">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M19.27 5.33A16.6 16.6 0 0 0 15.2 4.1a.06.06 0 0 0-.07.03c-.18.31-.38.72-.51 1.04a15.4 15.4 0 0 0-4.24 0c-.14-.33-.34-.73-.52-1.04a.06.06 0 0 0-.07-.03 16.55 16.55 0 0 0-4.07 1.23.06.06 0 0 0-.03.02C2.98 9.15 2.27 12.85 2.62 16.5a.07.07 0 0 0 .03.05 16.7 16.7 0 0 0 5 2.5.07.07 0 0 0 .07-.02c.39-.52.73-1.07 1.02-1.65a.06.06 0 0 0-.03-.09c-.54-.2-1.05-.45-1.55-.73a.06.06 0 0 1 0-.11l.3-.24a.06.06 0 0 1 .07 0 11.9 11.9 0 0 0 10.02 0 .06.06 0 0 1 .07 0l.31.24a.06.06 0 0 1 0 .11c-.5.29-1.01.53-1.55.73a.06.06 0 0 0-.04.09c.3.58.64 1.13 1.02 1.65a.07.07 0 0 0 .08.02 16.65 16.65 0 0 0 5-2.5.07.07 0 0 0 .03-.05c.42-4.22-.69-7.89-2.93-11.15a.05.05 0 0 0-.03-.02ZM8.85 14.28c-.98 0-1.79-.9-1.79-2.01 0-1.11.79-2.01 1.79-2.01 1.01 0 1.81.91 1.8 2.01 0 1.11-.8 2.01-1.8 2.01Zm6.31 0c-.98 0-1.79-.9-1.79-2.01 0-1.11.79-2.01 1.79-2.01 1.01 0 1.81.91 1.8 2.01 0 1.11-.79 2.01-1.8 2.01Z"/></svg>
+            Join the Discord
+          </a>
+        </div>
+        <p class="small muted mt-4">Prefer plain email? Write to
+          <a href="mailto:<?= e(CONTACT_EMAIL) ?>"><?= e(CONTACT_EMAIL) ?></a>. Every route reaches the
+          same people.</p>
       </div>
     </div>
   </div>

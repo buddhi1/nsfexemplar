@@ -1610,6 +1610,15 @@
     .to-top { transition: opacity 0.01ms; translate: none; scale: none; }
     .to-top:hover svg { animation: none; }
   }
+  /* At-a-glance facts on an activity card: how long, what setup, which
+     language. Quieter than a .pill, which marks the activity's type. */
+  .meta-tag {
+    display: inline-flex; align-items: center; padding: 0.15rem 0.5rem;
+    font-size: 0.72rem; font-weight: 600; color: var(--fg-muted);
+    background: var(--bg-sunken); border: 1px solid var(--line);
+    border-radius: var(--radius-pill); white-space: nowrap;
+  }
+
   /* --- adoption / contact form ---------------------------------------------
      Plain stacked fields. Nothing here is JavaScript-dependent: the form posts
      and re-renders server-side, errors and all. */

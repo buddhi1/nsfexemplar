@@ -303,11 +303,10 @@ include 'partials/header.php';
     <div class="grid grid--halves">
       <div class="prose">
         <p class="eyebrow">Get in touch</p>
-        <h2 class="mt-2">Thinking of Adopting Something?</h2>
+        <h2 class="mt-2">Thinking of Adopting?</h2>
         <p>The material is free and needs no permission to use. Tell us what you are considering and we can
           point you at the right chapter, help you scope a first adoption, or arrange a short consultation.</p>
-        <p class="muted">Knowing where the exemplars travel also lets the project report honestly to NSF on
-          what came of the work.</p>
+        <p class="muted">Knowing where the exemplars travel also lets the project report to NSF.</p>
       </div>
       <div class="panel">
         <div class="cluster">

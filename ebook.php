@@ -11,9 +11,9 @@ include 'partials/header.php';
   <div class="shell">
     <p class="eyebrow">The eBook</p>
     <h1 class="mt-3">Find the Exemplar or the Activity That Matches Your Course</h1>
-    <p class="lede mt-4">Search by institution or by activity. Filter by language, institution type, activity
-      style, duration and preparation level, then open the relevant chapter summary, the teaching materials,
-      or the full e-book.</p>
+    <p class="lede mt-4">Search by institution or by activity. Filter activities by type, time needed,
+      preparation, language, PDC topic, CS1 anchor and institution &mdash; then open the chapter summary, the
+      teaching materials, or the full e-book.</p>
     <p class="release-note mt-3">
       <span class="pill pill--brand">Early release</span>
       <span>The CS1 chapters are published and complete. CS2 chapters are expected soon &mdash; Part&nbsp;II of
