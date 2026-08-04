@@ -132,6 +132,18 @@ function counters_downloads(array $data, string $key): int {
 }
 
 /** Every chapter download added together (excludes the full volume). */
+/**
+ * Every download, whatever key it was counted under. All keys now serve the
+ * same file — chapters stopped being published separately — so the total is
+ * the only figure that means anything.
+ */
+function counters_downloads_total(array $data): int {
+    $sum = 0;
+    foreach (($data['downloads'] ?? []) as $v) $sum += (int) $v;
+    return $sum;
+}
+
+/** Downloads counted under the old per-chapter keys, for the historical note. */
 function counters_chapter_total(array $data): int {
     $sum = 0;
     foreach (($data['downloads'] ?? []) as $k => $v) {

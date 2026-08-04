@@ -224,34 +224,11 @@ include 'partials/header.php';
     </div>
   </div>
 
-  <!-- download history, inside the same highlighted band -->
-  <!-- <div class="shell section--tight">
-    <div class="usage">
-    <div class="usage-head">
-      <p class="eyebrow">Usage</p>
-      <p class="tiny faint">Counted since <?= e(date('j F Y', strtotime($COUNTS['started'] ?? 'today'))) ?>.</p>
-    </div>
-    <div class="usage-figures">
-      <div class="metric">
-        <span class="metric-value"><?= counters_fmt((int) ($COUNTS['visits'] ?? 0)) ?></span>
-        <span class="metric-label">Site visits</span>
-      </div>
-      <div class="metric">
-        <span class="metric-value"><?= counters_fmt(counters_downloads($COUNTS, 'book')) ?></span>
-        <span class="metric-label">Full volume</span>
-      </div>
-      <div class="metric">
-        <span class="metric-value"><?= counters_fmt(counters_chapter_total($COUNTS)) ?></span>
-        <span class="metric-label">Chapters</span>
-      </div>
-      <div class="metric">
-        <span class="metric-value"><?= counters_fmt(counters_downloads($COUNTS, 'book') + counters_chapter_total($COUNTS)) ?></span>
-        <span class="metric-label">Downloads in total</span>
-      </div>
-    </div>
-      <p class="usage-foot"><a href="ebook.php#chapters">Downloads per chapter &rarr;</a></p>
-    </div>
-  </div> -->
+  <?php /* Usage figures, currently off. Remove this comment wrapper to show
+     them; the markup lives in partials/usage.php and is shared with the
+     eBook page. Wrapped in PHP rather than HTML comments so the counters
+     are not read and rendered into a comment nobody sees.
+  include 'partials/usage.php'; */ ?> -->
   
 </div>
 

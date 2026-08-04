@@ -234,9 +234,13 @@ per-chapter breakdown in the eBook chapter table.
 `flock` so concurrent hits cannot corrupt it. No database, no extra extension.
 
 - **Downloads** are counted by `download.php?f=<key>`, which records the hit then redirects to the
-  real PDF so the browser still handles range requests and resuming. `f=book` is the full volume;
-  any other key is a chapter filename without the extension (`f=03-cs1-tntech`). Keys are validated
-  against files that actually exist, so a crafted `?f=` cannot escape the site root.
+  real PDF so the browser still handles range requests and resuming. `f=book` is the volume;
+  the old per-chapter keys (`f=03-cs1-tntech`) still count under their own name and resolve to the
+  same file, so links published before chapters were merged keep working.
+- **The figures shown** are site visits and one download total, rendered by `partials/usage.php` and
+  shared by any page that includes it. Splitting volume from chapters stopped meaning anything once
+  there was one file; where old chapter keys have a tally, a note says so rather than quietly folding
+  them in.
 - **Visits** are counted once per browser session, not per page view. This sets a session cookie.
 - **Crawlers** are filtered by user agent — including `curl`, `wget` and headless Chrome. Edit the
   pattern in `counters_is_bot()`.
