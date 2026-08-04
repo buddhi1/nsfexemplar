@@ -72,6 +72,26 @@ function doi_badge(string $doi, string $url, string $class = ''): string {
          . '</a></span>';
 }
 
+/* BibTeX for the same volume. Author names are the initials used in the
+   citation above rather than expanded forms, so the two never disagree. */
+$BIBTEX = <<<BIB
+@book{cder2026exemplars,
+  title     = {Toward Modern Models of Introductory Computing Courses:
+               CS1 and CS2 Course Exemplars infused with Parallel and
+               Distributed Computing Concepts},
+  editor    = {Prasad, S. K. and Weems, C. and Thota, N. and Sussman, A. and
+               Vaidyanathan, R. and Gannod, G. and Crockett, A. and Bunde, D. and
+               Spacco, J. and Srivastava, S. and Bourke, C. and Suo, X. and
+               Maher, P. and Gruner, C. and Smith, M. and Zhu, M. and Wang, J.},
+  year      = {2026},
+  month     = aug,
+  publisher = {CDER Center},
+  doi       = {{$DOI}},
+  url       = {{$DOI_URL}},
+  note      = {Early release. NSF Award #2321015}
+}
+BIB;
+
 $NAV = [
     'home'      => ['index.php',     'Home'],
     'project'   => ['project.php',   'Project'],

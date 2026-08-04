@@ -1,6 +1,6 @@
 <?php
 $PAGE  = 'home';
-$DESC  = 'Eight classroom-tested CS1 exemplars infusing parallel and distributed computing into introductory computing. A free 288-page e-book with activities, assessments and repositories. NSF Award #2321015.';
+$DESC  = 'Eight classroom-tested CS1 exemplars infusing parallel and distributed computing into introductory computing. A free e-book with activities, assessments and repositories. NSF Award #2321015.';
 $OG    = ['description' => 'Eight classroom-tested CS1 exemplars infusing parallel and distributed computing into introductory computing. Free, evaluated, ready to adopt.'];
 /* News lives in assets/news.json so it can be edited without touching markup.
    Read here rather than fetched, so it renders without JavaScript. */
@@ -124,7 +124,7 @@ include 'partials/header.php';
     <div class="metric"><span class="metric-value">8</span><span class="metric-label">CS1 exemplars</span></div>
     <div class="metric"><span class="metric-value">14</span><span class="metric-label">Activities</span></div>
     <div class="metric"><span class="metric-value">4</span><span class="metric-label">Languages</span></div>
-    <div class="metric"><span class="metric-value">288</span><span class="metric-label">Pages, free</span></div>
+    <div class="metric"><span class="metric-value">301</span><span class="metric-label">Pages, free</span></div>
     <div class="metric"><span class="metric-value">10</span><span class="metric-label">Chapters</span></div>
   </div>
 </div>
@@ -156,7 +156,7 @@ include 'partials/header.php';
       <h3>Course-level infusion</h3>
       <p>Scan the descriptor elements and course-change sections, study the chapters closest to your
         local course, then work from the appendices and repositories.</p>
-      <a href="download.php?f=01-overview-roadmap" target="_blank">Chapter 0 &mdash; roadmap (PDF) &rarr;</a>
+      <a href="download.php?f=book&amp;p=6" target="_blank">Chapter 0 &mdash; roadmap &rarr;</a>
     </div>
   </div>
 
@@ -184,9 +184,9 @@ include 'partials/header.php';
             <img src="assets/book_cover/book_cover.png" alt="" width="576" height="864"
                  decoding="async" loading="lazy">
           </picture>
-          <span class="visually-hidden">Download the e-book (PDF, 288 pages)</span>
+          <span class="visually-hidden">Download the e-book (PDF)</span>
         </a>
-        <figcaption>288 pp &middot; <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2321015">NSF #2321015</a></figcaption>
+        <figcaption>Early release &middot; <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2321015">NSF #2321015</a></figcaption>
       </figure>
 
       <div>
@@ -205,7 +205,7 @@ include 'partials/header.php';
         </div>
 
         <div class="cluster mt-4">
-          <a class="btn btn--primary" href="download.php?f=book">Download the full PDF · 288 pp</a>
+          <a class="btn btn--primary" href="download.php?f=book">Download the full PDF</a>
           <a class="btn btn--ghost" href="ebook.php#chapters">Download by chapter</a>
           <a class="btn btn--ghost" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
@@ -340,7 +340,7 @@ include 'partials/header.php';
 
     <div class="cluster mt-5">
       <a class="btn btn--primary" href="ebook.php#activities">Browse all 14 activities</a>
-      <a class="btn btn--ghost" href="download.php?f=02-common-cs1">Chapter 1 &mdash; Common CS1 activities (PDF)</a>
+      <a class="btn btn--ghost" href="download.php?f=book&amp;p=27">Chapter 1 &mdash; Common CS1 activities</a>
     </div>
   </div>
 </div>

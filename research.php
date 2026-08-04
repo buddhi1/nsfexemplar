@@ -42,7 +42,7 @@ include 'partials/header.php';
   <div class="callout mt-5">
     <strong>The volume itself</strong> is the primary publication: <em>Toward Modern Models of Introductory
     Computing Courses &mdash; CS1 and CS2 Course Exemplars infused with Parallel and Distributed Computing
-    Concepts</em>. <a href="download.php?f=book">Full PDF, 288 pp</a> &middot;
+    Concepts</em>. <a href="download.php?f=book">Full PDF</a> &middot;
     <a href="ebook.php#chapters">by chapter</a>. The wider CDER book series (Volumes 1 and 2, Morgan
     Kaufmann and Springer) is available as free preprint chapters; Volume 3 is expected from Springer in
     late 2026.
@@ -135,48 +135,48 @@ include 'partials/header.php';
           with pre-to-post gains on four PDC measures including parallel processing, distributed computing and
           overall PDC understanding. Includes diverging Likert distributions of engagement items and thematic
           coding of open responses.</p>
-        <p class="card-foot"><a href="download.php?f=05-cs1-usi">Chapter 4 (PDF)</a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=123">Chapter 4 </a></p></article>
 
       <article class="card"><h3>UNL · CS1</h3>
         <p>Codeless modules evaluated across fall 2024 and fall 2025 with Wilcoxon signed-rank testing and
           Cliff&rsquo;s delta effect sizes reported per item, with significance interpreted at p &lt; 0.05.</p>
-        <p class="card-foot">n = 125 · <a href="download.php?f=06-cs1-unl">Chapter 5 (PDF)</a></p></article>
+        <p class="card-foot">n = 125 · <a href="download.php?f=book&amp;p=166">Chapter 5 </a></p></article>
 
       <article class="card"><h3>Casper · CS1</h3>
         <p>Perception of learning gains in non-PDC topics stayed broadly flat while perception of gains in PDC
           topics rose in the intervention semester &mdash; the clearest available check that PDC content did
           not displace core learning.</p>
-        <p class="card-foot">8-week summer and 16-week semester runs · <a href="download.php?f=08-cs1-casper">Chapter 7 (PDF)</a></p></article>
+        <p class="card-foot">8-week summer and 16-week semester runs · <a href="download.php?f=book&amp;p=202">Chapter 7 </a></p></article>
 
       <article class="card"><h3>MSU · CS1</h3>
         <p>A no-intervention semester compared against the Flag Maker intervention semester shows gains from
           pre- to post-survey across all basic programming categories in both, with comparable post-survey
           means &mdash; evidence that adding a short unplugged activity did not reduce students&rsquo;
           perceived progress in core CS1 content.</p>
-        <p class="card-foot"><a href="download.php?f=10-cs1-msu">Chapter 9 (PDF)</a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=275">Chapter 9 </a></p></article>
 
       <article class="card"><h3>TNTECH · CS1</h3>
         <p>Baseline Spring 2024 against four combined intervention semesters (Fall 2024, Spring 2025, Fall
           2025, Spring 2026), with per-assignment agreement data and time-on-task for the Earthquake Tracker
           and OpenMP labs.</p>
-        <p class="card-foot"><a href="download.php?f=03-cs1-tntech">Chapter 2 (PDF)</a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=64">Chapter 2 </a></p></article>
 
       <article class="card"><h3>Webster · CS1</h3>
         <p>Pre/post comparison of self-reported PDC experience and core C++ topic experience on a seven-point
           scale, plus attitudes and interest, and post-survey ratings of learning activities and outcomes.</p>
-        <p class="card-foot"><a href="download.php?f=07-cs1-webster">Chapter 6 (PDF)</a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=182">Chapter 6 </a></p></article>
 
       <article class="card"><h3>HPU · CS1</h3>
         <p>Pre-test and post-test performance by question, plus adapted ASPECT engagement results grouped by
           category for both the Flag Maker and Penny activities, across Fall 2024, Fall 2025 and Spring 2026.</p>
-        <p class="card-foot"><a href="download.php?f=09-cs1-hpu">Chapter 8 (PDF)</a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=236">Chapter 8 </a></p></article>
 
       <article class="card"><h3>Cross-institution</h3>
         <p>Across all eight sites, the shared lesson is that PDC works best in CS1 when it reframes and
           enriches existing course goals rather than appearing as disconnected additional content &mdash;
           starting with intuition, using unplugged or visual activities before code, and keeping programming
           tasks lightweight.</p>
-        <p class="card-foot"><a href="download.php?f=02-common-cs1">Chapter 1 (PDF)</a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=27">Chapter 1 </a></p></article>
     </div>
   </div>
 </div>

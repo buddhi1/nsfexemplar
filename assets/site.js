@@ -14,18 +14,8 @@
 
   const $  = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
-  /* PDF links go through download.php so they can be counted.
-     'chapters/03-cs1-tntech.pdf' -> 'download.php?f=03-cs1-tntech' */
-  const BOOK = (typeof SITE !== 'undefined' && SITE.book && SITE.book.pdf) || '';
-  const dl = (path) => {
-    if (path === BOOK) return 'download.php?f=book';
-    const m = /^chapters\/(.+)\.pdf$/.exec(path);
-    return m ? `download.php?f=${encodeURIComponent(m[1])}` : path;
-  };
-  /* Download tallies injected by ebook.php; absent elsewhere. */
-  const DL_COUNTS = (typeof DOWNLOADS !== 'undefined' && DOWNLOADS) || {};
-  const dlKey = (path) => (path === BOOK
-    ? 'book' : (/^chapters\/(.+)\.pdf$/.exec(path) || [, ''])[1]);
+  /* One published file now, so links are written directly as
+     download.php?f=book&p=N — see download.php for the page anchor. */
 
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
@@ -582,7 +572,7 @@
         </div>
         <div class="cluster mt-3">
           <button class="btn btn--primary btn--sm" type="button" data-open-inst="${r.id}">Full details</button>
-          ${r.ch.map(([label, href, pp]) => `<a class="btn btn--ghost btn--sm" href="${dl(href)}">${esc(label)} <span class="tiny faint">${esc(pp)}</span></a>`).join('')}
+          ${r.ch.map(([label, page]) => `<a class="btn btn--ghost btn--sm" href="download.php?f=book&p=${page}">${esc(label)} <span class="tiny faint">p.&nbsp;${page}</span></a>`).join('')}
         </div>
         <p class="card-foot">${r.team.map(esc).join(' · ')}</p>
       </article>`;
@@ -676,7 +666,7 @@
 
         <h4 class="mt-5">Get the material</h4>
         <div class="cluster mt-2">
-          ${r.ch.map(([label, href, pp]) => `<a class="btn btn--primary btn--sm" href="${dl(href)}">${esc(label)} · ${esc(pp)}</a>`).join('')}
+          ${r.ch.map(([label, page]) => `<a class="btn btn--primary btn--sm" href="download.php?f=book&p=${page}">${esc(label)} · open at p.&nbsp;${page}</a>`).join('')}
           <a class="btn btn--ghost btn--sm" href="${esc(r.repo)}">Repository</a>
         </div>
         ${r.repoNote ? `<p class="tiny faint mt-2">${esc(r.repoNote)}</p>` : ''}`);
@@ -709,7 +699,7 @@
         <div class="grid grid--auto mt-2">
           ${where.map((r) => `<article class="card"><h4>${esc(r.short)}</h4>
             <p class="tiny faint">${esc(r.setting)} · ${r.lang.map(esc).join(', ')}</p>
-            <p class="card-foot"><a href="${dl(r.ch[0][1])}">${esc(r.ch[0][0])} (PDF)</a></p></article>`).join('')}
+            <p class="card-foot"><a href="download.php?f=book&p=${r.ch[0][1]}">${esc(r.ch[0][0])} &middot; p.&nbsp;${r.ch[0][1]}</a></p></article>`).join('')}
         </div>`);
     };
 
@@ -931,9 +921,8 @@
       + '<path d="m9 6 6 6-6 6"/></svg>';
 
     body.innerHTML = CHAPTERS.map((c, i) => {
-      const key = c.file;
-      const count = DL_COUNTS[key] || 0;
-      const hasDetail = c.sections.length || c.authors;
+      /* Every chapter has something to show now: the abstract at minimum. */
+      const hasDetail = c.excerpt || c.sections.length || c.authors;
 
       /* A section with subsections becomes its own disclosure — chapter,
          section, subsection, collapsed at each step. */
@@ -965,15 +954,20 @@
         </th>
         <td class="small faint">${c.part}</td>
         <td class="small faint nowrap">${c.pages}</td>
-        <td class="small faint nowrap dl-count">${count.toLocaleString()}</td>
-        <td><a class="btn btn--ghost btn--sm" href="${dl('chapters/' + key + '.pdf')}">PDF <span class="tiny faint">${c.pp}</span></a></td>
+        <td><a class="btn btn--ghost btn--sm nowrap" href="download.php?f=book&p=${c.start}">
+          Open at p.&nbsp;${c.start}</a></td>
       </tr>
       ${hasDetail ? `
       <tr class="ch-detail-row" hidden>
-        <td colspan="5">
+        <td colspan="4">
           <div class="ch-detail" id="ch-detail-${i}">
             ${c.authors ? `<p class="ch-authors">${esc(c.authors)}<span class="ch-inst">${esc(c.inst)}</span></p>` : ''}
+            ${c.excerpt ? `<p class="ch-excerpt">${esc(c.excerpt)}</p>` : ''}
             ${secs ? `<ol class="ch-sections">${secs}</ol>` : ''}
+            <p class="ch-links">
+              <a href="download.php?f=book&p=${c.start}">Read this chapter in the full e-book &rarr;</a>
+              ${c.materials ? ` <a href="${c.materials}">Teaching materials on GitHub &rarr;</a>` : ''}
+            </p>
           </div>
         </td>
       </tr>` : ''}`;

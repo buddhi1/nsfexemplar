@@ -44,7 +44,7 @@ include 'partials/header.php';
           and it is the chapter most readers should start from.</p>
         <p class="muted">It was written jointly by authors from a development team and a testing team, which
           is why it reflects both building the material and adopting someone else&rsquo;s.</p>
-        <p><a href="download.php?f=02-common-cs1">Chapter 1 (PDF, 38 pp) &rarr;</a></p>
+        <p><a href="download.php?f=book&amp;p=27">Chapter 1 in the e-book &rarr;</a></p>
       </div>
       <div class="grid" style="align-content:start">
         <div class="card person"><span class="avatar" aria-hidden="true">AC</span><span><span class="who">April Crockett</span><span class="where">Tennessee Technological University · Development team</span></span></div>

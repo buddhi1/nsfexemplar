@@ -5,7 +5,7 @@
    and team.html.
 
    All content is derived from "Toward Modern Models of Introductory
-   Computing Courses" (CDER, NSF Award #2321015), first release, 288 pp.
+   Computing Courses" (CDER, NSF Award #2321015), early release.
    ========================================================================== */
 
 /* eslint-disable no-unused-vars */
@@ -14,8 +14,10 @@ const SITE = {
     title: 'Toward Modern Models of Introductory Computing Courses',
     subtitle: 'CS1 and CS2 Course Exemplars infused with Parallel and Distributed Computing Concepts',
     pdf: 'cder_exemplar_cs1_cs2.pdf',
-    pages: 288,
-    release: 'First release — CS1',
+    /* No page count while the volume is still being revised — it has moved
+       three times already, and a stale figure in a citation is worse than
+       none. Reinstate at final freeze if it is wanted. */
+    release: 'Early release — CS1',
   },
   repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook',
   repoTree: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main',
@@ -52,7 +54,7 @@ const EX = [
       ['Sort algorithm time comparison', 'The existing sorting-performance module gains OpenMP: bubble sort as an odd–even transposition sort and a recursive merge sort, parallelized with a few pragmas so students see the benefit on large vectors.'],
     ],
     evidence: 'Baseline Spring 2024 against four combined intervention semesters (Fall 2024, Spring 2025, Fall 2025, Spring 2026), plus per-assignment agreement data and time-on-task for the Earthquake Tracker and OpenMP labs.',
-    ch: [['Chapter 2 — CS1', 'chapters/03-cs1-tntech.pdf', '41 pp']],
+    ch: [['Chapter 2 — CS1', 64]],
     repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     repoNote: 'Material in CS1/chapter2-TTU/',
   },
@@ -83,7 +85,7 @@ const EX = [
       ['Parallel reductions', 'A variety of parallel reduction operations implemented from scratch.'],
     ],
     evidence: 'Course calendar and materials published for the Fall 2025 offering, with the flag-maker, Knoxcraft and Greenfoot activity materials in the repository.',
-    ch: [['Chapter 3 — CS1', 'chapters/04-cs1-knox.pdf', '12 pp']],
+    ch: [['Chapter 3 — CS1', 108]],
     repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     repoNote: 'Material in CS1/chapter3-Knox/',
   },
@@ -118,7 +120,7 @@ const EX = [
       ['Seeing Concurrency: Java parallel image processing', 'A visually immediate concurrency demonstration.'],
     ],
     evidence: 'Fall 2024 benchmark (N = 24) and Fall 2025 PDC intervention (N = 33) cohorts, compared item by item, with improvement measured per item from benchmark to intervention and pre-to-post gains on four PDC measures. Includes diverging Likert distributions of engagement items and thematic analysis of open responses.',
-    ch: [['Chapter 4 — CS1', 'chapters/05-cs1-usi.pdf', '42 pp']],
+    ch: [['Chapter 4 — CS1', 123]],
     repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     repoNote: 'Material in CS1/chapter4-USI/',
   },
@@ -146,7 +148,7 @@ const EX = [
       ['Parallel merge sort', 'An existing sorting lab revised to add a parallel merge sort benchmarked against several sequential sorting algorithms.'],
     ],
     evidence: 'n = 125 across fall 2024 and fall 2025. Pre/post means with differences, Wilcoxon signed-rank tests, p-values, Cliff\'s delta effect sizes and their interpretation (negligible, small, medium, large).',
-    ch: [['Chapter 5 — CS1', 'chapters/06-cs1-unl.pdf', '15 pp']],
+    ch: [['Chapter 5 — CS1', 166]],
     repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     repoNote: 'Material in CS1/chapter5-UNL/ · Author-hosted too: cbourke/PDCatUNL · live demo go.unl.edu/PDCatUNL',
   },
@@ -176,7 +178,7 @@ const EX = [
       ['Python module 3 — performance engineering', "Timing methodology, speedup, efficiency, Amdahl's law, weak vs strong scaling, memory- vs compute-bound workloads and NUMA effects."],
     ],
     evidence: 'Pre/post comparison of self-reported experience with PDC concepts and with core C++ topics on a seven-point scale, plus attitudes, interest and perceived importance, and post-survey ratings of learning activities and outcomes.',
-    ch: [['Chapter 6 — CS1', 'chapters/07-cs1-webster.pdf', '20 pp']],
+    ch: [['Chapter 6 — CS1', 182]],
     repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     repoNote: 'Material in CS1/chapter6-Webster/ · Author-hosted too: xiaoyuansuo51-webster/teaching-PDC-HPC',
   },
@@ -211,7 +213,7 @@ const EX = [
       ['Parallel QuickSort', 'Task parallelism with benchmarking.'],
     ],
     evidence: 'Baseline semester with no interventions against intervention semesters (Summer 2025 and Spring 2026). Preliminary analysis indicates student perception of learning gains in non-PDC topics stayed broadly the same, while perception of gains in PDC topics was higher in the intervention semester.',
-    ch: [['Chapter 7 — CS1', 'chapters/08-cs1-casper.pdf', '32 pp']],
+    ch: [['Chapter 7 — CS1', 202]],
     repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     repoNote: 'Material in CS1/chapter7-Casper/ · Custom zyBooks section: charlottegruner/CDER_CC_CS1',
   },
@@ -237,7 +239,7 @@ const EX = [
     ],
     cs2: [['CS2 package', 'In preparation — see the forthcoming CS2 release.']],
     evidence: 'Pre-test and post-test performance by question, adapted ASPECT engagement results grouped by category, estimated instructional time for each activity, and Bloom-level mapping per activity across Fall 2024, Fall 2025 and Spring 2026.',
-    ch: [['Chapter 8 — CS1', 'chapters/09-cs1-hpu.pdf', '37 pp']],
+    ch: [['Chapter 8 — CS1', 236]],
     repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     repoNote: 'Material in CS1/chapter8-HPU/',
   },
@@ -266,7 +268,7 @@ const EX = [
       ['Java multithreaded image processing', "Edge detection, blurring and salt-and-pepper noise removal implemented with parallel threads, so speedup is directly observable. Covers Amdahl's law, thread synchronization and concurrent execution."],
     ],
     evidence: 'Matched pre/post course survey results for basic computing concepts, PDC concepts and attitudes, plus a Flag Maker post-activity survey with thematic coding of open responses. A no-intervention semester is compared against the Flag Maker intervention semester to confirm core programming outcomes were not displaced.',
-    ch: [['Chapter 9 — CS1', 'chapters/10-cs1-msu.pdf', '20 pp']],
+    ch: [['Chapter 9 — CS1', 275]],
     repo: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     repoNote: 'Material in CS1/chapter9-MSU/ · Michelle Zhu is at Kennesaw State University.',
   },
@@ -418,21 +420,21 @@ const ACTIVITIES = [
 ];
 
 /* ------------------------------------------------------- chapter manifest
-   Page numbers are the printed page numbers of the 288-page first release. */
+   Page numbers are pages of the current release PDF. */
 /* ------------------------------------------------------- chapter manifest
-   Page numbers are the printed page numbers of the 288-page first release.
+   Page numbers are pages of the current release PDF.
    `sections` mirrors the volume's table of contents, so the chapter table can
    expand to show what is inside a chapter before anyone downloads it.       */
 const CHAPTERS = [
   {
-    title: 'Front matter, contents, figures &amp; tables', part: 'Front', pages: '1–11',
-    file: '00-front-matter', pp: '12 pp',
+    title: 'Front matter, contents, figures &amp; tables', part: 'Front', pages: '1–5', start: 1,
+    excerpt: 'Front matter, the contents, and “How to Use This E-book” (p. 3), which sets out how the volume is meant to be read: a guided collection of adoptable exemplars rather than a linear textbook.',
     authors: '', inst: '',
     sections: [],
   },
   {
-    title: 'Chapter 0 — An Overview and Roadmap', part: 'Front', pages: '12–30',
-    file: '01-overview-roadmap', pp: '19 pp',
+    title: 'Chapter 0 — An Overview and Roadmap', part: 'Front', pages: '6–25', start: 6,
+    excerpt: 'Modern software is increasingly parallel, distributed, networked, event-driven, graphical, API-based, and data-intensive. However, introductory computing courses still commonly begin with a sequential-first model of computation which does not fully reflect the systems students encounter today. Students regularly use applications that depend on multicore processors, remote services, asynchronous events, large data streams, and libraries that hide complex computation.',
     authors: 'Sushil K. Prasad · Alan Sussman · Neena Thota · Ramachandran Vaidyanathan · Charles Weems', inst: 'UT San Antonio · Maryland · UMass Amherst · LSU',
     sections: [
       { n: '0.1', t: 'Introduction', sub: [] },
@@ -444,8 +446,9 @@ const CHAPTERS = [
     ],
   },
   {
-    title: 'Chapter 1 — Common CS1 Activities and Lessons', part: 'Part I · CS1', pages: '31–68',
-    file: '02-common-cs1', pp: '38 pp',
+    title: 'Chapter 1 — Common CS1 Activities and Lessons', part: 'Part I · CS1', pages: '27–63', start: 27,
+    excerpt: 'This chapter distills some common CS1 activities, implementation strategies, challenges, and lessons learned across the eight institutional CS1 exemplars in this volume. It serves as a shared resource chapter between the project overview in Chapter 0 and the institution-specific CS1 chapters 2–9 that follow. Rather than presenting a local course implementation, the chapter identifies activity families employed across multiple institutions and reusable guidance that cut across TNTECH, Knox, USI, UNL, Webster, Casper, HPU, and MSU.',
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     authors: 'April Crockett · Srishti Srivastava', inst: 'Tennessee Tech · Southern Indiana',
     sections: [
       { n: '1.1', t: 'Introduction', sub: [] },
@@ -458,8 +461,9 @@ const CHAPTERS = [
     ],
   },
   {
-    title: 'Chapter 2 — CS1: Tennessee Technological University', part: 'Part I · CS1', pages: '69–109',
-    file: '03-cs1-tntech', pp: '41 pp',
+    title: 'Chapter 2 — CS1: Tennessee Technological University', part: 'Part I · CS1', pages: '64–107', start: 64,
+    excerpt: 'This chapter presents a Computer Science introductory programming course (CS1) transformation at Tennessee Technological University (TNTECH) in the Department of Computer Science. This chapter also provides access to course materials so that other institutions may easily adopt and use the materials. Parallel and Distributed Computing (PDC) concepts were introduced into all sections of CS1 starting in Fall 2024 through lecture discussions, unplugged activities during lab class, and (plugged) programming assignments.',
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     authors: 'April R. Crockett · Gerald C. Gannod', inst: 'Tennessee Technological University',
     sections: [
       { n: '2.1', t: 'Introduction', sub: [] },
@@ -473,8 +477,9 @@ const CHAPTERS = [
     ],
   },
   {
-    title: 'Chapter 3 — CS1: Knox College', part: 'Part I · CS1', pages: '110–121',
-    file: '04-cs1-knox', pp: '12 pp',
+    title: 'Chapter 3 — CS1: Knox College', part: 'Part I · CS1', pages: '108–122', start: 108,
+    excerpt: 'Knox College hosted the Java-based development teams in this project. Its CS1 course was updated with three new activities: Unplugged Flag Maker Activity, Knoxcraft, and using Greenfoot as a game engine (Greenfoot Activity). These activities introduce the ideas of parallel execution and dependencies, give students experience interacting with a remote server, and has them write event-driven code.',
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     authors: 'David P. Bunde · Jaime Spacco', inst: 'Knox College',
     sections: [
       { n: '3.1', t: 'Introduction', sub: [] },
@@ -487,8 +492,9 @@ const CHAPTERS = [
     ],
   },
   {
-    title: 'Chapter 4 — CS1: University of Southern Indiana', part: 'Part I · CS1', pages: '122–163',
-    file: '05-cs1-usi', pp: '42 pp',
+    title: 'Chapter 4 — CS1: University of Southern Indiana', part: 'Part I · CS1', pages: '123–165', start: 123,
+    excerpt: 'The growing importance of parallel and distributed computing (PDC) in modern computing systems calls for early exposure to PDC concepts in undergraduate computer science education. Yet, introductory programming courses such as CS1 have traditionally focused on sequential programming paradigms, leaving students underprepared for the realities of contemporary computing environments. This chapter presents a course exemplar developed at the University of Southern Indiana (USI), in which a CS1 course titled, "Introduction to Object-Oriented Programming", was redesigned to include PDC concepts throughout a semester via experiential and active learning pedagogy.',
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     authors: 'Srishti Srivastava', inst: 'University of Southern Indiana',
     sections: [
       { n: '4.1', t: 'Introduction', sub: [] },
@@ -503,8 +509,9 @@ const CHAPTERS = [
     ],
   },
   {
-    title: 'Chapter 5 — CS1: University of Nebraska–Lincoln', part: 'Part I · CS1', pages: '164–178',
-    file: '06-cs1-unl', pp: '15 pp',
+    title: 'Chapter 5 — CS1: University of Nebraska–Lincoln', part: 'Part I · CS1', pages: '166–181', start: 166,
+    excerpt: 'At the University of Nebraska–Lincoln, Parallel and Distributed Computing (PDC) concepts were introduced into multiple sections of a Computer Science I (CS1) course using "codeless" modules consisting of visualizations, simulations, and demonstrations. These modules are codeless because they do not require students to write or understand code. Instead, students read a short introduction to a PDC concept and then engage with a web-based visualization and/or (code-based) demonstration reinforcing the concept.',
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     authors: 'Chris Bourke', inst: 'University of Nebraska–Lincoln',
     sections: [
       { n: '5.1', t: 'Introduction', sub: [] },
@@ -519,8 +526,9 @@ const CHAPTERS = [
     ],
   },
   {
-    title: 'Chapter 6 — CS1: Webster University', part: 'Part I · CS1', pages: '179–198',
-    file: '07-cs1-webster', pp: '20 pp',
+    title: 'Chapter 6 — CS1: Webster University', part: 'Part I · CS1', pages: '182–201', start: 182,
+    excerpt: 'This chapter presents a course transformation in an introductory computer science sequence (CS1) at Webster University, which is a primarily undergraduate institution, where Parallel and Distributed Computing (PDC) concepts are integrated without requiring prior background in systems or advanced mathematics. The target audience includes STEM undergraduates with little to no programming experience. The primary learning outcomes are for students to (1) understand core PDC ideas such as parallelism, speedup, and efficiency, (2) reason about workload distribution and performance trade-offs, and (3) connect conceptual understanding to simple implementations in C++.',
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     authors: 'Xiaoyuan (Sue) Suo · Peter Maher', inst: 'Webster University',
     sections: [
       { n: '6.1', t: 'Introduction', sub: [] },
@@ -535,8 +543,9 @@ const CHAPTERS = [
     ],
   },
   {
-    title: 'Chapter 7 — CS1: Casper College', part: 'Part I · CS1', pages: '199–230',
-    file: '08-cs1-casper', pp: '32 pp',
+    title: 'Chapter 7 — CS1: Casper College', part: 'Part I · CS1', pages: '202–235', start: 202,
+    excerpt: 'This chapter presents the integration of Parallel and Distributed Computing (PDC) concepts into an introductory computer science course (CS1) at Casper College, a two-year public institution. The primary goal was to embed foundational PDC topics into the existing curriculum without displacing traditional core content such as loops, arrays, functions, pointers, and classes. The pedagogical approach utilized a combination of unplugged activities, a custom digital textbook module, and plugged-in programming assignments in both C++ and Python.',
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     authors: 'Charlotte Gruner', inst: 'Casper College',
     sections: [
       { n: '7.1', t: 'Introduction', sub: [] },
@@ -550,8 +559,9 @@ const CHAPTERS = [
     ],
   },
   {
-    title: 'Chapter 8 — CS1: Hawai‘i Pacific University', part: 'Part I · CS1', pages: '231–267',
-    file: '09-cs1-hpu', pp: '37 pp',
+    title: 'Chapter 8 — CS1: Hawai‘i Pacific University', part: 'Part I · CS1', pages: '236–274', start: 236,
+    excerpt: 'This chapter describes how Hawai’i Pacific University (HPU) incorporated Parallel and Distributed Computing (PDC) concepts into sections of an introductory Computer Science I (CS1) course through unplugged and plugged-in learning activities centered on hands-on experiences that emphasized the PDC concepts being introduced. The activities were designed so that students did not need experience writing code in parallel. Instead, students first explored brief explanations of core PDC concepts and then participated in collaborative and interactive activities that allowed them to observe and discuss, the concepts.',
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     authors: 'Mary L. Smith', inst: 'Hawai‘i Pacific University',
     sections: [
       { n: '8.1', t: 'Introduction', sub: [] },
@@ -566,8 +576,9 @@ const CHAPTERS = [
     ],
   },
   {
-    title: 'Chapter 9 — CS1: Montclair State University', part: 'Part I · CS1', pages: '268–287',
-    file: '10-cs1-msu', pp: '20 pp',
+    title: 'Chapter 9 — CS1: Montclair State University', part: 'Part I · CS1', pages: '275–294', start: 275,
+    excerpt: 'This course exemplar describes the integration of an unplugged data-parallelism activity in CSIT 111, Fundamentals of Java Programming, a CS1-level Java programming course at Montclair State University. The activity uses a paper-based Flag Maker task, supported by short browser-based animations, to introduce students to foundational parallel and distributed computing (PDC) concepts without requiring specialized hardware, parallel programming libraries, or a separate programming assignment.',
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1',
     authors: 'Jiayin Wang · Michelle Zhu', inst: 'Montclair State University',
     sections: [
       { n: '9.1', t: 'Introduction', sub: [] },

@@ -53,8 +53,7 @@ lib/counters.php        download and visit counters (JSON store, file-locked)
 data/counters.json      the live tally; created automatically, never in git
 data/counters_example.json  the shape of that file, all zeros — tracked, for reference
 
-chapters/*.pdf          the volume split by chapter
-cder_exemplar_cs1_cs2.pdf   the full volume (288 pp)
+cder_exemplar_cs1_cs2.pdf   the full volume — the only published PDF
 
 .htaccess               pretty URLs, protects internals — ships ready to use
 deploy/
@@ -277,46 +276,58 @@ both in `assets/data.js`. The six cards in "What Actually Gets Taught" use the `
   Partners table on `project.php` and the team cards on `team.php`.
 - `ACTIVITIES[]` — the fourteen classroom activities, from Tables 1.1 and 1.2 of Chapter 1.
 - `CHAPTERS[]` — the chapter download table. Page numbers are printed page numbers.
-- `SITE` — repository URL, contact address, book filename and page count.
+- `SITE` — repository URL, contact address and book filename.
 
 Prose specific to one page is written directly in that page's PHP file.
 
 ---
 
+## Updating the PDF
+
+There is **one published PDF**: `cder_exemplar_cs1_cs2.pdf`. Chapters are not published separately —
+a chapter cut out of the volume loses the cross-references and the shared bibliography (pp. 295–300),
+so the site offers chapter-level access by opening the full file at the right page instead.
+
+To drop in a new build:
+
+1. Replace `cder_exemplar_cs1_cs2.pdf`, keeping the filename. The DOI, the counters and every link
+   on the site point at that name.
+2. Re-read the chapter start pages from the new file and update `pages` and `start` in `CHAPTERS[]`
+   in `assets/data.js`, and the page numbers in `EX[]`'s `ch` entries:
+
+   ```bash
+   python3 -c "
+   from pypdf import PdfReader
+   r = PdfReader('cder_exemplar_cs1_cs2.pdf')
+   for it in r.outline:
+       if not isinstance(it, list):
+           print(r.get_destination_page_number(it) + 1, it.title[:70])"
+   ```
+
+3. Check the chapter `excerpt` text still matches each abstract, and the `#chapters` note still
+   quotes the right bibliography pages.
+
+**Page counts are deliberately not stated anywhere on the site.** The figure moved from 288 to 291
+to 301 across three builds; a stale count in a citation is worse than no count. If the volume is
+frozen and a count is wanted, add it in one place and reference it, rather than typing it into copy.
+
+### Chapter-level links
+
+`download.php?f=book&p=64` counts the download and redirects to `…pdf#page=64`, which PDF viewers
+honour. The old per-chapter keys (`?f=03-cs1-tntech`) still resolve to the volume rather than 404ing,
+so links published before this change keep working.
+
+---
+
 ## When the CS2 release lands
 
-1. Replace `cder_exemplar_cs1_cs2.pdf` and re-split the chapters (below).
-2. Update `CHAPTERS[]` in `assets/data.js` with the new rows and page ranges.
+1. Replace `cder_exemplar_cs1_cs2.pdf` and update the page numbers as above.
+2. Update `CHAPTERS[]` in `assets/data.js` with the new rows, page ranges and abstracts.
 3. In each `EX[]` entry, add `'CS2'` to `course`, move the `cs2` activities from planned to shipped,
    and add the CS2 chapter to `ch`.
 4. Add a `course` facet back to `FACETS` in `data.js` so visitors can filter CS1 vs CS2.
-5. Replace the "in preparation" band in `ebook.php#cs2` and update the counts on the home page.
-
-### Re-splitting the PDF
-
-```bash
-pip install pypdf
-python3 - <<'EOF'
-from pypdf import PdfReader, PdfWriter
-SRC, OUT = "cder_exemplar_cs1_cs2.pdf", "chapters"
-# (name, first PDF page, last PDF page) — 1-based, inclusive
-SPEC = [("00-front-matter",1,12), ("01-overview-roadmap",13,31), ("02-common-cs1",32,69),
-        ("03-cs1-tntech",70,110), ("04-cs1-knox",111,122), ("05-cs1-usi",123,164),
-        ("06-cs1-unl",165,179), ("07-cs1-webster",180,199), ("08-cs1-casper",200,231),
-        ("09-cs1-hpu",232,268), ("10-cs1-msu",269,288)]
-r = PdfReader(SRC)
-for name, a, b in SPEC:
-    w = PdfWriter()
-    for i in range(a-1, b): w.add_page(r.pages[i])
-    w.compress_identical_objects()
-    with open(f"{OUT}/{name}.pdf", "wb") as f: w.write(f)
-EOF
-```
-
-Use `pypdf`, not `pdfunite` — the latter copies shared font resources into every split, which made
-each chapter larger than the whole book.
-
-Chapter filenames are the counter keys, so **renaming a chapter file resets its download count**.
+5. Replace the "in preparation" band in `ebook.php#cs2`, update the release note in the eBook hero,
+   and update the counts on the home page.
 
 ---
 

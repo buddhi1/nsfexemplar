@@ -1,7 +1,7 @@
 <?php
 $PAGE  = 'ebook';
 $PAGE_TITLE = 'The eBook';
-$DESC  = 'Search eight CS1 exemplars and fourteen classroom activities by language, institution type, activity style and duration. Download the full 288-page e-book or any chapter separately.';
+$DESC  = 'Search eight CS1 exemplars and fourteen classroom activities by language, institution type, activity style, duration and preparation level. Chapter summaries, teaching materials and the full e-book PDF.';
 include 'partials/header.php';
 ?>
 
@@ -12,7 +12,13 @@ include 'partials/header.php';
     <p class="eyebrow">The eBook</p>
     <h1 class="mt-3">Find the Exemplar or the Activity That Matches Your Course</h1>
     <p class="lede mt-4">Search by institution or by activity. Filter by language, institution type, activity
-      style and duration, then download just the chapter you need.</p>
+      style, duration and preparation level, then open the relevant chapter summary, the teaching materials,
+      or the full e-book.</p>
+    <p class="release-note mt-3">
+      <span class="pill pill--brand">Early release</span>
+      <span>The CS1 chapters are published and complete. CS2 chapters are expected soon &mdash; Part&nbsp;II of
+        the volume is currently a placeholder.</span>
+    </p>
     <!-- Row one identifies the volume, row two acts on it. -->
     <div class="cluster hero-meta">
       <button class="btn btn--quiet btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
@@ -24,8 +30,8 @@ include 'partials/header.php';
     </div>
 
     <div class="cluster hero-actions">
-      <a class="btn btn--primary" href="download.php?f=book">Download the full PDF · 288 pp</a>
-      <a class="btn btn--ghost" href="#chapters">Download by chapter</a>
+      <a class="btn btn--primary" href="download.php?f=book">Download the full e-book (PDF)</a>
+      <a class="btn btn--ghost" href="#chapters">Chapter summaries</a>
       <a class="btn btn--ghost" href="#repos">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4l2 2.5h7A1.5 1.5 0 0 1 19 10v7.5A1.5 1.5 0 0 1 17.5 19h-13A1.5 1.5 0 0 1 3 17.5Z"/></svg>
         Appendices &amp; material
@@ -65,6 +71,42 @@ include 'partials/header.php';
         and institutional assessment requirements remain current.</p>
     </div>
   </div>
+</div>
+
+<!-- ─────────────────────────────────────────────────── which path? ────── -->
+<div class="shell section--tight" id="paths">
+  <p class="eyebrow">Where to start</p>
+  <h2 class="mt-2">Which Path Should I Take?</h2>
+  <p class="lede mt-2">Five ways in, depending on what you came for. Each goes straight to the part of the
+    volume that answers it.</p>
+
+  <ol class="pathlist mt-4">
+    <li>
+      <span class="pathlist-want">I want one class activity</span>
+      <a class="pathlist-go" href="#activities">Start with the activity finder
+        <span class="tiny faint">14 activities, filterable</span></a>
+    </li>
+    <li>
+      <span class="pathlist-want">I want a lab or module</span>
+      <a class="pathlist-go" href="download.php?f=book&amp;p=27">Read Chapter 1, then compare two institutions
+        <span class="tiny faint">shared activity families, p.&nbsp;27</span></a>
+    </li>
+    <li>
+      <span class="pathlist-want">I want a course model</span>
+      <a class="pathlist-go" href="#chapters">Browse the institutional chapter summaries
+        <span class="tiny faint">eight CS1 exemplars</span></a>
+    </li>
+    <li>
+      <span class="pathlist-want">I want the teaching files</span>
+      <a class="pathlist-go" href="#materials">Go to the repositories
+        <span class="tiny faint">syllabi, handouts, starter code, data</span></a>
+    </li>
+    <li>
+      <span class="pathlist-want">I want the evidence</span>
+      <a class="pathlist-go" href="download.php?f=book&amp;p=14">Read the methodology and the chapter data sections
+        <span class="tiny faint">Chapter 0, p.&nbsp;14</span></a>
+    </li>
+  </ol>
 </div>
 
 <!-- ──────────────────────────────────────────────────────── explorer ──── -->
@@ -127,7 +169,7 @@ include 'partials/header.php';
     <strong>Most readers should start with Chapter 1.</strong> It distills the recurring activity families,
     shared PDC concepts, common implementation challenges and cross-institution lessons &mdash; then points
     into the institutional chapters for local implementation details.
-    <a href="download.php?f=02-common-cs1">Chapter 1 (PDF, 38 pp) &rarr;</a>
+    <a href="download.php?f=book&amp;p=27">Read Chapter 1 &rarr;</a>
   </div>
 </div>
 
@@ -174,29 +216,10 @@ include 'partials/header.php';
   </div>
 </div> -->
 
-<!-- ───────────────────────────────────────────────── chapter downloads ── -->
-<div class="shell section" id="chapters">
-  <p class="eyebrow">Download by chapter</p>
-  <h2 class="mt-2">Every Chapter as a Separate PDF</h2>
-  <p class="lede mt-2">Take only what you need. The full 288-page volume is also available if you want the
-    whole thing.</p>
-  <div class="table-wrap mt-4">
-    <table class="data data--chapters">
-      <caption>Chapter-level downloads. Page numbers refer to the printed pages of the first release.</caption>
-      <thead><tr><th scope="col">Chapter</th><th scope="col">Part</th><th scope="col">Pages</th><th scope="col">Downloads</th><th scope="col">Get it</th></tr></thead>
-      <tbody id="chapter-rows">
-        <tr><td colspan="5" class="small faint">Chapter list requires JavaScript &mdash;
-          <a href="download.php?f=book">download the full volume instead</a>.</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="cluster mt-4">
-    <a class="btn btn--primary" href="download.php?f=book">Download the complete e-book (PDF, 288 pp)</a>
-  </div>
-</div>
-
 <!-- ─────────────────────────────────────────────────────── repositories ── -->
 <div class="band band--sunken">
+  <!-- #repos is linked from other pages; #materials is the name used here -->
+  <span id="materials"></span>
   <div class="shell section" id="repos">
     <p class="eyebrow">Appendices &amp; GitHub</p>
     <h2 class="mt-2">Appendices and Instructional Material</h2>
@@ -263,16 +286,51 @@ include 'partials/header.php';
   </div>
 </div>
 
+<!-- ────────────────────────────────────────────────── chapter summaries ── -->
+<div class="shell section" id="chapters">
+  <p class="eyebrow">Chapter summaries</p>
+  <h2 class="mt-2">Chapter Summaries</h2>
+  <p class="lede mt-2">Every chapter, with its abstract, contents and authors, so you can see what is in the
+    volume before opening it. Each one links to its own first page in the full PDF and to the teaching
+    material that goes with it.</p>
+
+  <div class="callout callout--info mt-4">
+    <strong>The full PDF is the official version of record.</strong> It is a single volume with complete
+    cross-references between chapters, a shared bibliography (pp.&nbsp;295&ndash;300) and an index of terms.
+    Chapters are not published as standalone files, because a chapter cut out of the volume loses both. The
+    summaries below are here so you can find the right chapter quickly, then open the volume at that page.
+  </div>
+
+  <div class="table-wrap mt-4">
+    <table class="data data--chapters">
+      <caption>Page numbers refer to the pages of the current release.</caption>
+      <thead><tr><th scope="col">Chapter</th><th scope="col">Part</th><th scope="col">Pages</th><th scope="col">Open</th></tr></thead>
+      <tbody id="chapter-rows">
+        <tr><td colspan="4" class="small faint">The chapter list requires JavaScript &mdash;
+          <a href="download.php?f=book">open the full volume instead</a>, which carries the same contents.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cluster mt-4">
+    <a class="btn btn--primary" href="download.php?f=book">Download the full e-book (PDF)</a>
+    <a class="btn btn--ghost" href="#materials">Open teaching materials</a>
+  </div>
+</div>
+
 
 <!-- ──────────────────────────────────────────────────────── citation ──── -->
 <div class="shell section--tight" id="cite">
   <div class="cite-card">
     <div>
       <p class="eyebrow">Cite this volume</p>
-      <p class="tiny faint mt-2">Copy it, or select the text if you would rather edit it into your own
-        style. This is the wording the project uses, so please keep it as it stands.</p>
+      <p class="tiny faint mt-2">Copy either form, or select the text if you would rather edit it into your
+        own style. The plain-text wording is what the project uses, so please keep it as it stands.</p>
+      <p class="tiny faint mt-3">The DOI identifies the e-book as a whole and resolves to its landing page,
+        not to any single chapter. Cite chapters by their number within the volume.</p>
+      <div class="mt-3"><?= doi_badge($DOI, $DOI_URL) ?></div>
     </div>
     <div>
+      <p class="cite-label">Plain text</p>
       <p class="cite-text" data-cite-text><?= e($CITATION) ?></p>
       <div class="cluster mt-3">
         <button class="btn btn--primary btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
@@ -281,7 +339,16 @@ include 'partials/header.php';
           <span data-copy-label>Copy citation</span>
         </button>
         <a class="btn btn--ghost btn--sm" href="download.php?f=book">Download the volume</a>
-        <?= doi_badge($DOI, $DOI_URL) ?>
+      </div>
+
+      <p class="cite-label mt-5">BibTeX</p>
+      <pre class="cite-code"><code><?= e($BIBTEX) ?></code></pre>
+      <div class="cluster mt-3">
+        <button class="btn btn--primary btn--sm" type="button" data-copy="<?= e($BIBTEX) ?>"
+                data-copy-noun="BibTeX" aria-label="Copy the BibTeX entry">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          <span data-copy-label>Copy BibTeX</span>
+        </button>
       </div>
     </div>
   </div>
@@ -332,10 +399,5 @@ include 'partials/header.php';
   </form>
   <div class="sheet-body" id="ex-dialog-body"></div>
 </dialog>
-
-<script>
-/* Download tallies, rendered server-side so the table can show them. */
-const DOWNLOADS = <?= json_encode($COUNTS['downloads'] ?? [], JSON_UNESCAPED_SLASHES) ?>;
-</script>
 
 <?php include 'partials/footer.php'; ?>

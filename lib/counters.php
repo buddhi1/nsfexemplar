@@ -107,11 +107,23 @@ function counters_bump_download(string $key): void {
 
 function counters_download_target(string $key): ?string {
     $root = __DIR__ . '/..';
-    if ($key === 'book') {
-        return is_file("$root/" . BOOK_FILE) ? BOOK_FILE : null;
-    }
-    if (!preg_match('/^[A-Za-z0-9._-]+$/', $key) || str_contains($key, '..')) return null;
-    return is_file("$root/chapters/$key.pdf") ? "chapters/$key.pdf" : null;
+    if (!is_file("$root/" . BOOK_FILE)) return null;
+    /* One published file now. Chapters used to be served separately; those keys
+       still resolve to the volume so older links and bookmarks keep working
+       rather than 404ing, and they keep counting under their own name. */
+    if ($key === 'book' || preg_match('/^\d{2}-[a-z0-9-]+$/', $key)) return BOOK_FILE;
+    return null;
+}
+
+/**
+ * Page to open the volume at. PDF viewers honour #page=N, which is how the
+ * site offers chapter-level access without publishing chapter extracts.
+ * Bounded so a crafted value cannot produce a silly fragment.
+ */
+function counters_download_page(string $raw): ?int {
+    if ($raw === '' || !ctype_digit($raw)) return null;
+    $n = (int) $raw;
+    return ($n >= 1 && $n <= 9999) ? $n : null;
 }
 
 /** Convenience for templates: downloads for one key. */

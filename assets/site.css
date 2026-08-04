@@ -422,6 +422,32 @@
   .hero-meta + .hero-actions { margin-block-start: var(--sp-3); }
   .hero-meta .doi { min-block-size: 2.25rem; }
 
+  /* Release status, stated plainly under the hero lede. */
+  .release-note {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem;
+    max-inline-size: 68ch; font-size: 0.88rem; color: var(--fg-muted);
+  }
+
+  /* "Which path should I take?" — a want on the left, where it leads on the
+     right. Two columns where there is room, stacked pairs where there is not. */
+  .pathlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .pathlist > li {
+    display: grid; gap: 0.35rem var(--sp-5); align-items: baseline;
+    grid-template-columns: minmax(0, 22ch) minmax(0, 1fr);
+    padding-block: var(--sp-3);
+    border-block-start: 1px solid var(--line);
+  }
+  .pathlist > li:last-child { border-block-end: 1px solid var(--line); }
+  .pathlist-want { font-weight: 600; color: var(--fg); }
+  .pathlist-want::before { content: "\201c"; }
+  .pathlist-want::after  { content: "\201d"; }
+  .pathlist-go { font-weight: 600; text-decoration: none; }
+  .pathlist-go:hover { text-decoration: underline; }
+  .pathlist-go .tiny { display: block; font-weight: 400; }
+  @media (width < 40rem) {
+    .pathlist > li { grid-template-columns: 1fr; }
+  }
+
   /* Landing hero: two columns so the headline never leaves half the fold empty */
   .hero--split .hero-grid {
     display: grid; gap: var(--sp-6);
@@ -634,7 +660,6 @@
   .usage-foot { grid-column: 1 / -1; margin: 0; font-size: 0.85rem; }
   .usage-foot a { font-weight: 600; text-decoration: none; }
   .usage-foot a:hover { text-decoration: underline; }
-  .dl-count { font-variant-numeric: tabular-nums; }
 
   /* --- cards --- */
   .card {
@@ -754,6 +779,20 @@
     border-radius: var(--radius-l);
   }
   @media (width < 56rem) { .cite-card { grid-template-columns: minmax(0, 1fr); } }
+  .cite-label {
+    margin: 0 0 var(--sp-2); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-faint);
+  }
+  /* BibTeX must not be re-wrapped — the entry is copied verbatim, so it
+     scrolls sideways in its own box rather than reflowing. */
+  .cite-code {
+    margin: 0; padding: var(--sp-3); overflow-x: auto;
+    background: var(--bg-sunken); border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.55;
+    color: var(--fg); tab-size: 2;
+  }
+  .cite-code code { font: inherit; color: inherit; background: none; padding: 0; }
   .cite-text {
     margin: 0; padding: var(--sp-3);
     background: var(--bg-sunken); border: 1px solid var(--line);
@@ -779,6 +818,10 @@
     display: inline-flex; align-items: center; gap: 0.4rem;
     border: 0; 
     /* padding: 0.42rem 0.6rem;  */
+    /* Block padding is commented out above to keep the badge tight. Without it
+       the control is 16px tall, under the 24px WCAG 2.5.8 floor, so the height
+       is set as a minimum instead — same look, legal target. */
+    min-block-size: 1.5rem; padding-inline: 0.6rem;
     cursor: pointer;
     font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.15;
     background: var(--brand-tint); color: var(--brand-deep);
@@ -1177,6 +1220,18 @@
   .ch-authors .ch-inst::before { content: "— "; }
 
   /* one section per line, single column */
+  /* The chapter abstract, lifted from the volume so readers can judge a
+     chapter without opening it. */
+  .ch-excerpt {
+    margin: 0 0 var(--sp-3); max-inline-size: 78ch;
+    font-size: 0.9rem; line-height: 1.6; color: var(--fg-muted);
+    padding-inline-start: var(--sp-3);
+    border-inline-start: 2px solid color-mix(in oklab, var(--brand) 35%, transparent);
+  }
+  .ch-links {
+    display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-4);
+    margin-block-start: var(--sp-3); font-size: 0.86rem; font-weight: 600;
+  }
   .ch-sections { list-style: none; margin: 0; padding: 0; }
   .ch-sections .sec { border-block-start: 1px solid color-mix(in oklab, var(--line) 60%, transparent); }
   .ch-sections .sec:first-child { border-block-start: 0; }
