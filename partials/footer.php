@@ -6,7 +6,7 @@
    Closes <body>/<html>, so nothing should follow the include on a page.
    ========================================================================== */
 
-$CONTACT = 'contact@nsfexemplar.cdercenter.org';
+$CONTACT = CONTACT_EMAIL;   /* declared in lib/contact.php */
 $REPO    = 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main';
 $DISCORD = 'https://discord.gg/xdh3uvD3b';
 
@@ -29,6 +29,7 @@ $FOOTER_COLS = [
         ['research.php#presentations', 'Presentations'],
         ['research.php#methodology',   'Methodology'],
         ['team.php#authors',           'Authors'],
+        ['contact.php',                'Adoption &amp; contact'],
     ],
     'CDER Center' => [
         ['https://cdercenter.org/',                'Center home'],

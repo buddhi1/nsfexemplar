@@ -297,6 +297,37 @@ include 'partials/header.php';
   </div>
 </div>
 
+<!-- ────────────────────────────────────────────────────── get in touch ─── -->
+<div class="band band--feature">
+  <div class="shell section--tight" id="contact">
+    <div class="grid grid--halves">
+      <div class="prose">
+        <p class="eyebrow">Get in touch</p>
+        <h2 class="mt-2">Thinking of Adopting Something?</h2>
+        <p>The material is free and needs no permission to use. Tell us what you are considering and we can
+          point you at the right chapter, help you scope a first adoption, or arrange a short consultation.</p>
+        <p class="muted">Knowing where the exemplars travel also lets the project report honestly to NSF on
+          what came of the work.</p>
+      </div>
+      <div class="panel">
+        <div class="cluster">
+          <a class="btn btn--primary" href="contact.php">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6.5h16v11H4z"/><path d="m4 7 8 6 8-6"/></svg>
+            Request adoption help
+          </a>
+          <a class="btn btn--ghost" href="https://discord.gg/xdh3uvD3b">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M19.27 5.33A16.6 16.6 0 0 0 15.2 4.1a.06.06 0 0 0-.07.03c-.18.31-.38.72-.51 1.04a15.4 15.4 0 0 0-4.24 0c-.14-.33-.34-.73-.52-1.04a.06.06 0 0 0-.07-.03 16.55 16.55 0 0 0-4.07 1.23.06.06 0 0 0-.03.02C2.98 9.15 2.27 12.85 2.62 16.5a.07.07 0 0 0 .03.05 16.7 16.7 0 0 0 5 2.5.07.07 0 0 0 .07-.02c.39-.52.73-1.07 1.02-1.65a.06.06 0 0 0-.03-.09c-.54-.2-1.05-.45-1.55-.73a.06.06 0 0 1 0-.11l.3-.24a.06.06 0 0 1 .07 0 11.9 11.9 0 0 0 10.02 0 .06.06 0 0 1 .07 0l.31.24a.06.06 0 0 1 0 .11c-.5.29-1.01.53-1.55.73a.06.06 0 0 0-.04.09c.3.58.64 1.13 1.02 1.65a.07.07 0 0 0 .08.02 16.65 16.65 0 0 0 5-2.5.07.07 0 0 0 .03-.05c.42-4.22-.69-7.89-2.93-11.15a.05.05 0 0 0-.03-.02ZM8.85 14.28c-.98 0-1.79-.9-1.79-2.01 0-1.11.79-2.01 1.79-2.01 1.01 0 1.81.91 1.8 2.01 0 1.11-.8 2.01-1.8 2.01Zm6.31 0c-.98 0-1.79-.9-1.79-2.01 0-1.11.79-2.01 1.79-2.01 1.01 0 1.81.91 1.8 2.01 0 1.11-.79 2.01-1.8 2.01Z"/></svg>
+            Join the Discord
+          </a>
+        </div>
+        <p class="small muted mt-4">Prefer plain email? Write to
+          <a href="mailto:<?= e(CONTACT_EMAIL) ?>"><?= e(CONTACT_EMAIL) ?></a>. Every route reaches the
+          same people.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <?php include 'partials/footer.php'; ?>

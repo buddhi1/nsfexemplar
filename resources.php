@@ -16,28 +16,6 @@ include 'partials/header.php';
   </div>
 </section>
 
-<!-- ──────────────────────────────────────────────────────── citation ──── -->
-<div class="shell section--tight" id="cite">
-  <div class="cite-card">
-    <div>
-      <p class="eyebrow">Cite this volume</p>
-      <p class="tiny faint mt-2">Copy it, or select the text if you would rather edit it into your own
-        style. This is the wording the project uses, so please keep it as it stands.</p>
-    </div>
-    <div>
-      <p class="cite-text" data-cite-text><?= e($CITATION) ?></p>
-      <div class="cluster mt-3">
-        <button class="btn btn--primary btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
-                aria-label="Copy citation">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-          <span data-copy-label>Copy citation</span>
-        </button>
-        <a class="btn btn--ghost btn--sm" href="download.php?f=book">Download the volume</a>
-        <?= doi_badge($DOI, $DOI_URL) ?>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ────────────────────────────────────────────────────── assessments ─── -->
 <div class="shell section" id="assessments">

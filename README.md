@@ -31,6 +31,8 @@ stylesheet, two scripts. Upload the folder to any host with PHP and it works.
 ```
 index.php · project.php · ebook.php · team.php · research.php · resources.php
                         the six pages, one per nav item
+contact.php             adoption / contact form — linked from the project page and
+                        the footer, deliberately not a nav item
 download.php            counted download endpoint — every PDF link goes through it
 
 partials/
@@ -50,6 +52,7 @@ assets/
   book_cover/           the front cover shown in "Featured e-book" on the home page
 
 lib/counters.php        download and visit counters (JSON store, file-locked)
+lib/contact.php         contact form: validation, spam traps, mail()
 data/counters.json      the live tally; created automatically, never in git
 data/counters_example.json  the shape of that file, all zeros — tracked, for reference
 
@@ -328,6 +331,32 @@ so links published before this change keep working.
 4. Add a `course` facet back to `FACETS` in `data.js` so visitors can filter CS1 vs CS2.
 5. Replace the "in preparation" band in `ebook.php#cs2`, update the release note in the eBook hero,
    and update the counts on the home page.
+
+---
+
+## The adoption / contact form
+
+`contact.php` posts to itself and re-renders server-side, so it works with JavaScript off. Delivery is
+plain `mail()` to `CONTACT_EMAIL` in `lib/contact.php` — the one place the address is written; the
+footer and every page read it from there.
+
+Three spam traps, no CAPTCHA and no third-party service:
+
+| Trap | What it catches |
+|---|---|
+| Honeypot field | Anything that fills in a field positioned off-screen and hidden from assistive tech |
+| Minimum fill time | Posts arriving less than `CONTACT_MIN_SEC` after the form was rendered |
+| Per-session token | Replays and cross-site posts; also stops one submission being sent twice |
+
+All three fail as the same generic message, so a bot learns nothing about which one caught it, and a
+person who trips one still sees the email address.
+
+**If mail is not going out**, the page says so and shows the address instead of pretending it worked.
+Check with your host that `mail()` is enabled — it is on essentially every cPanel plan. The envelope
+`From` is `no-reply@<your domain>`, never the visitor's address, because sending as the visitor fails
+SPF and gets the message dropped silently; their address is in `Reply-To`.
+
+To change the fields, edit the form in `contact.php` and the matching lines in `contact_handle()`.
 
 ---
 

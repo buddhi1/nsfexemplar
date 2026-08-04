@@ -13,6 +13,7 @@
 /* Counters: one visit per session, and the figures for any page that shows
    them. Never fatal — if data/ is not writable it simply stops counting. */
 require_once __DIR__ . '/../lib/counters.php';
+require_once __DIR__ . '/../lib/contact.php';   /* CONTACT_EMAIL, form handling */
 counters_bump_visit();
 $COUNTS = counters_read();
 

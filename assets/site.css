@@ -479,7 +479,11 @@
   .hero-grid:not(:has(.showcase-track)) .showcase { display: none; }
   /* Interior page heroes stay single-column and shallower */
   .hero--page { padding-block: clamp(2.25rem, 1.5rem + 4vw, 4rem); }
-  .hero--page h1 { max-inline-size: 20ch; }
+  /* Interior headings ran to 20ch — under half the shell — which pushed every
+     one of them onto three lines and wasted the vertical space. Matched to the
+     home page's 34ch, with the lede widened to suit. */
+  .hero--page h1 { max-inline-size: 34ch; }
+  .hero--page .lede { max-inline-size: 72ch; }
 
   /* --- Flag Maker hero visual ------------------------------------------
      A 12x8 grid standing in for the flag of Mauritius. Cells fill in the
@@ -1606,6 +1610,41 @@
     .to-top { transition: opacity 0.01ms; translate: none; scale: none; }
     .to-top:hover svg { animation: none; }
   }
+  /* --- adoption / contact form ---------------------------------------------
+     Plain stacked fields. Nothing here is JavaScript-dependent: the form posts
+     and re-renders server-side, errors and all. */
+  .form { display: grid; gap: var(--sp-4); }
+  .field { display: grid; gap: 0.35rem; border: 0; padding: 0; margin: 0; min-inline-size: 0; }
+  .field > label, .field > legend { font-size: 0.86rem; font-weight: 600; color: var(--fg); padding: 0; }
+  .field .req { color: var(--brand); }
+  .field input[type="text"], .field input[type="email"], .field textarea {
+    inline-size: 100%; padding: 0.6rem 0.75rem;
+    font: inherit; font-size: 0.92rem; color: var(--fg);
+    background: var(--bg); border: 1px solid var(--line-strong);
+    border-radius: var(--radius-s);
+    transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  }
+  .field textarea { resize: vertical; min-block-size: 5.5rem; }
+  .field :is(input, textarea):focus-visible {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 22%, transparent);
+    outline: none;
+  }
+  .field :is(input, textarea)[aria-invalid="true"] { border-color: var(--brand-deep); }
+  .field-err { margin: 0; font-size: 0.82rem; font-weight: 600; color: var(--brand-deep); }
+  .field-row { display: grid; gap: var(--sp-4); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (width < 34rem) { .field-row { grid-template-columns: 1fr; } }
+  .checks { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  /* The label is the target for the checkbox inside it, so it carries the
+     24px minimum — a single line of 0.9rem text is only 22px. */
+  .check { display: flex; gap: 0.55rem; align-items: start; font-size: 0.9rem;
+           color: var(--fg-muted); min-block-size: 1.5rem; padding-block: 0.1rem; }
+  .check input { margin-block-start: 0.15rem; inline-size: 1rem; block-size: 1rem; flex: none; }
+  /* The honeypot must be reachable by a bot parsing the DOM but invisible and
+     unfocusable for everyone else — so it is moved off-screen, not display:none,
+     which some bots detect and skip. */
+  .hp { position: absolute; inset-inline-start: -9999px; inline-size: 1px; block-size: 1px; overflow: hidden; }
+
   @media print { .to-top { display: none !important; } }
 
   /* --- target size (WCAG 2.5.8) ---------------------------------------------

@@ -265,20 +265,26 @@ include 'partials/header.php';
           repository. These are worth reading alongside that chapter&rsquo;s appendix.</p>
         <dl class="deflist mt-4">
           <div>
+            <dt>TNTECH</dt>
+            <dd>The team&rsquo;s own copy of the CS1 material, including the Flag Maker grids and slides:
+              <a href="https://github.com/cscaprilcrockett/CDER_TNTECH_CS1">cscaprilcrockett/CDER_TNTECH_CS1</a>.</dd>
+          </div>
+          <div>
             <dt>UNL</dt>
             <dd>Codeless modules, with a live demo at
               <a href="https://go.unl.edu/PDCatUNL">go.unl.edu/PDCatUNL</a> and source at
-              <a href="https://github.com/cbourke/PDCatUNL">cbourke/PDCatUNL</a>.</dd>
+              <a href="https://github.com/cbourke/PDCatUNL">cbourke/PDCatUNL</a>. The course itself is at
+              <a href="https://github.com/cbourke/ComputerScienceI">cbourke/ComputerScienceI</a>.</dd>
+          </div>
+          <div>
+            <dt>Webster</dt>
+            <dd>Browser-based parallel visualizations used in the flag-colouring activity:
+              <a href="https://github.com/xiaoyuansuo51-webster/Flag_Coloring_Activity">xiaoyuansuo51-webster/Flag_Coloring_Activity</a>.</dd>
           </div>
           <div>
             <dt>Casper</dt>
             <dd>A custom zyBooks section at
               <a href="https://github.com/charlottegruner/CDER_CC_CS1">charlottegruner/CDER_CC_CS1</a>.</dd>
-          </div>
-          <div>
-            <dt>Webster</dt>
-            <dd>Teaching material at
-              <a href="https://github.com/xiaoyuansuo51-webster/teaching-PDC-HPC">xiaoyuansuo51-webster/teaching-PDC-HPC</a>.</dd>
           </div>
         </dl>
       </article>
