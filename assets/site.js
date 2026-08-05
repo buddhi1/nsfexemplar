@@ -794,7 +794,9 @@
         <div class="grid mt-3" style="gap:.75rem">
           ${r.team.map((p) => `<div class="person"><span class="avatar" aria-hidden="true">${initials(p)}</span><span><span class="who">${esc(p)}</span><span class="where">${r.lang.map(esc).join(' / ')} · ${esc(r.setting)}</span></span></div>`).join('')}
         </div>
-        <p class="card-foot"><a href="ebook.php#chapters">${esc(r.ch[0][0])}</a> · <a href="${esc(r.repo)}">Repository</a></p>
+        <p class="card-foot"><a href="download.php?f=book&p=${r.ch[0][1]}">${esc(r.ch[0][0])} &middot; p.&nbsp;${r.ch[0][1]}</a>
+          &middot; <a href="ebook.php#chapters">summary</a>
+          &middot; <a href="${esc(r.repo)}">materials</a></p>
       </article>`).join('');
   })();
 

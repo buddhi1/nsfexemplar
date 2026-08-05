@@ -314,9 +314,10 @@ To drop in a new build:
 3. Check the chapter `excerpt` text still matches each abstract, and the `#chapters` note still
    quotes the right bibliography pages.
 
-**Page counts are deliberately not stated anywhere on the site.** The figure moved from 288 to 291
-to 301 across three builds; a stale count in a citation is worse than no count. If the volume is
-frozen and a count is wanted, add it in one place and reference it, rather than typing it into copy.
+**Page counts move with every build** — 288, then 291, then 301, then 302 across four. Only the home
+page metric states one, and every page anchor is derived from the file rather than typed in. Re-run the
+boundary scan above after any new build; chapter starts shifted by one page between the 301 and 302
+builds, which silently sent every `?p=` link to the wrong page until it was checked.
 
 ### Chapter-level links
 

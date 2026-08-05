@@ -42,13 +42,30 @@ include 'partials/header.php';
           institution-specific chapters. Rather than presenting another local implementation, it identifies
           the recurring activity families and reusable guidance that cut across all eight exemplars &mdash;
           and it is the chapter most readers should start from.</p>
-        <p class="muted">It was written jointly by authors from a development team and a testing team, which
-          is why it reflects both building the material and adopting someone else&rsquo;s.</p>
-        <p><a href="download.php?f=book&amp;p=27">Chapter 1 in the e-book &rarr;</a></p>
+        <p class="muted">It is the volume&rsquo;s most broadly authored chapter &mdash; seventeen authors
+          drawn from every development team, every testing team and the backbone team, which is why it
+          reflects both building the material and adopting someone else&rsquo;s.</p>
+        <p><a href="download.php?f=book&amp;p=26">Chapter 1 in the e-book &rarr;</a>
+          &middot; <a href="ebook.php#chapters">chapter summary</a></p>
       </div>
-      <div class="grid" style="align-content:start">
-        <div class="card person"><span class="avatar" aria-hidden="true">AC</span><span><span class="who">April Crockett</span><span class="where">Tennessee Technological University · Development team</span></span></div>
-        <div class="card person"><span class="avatar" aria-hidden="true">SS</span><span><span class="who">Srishti Srivastava</span><span class="where">University of Southern Indiana · Testing team</span></span></div>
+      <div class="grid" style="align-content:start; gap:.6rem">
+          <div class="card person"><span class="avatar" aria-hidden="true">AC</span><span><span class="who">April R. Crockett</span><span class="where">Tennessee Technological University</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">SS</span><span><span class="who">Srishti Srivastava</span><span class="where">University of Southern Indiana</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">DB</span><span><span class="who">David P. Bunde</span><span class="where">Knox College</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">XS</span><span><span class="who">Xiaoyuan Suo</span><span class="where">Webster University</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">CG</span><span><span class="who">Charlotte Gruner</span><span class="where">Casper College</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">JS</span><span><span class="who">Jaime Spacco</span><span class="where">Knox College</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">MS</span><span><span class="who">Mary L. Smith</span><span class="where">Hawai&rsquo;i Pacific University</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">JW</span><span><span class="who">Jiayin Wang</span><span class="where">Montclair State University</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">CB</span><span><span class="who">Chris Bourke</span><span class="where">University of Nebraska&ndash;Lincoln</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">MZ</span><span><span class="who">Michelle Zhu</span><span class="where">Kennesaw State University</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">PM</span><span><span class="who">Peter Maher</span><span class="where">Webster University</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">GG</span><span><span class="who">Gerald C. Gannod</span><span class="where">Tennessee Technological University</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">AS</span><span><span class="who">Alan Sussman</span><span class="where">University of Maryland, College Park</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">NT</span><span><span class="who">Neena Thota</span><span class="where">University of Massachusetts Amherst</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">CW</span><span><span class="who">Charles Weems</span><span class="where">University of Massachusetts Amherst</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">RV</span><span><span class="who">Ramachandran Vaidyanathan</span><span class="where">Louisiana State University</span></span></div>
+          <div class="card person"><span class="avatar" aria-hidden="true">SP</span><span><span class="who">Sushil K. Prasad</span><span class="where">University of Texas at San Antonio</span></span></div>
       </div>
     </div>
   </div>

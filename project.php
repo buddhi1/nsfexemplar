@@ -23,12 +23,15 @@ include 'partials/header.php';
     <div class="prose">
       <p class="eyebrow">Goals</p>
       <h2 class="mt-2">The Problem, Stated Plainly</h2>
-      <p>The CDER Center ran a series of NSF-supported stakeholder workshops from 2020 to 2023 examining the
-        systemic barriers to broader PDC adoption. Employer stakeholders &mdash; including national labs and
+      <p>The CDER Center ran a series of stakeholder workshops from 2020 to 2023, supported by NSF
+        CyberTraining Institute Conceptualization Award
+        <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2002649">#2002649</a>, examining the
+        systemic barriers to broader PDC adoption &mdash; among them the continued dominance of a sequential
+        model of computation in early courses. Employer stakeholders &mdash; including national labs and
         agencies &mdash; reported that computer science and engineering students are not graduating with a
-        sufficient grasp of the modern software development process, which relies on parallelism,
-        distribution, asynchrony, scaling, integration across disparate libraries and data sources,
-        test-driven design and pervasive security concerns.</p>
+        sufficient grasp of the software development process for the modern computing ecosystem, which
+        relies on parallelism, distribution, asynchrony, scaling, integration across disparate libraries and
+        data sources, test-driven design and pervasive concerns for security.</p>
       <p>The lack of preparation is rooted in an obsolete algorithmic model of computing &mdash; sequential,
         synchronous, with text-based I/O &mdash; that instruction relies on from introductory programming
         through data structures, algorithms and software engineering. Once that model is entrenched, students
@@ -36,8 +39,11 @@ include 'partials/header.php';
       <p>Education stakeholders said changing the model is nearly impossible because of a lack of exemplars,
         few teaching materials, little instructor training in modern computing, and little evidence that
         changing the model benefits students. Perhaps the greatest impediment is that academic stakeholders
-        find it difficult to visualize what a different approach would look like. What the workshops heard
-        repeatedly was: <em>&ldquo;someone else needs to go first.&rdquo;</em></p>
+        find it difficult to visualize what a different approach would look like &mdash; and most feel such a
+        change is simply not possible. What the workshops heard repeatedly was:
+        <em>&ldquo;someone else needs to go first.&rdquo;</em></p>
+      <p class="small faint"><a href="download.php?f=book&amp;p=9">Read this in full &mdash; Chapter 0
+        &sect;&thinsp;0.1, p.&nbsp;9 &rarr;</a></p>
     </div>
     <ol class="goal-list">
       <li><span class="goal-n">1</span><span><b>Build</b> a modern first-year sequence around a computing

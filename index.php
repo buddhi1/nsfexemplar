@@ -126,7 +126,7 @@ include 'partials/header.php';
     <div class="metric"><span class="metric-value">8</span><span class="metric-label">CS1 exemplars</span></div>
     <div class="metric"><span class="metric-value">17</span><span class="metric-label">Activities</span></div>
     <div class="metric"><span class="metric-value">4</span><span class="metric-label">Languages</span></div>
-    <div class="metric"><span class="metric-value">301</span><span class="metric-label">Pages, free</span></div>
+    <div class="metric"><span class="metric-value">302</span><span class="metric-label">Pages, free</span></div>
     <div class="metric"><span class="metric-value">10</span><span class="metric-label">Chapters</span></div>
   </div>
 </div>
@@ -158,7 +158,7 @@ include 'partials/header.php';
       <h3>Course-level infusion</h3>
       <p>Scan the descriptor elements and course-change sections, study the chapters closest to your
         local course, then work from the appendices and repositories.</p>
-      <a href="download.php?f=book&amp;p=6" target="_blank">Chapter 0 &mdash; roadmap &rarr;</a>
+      <a href="download.php?f=book&amp;p=5" target="_blank">Chapter 0 &mdash; roadmap &rarr;</a>
     </div>
   </div>
 
@@ -319,7 +319,7 @@ include 'partials/header.php';
 
     <div class="cluster mt-5">
       <a class="btn btn--primary" href="ebook.php#activities">Browse all 17 activities</a>
-      <a class="btn btn--ghost" href="download.php?f=book&amp;p=27">Chapter 1 &mdash; Common CS1 activities</a>
+      <a class="btn btn--ghost" href="download.php?f=book&amp;p=26">Chapter 1 &mdash; Common CS1 activities</a>
     </div>
   </div>
 </div>

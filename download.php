@@ -3,7 +3,7 @@
    Counted download endpoint.
 
      download.php?f=book                 → cder_exemplar_cs1_cs2.pdf
-     download.php?f=book&p=64            → cder_exemplar_cs1_cs2.pdf#page=64
+     download.php?f=book&p=63            → cder_exemplar_cs1_cs2.pdf#page=63
      download.php?f=03-cs1-tntech        → the volume. Chapters are no longer
                                            published separately; the old keys
                                            still resolve so existing links and

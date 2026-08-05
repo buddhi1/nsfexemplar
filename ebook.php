@@ -88,8 +88,8 @@ include 'partials/header.php';
     </li>
     <li>
       <span class="pathlist-want">I want a lab or module</span>
-      <a class="pathlist-go" href="download.php?f=book&amp;p=27">Read Chapter 1, then compare two institutions
-        <span class="tiny faint">shared activity families, p.&nbsp;27</span></a>
+      <a class="pathlist-go" href="download.php?f=book&amp;p=26">Read Chapter 1, then compare two institutions
+        <span class="tiny faint">shared activity families, p.&nbsp;26</span></a>
     </li>
     <li>
       <span class="pathlist-want">I want a course model</span>
@@ -103,8 +103,8 @@ include 'partials/header.php';
     </li>
     <li>
       <span class="pathlist-want">I want the evidence</span>
-      <a class="pathlist-go" href="download.php?f=book&amp;p=14">Read the methodology and the chapter data sections
-        <span class="tiny faint">Chapter 0, p.&nbsp;14</span></a>
+      <a class="pathlist-go" href="download.php?f=book&amp;p=13">Read the methodology and the chapter data sections
+        <span class="tiny faint">Chapter 0, p.&nbsp;13</span></a>
     </li>
   </ol>
 </div>
@@ -169,7 +169,7 @@ include 'partials/header.php';
     <strong>Most readers should start with Chapter 1.</strong> It distills the recurring activity families,
     shared PDC concepts, common implementation challenges and cross-institution lessons &mdash; then points
     into the institutional chapters for local implementation details.
-    <a href="download.php?f=book&amp;p=27">Read Chapter 1 &rarr;</a>
+    <a href="download.php?f=book&amp;p=26">Read Chapter 1 &rarr;</a>
   </div>
 </div>
 
@@ -302,7 +302,7 @@ include 'partials/header.php';
 
   <div class="callout callout--info mt-4">
     <strong>The full PDF is the official version of record.</strong> It is a single volume with complete
-    cross-references between chapters, a shared bibliography (pp.&nbsp;295&ndash;300) and an index of terms.
+    cross-references between chapters, a shared bibliography (pp.&nbsp;296&ndash;301) and an index of terms.
     Chapters are not published as standalone files, because a chapter cut out of the volume loses both. The
     summaries below are here so you can find the right chapter quickly, then open the volume at that page.
   </div>

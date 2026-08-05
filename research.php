@@ -135,7 +135,7 @@ include 'partials/header.php';
           with pre-to-post gains on four PDC measures including parallel processing, distributed computing and
           overall PDC understanding. Includes diverging Likert distributions of engagement items and thematic
           coding of open responses.</p>
-        <p class="card-foot"><a href="download.php?f=book&amp;p=123">Chapter 4 </a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=122">Chapter 4 </a></p></article>
 
       <article class="card"><h3>UNL · CS1</h3>
         <p>Codeless modules evaluated across fall 2024 and fall 2025 with Wilcoxon signed-rank testing and
@@ -153,13 +153,13 @@ include 'partials/header.php';
           pre- to post-survey across all basic programming categories in both, with comparable post-survey
           means &mdash; evidence that adding a short unplugged activity did not reduce students&rsquo;
           perceived progress in core CS1 content.</p>
-        <p class="card-foot"><a href="download.php?f=book&amp;p=275">Chapter 9 </a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=276">Chapter 9 </a></p></article>
 
       <article class="card"><h3>TNTECH · CS1</h3>
         <p>Baseline Spring 2024 against four combined intervention semesters (Fall 2024, Spring 2025, Fall
           2025, Spring 2026), with per-assignment agreement data and time-on-task for the Earthquake Tracker
           and OpenMP labs.</p>
-        <p class="card-foot"><a href="download.php?f=book&amp;p=64">Chapter 2 </a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=63">Chapter 2 </a></p></article>
 
       <article class="card"><h3>Webster · CS1</h3>
         <p>Pre/post comparison of self-reported PDC experience and core C++ topic experience on a seven-point
@@ -176,7 +176,7 @@ include 'partials/header.php';
           enriches existing course goals rather than appearing as disconnected additional content &mdash;
           starting with intuition, using unplugged or visual activities before code, and keeping programming
           tasks lightweight.</p>
-        <p class="card-foot"><a href="download.php?f=book&amp;p=27">Chapter 1 </a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=26">Chapter 1 </a></p></article>
     </div>
   </div>
 </div>

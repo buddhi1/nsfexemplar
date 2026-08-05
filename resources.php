@@ -28,15 +28,15 @@ include 'partials/header.php';
     <article class="card"><h3>Pre- and post-course surveys</h3>
       <p>The shared course-wide instrument: student background and demographics, self-reported experience
         with general computing and with PDC topics, interest, perceived importance and understanding.</p>
-      <p class="card-foot">Used at all eight institutions &middot; <a href="#survey-design">what it asks</a> &middot; <a href="download.php?f=book&amp;p=27">Chapter 1 &sect; 1.5</a></p></article>
+      <p class="card-foot">Used at all eight institutions &middot; <a href="#survey-design">what it asks</a> &middot; <a href="download.php?f=book&amp;p=26">Chapter 1 &sect; 1.5</a></p></article>
     <article class="card"><h3>Activity pre/post quizzes</h3>
       <p>Short knowledge checks bracketing an individual activity, so its effect can be isolated from the
         rest of the semester.</p>
-      <p class="card-foot"><a href="download.php?f=book&amp;p=275">MSU</a> &middot; <a href="download.php?f=book&amp;p=123">USI</a> &middot; <a href="download.php?f=book&amp;p=236">HPU</a></p></article>
+      <p class="card-foot"><a href="download.php?f=book&amp;p=276">MSU</a> &middot; <a href="download.php?f=book&amp;p=122">USI</a> &middot; <a href="download.php?f=book&amp;p=236">HPU</a></p></article>
     <article class="card"><h3>Adapted ASPECT engagement survey</h3>
       <p>An engagement instrument adapted for unplugged activities, with results grouped by aspect category.
         Used with Penny Sorting and Flag Maker.</p>
-      <p class="card-foot"><a href="download.php?f=book&amp;p=27">Chapter 1</a> &middot; <a href="download.php?f=book&amp;p=236">HPU</a> &middot; <a href="download.php?f=book&amp;p=64">TNTECH</a></p></article>
+      <p class="card-foot"><a href="download.php?f=book&amp;p=26">Chapter 1</a> &middot; <a href="download.php?f=book&amp;p=236">HPU</a> &middot; <a href="download.php?f=book&amp;p=63">TNTECH</a></p></article>
     <article class="card"><h3>Bloom-level mapping tables</h3>
       <p>Per institution, a table mapping each PDC concept to the Bloom level reached by each activity &mdash;
         the fastest way to check an activity against your own learning outcomes.</p>
@@ -44,7 +44,7 @@ include 'partials/header.php';
     <article class="card"><h3>Activity timing tables</h3>
       <p>Approximate instructional time for each activity phase, so you can fit an activity into a real class
         period rather than discovering the overrun live.</p>
-      <p class="card-foot"><a href="download.php?f=book&amp;p=123">USI, Tables 4.9&ndash;4.13</a> &middot; <a href="download.php?f=book&amp;p=236">HPU, Tables 8.3&ndash;8.12</a></p></article>
+      <p class="card-foot"><a href="download.php?f=book&amp;p=122">USI, Tables 4.9&ndash;4.13</a> &middot; <a href="download.php?f=book&amp;p=236">HPU, Tables 8.3&ndash;8.12</a></p></article>
     <article class="card"><h3>Anonymized datasets &amp; analysis</h3>
       <p>Every chapter repository carries an <code>Evaluation_Data_and_Analysis</code> directory with survey
         instruments, de-identified responses, evaluation metrics and statistical analyses.</p>
@@ -53,7 +53,7 @@ include 'partials/header.php';
       <p>Pre-selection, post-selection, annual and post-adoption instruments for the instructors themselves
         &mdash; prior PDC background, perceived effectiveness, students taught, and whether interventions
         will be retained, reduced or expanded.</p>
-      <p class="card-foot"><a href="download.php?f=book&amp;p=6">Chapter 0, evaluation methods</a></p></article>
+      <p class="card-foot"><a href="download.php?f=book&amp;p=5">Chapter 0, evaluation methods</a></p></article>
     <article class="card"><h3>Consent and IRB material</h3>
       <p>Informed-consent forms alongside the surveys, quizzes, lab reports and programming-assignment
         reports collected between Spring 2024 and Spring 2026.</p>
@@ -75,7 +75,7 @@ include 'partials/header.php';
           <em>7 = strongly agree</em>.</p>
         <p class="muted">Because every site ran the same items, an adopter can administer them locally and
           compare directly against the published per-institution tables.</p>
-        <p><a href="download.php?f=book&amp;p=27">Chapter 1 &sect; 1.5 &rarr;</a></p>
+        <p><a href="download.php?f=book&amp;p=26">Chapter 1 &sect; 1.5 &rarr;</a></p>
       </div>
 
       <div class="panel">
