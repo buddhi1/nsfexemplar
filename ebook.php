@@ -302,7 +302,7 @@ include 'partials/header.php';
 
   <div class="callout callout--info mt-4">
     <strong>The full PDF is the official version of record.</strong> It is a single volume with complete
-    cross-references between chapters, a shared bibliography (pp.&nbsp;296&ndash;301) and an index of terms.
+    cross-references between chapters, and a shared bibliography (pp.&nbsp;296&ndash;301).
     Chapters are not published as standalone files, because a chapter cut out of the volume loses both. The
     summaries below are here so you can find the right chapter quickly, then open the volume at that page.
   </div>

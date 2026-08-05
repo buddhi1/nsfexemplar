@@ -351,6 +351,9 @@ Casper and MSU with Greenfoot) because the values had been copied from an earlie
 `where` carries that table's "Duration / where used" column verbatim, so the claim on the page can be
 traced back to a section number in the book.
 
+The same two tables are what the Resources page links for activity timings — they hold the duration for
+every activity in one place, which no single institutional chapter does.
+
 `time` and `prep` are buckets for the prose in `duration` and `setup`, which are still shown in full on
 the card and in the detail sheet — the bucket is for filtering, the prose is for reading. Adding a value
 that is not in `ACT_FACETS` means the activity is simply never matched by that filter, silently, so keep

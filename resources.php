@@ -42,9 +42,11 @@ include 'partials/header.php';
         the fastest way to check an activity against your own learning outcomes.</p>
       <p class="card-foot">Tables 2.1, 4.1, 5.1, 6.1, 7.1, 8.1, 9.1 &middot; <a href="ebook.php#chapters">find the chapter &rarr;</a></p></article>
     <article class="card"><h3>Activity timing tables</h3>
-      <p>Approximate instructional time for each activity phase, so you can fit an activity into a real class
-        period rather than discovering the overrun live.</p>
-      <p class="card-foot"><a href="download.php?f=book&amp;p=122">USI, Tables 4.9&ndash;4.13</a> &middot; <a href="download.php?f=book&amp;p=236">HPU, Tables 8.3&ndash;8.12</a></p></article>
+      <p>Chapter 1&rsquo;s activity finder gives the time each activity takes and which institutions ran it,
+        in one place &mdash; so you can fit an activity into a real class period rather than discovering the
+        overrun live. Table 1.1 covers the activities described in that chapter; Table 1.2 the additional
+        institutional ones.</p>
+      <p class="card-foot"><a href="download.php?f=book&amp;p=30">Table 1.1 &middot; p.&nbsp;30</a> &middot; <a href="download.php?f=book&amp;p=32">Table 1.2 &middot; p.&nbsp;32</a></p></article>
     <article class="card"><h3>Anonymized datasets &amp; analysis</h3>
       <p>Every chapter repository carries an <code>Evaluation_Data_and_Analysis</code> directory with survey
         instruments, de-identified responses, evaluation metrics and statistical analyses.</p>
@@ -216,7 +218,7 @@ include 'partials/header.php';
         </button>
         <div class="disclose-panel"><div><div class="inner"><p>Yes &mdash; some consultation from project personnel is available to help
         adopters select and adapt materials.
-        <a href="mailto:contact@nsfexemplar.cdercenter.org">contact@nsfexemplar.cdercenter.org</a>.</p></div></div></div>
+        <a href="/contact.php">Request adoption help</a>.</p></div></div></div>
       </div>
       </div>
     </div>
@@ -232,9 +234,10 @@ include 'partials/header.php';
   <div class="shell section" id="finding">
     <p class="eyebrow">Finding material quickly</p>
     <h2 class="mt-2">Search Terms That Work</h2>
-    <p class="lede mt-2">The fastest way to use the volume is to combine chapter-level navigation with search.
-      The index of terms provides another entry point for locating recurring PDC concepts, activity names,
-      tools and assessment terms across the institutional chapters.</p>
+    <p class="lede mt-2">The fastest way to use the volume is to combine chapter-level navigation with
+      search. The table of contents gives the major chapters and sections; each institutional chapter opens
+      with an abstract and descriptor elements for a quick read of what it covers; and PDF search finds
+      activity names, PDC concepts, tools and evidence terms wherever they appear.</p>
 
     <div class="grid grid--halves mt-4">
       <div class="panel">
