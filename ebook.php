@@ -319,7 +319,7 @@ include 'partials/header.php';
   </div>
   <div class="cluster mt-4">
     <a class="btn btn--primary" href="download.php?f=book">Download the full e-book (PDF)</a>
-    <a class="btn btn--ghost" href="#materials">Open teaching materials</a>
+    <a class="btn btn--ghost" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">Open teaching materials</a>
   </div>
 </div>
 
