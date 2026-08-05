@@ -22,12 +22,12 @@ include 'partials/header.php';
   <h2 class="mt-2">Coordination and PDC Expertise</h2>
   <p class="lede mt-2">The backbone team ran the training workshops and biweekly meetings, facilitated
     discussion across institutions, provided PDC domain expertise, and authored Chapter 0.</p>
-  <div class="grid grid--auto mt-4">
-    <div class="card person"><span class="avatar" aria-hidden="true">SP</span><span><span class="who">Sushil K. Prasad</span><span class="where">University of Texas at San Antonio · Lead institution</span></span></div>
-    <div class="card person"><span class="avatar" aria-hidden="true">AS</span><span><span class="who">Alan Sussman</span><span class="where">University of Maryland, College Park</span></span></div>
-    <div class="card person"><span class="avatar" aria-hidden="true">NT</span><span><span class="who">Neena Thota</span><span class="where">University of Massachusetts, Amherst</span></span></div>
-    <div class="card person"><span class="avatar" aria-hidden="true">RV</span><span><span class="who">Ramachandran Vaidyanathan</span><span class="where">Louisiana State University, Baton Rouge</span></span></div>
-    <div class="card person"><span class="avatar" aria-hidden="true">CW</span><span><span class="who">Charles Weems</span><span class="where">University of Massachusetts, Amherst</span></span></div>
+  <div class="authorgrid mt-4">
+    <div class="card person person--sm"><span class="avatar" aria-hidden="true">SP</span><span><span class="who">Sushil K. Prasad</span><span class="where">University of Texas at San Antonio · Lead institution</span></span></div>
+    <div class="card person person--sm"><span class="avatar" aria-hidden="true">AS</span><span><span class="who">Alan Sussman</span><span class="where">University of Maryland, College Park</span></span></div>
+    <div class="card person person--sm"><span class="avatar" aria-hidden="true">NT</span><span><span class="who">Neena Thota</span><span class="where">University of Massachusetts, Amherst</span></span></div>
+    <div class="card person person--sm"><span class="avatar" aria-hidden="true">RV</span><span><span class="who">Ramachandran Vaidyanathan</span><span class="where">Louisiana State University, Baton Rouge</span></span></div>
+    <div class="card person person--sm"><span class="avatar" aria-hidden="true">CW</span><span><span class="who">Charles Weems</span><span class="where">University of Massachusetts, Amherst</span></span></div>
   </div>
 </div>
 

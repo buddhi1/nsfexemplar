@@ -1643,7 +1643,8 @@
   @media (width < 46rem) { .authorgrid { grid-template-columns: 1fr; } }
   .author-more { display: contents; }
   .author-more[hidden] { display: none; }
-  .person--sm { padding: 0.5rem 0.7rem; gap: 0.6rem; }
+  .person--sm { gap: 0.6rem; }
+  .card.person--sm { padding: 0.5rem 0.7rem; }
   .person--sm .avatar { inline-size: 2.1rem; block-size: 2.1rem; font-size: 0.78rem; }
   .person--sm .who { font-size: 0.88rem; }
   .person--sm .where { font-size: 0.76rem; }

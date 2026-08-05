@@ -208,19 +208,10 @@ include 'partials/header.php';
         still current. The unplugged and codeless pathways exist precisely to avoid this class of
         problem.</p></div></div></div>
       </div>
+
       <div class="faq">
         <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
-          <span>When is CS2 available?</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
-        </button>
-        <div class="disclose-panel"><div><div class="inner"><p>CS2 chapters are drafted and being finalized for subsequent-term adoption.
-        Each institutional exemplar already lists its planned CS2 activities &mdash; open any exemplar in the
-        search and look under <em>Planned for the CS2 release</em>.</p>
-        <p><a href="ebook.php#cs2">What CS2 will cover &rarr;</a></p></div></div></div>
-      </div>
-      <div class="faq">
-        <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
-          <span>Can I get help choosing?</span>
+          <span>Can I get help adopting?</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
         </button>
         <div class="disclose-panel"><div><div class="inner"><p>Yes &mdash; some consultation from project personnel is available to help
@@ -231,7 +222,7 @@ include 'partials/header.php';
     </div>
     <button class="btn btn--ghost btn--sm mt-3" type="button"
             data-faq-toggle aria-expanded="true" aria-controls="faq-more" hidden>
-      Show 5 more questions
+      Show 4 more questions
     </button>
   </div>
 </div>
