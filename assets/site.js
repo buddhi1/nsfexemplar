@@ -778,6 +778,33 @@
   })();
 
 
+  /* ------------------------------------------- author list (team) --------
+     Same shape as the FAQ tail: without JS every author is visible and there
+     is no button; with it, the tail folds away behind one.                  */
+  (() => {
+    const more = $('[data-author-more]');
+    const btn  = $('[data-author-toggle]');
+    if (!more || !btn) return;
+
+    const extra = more.children.length;
+    let open = false;
+    const sync = () => {
+      more.toggleAttribute('hidden', !open);
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Show fewer authors' : `Show all ${extra + 6} authors`;
+    };
+    sync();
+    btn.removeAttribute('hidden');
+
+    btn.addEventListener('click', () => {
+      open = !open;
+      sync();
+      /* move focus into what just appeared, so keyboard users are not left
+         at the bottom of a list that grew above them */
+      if (open) more.querySelector('.who')?.closest('.person')?.scrollIntoView({ block: 'nearest' });
+    });
+  })();
+
   /* ======================================================== team cards (team) */
   (() => {
     const box = $('#team-cards');

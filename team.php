@@ -49,25 +49,31 @@ include 'partials/header.php';
           &middot; <a href="ebook.php#chapters">chapter summary</a></p>
       </div>
       <div>
-        <ol class="authorlist">
-          <li><span class="au-name">April R. Crockett</span><span class="au-inst">Tennessee Technological University</span></li>
-          <li><span class="au-name">Srishti Srivastava</span><span class="au-inst">University of Southern Indiana</span></li>
-          <li><span class="au-name">David P. Bunde</span><span class="au-inst">Knox College</span></li>
-          <li><span class="au-name">Xiaoyuan Suo</span><span class="au-inst">Webster University</span></li>
-          <li><span class="au-name">Charlotte Gruner</span><span class="au-inst">Casper College</span></li>
-          <li><span class="au-name">Jaime Spacco</span><span class="au-inst">Knox College</span></li>
-          <li><span class="au-name">Mary L. Smith</span><span class="au-inst">Hawai&rsquo;i Pacific University</span></li>
-          <li><span class="au-name">Jiayin Wang</span><span class="au-inst">Montclair State University</span></li>
-          <li><span class="au-name">Chris Bourke</span><span class="au-inst">University of Nebraska&ndash;Lincoln</span></li>
-          <li><span class="au-name">Michelle Zhu</span><span class="au-inst">Kennesaw State University</span></li>
-          <li><span class="au-name">Peter Maher</span><span class="au-inst">Webster University</span></li>
-          <li><span class="au-name">Gerald C. Gannod</span><span class="au-inst">Tennessee Technological University</span></li>
-          <li><span class="au-name">Alan Sussman</span><span class="au-inst">University of Maryland, College Park</span></li>
-          <li><span class="au-name">Neena Thota</span><span class="au-inst">University of Massachusetts Amherst</span></li>
-          <li><span class="au-name">Charles Weems</span><span class="au-inst">University of Massachusetts Amherst</span></li>
-          <li><span class="au-name">Ramachandran Vaidyanathan</span><span class="au-inst">Louisiana State University</span></li>
-          <li><span class="au-name">Sushil K. Prasad</span><span class="au-inst">University of Texas at San Antonio</span></li>
-        </ol>
+        <div class="authorgrid">
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">AC</span><span><span class="who">April R. Crockett</span><span class="where">Tennessee Technological University</span></span></div>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">SS</span><span><span class="who">Srishti Srivastava</span><span class="where">University of Southern Indiana</span></span></div>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">DB</span><span><span class="who">David P. Bunde</span><span class="where">Knox College</span></span></div>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">XS</span><span><span class="who">Xiaoyuan Suo</span><span class="where">Webster University</span></span></div>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">CG</span><span><span class="who">Charlotte Gruner</span><span class="where">Casper College</span></span></div>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">JS</span><span><span class="who">Jaime Spacco</span><span class="where">Knox College</span></span></div>
+          <!-- Without JS the tail is simply visible; site.js collapses it and
+               reveals the button. -->
+          <div class="author-more" data-author-more>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">MS</span><span><span class="who">Mary L. Smith</span><span class="where">Hawai&rsquo;i Pacific University</span></span></div>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">JW</span><span><span class="who">Jiayin Wang</span><span class="where">Montclair State University</span></span></div>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">CB</span><span><span class="who">Chris Bourke</span><span class="where">University of Nebraska&ndash;Lincoln</span></span></div>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">MZ</span><span><span class="who">Michelle Zhu</span><span class="where">Kennesaw State University</span></span></div>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">PM</span><span><span class="who">Peter Maher</span><span class="where">Webster University</span></span></div>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">GG</span><span><span class="who">Gerald C. Gannod</span><span class="where">Tennessee Technological University</span></span></div>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">AS</span><span><span class="who">Alan Sussman</span><span class="where">University of Maryland, College Park</span></span></div>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">NT</span><span><span class="who">Neena Thota</span><span class="where">University of Massachusetts Amherst</span></span></div>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">CW</span><span><span class="who">Charles Weems</span><span class="where">University of Massachusetts Amherst</span></span></div>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">RV</span><span><span class="who">Ramachandran Vaidyanathan</span><span class="where">Louisiana State University</span></span></div>
+          <div class="card person person--sm"><span class="avatar" aria-hidden="true">SP</span><span><span class="who">Sushil K. Prasad</span><span class="where">University of Texas at San Antonio</span></span></div>
+          </div>
+        </div>
+        <button class="btn btn--quiet btn--sm mt-3" type="button"
+                data-author-toggle aria-expanded="true" hidden></button>
         <p class="tiny faint mt-3">Listed in the order the volume gives them.</p>
       </div>
     </div>
