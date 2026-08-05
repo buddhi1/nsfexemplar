@@ -342,6 +342,14 @@ under any filter:
 | `anchor` | list | Loops · Arrays & collections · Variables & expressions · Functions · Objects & classes · Conditionals · Graphics & output · Libraries & data |
 | `used` | list | institution ids, rendered as their short names |
 
+`used` is **taken from Tables 1.1 and 1.2 of Chapter 1**, which are the volume's own record of which
+institution ran which activity. When a new build of the PDF lands, re-read those two tables before
+changing anything here — the site had drifted from them (MSU credited with the shared animations,
+Casper and MSU with Greenfoot) because the values had been copied from an earlier edition.
+
+`where` carries that table's "Duration / where used" column verbatim, so the claim on the page can be
+traced back to a section number in the book.
+
 `time` and `prep` are buckets for the prose in `duration` and `setup`, which are still shown in full on
 the card and in the detail sheet — the bucket is for filtering, the prose is for reading. Adding a value
 that is not in `ACT_FACETS` means the activity is simply never matched by that filter, silently, so keep

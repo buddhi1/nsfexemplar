@@ -422,11 +422,28 @@
   .hero-meta + .hero-actions { margin-block-start: var(--sp-3); }
   .hero-meta .doi { min-block-size: 2.25rem; }
 
-  /* Release status, stated plainly under the hero lede. */
-  .release-note {
-    display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem;
-    max-inline-size: 68ch; font-size: 0.88rem; color: var(--fg-muted);
+  /* Release status. The badge is all that shows; the sentence is a tooltip on
+     hover and on keyboard focus, so it is reachable without a pointer. The
+     accessible name carries the same text, so it is never hover-only for
+     assistive tech. */
+  .release-note { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; margin: 0; }
+  [data-tip] { position: relative; cursor: help; }
+  [data-tip]::after {
+    content: attr(data-tip); position: absolute; z-index: 20;
+    inset-block-start: calc(100% + 0.5rem); inset-inline-start: 0;
+    inline-size: max-content; max-inline-size: min(40ch, 80vw);
+    padding: 0.5rem 0.7rem; border-radius: var(--radius-s);
+    background: var(--fg); color: var(--bg);
+    font-family: var(--font-body); font-size: 0.8rem; font-weight: 500;
+    line-height: 1.45; text-transform: none; letter-spacing: normal;
+    white-space: normal; text-align: start; pointer-events: none;
+    opacity: 0; translate: 0 -4px;
+    transition: opacity 140ms var(--ease), translate 140ms var(--ease);
   }
+  [data-tip]:hover::after, [data-tip]:focus-visible::after { opacity: 1; translate: 0 0; }
+  @media (prefers-reduced-motion: reduce) { [data-tip]::after { transition: none; } }
+  /* A tooltip anchored to the inline start would run off a narrow screen. */
+  @media (width < 34rem) { [data-tip]::after { max-inline-size: 74vw; } }
 
   /* "Which path should I take?" — a want on the left, where it leads on the
      right. Two columns where there is room, stacked pairs where there is not. */

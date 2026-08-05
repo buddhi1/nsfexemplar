@@ -33,13 +33,14 @@ include 'partials/header.php';
   <div class="shell hero-grid">
     <div>
       <p class="eyebrow">CDER Center · <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2321015">NSF Award #2321015</a></p>
-      <h1 class="mt-3">A First Course Where Computation Isn&rsquo;t Only Sequential</h1>
+      <h1 class="mt-3">A First Course Sequence Where Computation Isn&rsquo;t Only Sequential</h1>
       <p class="lede mt-4">Modern software is parallel, distributed, event-driven and API-based. Introductory
         computing mostly still isn&rsquo;t. Eight institutions changed that in their own CS1, then measured
         whether it worked, and published everything.</p>
       <p class="release-note mt-3">
-        <span class="pill pill--brand">Early release</span>
-        <span>The CS1 chapters are published and complete. CS2 chapters are expected soon.</span>
+        <span class="pill pill--brand" tabindex="0" role="note"
+              aria-label="Early release. The CS1 chapters are published and complete. CS2 chapters are expected soon."
+              data-tip="The CS1 chapters are published and complete. CS2 chapters are expected soon.">Early release</span>
       </p>
       <!-- Row one identifies the volume, row two acts on it. -->
       <div class="cluster hero-meta">
@@ -123,7 +124,7 @@ include 'partials/header.php';
 <div class="shell metrics-wrap">
   <div class="metrics reveal">
     <div class="metric"><span class="metric-value">8</span><span class="metric-label">CS1 exemplars</span></div>
-    <div class="metric"><span class="metric-value">14</span><span class="metric-label">Activities</span></div>
+    <div class="metric"><span class="metric-value">17</span><span class="metric-label">Activities</span></div>
     <div class="metric"><span class="metric-value">4</span><span class="metric-label">Languages</span></div>
     <div class="metric"><span class="metric-value">301</span><span class="metric-label">Pages, free</span></div>
     <div class="metric"><span class="metric-value">10</span><span class="metric-label">Chapters</span></div>
@@ -317,7 +318,7 @@ include 'partials/header.php';
     </div>
 
     <div class="cluster mt-5">
-      <a class="btn btn--primary" href="ebook.php#activities">Browse all 14 activities</a>
+      <a class="btn btn--primary" href="ebook.php#activities">Browse all 17 activities</a>
       <a class="btn btn--ghost" href="download.php?f=book&amp;p=27">Chapter 1 &mdash; Common CS1 activities</a>
     </div>
   </div>

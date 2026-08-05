@@ -705,7 +705,10 @@
           <tr><th scope="row" style="inline-size:11rem">Duration</th><td>${esc(a.duration)} <span class="tiny faint">(${esc(a.time)})</span></td></tr>
           <tr><th scope="row">Setup</th><td>${esc(a.setup)} <span class="tiny faint">(${esc(a.prep)})</span></td></tr>
           <tr><th scope="row">Language</th><td>${(a.lang || []).map(esc).join(', ')}</td></tr>
-          <tr><th scope="row">Described in</th><td>Chapter 1, ${esc(a.section)}</td></tr>
+          <tr><th scope="row">Described in</th><td>${a.section.startsWith('Table')
+            ? `Chapter 1, ${esc(a.section)} — full description in the institutional chapter`
+            : `Chapter 1, ${esc(a.section)}`}</td></tr>
+          ${a.where ? `<tr><th scope="row">Where it ran</th><td>${esc(a.where)}</td></tr>` : ''}
         </tbody></table></div>
         ${a.materials ? `<p class="mt-3"><a class="btn btn--primary btn--sm" href="${esc(a.materials)}">Open teaching materials</a></p>` : ''}
 

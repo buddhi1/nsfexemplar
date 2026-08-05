@@ -1,7 +1,7 @@
 <?php
 $PAGE  = 'ebook';
 $PAGE_TITLE = 'The eBook';
-$DESC  = 'Search eight CS1 exemplars and fourteen classroom activities by language, institution type, activity style, duration and preparation level. Chapter summaries, teaching materials and the full e-book PDF.';
+$DESC  = 'Search eight CS1 exemplars and seventeen classroom activities by language, institution type, activity style, duration and preparation level. Chapter summaries, teaching materials and the full e-book PDF.';
 include 'partials/header.php';
 ?>
 
@@ -15,9 +15,9 @@ include 'partials/header.php';
       preparation, language, PDC topic, CS1 anchor and institution &mdash; then open the chapter summary, the
       teaching materials, or the full e-book.</p>
     <p class="release-note mt-3">
-      <span class="pill pill--brand">Early release</span>
-      <span>The CS1 chapters are published and complete. CS2 chapters are expected soon &mdash; Part&nbsp;II of
-        the volume is currently a placeholder.</span>
+      <span class="pill pill--brand" tabindex="0" role="note"
+            aria-label="Early release. The CS1 chapters are published and complete. CS2 chapters are expected soon."
+            data-tip="The CS1 chapters are published and complete. CS2 chapters are expected soon.">Early release</span>
     </p>
     <!-- Row one identifies the volume, row two acts on it. -->
     <div class="cluster hero-meta">
@@ -84,7 +84,7 @@ include 'partials/header.php';
     <li>
       <span class="pathlist-want">I want one class activity</span>
       <a class="pathlist-go" href="#activities">Start with the activity finder
-        <span class="tiny faint">14 activities, filterable</span></a>
+        <span class="tiny faint">17 activities, filterable</span></a>
     </li>
     <li>
       <span class="pathlist-want">I want a lab or module</span>
@@ -254,12 +254,12 @@ include 'partials/header.php';
             intervention semesters can be compared</li>
         </ul>
         <div class="cluster mt-4">
-          <a class="btn btn--primary btn--sm" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">Browse the CS1 chapters</a>
+          <a class="btn btn--primary btn--sm" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">Browse the CS1  in Git</a>
           <a class="btn btn--ghost btn--sm" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main">Repository root</a>
         </div>
       </article>
 
-      <article class="panel">
+      <!-- <article class="panel">
         <h3 style="font-size:1.2rem">Material Hosted by the Teams</h3>
         <p class="muted mt-3">Some institutions publish additional material of their own, outside the shared
           repository. These are worth reading alongside that chapter&rsquo;s appendix.</p>
@@ -287,7 +287,7 @@ include 'partials/header.php';
               <a href="https://github.com/charlottegruner/CDER_CC_CS1">charlottegruner/CDER_CC_CS1</a>.</dd>
           </div>
         </dl>
-      </article>
+      </article> -->
     </div>
   </div>
 </div>
