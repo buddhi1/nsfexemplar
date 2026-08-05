@@ -971,22 +971,28 @@
       /* Every chapter has something to show now: the abstract at minimum. */
       const hasDetail = c.excerpt || c.sections.length || c.authors;
 
-      /* A section with subsections becomes its own disclosure — chapter,
-         section, subsection, collapsed at each step. */
-      const secs = c.sections.map((s) => (s.sub.length ? `
+      /* Three levels: section, subsection, subsubsection. Anything with
+         children becomes its own disclosure, so the tree opens one step at a
+         time; anything without renders as a plain leaf. Subsubsections are
+         [number, title] pairs — the last level never nests further. */
+      const leaf = (n, t) => `
+        <li class="sec sec--leaf">
+          <span class="sec-n">${esc(n)}</span><span class="sec-t">${esc(t)}</span>
+        </li>`;
+      const branch = (n, t, inner) => `
         <li class="sec">
           <button class="sec-btn" type="button" aria-expanded="false" data-disclose>
-            ${chev}<span class="sec-n">${esc(s.n)}</span><span class="sec-t">${esc(s.t)}</span>
+            ${chev}<span class="sec-n">${esc(n)}</span><span class="sec-t">${esc(t)}</span>
           </button>
           <div class="disclose-panel"><div>
-            <ol class="sec-subs">${s.sub.map((x) => `
-              <li><span class="sec-n">${esc(x[0])}</span><span class="sec-t">${esc(x[1])}</span></li>`).join('')}
-            </ol>
+            <ol class="sec-subs">${inner}</ol>
           </div></div>
-        </li>` : `
-        <li class="sec sec--leaf">
-          <span class="sec-n">${esc(s.n)}</span><span class="sec-t">${esc(s.t)}</span>
-        </li>`)).join('');
+        </li>`;
+      const level = (nodes) => nodes.map((s) => {
+        if (Array.isArray(s)) return leaf(s[0], s[1]);
+        return s.sub && s.sub.length ? branch(s.n, s.t, level(s.sub)) : leaf(s.n, s.t);
+      }).join('');
+      const secs = level(c.sections);
 
       return `
       <tr class="ch-row"${hasDetail ? ` id="ch-${i}"` : ''}>
@@ -997,6 +1003,8 @@
                  ${chev}<span class="ch-title">${c.title}</span>
                </button>`
             : `<span class="ch-plain">${c.title}</span>`}
+          ${c.subShort ? `<span class="ch-sub"><span class="sub-short" tabindex="0" role="note"
+            aria-label="Subtitle: ${esc(c.subFull)}" data-tip="${esc(c.subFull)}">${esc(c.subShort)}</span></span>` : ''}
           <span class="ch-meta">${c.part} &middot; pp ${c.pages}</span>
         </th>
         <td class="small faint">${c.part}</td>
@@ -1008,7 +1016,7 @@
       <tr class="ch-detail-row" hidden>
         <td colspan="4">
           <div class="ch-detail" id="ch-detail-${i}">
-            ${c.authors ? `<p class="ch-authors">${esc(c.authors)}<span class="ch-inst">${esc(c.inst)}</span></p>` : ''}
+            ${c.authors ? `<p class="ch-authors">${esc(c.authors)}${c.inst ? `<span class="ch-inst">${esc(c.inst)}</span>` : ''}</p>` : ''}
             ${c.excerpt ? `<p class="ch-excerpt">${esc(c.excerpt)}</p>` : ''}
             ${secs ? `<ol class="ch-sections">${secs}</ol>` : ''}
             <p class="ch-links">

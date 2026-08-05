@@ -327,6 +327,31 @@ so links published before this change keep working.
 
 ---
 
+## Chapter data
+
+`CHAPTERS[]` in `assets/data.js` is generated from the PDF, not written by hand:
+
+```bash
+python3 tools/extract.py && python3 tools/gen.py
+```
+ Per chapter it holds:
+
+| Field | Source in the volume |
+|---|---|
+| `title` | the chapter title |
+| `subShort` / `subFull` | the printed subtitle: a short label for the table, the full wording on hover |
+| `authors` / `inst` | the title page byline, with each author's own affiliation |
+| `excerpt` | the opening sentences of the chapter abstract |
+| `sections` | the chapter contents page, three levels deep |
+| `pages` / `start` | derived from the chapter title pages, not the PDF outline |
+
+Two things to know when a new build lands. The **outline bookmarks point at each chapter's contents
+page, not its title page** — trust the title pages. And **de-hyphenating extracted text rejoins words
+that were legitimately hyphenated across a line break**, so check the abstracts for fused words
+(`institutionspecific`, `handson`) before committing.
+
+---
+
 ## Activity facets
 
 The activity finder filters on seven fields, defined in `ACT_FACETS` in `assets/data.js`. Five of them

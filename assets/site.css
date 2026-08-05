@@ -1253,6 +1253,11 @@
     display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-4);
     margin-block-start: var(--sp-3); font-size: 0.86rem; font-weight: 600;
   }
+  /* The chapter's subtitle, under its title in the first column. */
+  .ch-sub { display: block; margin-block-start: 0.15rem; font-size: 0.78rem; font-weight: 400; }
+  /* A nested disclosure indents one step per level so the depth is legible. */
+  .ch-sections .sec-subs .sec-subs { padding-inline-start: 1.9rem; }
+
   .ch-sections { list-style: none; margin: 0; padding: 0; }
   .ch-sections .sec { border-block-start: 1px solid color-mix(in oklab, var(--line) 60%, transparent); }
   .ch-sections .sec:first-child { border-block-start: 0; }
@@ -1281,20 +1286,30 @@
     font-family: var(--font-mono); font-size: 0.76rem; color: var(--brand); text-align: end;
   }
 
-  /* subsections: one per line, indented under their section */
+  /* Subsections, one per line under their section. Every child here is either
+     a leaf (which lays itself out) or a wrapper holding a button and a panel —
+     so the list must NOT impose a grid of its own, or the wrapper's button is
+     crushed into the first 1rem column. */
   .sec-subs { list-style: none; margin: 0; padding: 0 0 0.35rem 0; }
-  .sec-subs > li {
+  /* Only the wrappers, not the leaves — a leaf carries both classes and this
+     selector outranks the grid rule below, which flattened it to inline text. */
+  .sec-subs > li.sec:not(.sec--leaf) { display: block; }
+  .sec-subs .sec--leaf,
+  .sec-subs > li:not(.sec) {
     display: grid; grid-template-columns: 1rem 3.6rem minmax(0, 1fr); gap: 0.5rem;
     align-items: baseline;
     padding-block: 0.22rem;
     font-size: 0.82rem; line-height: 1.4; color: var(--fg-muted);
   }
-  .sec-subs > li .sec-n { grid-column: 2; font-size: 0.72rem; color: var(--fg-faint); }
-  .sec-subs > li .sec-t { grid-column: 3; }
+  .sec-subs .sec-n { font-size: 0.72rem; color: var(--fg-faint); }
+  /* deeper numbers are longer, so the number column widens with the level */
+  .sec-subs .sec-subs .sec--leaf { grid-template-columns: 1rem 5.3rem minmax(0, 1fr); }
+  .sec-subs .sec-btn { font-size: 0.82rem; }
 
   @media (width < 46rem) {
     .sec-btn, .sec--leaf { grid-template-columns: 1rem 2.5rem minmax(0, 1fr); }
-    .sec-subs > li { grid-template-columns: 1rem 3rem minmax(0, 1fr); }
+    .sec-subs .sec--leaf, .sec-subs > li:not(.sec) { grid-template-columns: 1rem 3rem minmax(0, 1fr); }
+    .sec-subs .sec-subs .sec--leaf { grid-template-columns: 1rem 4.4rem minmax(0, 1fr); }
   }
 
   /* --- publications ------------------------------------------------------
@@ -1655,6 +1670,9 @@
   .card-sub { margin: 0.4rem 0 0.75rem; font-size: 0.82rem; line-height: 1.45; }
   .sub-short {
     color: var(--fg-muted); font-weight: 600;
+    /* Focusable, so it is a target under WCAG 2.5.8 and needs 24px. Padding on
+       an inline box widens the hit area without moving anything around it. */
+    padding-block: 0.25rem;
     text-decoration: underline dotted; text-underline-offset: 0.25em;
     text-decoration-color: color-mix(in oklab, var(--brand) 45%, transparent);
     text-decoration-thickness: 1px;

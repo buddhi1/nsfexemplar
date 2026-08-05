@@ -94,7 +94,7 @@ $BIBTEX = <<<BIB
 BIB;
 
 $NAV = [
-    'home'      => ['index.php',     'Home'],
+    'home'      => ['/',     'Home'],
     'project'   => ['project.php',   'Project'],
     'ebook'     => ['ebook.php',     'eBook'],
     'team'      => ['team.php',      'Team'],
@@ -159,7 +159,7 @@ r.classList.toggle('dark',t==='dark');r.style.colorScheme=t;r.dataset.themeLocke
 
 <header class="site-header">
   <div class="shell masthead">
-    <a class="brandmark" href="index.php" title="<?= e($PROJECT_NAME) ?>">
+    <a class="brandmark" href="/" title="<?= e($PROJECT_NAME) ?>">
       <span class="glyph" aria-hidden="true"><?= brand_glyph() ?></span>
       <span class="name"><?= e($PROJECT_SHORT) ?><span class="tag"><?= $PROJECT_TAG ?></span></span>
     </a>
