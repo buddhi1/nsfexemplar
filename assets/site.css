@@ -1636,6 +1636,28 @@
     border-radius: var(--radius-pill); white-space: nowrap;
   }
 
+  /* A seventeen-author byline as person cards ran most of a screen. One row
+     each, name and affiliation on the same line where there is width. */
+  .authorlist {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: 0; font-size: 0.88rem;
+  }
+  .authorlist > li {
+    display: flex; flex-wrap: wrap; gap: 0.2rem 0.75rem; align-items: baseline;
+    padding-block: 0.32rem;
+    border-block-start: 1px solid color-mix(in oklab, var(--line) 70%, transparent);
+  }
+  .authorlist > li:first-child { border-block-start: 0; }
+  .au-name { font-weight: 600; color: var(--fg); }
+  .au-inst { color: var(--fg-faint); font-size: 0.82rem; margin-inline-start: auto; text-align: end; }
+  @media (width < 34rem) { .au-inst { margin-inline-start: 0; text-align: start; } }
+
+  /* The chapter's own subtitle, under the institution name on a findings card. */
+  .card-sub {
+    margin: 0.35rem 0 0.75rem; font-size: 0.82rem; line-height: 1.45;
+    color: var(--fg-faint); text-wrap: pretty;
+  }
+
   /* --- adoption / contact form ---------------------------------------------
      Plain stacked fields. Nothing here is JavaScript-dependent: the form posts
      and re-renders server-side, errors and all. */

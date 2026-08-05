@@ -48,24 +48,27 @@ include 'partials/header.php';
         <p><a href="download.php?f=book&amp;p=26">Chapter 1 in the e-book &rarr;</a>
           &middot; <a href="ebook.php#chapters">chapter summary</a></p>
       </div>
-      <div class="grid" style="align-content:start; gap:.6rem">
-          <div class="card person"><span class="avatar" aria-hidden="true">AC</span><span><span class="who">April R. Crockett</span><span class="where">Tennessee Technological University</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">SS</span><span><span class="who">Srishti Srivastava</span><span class="where">University of Southern Indiana</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">DB</span><span><span class="who">David P. Bunde</span><span class="where">Knox College</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">XS</span><span><span class="who">Xiaoyuan Suo</span><span class="where">Webster University</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">CG</span><span><span class="who">Charlotte Gruner</span><span class="where">Casper College</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">JS</span><span><span class="who">Jaime Spacco</span><span class="where">Knox College</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">MS</span><span><span class="who">Mary L. Smith</span><span class="where">Hawai&rsquo;i Pacific University</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">JW</span><span><span class="who">Jiayin Wang</span><span class="where">Montclair State University</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">CB</span><span><span class="who">Chris Bourke</span><span class="where">University of Nebraska&ndash;Lincoln</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">MZ</span><span><span class="who">Michelle Zhu</span><span class="where">Kennesaw State University</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">PM</span><span><span class="who">Peter Maher</span><span class="where">Webster University</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">GG</span><span><span class="who">Gerald C. Gannod</span><span class="where">Tennessee Technological University</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">AS</span><span><span class="who">Alan Sussman</span><span class="where">University of Maryland, College Park</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">NT</span><span><span class="who">Neena Thota</span><span class="where">University of Massachusetts Amherst</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">CW</span><span><span class="who">Charles Weems</span><span class="where">University of Massachusetts Amherst</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">RV</span><span><span class="who">Ramachandran Vaidyanathan</span><span class="where">Louisiana State University</span></span></div>
-          <div class="card person"><span class="avatar" aria-hidden="true">SP</span><span><span class="who">Sushil K. Prasad</span><span class="where">University of Texas at San Antonio</span></span></div>
+      <div>
+        <ol class="authorlist">
+          <li><span class="au-name">April R. Crockett</span><span class="au-inst">Tennessee Technological University</span></li>
+          <li><span class="au-name">Srishti Srivastava</span><span class="au-inst">University of Southern Indiana</span></li>
+          <li><span class="au-name">David P. Bunde</span><span class="au-inst">Knox College</span></li>
+          <li><span class="au-name">Xiaoyuan Suo</span><span class="au-inst">Webster University</span></li>
+          <li><span class="au-name">Charlotte Gruner</span><span class="au-inst">Casper College</span></li>
+          <li><span class="au-name">Jaime Spacco</span><span class="au-inst">Knox College</span></li>
+          <li><span class="au-name">Mary L. Smith</span><span class="au-inst">Hawai&rsquo;i Pacific University</span></li>
+          <li><span class="au-name">Jiayin Wang</span><span class="au-inst">Montclair State University</span></li>
+          <li><span class="au-name">Chris Bourke</span><span class="au-inst">University of Nebraska&ndash;Lincoln</span></li>
+          <li><span class="au-name">Michelle Zhu</span><span class="au-inst">Kennesaw State University</span></li>
+          <li><span class="au-name">Peter Maher</span><span class="au-inst">Webster University</span></li>
+          <li><span class="au-name">Gerald C. Gannod</span><span class="au-inst">Tennessee Technological University</span></li>
+          <li><span class="au-name">Alan Sussman</span><span class="au-inst">University of Maryland, College Park</span></li>
+          <li><span class="au-name">Neena Thota</span><span class="au-inst">University of Massachusetts Amherst</span></li>
+          <li><span class="au-name">Charles Weems</span><span class="au-inst">University of Massachusetts Amherst</span></li>
+          <li><span class="au-name">Ramachandran Vaidyanathan</span><span class="au-inst">Louisiana State University</span></li>
+          <li><span class="au-name">Sushil K. Prasad</span><span class="au-inst">University of Texas at San Antonio</span></li>
+        </ol>
+        <p class="tiny faint mt-3">Listed in the order the volume gives them.</p>
       </div>
     </div>
   </div>
@@ -91,7 +94,7 @@ include 'partials/header.php';
     <h2 class="mt-2">Beyond the Chapter Bylines</h2>
 
     <div class="grid grid--halves mt-4">
-      <article class="panel">
+      <!-- <article class="panel">
         <h3>Co-authors on project publications</h3>
         <p class="muted mt-3">The project&rsquo;s conference papers carry contributors who do not appear as
           chapter authors, including <strong>Michael Gerten</strong>, <strong>Justin Firestone</strong>,
@@ -101,7 +104,7 @@ include 'partials/header.php';
           harder parts of adoption, because everyone supporting the course needed enough familiarity with the
           new concepts and tooling to guide students effectively.</p>
         <p class="mt-3"><a href="research.php#publications">See the publications &rarr;</a></p>
-      </article>
+      </article> -->
 
       <article class="panel">
         <h3>The wider CDER community</h3>
@@ -142,8 +145,7 @@ include 'partials/header.php';
           </a>
         </div>
         <p class="small muted mt-4">Prefer plain email? Write to
-          <a href="mailto:<?= e(CONTACT_EMAIL) ?>"><?= e(CONTACT_EMAIL) ?></a>. Every route reaches the
-          same people.</p>
+          <a href="mailto:<?= e(CONTACT_EMAIL) ?>"><?= e(CONTACT_EMAIL) ?></a>.</p>
       </div>
     </div>
   </div>

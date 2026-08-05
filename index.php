@@ -377,8 +377,7 @@ include 'partials/header.php';
           </a>
         </div>
         <p class="small muted mt-4">Prefer plain email? Write to
-          <a href="mailto:<?= e(CONTACT_EMAIL) ?>"><?= e(CONTACT_EMAIL) ?></a>. Every route reaches the
-          same people.</p>
+          <a href="mailto:<?= e(CONTACT_EMAIL) ?>"><?= e(CONTACT_EMAIL) ?></a>.</p>
       </div>
     </div>
   </div>

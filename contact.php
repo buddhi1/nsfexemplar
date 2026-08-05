@@ -36,8 +36,7 @@ $bad = static fn(string $k): bool => isset($err[$k]);
         adopting what helps us support you properly, and lets the project report honestly on where the
         exemplars have travelled.</p>
       <p class="muted">If you would rather not use a form, write to
-        <a href="mailto:<?= e(CONTACT_EMAIL) ?>"><?= e(CONTACT_EMAIL) ?></a> or come and ask in the
-        community &mdash; both reach the same people.</p>
+        <a href="mailto:<?= e(CONTACT_EMAIL) ?>"><?= e(CONTACT_EMAIL) ?></a> or come and ask from authors and other adopters.</p>
 
       <div class="cluster mt-4">
         <a class="btn btn--ghost" href="mailto:<?= e(CONTACT_EMAIL) ?>">Email us instead</a>
@@ -47,8 +46,7 @@ $bad = static fn(string $k): bool => isset($err[$k]);
         </a>
       </div>
 
-      <p class="tiny faint mt-5">We use what you send to answer you and to report adoption numbers to NSF.
-        Names and institutions are never published without asking first.</p>
+      <p class="tiny faint mt-5">We use what you send to answer you and to report adoption numbers to NSF.</p>
     </div>
 
     <div class="panel">
