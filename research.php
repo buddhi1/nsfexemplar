@@ -24,6 +24,8 @@ include 'partials/header.php';
     cited in the volume&rsquo;s chapter bibliographies. Most recent first.</p>
 
   <ol class="pubs mt-4">
+    <li><span class="pub-authors">M. Gerten, J.M. Iqrah, and J. Spacco</span> "Knoxcraft Terps: Parallel Minecraft for novices, a Peachy Assignment." Proceedings of the 16th NSF/TCPP Workshop on Parallel and Distributed Computing Education (EduPar), 2026.</li>
+    <li><span class="pub-authors">C. Bourke, D.P. Bunde, C. Gruner, M. Smith, and X. Suo</span> "Development and Validation of a Parallel and Distributed Computing Exam for Early Computing Students & Research." 2026 IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW). IEEE, 2026.</li>
     <li><span class="pub-authors">X. Suo, T. Dangol.</span> <span class="pub-title">Engaging first and second year undergraduates with parallel and distributed computing: lessons from unplugged and game-based activities.</span> <span class="pub-venue">2026, pp. 104–114</span></li>
     <li><span class="pub-authors">A. R. Crockett, G. C. Gannod, X. Suo, C. Bourke, M. L. Smith, S. Srivastava, D. P. Bunde, J. Spacco, J. Wang, M. Zhu, N. Thota, C. C. Weems, R. Vaidyanathan, A. Sussman, S. K. Prasad.</span> <span class="pub-title">Making room for parallel and distributed computing in CS1: approaches, tradeoffs, and faculty effort.</span> <span class="pub-venue">Frontiers in Education (FIE), IEEE, 2026 (Accepted)</span></li>
     <li><span class="pub-authors">C. Bourke.</span> <span class="pub-title">Codeless modules for parallel and distributed computing in early computing curriculum.</span> <span class="pub-venue">Proc. 57th ACM Technical Symposium on Computer Science Education (SIGCSE TS), 2026, pp. 141–147</span></li>
@@ -67,8 +69,7 @@ include 'partials/header.php';
         <h3 class="mt-2"><a href="https://cdercenter.org/edupar-2026/">EduPar</a></h3>
         <p>The NSF/TCPP Workshop on Parallel and Distributed Computing Education. Began as the venue for
           early adopters and interested instructors to report experiences, receive feedback and discuss
-          curricular and pedagogical issues. The project&rsquo;s Peachy parallel assignments work appeared at
-          EduPar-25 in Milan.</p>
+          curricular and pedagogical issues. The project&rsquo;s Peachy parallel assignments work appeared at EduPar-25 in Milan and <a href="https://faculty.knox.edu/dbunde/teaching/ipdps26/">"Strategies, tools, and materials for teaching Parallel and Distributed Computing"</a> at EduPar-26 in New Orleans</p>
       </article>
       <article class="card">
         <span class="pill pill--brand">with SC</span>
