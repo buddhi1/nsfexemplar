@@ -10,7 +10,7 @@
 !/data/.htaccess
 !/data/counters_example.json
 !/data/admin_example.php
-!/data/downloads_example.csv
+!/data/downloads_ex.csv
 
 # PHP sessions, if the host is ever configured to write them locally
 /sessions/
