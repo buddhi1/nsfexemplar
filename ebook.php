@@ -14,11 +14,6 @@ include 'partials/header.php';
     <p class="lede mt-4">Search by institution or by activity. Filter activities by type, time needed,
       preparation, language, PDC topic, CS1 anchor and institution &mdash; then open the chapter summary, the
       teaching materials, or the full e-book.</p>
-    <p class="release-note mt-3">
-      <span class="pill pill--brand" tabindex="0" role="note"
-            aria-label="Early release. The CS1 chapters are published and complete. CS2 chapters are expected soon."
-            data-tip="The CS1 chapters are published and complete. CS2 chapters are expected soon.">Early release</span>
-    </p>
     <!-- Row one identifies the volume, row two acts on it. -->
     <div class="cluster hero-meta">
       <button class="btn btn--quiet btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
@@ -30,7 +25,16 @@ include 'partials/header.php';
     </div>
 
     <div class="cluster hero-actions">
-      <a class="btn btn--primary" href="download.php?f=book">Download the full e-book (PDF)</a>
+      <a class="btn btn--soft" href="download.php?f=early" target="_blank" rel="noopener"
+         aria-label="Download the early release, released August 2026. The CS1 chapters are published and complete. Opens in a new tab."
+         data-tip="Released August 2026. The CS1 chapters are published and complete.">
+        <?= icon_download() ?>
+        Early release <?= icon_new_tab() ?>
+      </a>
+      <span class="btn btn--primary btn--disabled" role="link" aria-disabled="true" tabindex="0" aria-label="Download the full e-book (coming soon)" data-tip="Coming soon">
+        <?= icon_download() ?>
+        Download the full e-book
+      </span>
       <a class="btn btn--ghost" href="#chapters">Chapter summaries</a>
       <a class="btn btn--ghost" href="#repos">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4l2 2.5h7A1.5 1.5 0 0 1 19 10v7.5A1.5 1.5 0 0 1 17.5 19h-13A1.5 1.5 0 0 1 3 17.5Z"/></svg>
@@ -145,7 +149,7 @@ include 'partials/header.php';
     <noscript>
       <div class="callout mt-4"><strong>Search needs JavaScript.</strong> Every chapter is still listed and
         downloadable in the <a href="#chapters">chapter table</a> below, and the full volume is available as
-        a <a href="download.php?f=book">single PDF</a>.</div>
+        a <a href="download.php?f=book" target="_blank" rel="noopener">single PDF <?= icon_new_tab() ?></a>.</div>
     </noscript>
   </div>
 </div>
@@ -313,12 +317,12 @@ include 'partials/header.php';
       <thead><tr><th scope="col">Chapter</th><th scope="col">Part</th><th scope="col">Pages</th><th scope="col">Open</th></tr></thead>
       <tbody id="chapter-rows">
         <tr><td colspan="4" class="small faint">The chapter list requires JavaScript &mdash;
-          <a href="download.php?f=book">open the full volume instead</a>, which carries the same contents.</td></tr>
+          <a href="download.php?f=book" target="_blank" rel="noopener">open the full volume instead <?= icon_new_tab() ?></a>, which carries the same contents.</td></tr>
       </tbody>
     </table>
   </div>
   <div class="cluster mt-4">
-    <a class="btn btn--primary" href="download.php?f=book">Download the full e-book (PDF)</a>
+    <span class="btn btn--primary btn--disabled" role="link" aria-disabled="true" tabindex="0" aria-label="Download the full e-book (coming soon)" data-tip="Coming soon"><?= icon_download() ?> Download the full e-book</span>
     <a class="btn btn--ghost" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">Open teaching materials</a>
   </div>
 </div>
@@ -344,7 +348,7 @@ include 'partials/header.php';
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
           <span data-copy-label>Copy citation</span>
         </button>
-        <a class="btn btn--ghost btn--sm" href="download.php?f=book">Download the volume</a>
+        <span class="btn btn--ghost btn--sm btn--disabled" role="link" aria-disabled="true" tabindex="0" aria-label="Download the volume (coming soon)" data-tip="Coming soon"><?= icon_download() ?> Download the volume</span>
       </div>
 
       <p class="cite-label mt-5">BibTeX</p>

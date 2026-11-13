@@ -120,6 +120,21 @@ function e(string $s): string {
     return htmlspecialchars($s, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
+/* Download arrow, for buttons that fetch the e-book. */
+function icon_download(): string {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"'
+         . ' stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M8 11l4 4 4-4M5 19h14"/></svg>';
+}
+
+/* Arrow leaving a box: the link opens in a new tab. Sits at the end of the
+   link; the hidden text says the same thing to screen readers. */
+function icon_new_tab(): string {
+    return '<svg class="icon-newtab" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"'
+         . ' stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'
+         . '<path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>'
+         . '<span class="visually-hidden"> (opens in a new tab)</span>';
+}
+
 /* The brand glyph is used in both the header and the footer. */
 function brand_glyph(): string {
     return '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">'
@@ -153,7 +168,7 @@ r.classList.toggle('dark',t==='dark');r.style.colorScheme=t;r.dataset.themeLocke
 <meta property="og:type" content="website">
 <?php endif; ?>
 </head>
-<body>
+<body data-page="<?= e($PAGE) ?>">
 
 <a class="skip-link" href="#content">Skip to main content</a>
 

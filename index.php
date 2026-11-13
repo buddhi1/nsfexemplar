@@ -37,11 +37,6 @@ include 'partials/header.php';
       <p class="lede mt-4">Modern software is parallel, distributed, event-driven and API-based. Introductory
         computing mostly still isn&rsquo;t. Eight institutions changed that in their own CS1, then measured
         whether it worked, and published everything.</p>
-      <p class="release-note mt-3">
-        <span class="pill pill--brand" tabindex="0" role="note"
-              aria-label="Early release. The CS1 chapters are published and complete. CS2 chapters are expected soon."
-              data-tip="The CS1 chapters are published and complete. CS2 chapters are expected soon.">Early release</span>
-      </p>
       <!-- Row one identifies the volume, row two acts on it. -->
       <div class="cluster hero-meta">
         <button class="btn btn--quiet btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
@@ -53,10 +48,16 @@ include 'partials/header.php';
       </div>
 
       <div class="cluster hero-actions">
-        <a class="btn btn--primary" href="download.php?f=book">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M8 11l4 4 4-4M5 19h14"/></svg>
-          Download the full e-book
+        <a class="btn btn--soft" href="download.php?f=early" target="_blank" rel="noopener"
+           aria-label="Download the early release, released August 2026. The CS1 chapters are published and complete. Opens in a new tab."
+           data-tip="Released August 2026. The CS1 chapters are published and complete.">
+          <?= icon_download() ?>
+          Early release <?= icon_new_tab() ?>
         </a>
+        <span class="btn btn--primary btn--disabled" role="link" aria-disabled="true" tabindex="0" aria-label="Download the full e-book (coming soon)" data-tip="Coming soon">
+          <?= icon_download() ?>
+          Download the full e-book
+        </span>
         <a class="btn btn--ghost" href="ebook.php#activities">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
           Find an activity
@@ -180,15 +181,15 @@ include 'partials/header.php';
            the heading above repeats them, so the image itself is decorative and
            the link takes its name from the hidden span. -->
       <figure class="book-cover reveal">
-        <a class="book-cover-link" href="download.php?f=book">
+        <a class="book-cover-link" href="download.php?f=book" target="_blank" rel="noopener">
           <picture>
             <source srcset="assets/book_cover/book_cover.webp" type="image/webp">
             <img src="assets/book_cover/book_cover.png" alt="" width="576" height="864"
                  decoding="async" loading="lazy">
           </picture>
-          <span class="visually-hidden">Download the e-book (PDF)</span>
+          <span class="visually-hidden">Download the e-book (opens in a new tab)</span>
         </a>
-        <figcaption>Early release &middot; <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2321015">NSF #2321015</a></figcaption>
+        <figcaption><a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2321015">NSF #2321015</a></figcaption>
       </figure>
 
       <div>
@@ -206,8 +207,14 @@ include 'partials/header.php';
             all while ensuring that the basic CS1 learning outcomes are preserved.</p>
         </div>
 
-        <div class="cluster mt-4">
-          <a class="btn btn--primary" href="download.php?f=book">Download the full PDF</a>
+        <div class="cluster tip-up mt-4">
+          <a class="btn btn--soft" href="download.php?f=early" target="_blank" rel="noopener"
+             aria-label="Download the early release, released August 2026. The CS1 chapters are published and complete. Opens in a new tab."
+             data-tip="Released August 2026. The CS1 chapters are published and complete.">
+            <?= icon_download() ?>
+            Early release <?= icon_new_tab() ?>
+          </a>
+          <span class="btn btn--primary btn--disabled" role="link" aria-disabled="true" tabindex="0" aria-label="Download the full PDF (coming soon)" data-tip="Coming soon"><?= icon_download() ?> Download the full PDF</span>
           <a class="btn btn--ghost" href="ebook.php#chapters">Download by chapter</a>
           <a class="btn btn--ghost" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
@@ -229,8 +236,7 @@ include 'partials/header.php';
      them; the markup lives in partials/usage.php and is shared with the
      eBook page. Wrapped in PHP rather than HTML comments so the counters
      are not read and rendered into a comment nobody sees.
-  include 'partials/usage.php'; */ ?> -->
-  
+  include 'partials/usage.php'; */ ?>
 </div>
 
 <?php /* ---------------------------------------------------------------------

@@ -48,7 +48,7 @@ include 'partials/header.php';
   <div class="callout mt-5">
     <strong>The volume itself</strong> is the primary publication: <em>Toward Modern Models of Introductory
     Computing Courses &mdash; CS1 and CS2 Course Exemplars infused with Parallel and Distributed Computing
-    Concepts</em>. <a href="download.php?f=book">Full PDF</a> &middot;
+    Concepts</em>. <a href="download.php?f=book" target="_blank" rel="noopener">Full PDF <?= icon_new_tab() ?></a> &middot;
     <a href="ebook.php#chapters">by chapter</a>. The wider CDER book series (Volumes 1 and 2, Morgan
     Kaufmann and Springer) is available as free preprint chapters; Volume 3 is expected from Springer in
     late 2026.

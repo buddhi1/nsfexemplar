@@ -34,6 +34,7 @@ index.php · project.php · ebook.php · team.php · research.php · resources.p
 contact.php             adoption / contact form — linked from the project page and
                         the footer, deliberately not a nav item
 download.php            counted download endpoint — every PDF link goes through it
+stats.php               private download statistics: by version, country, region; CSV export
 
 partials/
   header.php            nav bar, <head>, project name   ← the only place these live
@@ -51,12 +52,17 @@ assets/
   logos/institutions/   partner logos (see the README in there)
   book_cover/           the front cover shown in "Featured e-book" on the home page
 
-lib/counters.php        download and visit counters (JSON store, file-locked)
+lib/counters.php        download and visit counters (JSON tally + CSV log, file-locked)
 lib/contact.php         contact form: validation, spam traps, mail()
 data/counters.json      the live tally; created automatically, never in git
-data/counters_example.json  the shape of that file, all zeros — tracked, for reference
+data/downloads.csv      one row per download (time, IP, file, page); never in git
+data/geo-cache.json     IP → location lookups made by stats.php; never in git
+data/admin.php          the stats.php password; create it on the server, never in git
+data/counters_example.json  the shape of the tally, all zeros — tracked, for reference
+data/admin_example.php  template for data/admin.php — tracked
 
-cder_exemplar_cs1_cs2.pdf   the full volume — the only published PDF
+cder_exemplar_cs1_cs2.pdf                 Version 1 of the volume
+cder_exemplar_cs1_cs2_early_release.pdf   the early release, linked from the eBook page badge
 
 .htaccess               pretty URLs, protects internals — ships ready to use
 deploy/
@@ -190,7 +196,8 @@ include 'partials/header.php';
   `partials/footer.php`.
 - **Project name** — `$PROJECT_NAME`, `$PROJECT_SHORT`, `$PROJECT_TAG` at the top of
   `partials/header.php`. Masthead, page titles and footer all follow.
-- **Book filename** — `BOOK_FILE` in `lib/counters.php` and `SITE.book.pdf` in `assets/data.js`.
+- **Book filenames** — `BOOK_FILES` in `lib/counters.php` (one entry per version) and
+  `SITE.book.pdf` in `assets/data.js`.
 - **Citation** — `$CITATION` in `partials/header.php`. The home page copy button and the
   citation card on the resources page both read from it.
 - **DOI** — `$DOI` in `partials/header.php`. `doi_badge($DOI, $DOI_URL)` renders the badge;
@@ -227,28 +234,57 @@ instead, so a missing logo never looks broken.
 
 ## Download and visit counters
 
-Three numbers on the home page — site visits, full-volume downloads and chapter downloads — with a
-per-chapter breakdown in the eBook chapter table.
+Three numbers on the eBook page — site visits, Version 1 downloads and early-release downloads —
+rendered by `partials/usage.php`, plus a private statistics page at `/stats`.
 
-`lib/counters.php` keeps a single JSON file at `data/counters.json`, updated under an exclusive
-`flock` so concurrent hits cannot corrupt it. No database, no extra extension.
+`lib/counters.php` keeps two files in `data/`, each written under an exclusive `flock` so
+concurrent hits cannot corrupt them. No database, no extra extension.
 
-- **Downloads** are counted by `download.php?f=<key>`, which records the hit then redirects to the
-  real PDF so the browser still handles range requests and resuming. `f=book` is the volume;
-  the old per-chapter keys (`f=03-cs1-tntech`) still count under their own name and resolve to the
-  same file, so links published before chapters were merged keep working.
-- **The figures shown** are site visits and one download total, rendered by `partials/usage.php` and
-  shared by any page that includes it. Splitting volume from chapters stopped meaning anything once
-  there was one file. The total counts every key, including the old per-chapter ones, since they all
-  resolve to the same file now; `counters_chapter_total()` can still separate them if wanted.
+- **`data/counters.json`** is the running tally the site displays: visits, and downloads per
+  version (`v1`, `early`).
+- **`data/downloads.csv`** logs every download: UTC time, version, link key, page, whether it was
+  counted, IP address, referrer and user agent. It opens directly in Excel.
+- **Downloads** go through `download.php?f=<key>`, which records the hit then redirects to the
+  real PDF so the browser still handles range requests and resuming. `f=book` (and `f=v1`) is
+  Version 1; `f=early` is the early release. The old per-chapter keys (`f=03-cs1-tntech`) resolve
+  to Version 1, so links published before chapters were merged keep working.
+- **Repeats** — the same address fetching the same file again within 30 minutes (`REPEAT_WINDOW`)
+  is logged but not counted, so one reader clicking through chapter links counts once.
+- **Before the split** there was one tally per link key. All of it was the early release, so on
+  first read those totals are folded into `early` and kept under `legacy` for the record. They
+  predate the log, so they have no time or location.
 - **Visits** are counted once per browser session, not per page view. This sets a session cookie.
+  Visits are a tally only — no IP address or other per-visitor record is kept for them.
 - **Crawlers** are filtered by user agent — including `curl`, `wget` and headless Chrome. Edit the
-  pattern in `counters_is_bot()`.
-- **Privacy** — only totals are stored. No IP addresses, no user agents, no per-visitor records.
+  pattern in `counters_is_bot()`. Crawler hits are neither counted nor logged.
 - **If `data/` is unwritable** the site carries on and simply stops counting. No errors, no broken
   pages.
-- **Resetting** — delete `data/counters.json`; it is recreated empty on the next request. To seed
-  historical figures, edit `visits` and `downloads` while the site is idle.
+- **Resetting** — delete `data/counters.json` and `data/downloads.csv`; they are recreated on the
+  next request.
+
+### Statistics page (`/stats`)
+
+Downloads per version, by country and by region, the latest 200 downloads with time, IP and
+location, and an **Export CSV** link that returns the whole log with country, region and city added.
+
+- **Setup** — create `data/admin.php` in cPanel's File Manager with
+  `<?php return ['password' => 'a-long-password'];` (see `data/admin_example.php`). Until it
+  exists the page shows only these instructions.
+- **Locations** are looked up when the page is opened, not when a file is downloaded, so a
+  download never waits on an outside service. New addresses go to ip-api.com's free batch
+  service (country, region, city; no key needed), and the results are cached in
+  `data/geo-cache.json`, so each address is looked up once. Needs outbound HTTP from the host
+  (cURL or `allow_url_fopen`); if it is blocked, the page still works and lists locations as
+  "Not yet looked up".
+- **Behind a proxy** — the IP is `REMOTE_ADDR`. If the site is ever put behind Cloudflare or
+  another proxy, every visitor will show the proxy's address; change `counters_client_ip()`.
+
+### Privacy
+
+`data/downloads.csv` holds IP addresses, which count as personal data under GDPR and similar
+laws. It is never served (`data/.htaccess`) and never committed. Say on the site that downloads are
+logged with IP address for usage statistics, and trim old rows from the log when they are no
+longer needed. Visits are not logged.
 
 `data/counters.json` is deliberately **not** tracked: it is live state, so committing it would
 mean every deploy overwrote real figures with whatever numbers the last developer happened to

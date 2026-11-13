@@ -367,6 +367,30 @@
   .btn--ghost:any-link { color: var(--fg); }
   .btn--ghost:hover:not(:disabled) { background: var(--bg-subtle); }
   .btn--sm { padding: 0.42rem 0.85rem; min-block-size: 2.25rem; font-size: 0.86rem; }
+  /* A lighter sibling of --primary: brand-tinted fill, brand text. Used for the
+     early release beside the Version 1 download, so the pair reads as one
+     family with Version 1 as the stronger choice. */
+  .btn--soft {
+    background: color-mix(in oklab, var(--brand) 16%, var(--bg-raised));
+    border-color: color-mix(in oklab, var(--brand) 38%, transparent);
+    color: var(--brand-deep);
+  }
+  .btn--soft:any-link { color: var(--brand-deep); }
+  .btn--soft:hover:not(:disabled) { background: color-mix(in oklab, var(--brand) 26%, var(--bg-raised)); }
+  /* Not available yet (Version 1 before release). A span, not a link, so it
+     cannot be followed; still focusable so its "Coming soon" tip is reachable
+     by keyboard. Muted with colours rather than opacity, which would fade the
+     tooltip too. */
+  .btn.btn--disabled, .btn.btn--disabled:hover {
+    background: var(--bg-subtle); color: var(--fg-faint);
+    border-color: var(--line); box-shadow: none; transform: none;
+  }
+  .btn.btn--disabled[data-tip] { cursor: not-allowed; }
+  /* Home and eBook pages: full-size buttons 20% shorter (67.75px -> 54px).
+     .btn has a content-box min height, so padding and minimum shrink together. */
+  :is([data-page="home"], [data-page="ebook"]) .btn:not(.btn--sm) {
+    padding-block: 0.544rem; min-block-size: 2.175rem;
+  }
   /* Quieter than --ghost: a barely-there surface for controls that are about
      the document rather than actions on it. Lighter, not darker — a darker
      chip would pull the eye to the citation ahead of the download below it. */
@@ -428,6 +452,21 @@
      assistive tech. */
   .release-note { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; margin: 0; }
   [data-tip] { position: relative; cursor: help; }
+  a[data-tip] { cursor: pointer; }
+  /* Lift the host while its tip shows. A hovered .btn gets a transform, which
+     makes it its own stacking context, so without this the DOI badge and the
+     citation chip — later in the source — paint over the tip. */
+  [data-tip]:hover, [data-tip]:focus-visible { z-index: 30; }
+  /* In the hero's button row the tip opens upward, over the citation/DOI row.
+     Below the buttons it would run into the hero's clipped bottom edge, and on
+     the home page into the statistics card that overlaps the hero (z-index 2,
+     which a tip inside the hero can never rise above). */
+  /* .tip-up does the same for any other button row that wants it. */
+  :is(.hero-actions, .tip-up) [data-tip]::after { inset-block-start: auto; inset-block-end: calc(100% + 0.5rem); }
+
+  /* "Opens in a new tab" marker at the end of a link. */
+  .icon-newtab { display: inline-block; inline-size: 0.8em; block-size: 0.8em; vertical-align: -0.05em; opacity: 0.75; }
+  .btn svg.icon-newtab { inline-size: 0.85rem; block-size: 0.85rem; margin-inline-start: 0.1rem; }
   [data-tip]::after {
     content: attr(data-tip); position: absolute; z-index: 20;
     inset-block-start: calc(100% + 0.5rem); inset-inline-start: 0;

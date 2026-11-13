@@ -1,12 +1,15 @@
 # ── Runtime state ────────────────────────────────────────────────────────────
 # The counter tally is written by the live site. Keeping it out of the repo
 # means deploys never overwrite real numbers and pulls never conflict.
-# Two files here ARE tracked: .htaccess, so the store stays protected on a
-# fresh deploy, and counters_example.json, which documents the shape of the
-# tally without carrying any real figures.
+# Three files here ARE tracked: .htaccess, so the store stays protected on a
+# fresh deploy; counters_example.json, which documents the shape of the tally
+# without carrying any real figures; and admin_example.php, the template for
+# the stats password. The real data/admin.php, downloads.csv (which holds
+# visitor IP addresses) and geo-cache.json never leave the server.
 /data/*
 !/data/.htaccess
 !/data/counters_example.json
+!/data/admin_example.php
 
 # PHP sessions, if the host is ever configured to write them locally
 /sessions/

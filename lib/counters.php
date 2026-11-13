@@ -1,25 +1,51 @@
 <?php
 /* =============================================================================
-   Download and visit counters.
+   Download and visit counters, plus a per-download log.
 
-   Storage is a single JSON file under data/, updated under an exclusive lock.
-   No database and no PHP extension beyond the defaults, so it works on any
-   cPanel host as-is. The only requirement is that PHP can write to data/ —
-   the code creates the directory and file on first use.
+   Two files under data/, both written under an exclusive lock. No database and
+   no PHP extension beyond the defaults, so it works on any cPanel host as-is.
+   The only requirement is that PHP can write to data/ — the code creates the
+   directory and files on first use.
 
-   Shape:
+   data/counters.json — the running tally the site displays:
      {
+       "schema":    2,
        "started":   "2026-07-31",
        "visits":    1234,
-       "downloads": { "book": 210, "03-cs1-tntech": 44, ... }
+       "downloads": { "v1": 40, "early": 172 },
+       "legacy":    { "book": 157, "03-cs1-tntech": 2, ... },
+       "recent":    { "<hash of ip+file>": <unix time>, ... }
      }
+   "legacy" is the per-link tally from before the two versions were split. All
+   of it was the early release, so it is folded into downloads.early when an
+   old file is first read, and kept as-is for the record.
+   "recent" is a short-lived map used only to stop one person's repeat clicks
+   from inflating the count. Entries expire after REPEAT_WINDOW seconds.
+
+   data/downloads.csv — one row per download request:
+     time_utc, file, link, page, counted, ip, referrer, user_agent
+   "counted" is 0 for a repeat within REPEAT_WINDOW (still logged, so you can
+   see which chapters people open, but not added to the tally).
+
+   Visits are only counted, never logged: no address is kept for them.
+
+   Locations are not looked up here — stats.php resolves them later, so a
+   download never waits on a third-party service.
    ========================================================================== */
 
-/* The published volume. Rename here if the file is ever renamed. */
-const BOOK_FILE = 'cder_exemplar_cs1_cs2.pdf';
+/* The published files, by version key. Rename here if a file is renamed. */
+const BOOK_FILES = [
+    'v1'    => ['file' => 'cder_exemplar_cs1_cs2.pdf',               'label' => 'Version 1'],
+    'early' => ['file' => 'cder_exemplar_cs1_cs2_early_release.pdf', 'label' => 'Early release'],
+];
 
-const COUNTER_DIR  = __DIR__ . '/../data';
-const COUNTER_FILE = COUNTER_DIR . '/counters.json';
+const COUNTER_DIR   = __DIR__ . '/../data';
+const COUNTER_FILE  = COUNTER_DIR . '/counters.json';
+const DOWNLOAD_LOG  = COUNTER_DIR . '/downloads.csv';
+const DOWNLOAD_LOG_COLUMNS = ['time_utc', 'file', 'link', 'page', 'counted', 'ip', 'referrer', 'user_agent'];
+
+/** The same visitor fetching the same file again within this many seconds is not a new download. */
+const REPEAT_WINDOW = 1800;
 
 /** Obvious crawlers, so the numbers mean something. Not exhaustive by design. */
 function counters_is_bot(): bool {
@@ -33,8 +59,41 @@ function counters_is_bot(): bool {
     );
 }
 
+/**
+ * The visitor's address. REMOTE_ADDR is the only value the client cannot
+ * forge; forwarding headers are ignored on purpose. If the site is ever put
+ * behind Cloudflare or another proxy, every visitor will show the proxy's
+ * address and this is the one place to change.
+ */
+function counters_client_ip(): string {
+    return (string) ($_SERVER['REMOTE_ADDR'] ?? '');
+}
+
 function counters_defaults(): array {
-    return ['started' => date('Y-m-d'), 'visits' => 0, 'downloads' => []];
+    return [
+        'schema'    => 2,
+        'started'   => date('Y-m-d'),
+        'visits'    => 0,
+        'downloads' => ['v1' => 0, 'early' => 0],
+        'legacy'    => [],
+        'recent'    => [],
+    ];
+}
+
+/**
+ * Bring any stored shape up to schema 2. Before the split, "downloads" held one
+ * tally per link key and every one of those downloads was the early release.
+ */
+function counters_normalize(array $data): array {
+    if (($data['schema'] ?? 1) < 2) {
+        $legacy = is_array($data['downloads'] ?? null) ? $data['downloads'] : [];
+        $data['legacy']    = $legacy;
+        $data['downloads'] = ['v1' => 0, 'early' => array_sum(array_map('intval', $legacy))];
+        $data['schema']    = 2;
+    }
+    $data += counters_defaults();
+    $data['downloads'] += ['v1' => 0, 'early' => 0];
+    return $data;
 }
 
 /** Read without locking — for display. Never throws; returns defaults if absent. */
@@ -44,7 +103,7 @@ function counters_read(): array {
     if ($raw === false) return counters_defaults();
     $data = json_decode($raw, true);
     if (!is_array($data)) return counters_defaults();
-    return $data + counters_defaults();
+    return counters_normalize($data);
 }
 
 /**
@@ -60,11 +119,11 @@ function counters_update(callable $mutate): void {
     if ($fh === false) return;
 
     if (flock($fh, LOCK_EX)) {
+        clearstatcache(true, COUNTER_FILE);
         $size = filesize(COUNTER_FILE);
         $raw  = $size > 0 ? fread($fh, $size) : '';
         $data = json_decode($raw ?: '', true);
-        if (!is_array($data)) $data = counters_defaults();
-        $data += counters_defaults();
+        $data = counters_normalize(is_array($data) ? $data : counters_defaults());
 
         $data = $mutate($data);
 
@@ -93,26 +152,82 @@ function counters_bump_visit(): void {
     });
 }
 
-function counters_bump_download(string $key): void {
+/**
+ * Record one download of $version ('v1' or 'early'), reached through link key
+ * $link, optionally opened at $page. Counts it unless the same visitor fetched
+ * the same file within REPEAT_WINDOW, and logs it either way.
+ */
+function counters_bump_download(string $version, string $link, ?int $page): void {
     if (counters_is_bot()) return;
-    counters_update(function (array $d) use ($key): array {
-        $d['downloads'][$key] = ($d['downloads'][$key] ?? 0) + 1;
+    if (!isset(BOOK_FILES[$version])) return;
+
+    $ip      = counters_client_ip();
+    $now     = time();
+    $hash    = substr(hash('sha256', $ip . '|' . $version), 0, 16);
+    $counted = false;
+
+    counters_update(function (array $d) use ($version, $hash, $now, &$counted): array {
+        /* Drop expired entries so the map stays small. */
+        $recent = [];
+        foreach (($d['recent'] ?? []) as $h => $t) {
+            if ($now - (int) $t < REPEAT_WINDOW) $recent[$h] = (int) $t;
+        }
+        if (!isset($recent[$hash])) {
+            $d['downloads'][$version] = ((int) ($d['downloads'][$version] ?? 0)) + 1;
+            $counted = true;
+        }
+        $recent[$hash] = $now;
+        $d['recent'] = $recent;
         return $d;
     });
+
+    counters_append_csv(DOWNLOAD_LOG, DOWNLOAD_LOG_COLUMNS, [
+        gmdate('Y-m-d\TH:i:s\Z', $now),
+        $version,
+        $link,
+        $page ?? '',
+        $counted ? 1 : 0,
+        $ip,
+        substr((string) ($_SERVER['HTTP_REFERER'] ?? ''), 0, 300),
+        substr((string) ($_SERVER['HTTP_USER_AGENT'] ?? ''), 0, 300),
+    ]);
+}
+
+/** Append one row to a CSV log, writing the header first if the file is new. Fails silently, like the tally. */
+function counters_append_csv(string $file, array $columns, array $row): void {
+    if (!is_dir(COUNTER_DIR)) @mkdir(COUNTER_DIR, 0775, true);
+    $fh = @fopen($file, 'a');
+    if ($fh === false) return;
+    if (flock($fh, LOCK_EX)) {
+        clearstatcache(true, $file);
+        if (filesize($file) === 0) fputcsv($fh, $columns, ',', '"', '');
+        /* A leading = + - @ would make a spreadsheet treat a referrer or user
+           agent as a formula when the log is opened in Excel. */
+        $row = array_map(function ($v) {
+            $v = (string) $v;
+            return ($v !== '' && strpbrk($v[0], '=+-@') !== false) ? "'" . $v : $v;
+        }, $row);
+        fputcsv($fh, $row, ',', '"', '');
+        fflush($fh);
+        flock($fh, LOCK_UN);
+    }
+    fclose($fh);
 }
 
 /* ---------------------------------------------------------------- targets --
-   The whitelist is derived from what is actually on disk, so a crafted ?f=
-   can never escape the site root.                                          */
+   The whitelist is fixed in BOOK_FILES, so a crafted ?f= can never escape the
+   site root.                                                               */
 
-function counters_download_target(string $key): ?string {
-    $root = __DIR__ . '/..';
-    if (!is_file("$root/" . BOOK_FILE)) return null;
-    /* One published file now. Chapters used to be served separately; those keys
-       still resolve to the volume so older links and bookmarks keep working
-       rather than 404ing, and they keep counting under their own name. */
-    if ($key === 'book' || preg_match('/^\d{2}-[a-z0-9-]+$/', $key)) return BOOK_FILE;
-    return null;
+/**
+ * Which version a link key serves, or null if the key is unknown or the file
+ * is missing. "book" and the old per-chapter keys ("03-cs1-tntech", …) are the
+ * current volume, so older links and bookmarks keep working.
+ */
+function counters_download_version(string $key): ?string {
+    if ($key === 'early')                                                     $version = 'early';
+    elseif ($key === 'book' || $key === 'v1' || preg_match('/^\d{2}-[a-z0-9-]+$/', $key)) $version = 'v1';
+    else return null;
+    return is_file(__DIR__ . '/../' . BOOK_FILES[$version]['file']) ? $version : null;
 }
 
 /**
@@ -126,29 +241,15 @@ function counters_download_page(string $raw): ?int {
     return ($n >= 1 && $n <= 9999) ? $n : null;
 }
 
-/** Convenience for templates: downloads for one key. */
-function counters_downloads(array $data, string $key): int {
-    return (int) ($data['downloads'][$key] ?? 0);
+/** Downloads of one version: 'v1' or 'early'. */
+function counters_downloads(array $data, string $version): int {
+    return (int) ($data['downloads'][$version] ?? 0);
 }
 
-/** Every chapter download added together (excludes the full volume). */
-/**
- * Every download, whatever key it was counted under. All keys now serve the
- * same file — chapters stopped being published separately — so the total is
- * the only figure that means anything.
- */
+/** Every download of every version. */
 function counters_downloads_total(array $data): int {
     $sum = 0;
     foreach (($data['downloads'] ?? []) as $v) $sum += (int) $v;
-    return $sum;
-}
-
-/** Downloads counted under the old per-chapter keys, for the historical note. */
-function counters_chapter_total(array $data): int {
-    $sum = 0;
-    foreach (($data['downloads'] ?? []) as $k => $v) {
-        if ($k !== 'book') $sum += (int) $v;
-    }
     return $sum;
 }
 
