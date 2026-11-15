@@ -718,6 +718,7 @@
   .usage .metric-value { font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.1rem); }
   .usage .metric + .metric::before { inset-block: 8%; }
   .usage-foot { grid-column: 1 / -1; margin: 0; font-size: 0.85rem; }
+  .metric-note { display: block; margin-block-start: 0.2rem; font-size: 0.72rem; color: var(--fg-faint); }
   .usage-foot a { font-weight: 600; text-decoration: none; }
   .usage-foot a:hover { text-decoration: underline; }
 

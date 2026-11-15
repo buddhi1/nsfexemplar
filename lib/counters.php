@@ -9,16 +9,22 @@
 
    data/counters.json — the running tally the site displays:
      {
-       "schema":    2,
+       "schema":    3,
        "started":   "2026-07-31",
+       "v1_since":  "2026-11-15",
        "visits":    1234,
-       "downloads": { "v1": 40, "early": 172 },
+       "downloads": { "v1": 40, "early": 212 },
        "legacy":    { "book": 157, "03-cs1-tntech": 2, ... },
        "recent":    { "<hash of ip+file>": <unix time>, ... }
      }
    "legacy" is the per-link tally from before the two versions were split. All
    of it was the early release, so it is folded into downloads.early when an
    old file is first read, and kept as-is for the record.
+   "v1_since" is the day the first edition went live. Until then the "v1" key
+   served cder_exemplar_cs1_cs2.pdf, which was still the early release, so
+   when an older file is first read its "v1" tally is moved into "early", "v1"
+   restarts at zero and v1_since is set to that day (schema 3). stats.php
+   uses the same date to file earlier "v1" log rows under the early release.
    "recent" is a short-lived map used only to stop one person's repeat clicks
    from inflating the count. Entries expire after REPEAT_WINDOW seconds.
 
@@ -78,8 +84,9 @@ function counters_client_ip(): string {
 
 function counters_defaults(): array {
     return [
-        'schema'    => 2,
+        'schema'    => 3,
         'started'   => date('Y-m-d'),
+        'v1_since'  => gmdate('Y-m-d'),   // UTC, like the log
         'visits'    => 0,
         'downloads' => ['v1' => 0, 'early' => 0],
         'legacy'    => [],
@@ -97,6 +104,17 @@ function counters_normalize(array $data): array {
         $data['legacy']    = $legacy;
         $data['downloads'] = ['v1' => 0, 'early' => array_sum(array_map('intval', $legacy))];
         $data['schema']    = 2;
+    }
+    /* Schema 3: the first edition starts its own count. Everything counted
+       under "v1" so far was the early release (see the header comment). */
+    if (($data['schema'] ?? 1) < 3) {
+        $dl = is_array($data['downloads'] ?? null) ? $data['downloads'] : [];
+        $data['downloads'] = [
+            'v1'    => 0,
+            'early' => (int) ($dl['early'] ?? 0) + (int) ($dl['v1'] ?? 0),
+        ];
+        $data['v1_since'] = gmdate('Y-m-d');   // UTC, like the log
+        $data['schema']   = 3;
     }
     $data += counters_defaults();
     $data['downloads'] += ['v1' => 0, 'early' => 0];

@@ -171,6 +171,16 @@ function stats_resolve(array $ips): array {
 }
 
 $rows   = stats_read_log(DOWNLOAD_LOG);
+/* Before the first edition went live, "v1" served the old file name, which was
+   still the early release. File those rows under the early release so the
+   tables agree with the tally (see v1_since in lib/counters.php). */
+$v1Since = (string) (counters_read()['v1_since'] ?? '');
+if ($v1Since !== '') {
+    foreach ($rows as &$r) {
+        if ($r['file'] === 'v1' && substr($r['time_utc'], 0, 10) < $v1Since) $r['file'] = 'early';
+    }
+    unset($r);
+}
 $ips    = array_values(array_unique(array_column($rows, 'ip')));
 [$geo, $unresolved] = stats_resolve($ips);
 
@@ -233,7 +243,8 @@ stats_page_start('Download statistics');
     <div><b><?= counters_fmt(counters_downloads($counts, $k)) ?></b><span><?= h($f['label']) ?> downloads</span></div>
   <?php endforeach; ?>
 </section>
-<p class="muted">Tallies since <?= h((string) ($counts['started'] ?? '')) ?>. Repeat downloads of the same file
+<p class="muted">Tallies since <?= h((string) ($counts['started'] ?? '')) ?>; the first edition since
+  <?= h((string) ($counts['v1_since'] ?? '')) ?> &mdash; earlier downloads were the early release and are counted there. Repeat downloads of the same file
   from the same address within <?= REPEAT_WINDOW / 60 ?> minutes are logged but not counted.
   <?php if (!empty($counts['legacy'])): ?>
     Early-release downloads include <?= counters_fmt(array_sum(array_map('intval', $counts['legacy']))) ?>
