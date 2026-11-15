@@ -125,7 +125,7 @@ $bad = static fn(string $k): bool => isset($err[$k]);
           <div class="field">
             <label for="term">Possible term</label>
             <input type="text" id="term" name="term" value="<?= e($v['term']) ?>"
-                   placeholder="Fall 2026">
+                   placeholder="Spring 2027">
           </div>
         </div>
 

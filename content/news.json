@@ -2,6 +2,13 @@
   "_comment": "Project news shown on the home page. Newest first. index.php reads this file server-side, so no build step and no JavaScript is needed to render it. Fields: date (ISO, used by <time datetime>), label (what the reader sees), title, body, and an optional link {href,text}.",
   "items": [
     {
+      "date": "2026-11",
+      "label": "Nov 2026",
+      "title": "First Edition published, with CS2",
+      "body": "The First Edition adds Part II: a common CS2 chapter and eight CS2 course packages, making sixteen classroom-tested exemplars across eight institutions. New DOI 10.14809/20.500.12588/7992.2; the early release keeps its own. CS2 material is in the repository under CS2/.",
+      "link": { "href": "ebook.php#parts", "text": "CS1 and CS2 at a glance" }
+    },
+    {
       "date": "2026-07",
       "label": "Jul 2026",
       "title": "CS1 release published",

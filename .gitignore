@@ -12,6 +12,8 @@
 !/data/admin_example.php
 !/data/downloads_ex.csv
 
+ebook_copy.php
+
 # PHP sessions, if the host is ever configured to write them locally
 /sessions/
 sess_*

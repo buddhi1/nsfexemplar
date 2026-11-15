@@ -839,6 +839,12 @@
     border-radius: var(--radius-l);
   }
   @media (width < 56rem) { .cite-card { grid-template-columns: minmax(0, 1fr); } }
+  /* The early-release citation, folded away under the first edition's. */
+  .cite-early { border-block-start: 1px solid var(--line); padding-block-start: var(--sp-3); }
+  .cite-early summary { cursor: pointer; font-size: 0.88rem; font-weight: 600; color: var(--fg-muted); }
+  .cite-early summary:hover { color: var(--fg); }
+  /* Two badges in a row of buttons wrap onto their own lines on a phone. */
+  .hero-meta .doi { flex-wrap: nowrap; }
   .cite-label {
     margin: 0 0 var(--sp-2); font-size: 0.72rem; font-weight: 700;
     letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-faint);
@@ -902,6 +908,9 @@
   /* Nothing here may shrink: a squeezed identifier is unreadable and a
      squeezed arrow drops under the 24px target floor. */
   .doi-label, .doi-open, .doi-ico { flex: none; }
+  /* Which edition the identifier belongs to, between the label and the value. */
+  .doi-ed { flex: none; font-family: var(--font-body); font-size: 0.72rem; font-weight: 600;
+            color: var(--fg-muted); margin-inline-end: 0.45rem; white-space: nowrap; }
   .doi-value { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600;
                white-space: nowrap; }
   .doi-badge:hover, .doi-open:hover { background: color-mix(in oklab, var(--brand) 16%, var(--bg-raised)); }
@@ -931,6 +940,19 @@
   @media (width < 26rem) {
     .doi-badge, .doi-open { font-size: 0.7rem; padding-block: 0.4rem; }
     .doi-label { padding-inline: 0.45rem; letter-spacing: 0.06em; }
+  }
+  /* The first edition's identifier is long: on a phone the edition name
+     shortens to "1st ed." so the badge stays on one line. The button's
+     accessible name still says "first edition". */
+  @media (width < 30rem) {
+    .doi-ed-full { display: none; }
+    .doi-ed::before { content: attr(data-short); }
+    .doi-ed { margin-inline-end: 0.35rem; }
+  }
+  @media (width < 24rem) {
+    .doi-badge, .doi-open { font-size: 0.64rem; }
+    .doi-value { letter-spacing: -0.02em; }
+    .doi-open { padding-inline: 0.4rem 0.55rem; min-inline-size: 1.6rem; }
   }
   @media (prefers-reduced-motion: reduce) {
     .doi-badge[data-copied]::after { animation: none; }
@@ -1201,6 +1223,16 @@
 
   /* Chapter/institution column must never wrap; the prose columns give way. */
   table.data--glance th[scope="row"] { white-space: nowrap; font-weight: 600; }
+  /* Institution group rows: CS1 and CS2 rows of one institution sit under it. */
+  table.data--glance tr.glance-inst th {
+    padding-block: 0.9rem 0.4rem; text-align: start; font-weight: 700; color: var(--brand-deep);
+    background: color-mix(in oklab, var(--brand) 6%, transparent);
+  }
+  table.data--glance tr.glance-inst th span { font-weight: 500; color: var(--fg-muted); }
+  table.data--glance tbody tr.glance-inst:hover { background: none; }
+  .glance-course { display: inline-block; margin-inline-start: 0.3rem; padding: 0.05rem 0.4rem;
+                   border-radius: var(--radius-pill); font-size: 0.72rem; font-weight: 700;
+                   background: var(--bg-subtle); color: var(--fg-muted); }
   table.data--glance :is(th, td) { padding-inline: 0.85rem; }
   /* 1% + nowrap makes a column shrink to its content under auto table layout,
      so column one is exactly as wide as it needs to be and never wraps. */
@@ -1238,6 +1270,29 @@
   [data-open] .ch-toggle .chev { rotate: 90deg; }
   .ch-row[data-open] { background: var(--brand-tint); }
   .ch-plain { color: var(--fg-muted); }
+  /* --- the two parts (eBook page) ----------------------------------------
+     One panel per part: its common chapter in prose, then its institutional
+     chapters as a compact list filled from CHAPTERS by site.js. */
+  .part-panel { display: flex; flex-direction: column; gap: var(--sp-3); }
+  .part-panel .part-start { margin: 0; }
+  .partlist { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.1rem; }
+  .partlist a {
+    display: grid; grid-template-columns: 3.2rem minmax(0, 1fr) auto; gap: 0.6rem; align-items: baseline;
+    padding: 0.45rem 0.55rem; border-radius: var(--radius-s); text-decoration: none; color: var(--fg);
+  }
+  .partlist a:hover { background: var(--bg-subtle); }
+  .partlist-n { font-size: 0.78rem; font-weight: 700; color: var(--brand-deep); font-variant-numeric: tabular-nums; }
+  .partlist-t { font-weight: 600; font-size: 0.94rem; }
+  .partlist-s { display: block; font-weight: 400; font-size: 0.82rem; color: var(--fg-faint); }
+  .partlist-p { font-size: 0.8rem; color: var(--fg-faint); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+  /* Where Part I and Part II begin, as in the book's own contents. */
+  .ch-part th {
+    padding-block: 1.1rem 0.45rem; text-align: start;
+    font-size: 0.74rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--brand-deep); border-block-end: 1px solid color-mix(in oklab, var(--brand) 30%, var(--line));
+  }
+  table.data tbody tr.ch-part:hover { background: none; }
 
   /* Part and pages, shown only once those columns drop out. Authors are not
      repeated here — they read as clutter beside the titles, and the full list
@@ -1525,6 +1580,67 @@
   }
   dialog.sheet .sheet-head strong { font-family: var(--font-display); font-size: 1.1rem; }
   dialog.sheet .sheet-body { padding: var(--sp-4) var(--sp-5) var(--sp-5); }
+  /* "CS1 package · Chapter 2" / "CS2 package · Chapter 11" inside an exemplar sheet */
+  dialog.sheet .sheet-part {
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--brand-deep); padding-block-end: 0.4rem;
+    border-block-end: 1px solid color-mix(in oklab, var(--brand) 30%, var(--line));
+  }
+
+  /* --- PDF reader (site.js) -----------------------------------------------
+     Near full-screen, so the browser's own PDF viewer has room. The chapter
+     list sits beside the page on wide screens and slides over it on narrow
+     ones. */
+  dialog.pdfview {
+    inline-size: 96vw; block-size: 94vh; max-inline-size: 96vw; max-block-size: 94vh;
+    padding: 0; border: 1px solid var(--line); border-radius: var(--radius-l);
+    background: var(--bg-raised); color: var(--fg); box-shadow: var(--shadow-l); overflow: hidden;
+  }
+  dialog.pdfview[open] { display: flex; flex-direction: column; }
+  dialog.pdfview::backdrop { background: oklch(0.15 0.02 260 / 0.6); backdrop-filter: blur(2px); }
+  html:has(dialog.pdfview[open]) { overflow: hidden; }
+  .pdfview-head {
+    flex: none; display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.5rem 0.75rem; border-block-end: 1px solid var(--line);
+  }
+  .pdfview-head .btn { white-space: nowrap; }
+  .pdfview-titles { flex: 1; min-inline-size: 0; display: flex; flex-direction: column; }
+  .pdfview-titles strong {
+    font-family: var(--font-display); font-size: 1.02rem; line-height: 1.25;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .pdfview-sub { font-size: 0.78rem; color: var(--fg-faint); }
+  .pdfview-body { position: relative; flex: 1; min-block-size: 0; display: grid;
+                  grid-template-columns: 17rem minmax(0, 1fr); }
+  .pdfview-body[data-toc="off"] { grid-template-columns: minmax(0, 1fr); }
+  .pdfview-body[data-toc="off"] .pdfview-toc { display: none; }
+  .pdfview-toc { overflow: auto; padding: 0.4rem; border-inline-end: 1px solid var(--line); background: var(--bg-raised); }
+  .pdfview-toc ol { list-style: none; margin: 0; padding: 0; }
+  .pdfview-toc .toc-part {
+    padding: 0.85rem 0.55rem 0.3rem; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-deep);
+  }
+  .pdfview-toc button {
+    inline-size: 100%; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.5rem;
+    align-items: baseline; padding: 0.4rem 0.55rem; border: 0; border-radius: var(--radius-s);
+    background: none; color: var(--fg); font: inherit; font-size: 0.84rem; line-height: 1.35;
+    text-align: start; cursor: pointer;
+  }
+  .pdfview-toc button:hover { background: var(--bg-subtle); }
+  .pdfview-toc button[aria-current] { background: var(--brand-tint); color: var(--brand-deep); font-weight: 600; }
+  .pdfview-toc .toc-p { font-size: 0.76rem; color: var(--fg-faint); font-variant-numeric: tabular-nums; }
+  .pdfview-frame { inline-size: 100%; block-size: 100%; border: 0; background: oklch(0.38 0.01 260); }
+  @media (width < 48rem) {
+    dialog.pdfview { inline-size: 100vw; block-size: 100dvh; max-inline-size: 100vw; max-block-size: 100dvh;
+                     border-radius: 0; border: 0; }
+    .pdfview-body, .pdfview-body[data-toc="off"] { grid-template-columns: minmax(0, 1fr); }
+    .pdfview-toc { position: absolute; inset-block: 0; inset-inline-start: 0; z-index: 2;
+                   inline-size: min(19rem, 86%); box-shadow: var(--shadow-l); }
+    /* icon-only on a phone; the label stays for screen readers */
+    .pdfview-lbl { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden;
+                   clip-path: inset(50%); white-space: nowrap; }
+    .pdfview-head .btn { padding-inline: 0.6rem; }
+  }
 
   /* Subtle reveal, motion-safe only.
      This used `animation-timeline: view()`, which is bidirectional — scrolling

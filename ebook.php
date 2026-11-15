@@ -1,7 +1,7 @@
 <?php
 $PAGE  = 'ebook';
 $PAGE_TITLE = 'The eBook';
-$DESC  = 'Search eight CS1 exemplars and seventeen classroom activities by language, institution type, activity style, duration and preparation level. Chapter summaries, teaching materials and the full e-book PDF.';
+$DESC  = 'The first edition covers CS1 and CS2: sixteen course exemplars from eight institutions, two common activity chapters, and a searchable finder for classroom activities. Chapter summaries, teaching materials and the full e-book PDF.';
 include 'partials/header.php';
 ?>
 
@@ -9,11 +9,11 @@ include 'partials/header.php';
 
 <section class="hero hero--page">
   <div class="shell">
-    <p class="eyebrow">The eBook</p>
+    <p class="eyebrow">The eBook &middot; First Edition</p>
     <h1 class="mt-3">Find the Exemplar or the Activity That Matches Your Course</h1>
-    <p class="lede mt-4">Search by institution or by activity. Filter activities by type, time needed,
-      preparation, language, PDC topic, CS1 anchor and institution &mdash; then open the chapter summary, the
-      teaching materials, or the full e-book.</p>
+    <p class="lede mt-4">Sixteen course exemplars &mdash; eight for CS1, eight for CS2 &mdash; from eight
+      institutions. Search by institution or by activity, then open the chapter summary, the teaching
+      materials, or the full e-book.</p>
     <!-- Row one identifies the volume, row two acts on it. -->
     <div class="cluster hero-meta">
       <button class="btn btn--quiet btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
@@ -21,20 +21,21 @@ include 'partials/header.php';
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
         <span data-copy-label>Copy citation</span>
       </button>
-      <?= doi_badge($DOI, $DOI_URL) ?>
+      <?= doi_badge($DOI, $DOI_URL, '', 'First edition') ?>
+      <?= doi_badge($DOI_EARLY, $DOI_EARLY_URL, '', 'Early release') ?>
     </div>
 
     <div class="cluster hero-actions">
+      <a class="btn btn--primary" href="download.php?f=book" target="_blank" rel="noopener">
+        <?= icon_download() ?>
+        Download the full e-book <?= icon_new_tab() ?>
+      </a>
       <a class="btn btn--soft" href="download.php?f=early" target="_blank" rel="noopener"
-         aria-label="Download the early release, released August 2026. The CS1 chapters are published and complete. Opens in a new tab."
-         data-tip="Released August 2026. The CS1 chapters are published and complete.">
+         aria-label="Download the early release: August 2026, CS1 chapters only, superseded by the First Edition. Opens in a new tab."
+         data-tip="August 2026 · CS1 chapters only · superseded by the First Edition.">
         <?= icon_download() ?>
         Early release <?= icon_new_tab() ?>
       </a>
-      <span class="btn btn--primary btn--disabled" role="link" aria-disabled="true" tabindex="0" aria-label="Download the full e-book (coming soon)" data-tip="Coming soon">
-        <?= icon_download() ?>
-        Download the full e-book
-      </span>
       <a class="btn btn--ghost" href="#chapters">Chapter summaries</a>
       <a class="btn btn--ghost" href="#repos">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4l2 2.5h7A1.5 1.5 0 0 1 19 10v7.5A1.5 1.5 0 0 1 17.5 19h-13A1.5 1.5 0 0 1 3 17.5Z"/></svg>
@@ -50,26 +51,32 @@ include 'partials/header.php';
     <div class="prose">
       <p class="eyebrow">About the volume</p>
       <h2 class="mt-2">A Guided Collection, Not a Linear Book</h2>
-      <p>This is a practical adoption guide. Rather than only arguing that introductory courses should be
-        modernized, it provides classroom-tested, modular course materials that can be adopted at different
-        scales &mdash; while ensuring that the basic CS1 learning outcomes are preserved.</p>
-      <p class="muted">Begin with an adoption goal, use Chapter 1 to understand the common activity families,
-        compare a small number of institutional chapters that resemble your local context, then move to the
-        appendices and repositories for implementation resources. A small, feasible first adoption is often
-        the best starting point for broader CS1 modernization.</p>
+      <p>This is a practical adoption guide for the introductory computing sequence. Rather than only
+        arguing that introductory courses should be modernized, it provides classroom-tested, modular course
+        materials that can be adopted at different scales &mdash; while ensuring that the basic CS1 and CS2
+        learning outcomes are preserved.</p>
+      <p>CS1 and CS2 are treated as one connected sequence. CS1 establishes an early conceptual awareness that
+        computation need not be strictly sequential; CS2 deepens it through implementation, correctness
+        reasoning, synchronization and measured performance &mdash; and the CS2 exemplars also show short
+        conceptual on-ramps for students who arrive without any PDC exposure.</p>
+      <p class="muted">Begin with an adoption goal, use Chapter 1 for CS1 or Chapter 10 for CS2 to find the
+        relevant activity families, compare a small number of institutional chapters that resemble your local
+        context, then move to the appendices and repositories for implementation resources. A small, feasible
+        first adoption is often the best starting point.</p>
     </div>
     <div class="panel panel--sunken">
       <h3>Chapter anatomy</h3>
-      <p class="tiny faint mt-2">The institutional chapters share a common structure, so you can compare
-        exemplars without learning a new organization each time.</p>
+      <p class="tiny faint mt-2">Every institutional chapter, CS1 or CS2, shares one structure, so you can
+        compare exemplars without learning a new organization each time (Chapter&nbsp;0, Figure&nbsp;4).</p>
       <ol class="mt-3 muted small" style="padding-inline-start:1.2rem; display:grid; gap:.5rem">
         <li><strong>Abstract</strong> &mdash; what was done and why.</li>
         <li><strong>Descriptor elements</strong> &mdash; programming language, relevant course, prerequisites,
-          textbook, PDC topics with Bloom levels, learning outcomes, context for use.</li>
+          PDC topics with Bloom levels, learning outcomes, context for use.</li>
         <li><strong>Chapter body</strong> &mdash; course changes, unplugged and plugged-in activities, surveys
           and assessment, challenges, teaching tips, lessons learned.</li>
-        <li><strong>Appendix &amp; repository</strong> &mdash; repository link, detailed pre/post syllabus,
-          handouts, slides, assignments, starter code, surveys, anonymized evaluation data.</li>
+        <li><strong>Appendix &amp; repository</strong> &mdash; repository link, detailed pre/post syllabus or
+          course calendar, handouts, slides, assignments, starter code, surveys, anonymized evaluation data,
+          analysis summaries.</li>
       </ol>
       <p class="tiny faint mt-3">Before using a resource, verify that software versions, API links, datasets
         and institutional assessment requirements remain current.</p>
@@ -78,27 +85,38 @@ include 'partials/header.php';
 </div>
 
 <!-- ─────────────────────────────────────────────────── which path? ────── -->
+<!-- Chapter 0, Figure 2: choose the course first, then the scale of adoption. -->
 <div class="shell section--tight" id="paths">
   <p class="eyebrow">Where to start</p>
   <h2 class="mt-2">Which Path Should I Take?</h2>
-  <p class="lede mt-2">Five ways in, depending on what you came for. Each goes straight to the part of the
-    volume that answers it.</p>
+  <p class="lede mt-2">First choose the course &mdash; CS1, CS2 or the sequence &mdash; then the scale of
+    the change. Each line below goes straight to the part of the volume that answers it.</p>
 
   <ol class="pathlist mt-4">
     <li>
+      <span class="pathlist-want">I teach CS1</span>
+      <a class="pathlist-go" href="download.php?f=book&amp;p=28">Start with Chapter 1, the common CS1 activities
+        <span class="tiny faint">Flag Maker, Penny Sorting, Greenfoot, Earthquake Tracker &middot; p.&nbsp;28</span></a>
+    </li>
+    <li>
+      <span class="pathlist-want">I teach CS2</span>
+      <a class="pathlist-go" href="download.php?f=book&amp;p=288">Start with Chapter 10, the common CS2 activities
+        <span class="tiny faint">Fork&ndash;Join, parallel sorting, image processing &middot; p.&nbsp;288</span></a>
+    </li>
+    <li>
       <span class="pathlist-want">I want one class activity</span>
-      <a class="pathlist-go" href="#activities">Start with the activity finder
-        <span class="tiny faint">17 activities, filterable</span></a>
+      <a class="pathlist-go" href="#activities">Use the activity finder
+        <span class="tiny faint">filter by time, preparation, language and topic</span></a>
     </li>
     <li>
-      <span class="pathlist-want">I want a lab or module</span>
-      <a class="pathlist-go" href="download.php?f=book&amp;p=26">Read Chapter 1, then compare two institutions
-        <span class="tiny faint">shared activity families, p.&nbsp;26</span></a>
+      <span class="pathlist-want">I want a lab or a short module</span>
+      <a class="pathlist-go" href="#parts">Read the common chapter, then compare two or three institutions
+        <span class="tiny faint">pick the ones whose constraints are closest to yours</span></a>
     </li>
     <li>
-      <span class="pathlist-want">I want a course model</span>
-      <a class="pathlist-go" href="#chapters">Browse the institutional chapter summaries
-        <span class="tiny faint">eight CS1 exemplars</span></a>
+      <span class="pathlist-want">I want a course or sequence model</span>
+      <a class="pathlist-go" href="#institutions">Compare the institutional exemplars
+        <span class="tiny faint">seven institutions have a paired CS1 and CS2 package</span></a>
     </li>
     <li>
       <span class="pathlist-want">I want the teaching files</span>
@@ -107,8 +125,8 @@ include 'partials/header.php';
     </li>
     <li>
       <span class="pathlist-want">I want the evidence</span>
-      <a class="pathlist-go" href="download.php?f=book&amp;p=13">Read the methodology and the chapter data sections
-        <span class="tiny faint">Chapter 0, p.&nbsp;13</span></a>
+      <a class="pathlist-go" href="download.php?f=book&amp;p=13">Read the methodology, then each chapter&rsquo;s surveys
+        <span class="tiny faint">Chapter 0 &sect;&thinsp;0.3 &middot; p.&nbsp;13</span></a>
     </li>
   </ol>
 </div>
@@ -135,7 +153,7 @@ include 'partials/header.php';
           <span class="visually-hidden">Search by institution, activity, PDC topic, language or author</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
           <input type="search" id="ex-q" data-search-primary autocomplete="off"
-                 placeholder="Search — e.g. &ldquo;penny&rdquo;, &ldquo;OpenMP&rdquo;, &ldquo;community college&rdquo;, &ldquo;Greenfoot&rdquo;">
+                 placeholder="Search — e.g. &ldquo;penny&rdquo;, &ldquo;OpenMP&rdquo;, &ldquo;fork-join&rdquo;, &ldquo;Greenfoot&rdquo;">
         </label>
         <button class="btn btn--ghost" type="button" id="ex-clear">Clear all</button>
       </div>
@@ -154,71 +172,54 @@ include 'partials/header.php';
   </div>
 </div>
 
-<!-- ───────────────────────────────────────────────────────────── CS1 ──── -->
-<div class="shell section" id="cs1">
-  <p class="eyebrow">Part I &mdash; CS1</p>
-  <h2 class="mt-2">CS1 Exemplars at a Glance</h2>
+<!-- ──────────────────────────────────────────────────────── the parts ──── -->
+<!-- Chapter 0, Figure 3: the two common chapters share one outline, and each
+     opens its part of the volume. The lists are filled from CHAPTERS. -->
+<div class="shell section" id="parts">
+  <p class="eyebrow">Two parts, one sequence</p>
+  <h2 class="mt-2">CS1 and CS2 Exemplars at a Glance</h2>
   <p class="lede mt-2">Treat this as a starting filter. The most important adoption question is not only
     &ldquo;which language matches mine?&rdquo; but &ldquo;which activity scale, preparation level, evidence
     type and implementation style match my course?&rdquo;</p>
 
+  <div class="grid grid--halves mt-4">
+    <section class="panel part-panel" id="cs1" aria-labelledby="cs1-h">
+      <div>
+        <p class="eyebrow">Part I &mdash; p.&nbsp;27</p>
+        <h3 class="mt-2" id="cs1-h">Computer Science 1 (CS1)</h3>
+      </div>
+      <p class="part-start muted"><strong>Start with Chapter 1</strong>, the common CS1 chapter: Flag Maker,
+        Penny Search and Penny Sorting, animations and simulations (&sect;&thinsp;1.3); Programming Flag Maker,
+        Greenfoot and the Earthquake Tracker API work (&sect;&thinsp;1.4); then the course-wide surveys
+        (&sect;&thinsp;1.5).</p>
+      <p><a class="btn btn--primary btn--sm" href="download.php?f=book&amp;p=28">Chapter 1 &middot; p.&nbsp;28</a></p>
+      <p class="tiny faint">Eight institutional CS1 course packages</p>
+      <ol class="partlist" data-part-list="Part I · CS1"></ol>
+    </section>
+
+    <section class="panel part-panel" id="cs2" aria-labelledby="cs2-h">
+      <div>
+        <p class="eyebrow">Part II &mdash; p.&nbsp;287</p>
+        <h3 class="mt-2" id="cs2-h">Computer Science 2 (CS2)</h3>
+      </div>
+      <p class="part-start muted"><strong>Start with Chapter 10</strong>, the common CS2 chapter: the unplugged
+        Overly Complicated Machine (&sect;&thinsp;10.3.1); Greenfoot event handling, Fork&ndash;Join, a sorting
+        algorithm comparison and parallel image processing (&sect;&thinsp;10.4); then the course-wide surveys
+        (&sect;&thinsp;10.5).</p>
+      <p><a class="btn btn--primary btn--sm" href="download.php?f=book&amp;p=288">Chapter 10 &middot; p.&nbsp;288</a></p>
+      <p class="tiny faint">Eight institutional CS2 course packages &mdash; Webster has two, in C++ and Python</p>
+      <ol class="partlist" data-part-list="Part II · CS2"></ol>
+    </section>
+  </div>
+
   <div class="callout callout--info mt-4" id="glance">
-    <strong>Comparing the eight exemplars side by side?</strong> The quick-comparison table
-    &mdash; institutional context, language, infusion style and what each is a good starting point
-    for &mdash; lives on the project page, so it is in one place rather than two.
+    <strong>Adopting across the sequence?</strong> Seven institutions published both a CS1 and a CS2 package
+    &mdash; every one except HPU &mdash; so a paired reading shows how early conceptual exposure grows into
+    implementation, synchronization and performance analysis. The side-by-side comparison of institutional
+    context, language and infusion style is on the project page.
     <a href="project.php#partners">See the comparison &rarr;</a>
   </div>
-
-  <div class="callout mt-4">
-    <strong>Most readers should start with Chapter 1.</strong> It distills the recurring activity families,
-    shared PDC concepts, common implementation challenges and cross-institution lessons &mdash; then points
-    into the institutional chapters for local implementation details.
-    <a href="download.php?f=book&amp;p=26">Read Chapter 1 &rarr;</a>
-  </div>
 </div>
-
-<!-- ───────────────────────────────────────────────────────────── CS2 ──── -->
-<!-- <div class="band band--tint">
-  <div class="shell section" id="cs2">
-    <div class="grid grid--halves">
-      <div class="prose">
-        <p class="eyebrow">Part II &mdash; CS2</p>
-        <h2 class="mt-2">CS2 Chapters Are in Preparation</h2>
-        <p>This first release focuses on the CS1 portion and is being made available early to support
-          Fall-term adoption. CS2 course packages are drafted and being finalized for subsequent-term
-          adoption, and will be published here as they are released.</p>
-        <p class="muted">In general, CS1 ideas were developed first, and experience with CS1 informed the
-          approach to CS2. Every institutional exemplar in the search above already lists the CS2 activities
-          planned for its package &mdash; open any exemplar and look under
-          <em>Planned for the CS2 release</em>.</p>
-        <div class="cluster mt-4">
-          <a class="btn btn--primary" href="#explorer">See planned CS2 activities</a>
-          <a class="btn btn--ghost" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main">Watch the repository</a>
-        </div>
-      </div>
-      <div class="panel">
-        <h3>What CS2 will cover</h3>
-        <p class="tiny faint mt-2">Drawn from the institutional chapters&rsquo; stated plans.</p>
-        <ul class="mt-3 muted small" style="padding-inline-start:1.1rem; display:grid; gap:.55rem">
-          <li><strong>Fork&ndash;join parallelism</strong> analyzed in terms of work and span, sitting beside
-            the asymptotic analysis already taught &mdash; with dependency graphs, race conditions and
-            unplugged decomposition exercises.</li>
-          <li><strong>Parallel sorting and reductions</strong> &mdash; parallel merge sort and quicksort
-            benchmarked against sequential algorithms.</li>
-          <li><strong>Parallel image processing</strong> &mdash; edge detection, blurring and noise removal
-            with threads, so speedup is directly observable.</li>
-          <li><strong>Distributed systems in practice</strong> &mdash; connection pooling in a multithreaded
-            JDBC application, demonstrating both speedup and real distributed complexity.</li>
-          <li><strong>Event-driven design</strong> &mdash; Greenfoot game projects built around mouse and
-            keyboard interaction.</li>
-          <li><strong>A Python CS2 package</strong> &mdash; threading and multiprocessing, OpenCV image
-            processing, and performance engineering including Amdahl&rsquo;s law, strong vs weak scaling and
-            NUMA effects.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <!-- ─────────────────────────────────────────────────────── repositories ── -->
 <div class="band band--sunken">
@@ -231,9 +232,6 @@ include 'partials/header.php';
       activities; these repositories hold the material you actually teach from &mdash; and are curated
       periodically as adopters revise and extend them.</p>
 
-    <!-- One panel for the shared repository, one for what individual teams
-         publish elsewhere. These were previously two panels that both
-         described the same repository layout in slightly different words. -->
     <div class="grid grid--halves mt-4">
       <article class="panel">
         <div class="cluster mb-3">
@@ -241,10 +239,12 @@ include 'partials/header.php';
           <div><h3 style="font-size:1.2rem">CDER-Center / CS1-CS2_Exemplar_Ebook</h3>
             <p class="tiny faint">The shared project repository</p></div>
         </div>
-        <p class="muted">Everything lives in this one repository, under <code>CS1/</code>, in a directory per
-          chapter named <code>chapterN-INSTITUTION</code> &mdash; matching the chapter numbers in the volume.
-          Every chapter directory follows the same five-folder layout, so material is where you expect it
-          regardless of which exemplar you open.</p>
+        <p class="muted">Everything lives in this one repository: <code>CS1/</code> for Part&nbsp;I and
+          <code>CS2/</code> for Part&nbsp;II, with a directory per chapter named
+          <code>chapterN-INSTITUTION</code> &mdash; matching the chapter numbers in the volume, so CS1 runs from
+          <code>chapter2-TTU</code> to <code>chapter9-MSU</code> and CS2 from <code>chapter10-CDER</code> to
+          <code>chapter18-MSU</code>. Chapter directories follow the same layout, so material is where you
+          expect it regardless of which exemplar you open.</p>
         <ul class="mt-3 muted small" style="padding-inline-start:1.1rem; display:grid; gap:.4rem">
           <li><code>Detailed_Pre_and_Post_Syllabus</code> &mdash; the course before and after, plus a
             description of the changes made</li>
@@ -258,40 +258,27 @@ include 'partials/header.php';
             intervention semesters can be compared</li>
         </ul>
         <div class="cluster mt-4">
-          <a class="btn btn--primary btn--sm" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">Browse the CS1  in Git</a>
+          <a class="btn btn--primary btn--sm" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">Browse CS1 material</a>
+          <a class="btn btn--primary btn--sm" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2">Browse CS2 material</a>
           <a class="btn btn--ghost btn--sm" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main">Repository root</a>
         </div>
       </article>
 
-      <!-- <article class="panel">
-        <h3 style="font-size:1.2rem">Material Hosted by the Teams</h3>
-        <p class="muted mt-3">Some institutions publish additional material of their own, outside the shared
-          repository. These are worth reading alongside that chapter&rsquo;s appendix.</p>
-        <dl class="deflist mt-4">
-          <div>
-            <dt>TNTECH</dt>
-            <dd>The team&rsquo;s own copy of the CS1 material, including the Flag Maker grids and slides:
-              <a href="https://github.com/cscaprilcrockett/CDER_TNTECH_CS1">cscaprilcrockett/CDER_TNTECH_CS1</a>.</dd>
-          </div>
-          <div>
-            <dt>UNL</dt>
-            <dd>Codeless modules, with a live demo at
-              <a href="https://go.unl.edu/PDCatUNL">go.unl.edu/PDCatUNL</a> and source at
-              <a href="https://github.com/cbourke/PDCatUNL">cbourke/PDCatUNL</a>. The course itself is at
-              <a href="https://github.com/cbourke/ComputerScienceI">cbourke/ComputerScienceI</a>.</dd>
-          </div>
-          <div>
-            <dt>Webster</dt>
-            <dd>Browser-based parallel visualizations used in the flag-colouring activity:
-              <a href="https://github.com/xiaoyuansuo51-webster/Flag_Coloring_Activity">xiaoyuansuo51-webster/Flag_Coloring_Activity</a>.</dd>
-          </div>
-          <div>
-            <dt>Casper</dt>
-            <dd>A custom zyBooks section at
-              <a href="https://github.com/charlottegruner/CDER_CC_CS1">charlottegruner/CDER_CC_CS1</a>.</dd>
-          </div>
-        </dl>
-      </article> -->
+      <article class="panel">
+        <h3 style="font-size:1.2rem">Finding Things Quickly</h3>
+        <p class="muted mt-3">The fastest route is chapter-level navigation plus search. The abstract and
+          descriptor elements give a quick overview of each institutional chapter; Chapters&nbsp;1 and&nbsp;10
+          point from each activity family to the institutions that ran it. In the PDF, search for:</p>
+        <p class="small mt-3"><strong>Activities and tools</strong> &mdash; Flag Maker, Penny Search, Penny
+          Sorting, OpenMP, Earthquake Tracker, Greenfoot, animation, visualization, Fork-Join, parallel sorting,
+          parallel image processing.</p>
+        <p class="small mt-2"><strong>Concepts</strong> &mdash; data parallelism, speedup, load balance, event
+          handling, remote data, API, work and span, race condition, synchronization, benchmarking,
+          scalability.</p>
+        <p class="small mt-2"><strong>Evidence</strong> &mdash; pre/post survey, student feedback, engagement,
+          assessment, reflection, data analysis.</p>
+        <p class="tiny faint mt-3">From Chapter&nbsp;0 &sect;&thinsp;0.5.4, &ldquo;Finding Materials Quickly&rdquo;.</p>
+      </article>
     </div>
   </div>
 </div>
@@ -306,14 +293,14 @@ include 'partials/header.php';
 
   <div class="callout callout--info mt-4">
     <strong>The full PDF is the official version of record.</strong> It is a single volume with complete
-    cross-references between chapters, and a shared bibliography (pp.&nbsp;296&ndash;301).
+    cross-references between chapters, and a shared bibliography (pp.&nbsp;509&ndash;515).
     Chapters are not published as standalone files, because a chapter cut out of the volume loses both. The
     summaries below are here so you can find the right chapter quickly, then open the volume at that page.
   </div>
 
   <div class="table-wrap mt-4">
     <table class="data data--chapters">
-      <caption>Page numbers refer to the pages of the current release.</caption>
+      <caption>Page numbers are the first edition&rsquo;s printed page numbers, as in its own contents.</caption>
       <thead><tr><th scope="col">Chapter</th><th scope="col">Part</th><th scope="col">Pages</th><th scope="col">Open</th></tr></thead>
       <tbody id="chapter-rows">
         <tr><td colspan="4" class="small faint">The chapter list requires JavaScript &mdash;
@@ -322,8 +309,8 @@ include 'partials/header.php';
     </table>
   </div>
   <div class="cluster mt-4">
-    <span class="btn btn--primary btn--disabled" role="link" aria-disabled="true" tabindex="0" aria-label="Download the full e-book (coming soon)" data-tip="Coming soon"><?= icon_download() ?> Download the full e-book</span>
-    <a class="btn btn--ghost" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">Open teaching materials</a>
+    <a class="btn btn--primary" href="download.php?f=book" target="_blank" rel="noopener"><?= icon_download() ?> Download the full e-book <?= icon_new_tab() ?></a>
+    <a class="btn btn--ghost" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main">Open teaching materials</a>
   </div>
 </div>
 
@@ -334,13 +321,17 @@ include 'partials/header.php';
     <div>
       <p class="eyebrow">Cite this volume</p>
       <p class="tiny faint mt-2">Copy either form, or select the text if you would rather edit it into your
-        own style. The plain-text wording is what the project uses, so please keep it as it stands.</p>
-      <p class="tiny faint mt-3">The DOI identifies the e-book as a whole and resolves to its landing page,
+        own style. The plain-text wording is what the volume itself prints, so please keep it as it stands.</p>
+      <p class="tiny faint mt-3">Each DOI identifies one edition as a whole and resolves to its landing page,
         not to any single chapter. Cite chapters by their number within the volume.</p>
-      <div class="mt-3"><?= doi_badge($DOI, $DOI_URL) ?></div>
     </div>
     <div>
-      <p class="cite-label">Plain text</p>
+      <p class="cite-label">DOI</p>
+      <div class="cluster mt-2 mb-4">
+        <?= doi_badge($DOI, $DOI_URL, '', 'First edition') ?>
+        <?= doi_badge($DOI_EARLY, $DOI_EARLY_URL, '', 'Early release') ?>
+      </div>
+      <p class="cite-label">Plain text &middot; First Edition</p>
       <p class="cite-text" data-cite-text><?= e($CITATION) ?></p>
       <div class="cluster mt-3">
         <button class="btn btn--primary btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
@@ -348,7 +339,7 @@ include 'partials/header.php';
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
           <span data-copy-label>Copy citation</span>
         </button>
-        <span class="btn btn--ghost btn--sm btn--disabled" role="link" aria-disabled="true" tabindex="0" aria-label="Download the volume (coming soon)" data-tip="Coming soon"><?= icon_download() ?> Download the volume</span>
+        <a class="btn btn--ghost btn--sm" href="download.php?f=book" target="_blank" rel="noopener"><?= icon_download() ?> Download the volume <?= icon_new_tab() ?></a>
       </div>
 
       <p class="cite-label mt-5">BibTeX</p>
@@ -360,13 +351,29 @@ include 'partials/header.php';
           <span data-copy-label>Copy BibTeX</span>
         </button>
       </div>
+
+      <details class="cite-early mt-5">
+        <summary>Citing the early release instead</summary>
+        <p class="tiny faint mt-2">The August 2026 early release (CS1 chapters only) keeps its own DOI. Cite it
+          only if that is the version you used.</p>
+        <p class="cite-text mt-3"><?= e($CITATION_EARLY) ?></p>
+        <div class="cluster mt-3">
+          <button class="btn btn--ghost btn--sm" type="button" data-copy="<?= e($CITATION_EARLY) ?>"
+                  aria-label="Copy the early release citation">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+            <span data-copy-label>Copy citation</span>
+          </button>
+          <button class="btn btn--ghost btn--sm" type="button" data-copy="<?= e($BIBTEX_EARLY) ?>"
+                  data-copy-noun="BibTeX" aria-label="Copy the early release BibTeX entry">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+            <span data-copy-label>Copy BibTeX</span>
+          </button>
+          <a class="btn btn--ghost btn--sm" href="download.php?f=early" target="_blank" rel="noopener"><?= icon_download() ?> Early release <?= icon_new_tab() ?></a>
+        </div>
+      </details>
     </div>
   </div>
 </div>
-
-<!-- ────────────────────────────────────────────────────── assessments ─── -->
-
-
 
 <?php include 'partials/usage.php'; ?>
 

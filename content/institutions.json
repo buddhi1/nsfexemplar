@@ -24,12 +24,12 @@
     {
       "id": "webster", "name": "Webster University", "short": "Webster University",
       "place": "Missouri", "role": "Testing team",
-      "setting": "Private undergraduate", "langs": "C++", "mono": "W", "logo": "webster.svg"
+      "setting": "Private undergraduate", "langs": "C++, Python", "mono": "W", "logo": "webster.svg"
     },
     {
       "id": "casper", "name": "Casper College", "short": "Casper College",
       "place": "Wyoming", "role": "Testing team",
-      "setting": "Community college", "langs": "C++, Python", "mono": "CC", "logo": "casper.png"
+      "setting": "Community college", "langs": "C++, Java, Python", "mono": "CC", "logo": "casper.png"
     },
     {
       "id": "hpu", "name": "Hawai‘i Pacific University", "short": "Hawai‘i Pacific",

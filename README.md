@@ -21,7 +21,9 @@ stylesheet, two scripts. Upload the folder to any host with PHP and it works.
 - [Download and visit counters](#download-and-visit-counters)
 - [Deep links into the eBook explorer](#deep-links-into-the-ebook-explorer)
 - [Editing the exemplar and activity data](#editing-the-exemplar-and-activity-data)
-- [When the CS2 release lands](#when-the-cs2-release-lands)
+- [Updating the PDF](#updating-the-pdf)
+- [Chapter data](#chapter-data)
+- [Activity facets](#activity-facets)
 - [Publishing and citing the book](#publishing-and-citing-the-book)
 
 ---
@@ -61,8 +63,8 @@ data/admin.php          the stats.php password; create it on the server, never i
 data/counters_example.json  the shape of the tally, all zeros — tracked, for reference
 data/admin_example.php  template for data/admin.php — tracked
 
-cder_exemplar_cs1_cs2.pdf                 Version 1 of the volume
-cder_exemplar_cs1_cs2_early_release.pdf   the early release, linked from the eBook page badge
+cder_exemplar_cs1_cs2_first_edition.pdf   the First Edition (Nov. 2026, CS1 and CS2) — the volume of record
+cder_exemplar_cs1_cs2_early_release.pdf   the early release (Aug. 2026, CS1 only), kept for anyone who cited it
 
 .htaccess               pretty URLs, protects internals — ships ready to use
 deploy/
@@ -147,7 +149,16 @@ To confirm the file is being read at all, add a deliberate typo as the first lin
 ### Updating
 
 Pull or re-upload the changed files. **Never upload `data/counters.json`** — it is the live tally,
-and is git-ignored for exactly that reason.
+and is git-ignored for exactly that reason. Leave `ebook_copy.php` (a local backup, git-ignored) out of
+any File Manager upload, or it becomes a public page.
+
+**Caching.** `.htaccess` lets browsers keep static files (CSS, JS, images, PDFs) for one day, so a
+redeploy reaches everyone by the next day. The stylesheet, both scripts and the book cover are also
+requested as `file?v=<modification time>` (`asset_url()` in `partials/header.php`), so a new upload of
+those is picked up on the very next page load. Pages themselves are never cached.
+
+**Retired file name.** `cder_exemplar_cs1_cs2.pdf` (the early release, before the first edition got its
+own name) redirects to `cder_exemplar_cs1_cs2_early_release.pdf`, so old bookmarks still work.
 
 ---
 
@@ -196,13 +207,15 @@ include 'partials/header.php';
   `partials/footer.php`.
 - **Project name** — `$PROJECT_NAME`, `$PROJECT_SHORT`, `$PROJECT_TAG` at the top of
   `partials/header.php`. Masthead, page titles and footer all follow.
-- **Book filenames** — `BOOK_FILES` in `lib/counters.php` (one entry per version) and
-  `SITE.book.pdf` in `assets/data.js`.
-- **Citation** — `$CITATION` in `partials/header.php`. The home page copy button and the
-  citation card on the resources page both read from it.
-- **DOI** — `$DOI` in `partials/header.php`. `doi_badge($DOI, $DOI_URL)` renders the badge;
-  it appears in the featured e-book block on the home page and in the citation card on the
-  eBook and resources pages.
+- **Book filenames** — `BOOK_FILES` in `lib/counters.php` (one entry per version, with its
+  `page_offset`) and `SITE.book.pdf` in `assets/data.js`.
+- **Citations** — `$CITATION` (first edition) and `$CITATION_EARLY` in `partials/header.php`,
+  built from the wording each volume prints on its title page; `$BIBTEX` and `$BIBTEX_EARLY`
+  beside them. Every copy button reads from these.
+- **DOIs** — `$DOI` (first edition, `10.14809/20.500.12588/7992.2`) and `$DOI_EARLY`
+  (`10.14809/4mcf-5jmt`) in `partials/header.php`. `doi_badge($DOI, $DOI_URL, '', 'First edition')`
+  renders a badge with the edition named in it; both badges appear in the home and eBook heroes and
+  the eBook citation card.
 - **Book cover** — `assets/book_cover/`. The page serves the WebP and falls back to the PNG,
   so replace both. After dropping in a new `book_cover.png`, regenerate the WebP with:
 
@@ -234,7 +247,7 @@ instead, so a missing logo never looks broken.
 
 ## Download and visit counters
 
-Three numbers on the eBook page — site visits, Version 1 downloads and early-release downloads —
+Three numbers on the eBook page — site visits, first-edition downloads and early-release downloads —
 rendered by `partials/usage.php`, plus a private statistics page at `/stats`.
 
 `lib/counters.php` keeps two files in `data/`, each written under an exclusive `flock` so
@@ -245,9 +258,10 @@ concurrent hits cannot corrupt them. No database, no extra extension.
 - **`data/downloads.csv`** logs every download: UTC time, version, link key, page, whether it was
   counted, IP address, referrer and user agent. It opens directly in Excel.
 - **Downloads** go through `download.php?f=<key>`, which records the hit then redirects to the
-  real PDF so the browser still handles range requests and resuming. `f=book` (and `f=v1`) is
-  Version 1; `f=early` is the early release. The old per-chapter keys (`f=03-cs1-tntech`) resolve
-  to Version 1, so links published before chapters were merged keep working.
+  real PDF so the browser still handles range requests and resuming. `f=book` (and `f=v1`) is the
+  first edition — counted under the key `v1`, labelled "First edition"; `f=early` is the early
+  release. The old per-chapter keys (`f=03-cs1-tntech`) resolve to the first edition, so links
+  published before chapters were merged keep working.
 - **Repeats** — the same address fetching the same file again within 30 minutes (`REPEAT_WINDOW`)
   is logged but not counted, so one reader clicking through chapter links counts once.
 - **Before the split** there was one tally per link key. All of it was the early release, so on
@@ -315,9 +329,13 @@ both in `assets/data.js`. The six cards in "What Actually Gets Taught" use the `
 
 `assets/data.js` holds the material the eBook explorer searches:
 
-- `EX[]` — the eight institutional exemplars. Drives the search results, the detail sheets, the
-  Partners table on `project.php` and the team cards on `team.php`.
-- `ACTIVITIES[]` — the fourteen classroom activities, from Tables 1.1 and 1.2 of Chapter 1.
+- `EX[]` — the eight institutions. Drives the search results, the detail sheets and the team cards
+  on `team.php`. The top-level descriptor fields (`textbook`, `prereq`, `context`, `topics`,
+  `outcomes`, `evidence`, `cs1`) are the CS1 chapter's; `cs1lang` overrides `lang` where CS2 added a
+  language. `cs2d[]` holds each CS2 package's descriptor elements (Webster has two), `cs2` its
+  activities, `ch` every chapter with its printed start page, and `repo2`/`repo3` the CS2 folders.
+- `ACTIVITIES[]` — the 31 classroom activities: 17 CS1 from Tables 1.1 and 1.2 of Chapter 1, 14 CS2
+  from Tables 10.1 and 10.2 of Chapter 10, each tagged with `course`.
 - `CHAPTERS[]` — the chapter download table. Page numbers are printed page numbers.
 - `SITE` — repository URL, contact address and book filename.
 
@@ -327,38 +345,48 @@ Prose specific to one page is written directly in that page's PHP file.
 
 ## Updating the PDF
 
-There is **one published PDF**: `cder_exemplar_cs1_cs2.pdf`. Chapters are not published separately —
-a chapter cut out of the volume loses the cross-references and the shared bibliography (pp. 295–300),
-so the site offers chapter-level access by opening the full file at the right page instead.
+The **First Edition** is the published volume: `cder_exemplar_cs1_cs2_first_edition.pdf`, 517 PDF
+pages, printed pages 1–515. The early release stays alongside it as
+`cder_exemplar_cs1_cs2_early_release.pdf`. Chapters are not published separately — a chapter cut out
+of the volume loses the cross-references and the shared bibliography (pp. 509–515), so the site offers
+chapter-level access by opening the full file at the right page instead.
 
-To drop in a new build:
+**Page numbers on the site are the book's printed page numbers** — what its own contents pages give
+and what a PDF viewer's page box shows (the PDF carries page labels). A link writes the printed number,
+`download.php?f=book&p=28`, and `download.php` adds the file's `page_offset` (2 for the first edition:
+the cover and the title page come before printed page 1) to open `…pdf#page=30`. No link has to know
+the offset.
 
-1. Replace `cder_exemplar_cs1_cs2.pdf`, keeping the filename. The DOI, the counters and every link
-   on the site point at that name.
-2. Re-read the chapter start pages from the new file and update `pages` and `start` in `CHAPTERS[]`
-   in `assets/data.js`, and the page numbers in `EX[]`'s `ch` entries:
+To drop in a corrected build of the same edition:
 
-   ```bash
-   python3 -c "
-   from pypdf import PdfReader
-   r = PdfReader('cder_exemplar_cs1_cs2.pdf')
-   for it in r.outline:
-       if not isinstance(it, list):
-           print(r.get_destination_page_number(it) + 1, it.title[:70])"
-   ```
+1. Replace `cder_exemplar_cs1_cs2_first_edition.pdf`, keeping the filename. The counters and every
+   link on the site point at that name.
+2. Regenerate the chapter data (below). It reads page ranges, sections and abstracts from the PDF
+   itself, so nothing is typed in.
+3. If any chapter moved, update the hand-written page links: the `ch` entries in `EX[]` in
+   `assets/data.js`, and the `p=` links in `index.php`, `ebook.php`, `research.php`,
+   `resources.php`, `project.php` and `team.php`. `grep -n "p=[0-9]" *.php assets/*.js` lists them.
+4. Check `page_offset` still holds: open the PDF and compare a printed page number with its position
+   in the file.
 
-3. Check the chapter `excerpt` text still matches each abstract, and the `#chapters` note still
-   quotes the right bibliography pages.
-
-**Page counts move with every build** — 288, then 291, then 301, then 302 across four. Only the home
-page metric states one, and every page anchor is derived from the file rather than typed in. Re-run the
-boundary scan above after any new build; chapter starts shifted by one page between the 301 and 302
-builds, which silently sent every `?p=` link to the wrong page until it was checked.
+For a **new edition**, also add it to `BOOK_FILES` (or point `v1` at the new file and give the old one
+its own key, as the early release has), add its DOI and citation to `partials/header.php`, and extract
+the new cover with `pdfimages -f 1 -l 1 -png <pdf> cover` (see *Book cover* above).
 
 ### Chapter-level links
 
-`download.php?f=book&p=64` counts the download and redirects to `…pdf#page=64`, which PDF viewers
-honour. The old per-chapter keys (`?f=03-cs1-tntech`) still resolve to the volume rather than 404ing,
+`download.php?f=book&p=28` counts the download and redirects to `…pdf#page=30`, which PDF viewers
+honour.
+
+**On the site these links open in a reader overlay** rather than replacing the page (the "PDF reader"
+block at the end of `assets/site.js`). The overlay shows the browser's own PDF viewer at the requested
+page, with a chapter list built from `CHAPTERS[]`, plus *Open in new tab*, *Download* and Close (Esc or
+a click outside also close it). Opening it loads the link itself, so the download is counted once per
+opening; jumping between chapters inside it is not counted again. Browsers that cannot show a PDF
+inline (`navigator.pdfViewerEnabled === false`, e.g. Android Chrome) get plain links in a new tab
+instead, and Ctrl/⌘-click or middle-click always behaves as an ordinary link. The file names and page
+offsets reach the script through `window.BOOK_FILES`, printed by `partials/footer.php` from
+`BOOK_FILES` in `lib/counters.php`. The old per-chapter keys (`?f=03-cs1-tntech`) still resolve to the volume rather than 404ing,
 so links published before this change keep working.
 
 ---
@@ -370,42 +398,52 @@ so links published before this change keep working.
 ```bash
 python3 tools/extract.py && python3 tools/gen.py
 ```
- Per chapter it holds:
 
-| Field | Source in the volume |
+`extract.py` reads the structure from the PDF's own bookmarks: each top-level bookmark whose page
+starts "Chapter N" is a chapter, running to the page before the next top-level bookmark; its sections
+are the bookmarks beneath it, numbered by position and checked against the headings in the text (a
+heading the book does not number keeps its title and loses the number). `gen.py` adds what the PDF
+cannot supply. Per chapter:
+
+| Field | Source |
 |---|---|
-| `title` | the chapter title |
-| `subShort` / `subFull` | the printed subtitle: a short label for the table, the full wording on hover |
-| `authors` / `inst` | the title page byline, with each author's own affiliation |
-| `excerpt` | the opening sentences of the chapter abstract |
-| `sections` | the chapter contents page, three levels deep |
-| `pages` / `start` | derived from the chapter title pages, not the PDF outline |
+| `title` | `META` in `tools/gen.py` — the site's short form of the chapter title |
+| `subShort` / `subFull` | `META` — a short label for the table, the printed subtitle on hover |
+| `authors` / `inst` | `AUTHORS` in `gen.py` — the title page byline, with affiliations |
+| `part` | Front, Part I · CS1 (chapters 1–9), Part II · CS2 (chapters 10–18), Back |
+| `excerpt` | the PDF — the opening sentences of the chapter abstract |
+| `sections` | the PDF bookmarks, three levels deep |
+| `pages` / `start` | the PDF — printed page numbers from its page labels |
+| `materials` | `DIR` in `gen.py` — the chapter's folder under `CS1/` or `CS2/` in the repository |
 
-Two things to know when a new build lands. The **outline bookmarks point at each chapter's contents
-page, not its title page** — trust the title pages. And **de-hyphenating extracted text rejoins words
-that were legitimately hyphenated across a line break**, so check the abstracts for fused words
-(`institutionspecific`, `handson`) before committing.
+A chapter added to the book needs one line in each of `META`, `AUTHORS` and `DIR`; `gen.py` stops
+with a message if one is missing. Abstracts are read with poppler's `pdftotext` where it is installed
+(`apt install poppler-utils`), because pypdf drops the spaces on some pages of this volume. And
+**de-hyphenating extracted text rejoins words that were legitimately hyphenated across a line break**,
+so check the abstracts for fused words (`institutionspecific`, `handson`) and add any new ones to
+`REPAIR` in `gen.py` before committing.
 
 ---
 
 ## Activity facets
 
-The activity finder filters on seven fields, defined in `ACT_FACETS` in `assets/data.js`. Five of them
-are bucket values every activity carries, so a new activity needs all of them or it will not appear
-under any filter:
+The activity finder filters on eight fields, defined in `ACT_FACETS` in `assets/data.js`. Most are
+bucket values every activity carries, so a new activity needs all of them or it will not appear under
+any filter:
 
 | Field | Kind | Values |
 |---|---|---|
+| `course` | single | CS1 · CS2 — CS1 activities come from Chapter 1, CS2 ones from Chapter 10 |
 | `kind` | single | Unplugged · Plugged-in · Visualization · Codeless · Assessment |
 | `time` | single | Under 30 minutes · One class · Multi-session · Asynchronous · Course-wide |
 | `prep` | single | No preparation · Classroom materials · Browser only · Software setup · Hardware |
 | `lang` | list | Language-independent · Java · C++ · C · Python |
-| `topic` | list | Data parallelism · Distributed data access · Event-driven processing · Performance & speedup · Synchronization |
-| `anchor` | list | Loops · Arrays & collections · Variables & expressions · Functions · Objects & classes · Conditionals · Graphics & output · Libraries & data |
+| `topic` | list | Data parallelism · Task parallelism · Distributed data access · Event-driven processing · Performance & speedup · Synchronization |
+| `anchor` | list | Loops · Arrays & collections · Variables & expressions · Functions · Objects & classes · Conditionals · Graphics & output · Libraries & data · Recursion · Sorting & searching · Data structures · Algorithm analysis |
 | `used` | list | institution ids, rendered as their short names |
 
-`used` is **taken from Tables 1.1 and 1.2 of Chapter 1**, which are the volume's own record of which
-institution ran which activity. When a new build of the PDF lands, re-read those two tables before
+`used` is **taken from Tables 1.1 and 1.2 of Chapter 1** (CS1) and **Tables 10.1 and 10.2 of
+Chapter 10** (CS2), which are the volume's own record of which institution ran which activity. When a new build of the PDF lands, re-read those two tables before
 changing anything here — the site had drifted from them (MSU credited with the shared animations,
 Casper and MSU with Greenfoot) because the values had been copied from an earlier edition.
 
@@ -421,20 +459,8 @@ that is not in `ACT_FACETS` means the activity is simply never matched by that f
 the two in step.
 
 Each activity also carries `materials`, a repository URL. Activities run at one institution point at
-that institution's chapter folder; ones run at several point at `CS1/`, and the detail sheet then links
-each institution's own folder through `EX[].repo`.
-
----
-
-## When the CS2 release lands
-
-1. Replace `cder_exemplar_cs1_cs2.pdf` and update the page numbers as above.
-2. Update `CHAPTERS[]` in `assets/data.js` with the new rows, page ranges and abstracts.
-3. In each `EX[]` entry, add `'CS2'` to `course`, move the `cs2` activities from planned to shipped,
-   and add the CS2 chapter to `ch`.
-4. Add a `course` facet back to `FACETS` in `data.js` so visitors can filter CS1 vs CS2.
-5. Replace the "in preparation" band in `ebook.php#cs2`, update the release note in the eBook hero,
-   and update the counts on the home page.
+that institution's chapter folder; ones run at several point at `CS1/` or `CS2/chapter10-CDER`, and
+the detail sheet then links each institution's own chapter for the same course through `EX[].ch`.
 
 ---
 
@@ -468,7 +494,7 @@ To change the fields, edit the form in `contact.php` and the matching lines in `
 
 Cite the **page**, not the file: `https://yoursite.org/ebook`.
 
-A page URL survives renames, new editions and the CS2 release; a file URL does not — renaming the
+A page URL survives renames and new editions; a file URL does not — renaming the
 PDF once already broke every link to the old name. The page also gives readers context, chapter-level
 downloads and a route to the rest of the site, and it is the only path that counts downloads.
 
@@ -477,8 +503,9 @@ downloads and a route to the rest of the site, and it is the only path that coun
 - The PDF stays reachable at its own URL for anyone who wants it; that route just is not counted
 
 Freeze the filename from here on. If you want a prettier download URL, add a rewrite alias rather
-than renaming the file again. For something permanent, mint a DOI (Zenodo, or your library) pointing
-at `/ebook` — that survives even a domain change, which is what citations in published papers need.
+than renaming the file again. Each edition has its own DOI (first edition
+`10.14809/20.500.12588/7992.2`, early release `10.14809/4mcf-5jmt`) — those survive even a domain
+change, which is what citations in published papers need.
 
 ---
 

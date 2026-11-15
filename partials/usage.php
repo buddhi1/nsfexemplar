@@ -20,7 +20,7 @@
       </div>
       <div class="metric">
         <span class="metric-value"><?= counters_fmt(counters_downloads($COUNTS, 'v1')) ?></span>
-        <span class="metric-label">Version 1 downloads</span>
+        <span class="metric-label">First edition downloads</span>
       </div>
       <div class="metric">
         <span class="metric-value"><?= counters_fmt(counters_downloads($COUNTS, 'early')) ?></span>

@@ -535,9 +535,9 @@
       const defs = mode === 'inst' ? FACETS : ACT_FACETS;
       const rows = mode === 'inst' ? EX : ACTIVITIES;
       const labels = {
-        lang: 'Language', setting: 'Institution type', style: 'Activity style', role: 'Team',
+        course: 'Course', lang: 'Language', setting: 'Institution type', style: 'Activity style', role: 'Team',
         kind: 'Activity type', time: 'Time needed', prep: 'Preparation',
-        topic: 'PDC topic', anchor: 'CS1 anchor', used: 'Institution',
+        topic: 'PDC topic', anchor: 'Course anchor', used: 'Institution',
       };
       /* The institution facet stores ids, which are no use as labels. */
       const show = (key, val) => (key === 'used' ? (byId[val]?.short || val) : val);
@@ -557,6 +557,7 @@
       r.name, r.short, r.role, r.place, r.setting, r.blurb, r.context, r.textbook, r.prereq, r.evidence,
       r.lang.join(' '), r.style.join(' '), r.team.join(' '), r.topics.join(' '), r.outcomes.join(' '),
       (r.cs1 || []).map((a) => a.join(' ')).join(' '), (r.cs2 || []).map((a) => a.join(' ')).join(' '),
+      (r.cs2d || []).map((d) => [d.course, d.lang, d.textbook, d.context, ...d.topics, ...d.outcomes].join(' ')).join(' '),
     ].join(' '));
 
     const actBlob = (a) => norm([
@@ -574,12 +575,13 @@
         </div>
         <p>${r.blurb}</p>
         <div class="cluster">
+          ${(r.course || []).map((c) => `<span class="pill">${esc(c)}</span>`).join('')}
           ${r.lang.map((l) => `<span class="pill pill--accent">${esc(l)}</span>`).join('')}
-          ${r.style.slice(0, 3).map((s) => `<span class="pill">${esc(s)}</span>`).join('')}
+          ${r.style.slice(0, 2).map((s) => `<span class="pill">${esc(s)}</span>`).join('')}
         </div>
         <div class="cluster mt-3">
           <button class="btn btn--primary btn--sm" type="button" data-open-inst="${r.id}">Full details</button>
-          ${r.ch.map(([label, page]) => `<a class="btn btn--ghost btn--sm" href="download.php?f=book&p=${page}">${esc(label)} <span class="tiny faint">p.&nbsp;${page}</span></a>`).join('')}
+          ${r.ch.map(([label, page]) => `<a class="btn btn--ghost btn--sm" href="download.php?f=book&p=${page}">${esc(label.replace('Chapter', 'Ch.'))} <span class="tiny faint">p.&nbsp;${page}</span></a>`).join('')}
         </div>
         <p class="card-foot">${r.team.map(esc).join(' · ')}</p>
       </article>`;
@@ -588,6 +590,7 @@
       <article class="card">
         <div class="cluster">
           <span class="pill pill--brand">${esc(a.kind)}</span>
+          <span class="pill">${esc(a.course)}</span>
           <span class="pill">${esc(a.section)}</span>
         </div>
         <h3 style="margin-block-start:.4rem">${a.name}</h3>
@@ -599,7 +602,7 @@
         </div>
         <dl class="deflist mt-3">
           <div><dt>PDC ideas</dt><dd>${a.pdc.slice(0, 4).map(esc).join(' · ')}</dd></div>
-          <div><dt>CS1 anchors</dt><dd>${esc(a.anchors)}</dd></div>
+          <div><dt>${esc(a.course)} anchors</dt><dd>${esc(a.anchors)}</dd></div>
         </dl>
         <div class="cluster mt-3">
           <button class="btn btn--primary btn--sm" type="button" data-open-act="${a.id}">Full details</button>
@@ -625,7 +628,7 @@
       if (terms.length) rows = rows.filter((r) => { const h = blob(r); return terms.every((t) => h.includes(t)); });
 
       const total = mode === 'inst' ? EX.length : ACTIVITIES.length;
-      const noun = mode === 'inst' ? 'institutional exemplars' : 'CS1 activities';
+      const noun = mode === 'inst' ? 'institutional exemplars' : 'activities';
       status.innerHTML = rows.length
         ? `<strong>${rows.length}</strong> of ${total} ${noun}`
           + (terms.length ? ` matching &ldquo;${esc(qInput.value.trim())}&rdquo;` : '')
@@ -660,26 +663,45 @@
         </div>
         <p class="lede" style="font-size:1.02rem">${r.blurb}</p>
 
-        <h4 class="mt-5">Descriptor elements</h4>
+        <p class="tiny faint mt-3">Chapter authors: ${r.team.map(esc).join(', ')} &middot; ${esc(r.place)}</p>
+
+        <h3 class="sheet-part mt-5">CS1 package &middot; ${esc(r.ch[0][0].replace(' — CS1', ''))}</h3>
+        <h4 class="mt-3">Descriptor elements</h4>
         <div class="table-wrap mt-2"><table class="data"><tbody>
-          <tr><th scope="row" style="inline-size:11rem">Chapter authors</th><td>${r.team.map(esc).join(', ')}</td></tr>
-          <tr><th scope="row">Location</th><td>${esc(r.place)}</td></tr>
-          <tr><th scope="row">Language(s)</th><td>${r.lang.map(esc).join(', ')}</td></tr>
+          <tr><th scope="row" style="inline-size:11rem">Language(s)</th><td>${esc(r.cs1lang || r.lang.join(', '))}</td></tr>
           <tr><th scope="row">Textbook</th><td>${r.textbook}</td></tr>
           <tr><th scope="row">Prerequisites</th><td>${r.prereq}</td></tr>
           <tr><th scope="row">Context for use</th><td>${r.context}</td></tr>
         </tbody></table></div>
-
         <h4 class="mt-5">PDC topics &amp; Bloom levels</h4><div class="mt-2">${list(r.topics)}</div>
         <h4 class="mt-5">Learning outcomes</h4><div class="mt-2">${list(r.outcomes)}</div>
-        <h4 class="mt-5">CS1 activities</h4><div class="mt-2">${acts(r.cs1)}</div>
+        <h4 class="mt-5">Activities</h4><div class="mt-2">${acts(r.cs1)}</div>
         <h4 class="mt-5">Evidence</h4><p class="muted mt-2">${r.evidence}</p>
-        <h4 class="mt-5">Planned for the CS2 release</h4><div class="mt-2">${acts(r.cs2)}</div>
+
+        ${(r.cs2d || []).map((d) => `
+        <h3 class="sheet-part mt-6">CS2 package &middot; ${esc(d.ch)}</h3>
+        <h4 class="mt-3">Descriptor elements</h4>
+        <div class="table-wrap mt-2"><table class="data"><tbody>
+          <tr><th scope="row" style="inline-size:11rem">Course</th><td>${esc(d.course)}</td></tr>
+          <tr><th scope="row">Language(s)</th><td>${esc(d.lang)}</td></tr>
+          ${d.textbook && d.textbook !== '—' ? `<tr><th scope="row">Textbook</th><td>${esc(d.textbook)}</td></tr>` : ''}
+          <tr><th scope="row">Prerequisites</th><td>${esc(d.prereq)}</td></tr>
+          <tr><th scope="row">Context for use</th><td>${esc(d.context)}</td></tr>
+        </tbody></table></div>
+        <h4 class="mt-5">PDC topics &amp; Bloom levels</h4><div class="mt-2">${list(d.topics.map(esc))}</div>
+        <h4 class="mt-5">Learning outcomes</h4><div class="mt-2">${list(d.outcomes.map(esc))}</div>`).join('')}
+
+        <h${r.cs2d && r.cs2d.length ? 4 : 3} class="${r.cs2d && r.cs2d.length ? 'mt-5' : 'sheet-part mt-6'}">${r.cs2d && r.cs2d.length ? `CS2 activities${r.cs2d.length > 1 ? ' (both packages)' : ''}` : 'CS2'}</h${r.cs2d && r.cs2d.length ? 4 : 3}>
+        <div class="mt-2">${acts(r.cs2)}</div>
 
         <h4 class="mt-5">Get the material</h4>
         <div class="cluster mt-2">
           ${r.ch.map(([label, page]) => `<a class="btn btn--primary btn--sm" href="download.php?f=book&p=${page}">${esc(label)} · open at p.&nbsp;${page}</a>`).join('')}
-          <a class="btn btn--ghost btn--sm" href="${esc(r.repo)}">Repository</a>
+        </div>
+        <div class="cluster mt-2">
+          <a class="btn btn--ghost btn--sm" href="${esc(r.repo)}">CS1 repository</a>
+          ${r.repo2 ? `<a class="btn btn--ghost btn--sm" href="${esc(r.repo2)}">CS2 repository${r.repo3 ? ' (C++)' : ''}</a>` : ''}
+          ${r.repo3 ? `<a class="btn btn--ghost btn--sm" href="${esc(r.repo3)}">CS2 repository (Python)</a>` : ''}
         </div>
         ${r.repoNote ? `<p class="tiny faint mt-2">${esc(r.repoNote)}</p>` : ''}`);
     };
@@ -688,6 +710,10 @@
       const a = ACTIVITIES.find((x) => x.id === id);
       if (!a) return;
       const where = a.used.map((i) => byId[i]).filter(Boolean);
+      /* CS1 activities are described in Chapter 1, CS2 ones in Chapter 10, and
+         each institution card points at that institution's chapter for the same course. */
+      const common = a.course === 'CS2' ? 'Chapter 10' : 'Chapter 1';
+      const chFor = (r) => r.ch.find(([label]) => label.includes(a.course)) || r.ch[0];
       openSheet(a.name.replace(/&amp;/g, '&'), `
         <div class="cluster mb-3">
           <span class="pill pill--brand">${esc(a.kind)}</span>
@@ -698,7 +724,7 @@
 
         <h4 class="mt-5">Primary PDC ideas</h4><div class="mt-2">${list(a.pdc.map(esc))}</div>
 
-        <h4 class="mt-5">What it attaches to in CS1</h4><p class="muted mt-2">${esc(a.anchors)}</p>
+        <h4 class="mt-5">What it attaches to in ${esc(a.course)}</h4><p class="muted mt-2">${esc(a.anchors)}</p>
 
         <h4 class="mt-5">Running it</h4>
         <div class="table-wrap mt-2"><table class="data"><tbody>
@@ -706,8 +732,8 @@
           <tr><th scope="row">Setup</th><td>${esc(a.setup)} <span class="tiny faint">(${esc(a.prep)})</span></td></tr>
           <tr><th scope="row">Language</th><td>${(a.lang || []).map(esc).join(', ')}</td></tr>
           <tr><th scope="row">Described in</th><td>${a.section.startsWith('Table')
-            ? `Chapter 1, ${esc(a.section)} — full description in the institutional chapter`
-            : `Chapter 1, ${esc(a.section)}`}</td></tr>
+            ? `${common}, ${esc(a.section)} — full description in the institutional chapter`
+            : `${common}, ${esc(a.section)}`}</td></tr>
           ${a.where ? `<tr><th scope="row">Where it ran</th><td>${esc(a.where)}</td></tr>` : ''}
         </tbody></table></div>
         ${a.materials ? `<p class="mt-3"><a class="btn btn--primary btn--sm" href="${esc(a.materials)}">Open teaching materials</a></p>` : ''}
@@ -716,7 +742,7 @@
         <div class="grid grid--auto mt-2">
           ${where.map((r) => `<article class="card"><h4>${esc(r.short)}</h4>
             <p class="tiny faint">${esc(r.setting)} · ${r.lang.map(esc).join(', ')}</p>
-            <p class="card-foot"><a href="download.php?f=book&p=${r.ch[0][1]}">${esc(r.ch[0][0])} &middot; p.&nbsp;${r.ch[0][1]}</a>
+            <p class="card-foot"><a href="download.php?f=book&p=${chFor(r)[1]}">${esc(chFor(r)[0])} &middot; p.&nbsp;${chFor(r)[1]}</a>
               &middot; <a href="${esc(r.repo)}">materials</a></p></article>`).join('')}
         </div>`);
     };
@@ -821,8 +847,8 @@
         <div class="grid mt-3" style="gap:.75rem">
           ${r.team.map((p) => `<div class="person person--sm"><span class="avatar" aria-hidden="true">${initials(p)}</span><span><span class="who">${esc(p)}</span><span class="where">${r.lang.map(esc).join(' / ')} · ${esc(r.setting)}</span></span></div>`).join('')}
         </div>
-        <p class="card-foot"><a href="download.php?f=book&p=${r.ch[0][1]}">${esc(r.ch[0][0])} &middot; p.&nbsp;${r.ch[0][1]}</a>
-          &middot; <a href="ebook.php#chapters">summary</a>
+        <p class="card-foot">${r.ch.map(([label, page]) => `<a href="download.php?f=book&p=${page}">${esc(label)} &middot; p.&nbsp;${page}</a>`).join(' &middot; ')}
+          &middot; <a href="ebook.php#chapters">summaries</a>
           &middot; <a href="${esc(r.repo)}">materials</a></p>
       </article>`).join('');
   })();
@@ -956,6 +982,24 @@
     });
   })();
 
+  /* ================================================ part lists (ebook, home)
+     <ol data-part-list="Part II · CS2"> becomes that part's institutional
+     chapters, read from CHAPTERS so page numbers live in one place. The common
+     chapter (1 or 10) is left out: the panels introduce it in prose. */
+  (() => {
+    if (typeof CHAPTERS === 'undefined') return;
+    $$('[data-part-list]').forEach((ol) => {
+      const part = ol.dataset.partList;
+      ol.innerHTML = CHAPTERS.filter((c) => c.part === part && c.title.includes(': ')).map((c) => {
+        const [, num, where] = c.title.match(/^Chapter (\d+) — [^:]+: (.+)$/) || [];
+        return `<li><a href="download.php?f=book&p=${c.start}">
+            <span class="partlist-n">Ch.&nbsp;${num}</span>
+            <span class="partlist-t">${esc(where)}<span class="partlist-s">${esc(c.subShort)}</span></span>
+            <span class="partlist-p">p.&nbsp;${c.start}</span></a></li>`;
+      }).join('');
+    });
+  })();
+
   /* =================================================== chapter table (ebook)
      Each chapter is one row. A second row underneath holds the authors and the
      chapter's own contents, collapsed by default so the table stays short.   */
@@ -967,7 +1011,14 @@
       + ' stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'
       + '<path d="m9 6 6 6-6 6"/></svg>';
 
+    /* A heading row where a Part begins, as the book's contents does. */
+    const PARTS = {
+      'Part I · CS1': 'Part I — Computer Science 1 (CS1)',
+      'Part II · CS2': 'Part II — Computer Science 2 (CS2)',
+    };
     body.innerHTML = CHAPTERS.map((c, i) => {
+      const partHead = PARTS[c.part] && (i === 0 || CHAPTERS[i - 1].part !== c.part)
+        ? `<tr class="ch-part"><th scope="rowgroup" colspan="4">${PARTS[c.part]}</th></tr>` : '';
       /* Every chapter has something to show now: the abstract at minimum. */
       const hasDetail = c.excerpt || c.sections.length || c.authors;
 
@@ -994,7 +1045,7 @@
       }).join('');
       const secs = level(c.sections);
 
-      return `
+      return `${partHead}
       <tr class="ch-row"${hasDetail ? ` id="ch-${i}"` : ''}>
         <th scope="row" style="font-weight:500">
           ${hasDetail
@@ -1039,6 +1090,152 @@
       detail.toggleAttribute('hidden', !open);
       row.toggleAttribute('data-open', open);
       btn.setAttribute('aria-expanded', String(open));
+    });
+  })();
+
+  /* ========================================================== PDF reader
+     Every link to the book goes through download.php. Followed normally it
+     replaced the site with the PDF; here it opens in an overlay instead, at
+     the page the link asked for, with the chapter list beside it, and
+     "Open in new tab", "Download" and Close in the header.
+
+     - The first load is the link itself (download.php?f=…&p=…), so the
+       download is still counted, once per opening.
+     - Jumping to another chapter loads the file directly (not counted again).
+       The frame is replaced rather than re-pointed: not every built-in PDF
+       viewer follows a change to #page on a document it already shows, and
+       the file is in the HTTP cache by then.
+     - Browsers that cannot show a PDF inline (navigator.pdfViewerEnabled is
+       false — Android Chrome, for one) keep the plain link, in a new tab.
+     - Modifier-clicks and middle-clicks are left alone, so "open in new tab"
+       from the context menu or with Ctrl/⌘ still works as it always did.   */
+  (() => {
+    const FILES = window.BOOK_FILES;
+    if (!FILES || !FILES.v1) return;
+    const isBookLink = (a) => /(^|\/)download\.php\?/.test(a.getAttribute('href') || '');
+
+    if (navigator.pdfViewerEnabled === false) {
+      $$('a[href]').filter(isBookLink).forEach((a) => { a.target = '_blank'; a.rel = 'noopener'; });
+      return;
+    }
+
+    const ICON_LIST = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg>';
+    const ICON_TAB = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
+    const ICON_DL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M8 11l4 4 4-4M5 19h14"/></svg>';
+    const ICON_X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+
+    const chapters = (typeof CHAPTERS !== 'undefined' ? CHAPTERS : []).map((c) => {
+      const [a, b] = String(c.pages).split('–').map(Number);
+      return { ...c, first: a, last: b || a };
+    });
+    const chapterAt = (page) => chapters.find((c) => page >= c.first && page <= c.last);
+    /* "Chapter 11 — CS2: Knox College" → "11 · Knox College"; the Part heading says CS2 */
+    const short = (c) => c.title.replace(/^Chapter (\d+) — (?:CS[12]: )?/, '$1 · ');
+    const PARTS = { 'Part I · CS1': 'Part I — CS1', 'Part II · CS2': 'Part II — CS2' };
+
+    let dlg, body, frame, titleEl, subEl, tabLink, dlLink, tocBtn, toc;
+    let state = { key: 'v1', page: null };
+
+    const fileUrl = (key, page) => FILES[key].file + (page ? `#page=${page + FILES[key].offset}` : '');
+    const narrow = () => window.matchMedia && window.matchMedia('(width < 48rem)').matches;
+    const setToc = (on) => {
+      body.dataset.toc = on ? 'on' : 'off';
+      tocBtn.setAttribute('aria-expanded', String(on));
+    };
+
+    const build = () => {
+      dlg = document.createElement('dialog');
+      dlg.className = 'pdfview';
+      dlg.setAttribute('aria-labelledby', 'pdfview-title');
+      dlg.innerHTML = `
+        <div class="pdfview-head">
+          <button class="icon-btn" type="button" data-pdf-toc aria-controls="pdfview-toc" aria-expanded="true"
+                  title="Chapters">${ICON_LIST}<span class="visually-hidden">Chapters</span></button>
+          <div class="pdfview-titles">
+            <strong id="pdfview-title"></strong>
+            <span class="pdfview-sub"></span>
+          </div>
+          <a class="btn btn--ghost btn--sm" data-pdf-tab target="_blank" rel="noopener">${ICON_TAB}<span class="pdfview-lbl">Open in new tab</span></a>
+          <a class="btn btn--ghost btn--sm" data-pdf-dl download>${ICON_DL}<span class="pdfview-lbl">Download</span></a>
+          <button class="icon-btn" type="button" data-pdf-close aria-label="Close the reader" title="Close (Esc)">${ICON_X}</button>
+        </div>
+        <div class="pdfview-body" data-toc="on">
+          <nav class="pdfview-toc" id="pdfview-toc" aria-label="Chapters"><ol></ol></nav>
+          <iframe class="pdfview-frame" title="E-book"></iframe>
+        </div>`;
+      document.body.append(dlg);
+      body = $('.pdfview-body', dlg);
+      frame = $('.pdfview-frame', dlg);
+      titleEl = $('#pdfview-title', dlg);
+      subEl = $('.pdfview-sub', dlg);
+      tabLink = $('[data-pdf-tab]', dlg);
+      dlLink = $('[data-pdf-dl]', dlg);
+      tocBtn = $('[data-pdf-toc]', dlg);
+      toc = $('.pdfview-toc ol', dlg);
+
+      let part = '';
+      toc.innerHTML = chapters.map((c) => {
+        const head = PARTS[c.part] && c.part !== part ? `<li class="toc-part">${PARTS[c.part]}</li>` : '';
+        part = c.part;
+        return `${head}<li><button type="button" data-pdf-go="${c.first}">
+            <span class="toc-t">${esc(short(c))}</span><span class="toc-p">${c.first}</span></button></li>`;
+      }).join('');
+
+      tocBtn.addEventListener('click', () => setToc(body.dataset.toc !== 'on'));
+      $('[data-pdf-close]', dlg).addEventListener('click', () => dlg.close());
+      dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });   // backdrop
+      dlg.addEventListener('close', () => { frame.src = 'about:blank'; });
+      toc.addEventListener('click', (e) => {
+        const b = e.target.closest('[data-pdf-go]');
+        if (!b) return;
+        show(state.key, Number(b.dataset.pdfGo), fileUrl(state.key, Number(b.dataset.pdfGo)));
+        if (narrow()) setToc(false);
+      });
+    };
+
+    /* Point the frame at src, and the header and chapter list at page. */
+    const show = (key, page, src) => {
+      state = { key, page };
+      const fresh = frame.cloneNode(false);
+      fresh.src = src;
+      frame.replaceWith(fresh);
+      frame = fresh;
+
+      const ch = key === 'v1' && page ? chapterAt(page) : null;
+      titleEl.textContent = ch ? ch.title.replace(/&amp;/g, '&') : 'Toward Modern Models of Introductory Computing Courses';
+      subEl.textContent = FILES[key].label + (page ? ` · p. ${page}` : '');
+      frame.title = `${titleEl.textContent} — ${FILES[key].label}`;
+      tabLink.href = fileUrl(key, page);
+      dlLink.href = FILES[key].file;
+
+      /* The chapter list is the first edition's; the early release has its own pagination. */
+      const hasToc = key === 'v1' && chapters.length > 0;
+      tocBtn.hidden = !hasToc;
+      if (!hasToc) setToc(false);
+      $$('[data-pdf-go]', toc).forEach((b) => {
+        const c = chapterAt(Number(b.dataset.pdfGo));
+        b.toggleAttribute('aria-current', !!(ch && c === ch));
+      });
+      $('[aria-current]', toc)?.scrollIntoView({ block: 'nearest' });
+    };
+
+    const open = (key, page, href) => {
+      if (!dlg) build();
+      setToc(key === 'v1' && !narrow());
+      show(key, page, href);
+      if (!dlg.open) dlg.showModal();
+    };
+
+    document.addEventListener('click', (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest('a[href]');
+      if (!a || !isBookLink(a) || a.hasAttribute('download')) return;
+      const url = new URL(a.href, location.href);
+      const key = url.searchParams.get('f') === 'early' ? 'early' : 'v1';
+      if (!FILES[key]) return;
+      const p = parseInt(url.searchParams.get('p') || '', 10);
+      e.preventDefault();
+      open(key, Number.isFinite(p) && p > 0 ? p : null, url.href);
     });
   })();
 

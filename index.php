@@ -1,7 +1,7 @@
 <?php
 $PAGE  = 'home';
-$DESC  = 'Eight classroom-tested CS1 exemplars infusing parallel and distributed computing into introductory computing. A free e-book with activities, assessments and repositories. NSF Award #2321015.';
-$OG    = ['description' => 'Eight classroom-tested CS1 exemplars infusing parallel and distributed computing into introductory computing. Free, evaluated, ready to adopt.'];
+$DESC  = 'Sixteen classroom-tested CS1 and CS2 exemplars from eight institutions, infusing parallel and distributed computing into the introductory computing sequence. A free e-book, First Edition, with activities, assessments and repositories. NSF Award #2321015-20.';
+$OG    = ['description' => 'Sixteen classroom-tested CS1 and CS2 exemplars infusing parallel and distributed computing into introductory computing. Free, evaluated, ready to adopt.'];
 /* News lives in assets/news.json so it can be edited without touching markup.
    Read here rather than fetched, so it renders without JavaScript. */
 $NEWS = [];
@@ -35,8 +35,8 @@ include 'partials/header.php';
       <p class="eyebrow">CDER Center · <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2321015">NSF Award #2321015</a></p>
       <h1 class="mt-3">A First Course Sequence Where Computation Isn&rsquo;t Only Sequential</h1>
       <p class="lede mt-4">Modern software is parallel, distributed, event-driven and API-based. Introductory
-        computing mostly still isn&rsquo;t. Eight institutions changed that in their own CS1, then measured
-        whether it worked, and published everything.</p>
+        computing mostly still isn&rsquo;t. Eight institutions changed that in their own CS1 and CS2, then
+        measured whether it worked, and published everything.</p>
       <!-- Row one identifies the volume, row two acts on it. -->
       <div class="cluster hero-meta">
         <button class="btn btn--quiet btn--sm" type="button" data-copy="<?= e($CITATION) ?>"
@@ -44,20 +44,21 @@ include 'partials/header.php';
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
           <span data-copy-label>Copy citation</span>
         </button>
-        <?= doi_badge($DOI, $DOI_URL) ?>
+        <?= doi_badge($DOI, $DOI_URL, '', 'First edition') ?>
+        <?= doi_badge($DOI_EARLY, $DOI_EARLY_URL, '', 'Early release') ?>
       </div>
 
       <div class="cluster hero-actions">
+        <a class="btn btn--primary" href="download.php?f=book" target="_blank" rel="noopener">
+          <?= icon_download() ?>
+          Download the full e-book <?= icon_new_tab() ?>
+        </a>
         <a class="btn btn--soft" href="download.php?f=early" target="_blank" rel="noopener"
-           aria-label="Download the early release, released August 2026. The CS1 chapters are published and complete. Opens in a new tab."
-           data-tip="Released August 2026. The CS1 chapters are published and complete.">
+           aria-label="Download the early release: August 2026, CS1 chapters only, superseded by the First Edition. Opens in a new tab."
+           data-tip="August 2026 · CS1 chapters only · superseded by the First Edition.">
           <?= icon_download() ?>
           Early release <?= icon_new_tab() ?>
         </a>
-        <span class="btn btn--primary btn--disabled" role="link" aria-disabled="true" tabindex="0" aria-label="Download the full e-book (coming soon)" data-tip="Coming soon">
-          <?= icon_download() ?>
-          Download the full e-book
-        </span>
         <a class="btn btn--ghost" href="ebook.php#activities">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
           Find an activity
@@ -124,11 +125,11 @@ include 'partials/header.php';
 
 <div class="shell metrics-wrap">
   <div class="metrics reveal">
-    <div class="metric"><span class="metric-value">8</span><span class="metric-label">CS1 exemplars</span></div>
-    <div class="metric"><span class="metric-value">17</span><span class="metric-label">Activities</span></div>
+    <div class="metric"><span class="metric-value">16</span><span class="metric-label">CS1 &amp; CS2 exemplars</span></div>
+    <div class="metric"><span class="metric-value">31</span><span class="metric-label">Activities</span></div>
     <div class="metric"><span class="metric-value">4</span><span class="metric-label">Languages</span></div>
-    <div class="metric"><span class="metric-value">302</span><span class="metric-label">Pages, free</span></div>
-    <div class="metric"><span class="metric-value">10</span><span class="metric-label">Chapters</span></div>
+    <div class="metric"><span class="metric-value">515</span><span class="metric-label">Pages, free</span></div>
+    <div class="metric"><span class="metric-value">19</span><span class="metric-label">Chapters</span></div>
   </div>
 </div>
 
@@ -143,8 +144,8 @@ include 'partials/header.php';
     <div class="path reveal">
       <span class="path-effort">Lowest effort</span>
       <h3>A single class activity</h3>
-      <p>Start with Chapter 1 and look for an unplugged, visual or short discussion-based activity.
-        Often one 40&ndash;60&nbsp;minute session with printed handouts.</p>
+      <p>Start with Chapter 1 for CS1 or Chapter 10 for CS2 and look for an unplugged, visual or short
+        discussion-based activity. Often one 40&ndash;60&nbsp;minute session with printed handouts.</p>
       <a href="ebook.php#activities">Browse activities &rarr;</a>
     </div>
     <div class="path reveal">
@@ -152,14 +153,15 @@ include 'partials/header.php';
       <h3>A short module or lab</h3>
       <p>Read the common description, then compare two or three institutional chapters with constraints
         similar to yours &mdash; class size, calendar, language, prep time.</p>
-      <a href="ebook.php#glance">Compare exemplars &rarr;</a>
+      <a href="ebook.php#parts">Compare exemplars &rarr;</a>
     </div>
     <div class="path reveal">
       <span class="path-effort">Full</span>
       <h3>Course-level infusion</h3>
       <p>Scan the descriptor elements and course-change sections, study the chapters closest to your
-        local course, then work from the appendices and repositories.</p>
-      <a href="download.php?f=book&amp;p=5" target="_blank">Chapter 0 &mdash; roadmap &rarr;</a>
+        local course, then work from the appendices and repositories. For CS1 and CS2 together, read the
+        paired institutional exemplars.</p>
+      <a href="download.php?f=book&amp;p=18">Chapter 0 &sect;&thinsp;0.5 &mdash; roadmap &rarr;</a>
     </div>
   </div>
 
@@ -183,8 +185,8 @@ include 'partials/header.php';
       <figure class="book-cover reveal">
         <a class="book-cover-link" href="download.php?f=book" target="_blank" rel="noopener">
           <picture>
-            <source srcset="assets/book_cover/book_cover.webp" type="image/webp">
-            <img src="assets/book_cover/book_cover.png" alt="" width="576" height="864"
+            <source srcset="<?= e(asset_url('assets/book_cover/book_cover.webp')) ?>" type="image/webp">
+            <img src="<?= e(asset_url('assets/book_cover/book_cover.png')) ?>" alt="" width="816" height="1055"
                  decoding="async" loading="lazy">
           </picture>
           <span class="visually-hidden">Download the e-book (opens in a new tab)</span>
@@ -204,17 +206,17 @@ include 'partials/header.php';
           <p class="muted">The goal is not to turn introductory computing students into parallel programmers,
             but to help them develop an early conceptual model in which computation may involve multiple
             workers, remote data, performance trade-offs and coordination among interacting components &mdash;
-            all while ensuring that the basic CS1 learning outcomes are preserved.</p>
+            all while ensuring that the basic CS1 and CS2 learning outcomes are preserved.</p>
         </div>
 
         <div class="cluster tip-up mt-4">
+          <a class="btn btn--primary" href="download.php?f=book" target="_blank" rel="noopener"><?= icon_download() ?> Download the full PDF <?= icon_new_tab() ?></a>
           <a class="btn btn--soft" href="download.php?f=early" target="_blank" rel="noopener"
-             aria-label="Download the early release, released August 2026. The CS1 chapters are published and complete. Opens in a new tab."
-             data-tip="Released August 2026. The CS1 chapters are published and complete.">
+             aria-label="Download the early release: August 2026, CS1 chapters only, superseded by the First Edition. Opens in a new tab."
+             data-tip="August 2026 · CS1 chapters only · superseded by the First Edition.">
             <?= icon_download() ?>
             Early release <?= icon_new_tab() ?>
           </a>
-          <span class="btn btn--primary btn--disabled" role="link" aria-disabled="true" tabindex="0" aria-label="Download the full PDF (coming soon)" data-tip="Coming soon"><?= icon_download() ?> Download the full PDF</span>
           <a class="btn btn--ghost" href="ebook.php#chapters">Download by chapter</a>
           <a class="btn btn--ghost" href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
@@ -222,12 +224,6 @@ include 'partials/header.php';
           </a>
         </div>
 
-        <!-- <div class="callout callout--info mt-4">
-          <strong>This first release covers CS1.</strong> It is published early to support Fall-term
-          adoption, and includes eight institutional CS1 exemplars that have been classroom tested and
-          evaluated, together with shared activities and instructional resources. CS2 chapters are expected
-          soon for subsequent-term adoption.
-        </div> -->
       </div>
     </div>
   </div>
@@ -286,11 +282,12 @@ include 'partials/header.php';
   <div class="shell section">
     <p class="eyebrow">Recurring activity families</p>
     <h2 class="mt-2">What Actually Gets Taught</h2>
-    <p class="lede mt-2">Rather than another local course implementation, Chapter 1 identifies the activity
-      families that recur across all eight institutions, adapted to different languages, calendars and
-      class sizes.</p>
+    <p class="lede mt-2">Rather than another local course implementation, Chapters 1 and 10 identify the
+      activity families that recur across the institutions &mdash; in CS1 and in CS2 &mdash; adapted to
+      different languages, calendars and class sizes.</p>
+    <p class="eyebrow mt-5">CS1 &mdash; Chapter 1</p>
 
-    <div class="grid grid--three mt-5">
+    <div class="grid grid--three mt-3">
       <article class="card reveal"><span class="pill pill--brand">Unplugged</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=flag-maker#explorer">Flag Maker</a></h3>
         <p>Students act as processors coloring flag-grid cells in sequential and parallel scenarios. Surfaces
           speedup, task decomposition, contention, pipelining, critical path and race conditions &mdash; with
@@ -323,9 +320,35 @@ include 'partials/header.php';
         <p class="card-foot">75-min demo to a full project · 4 institutions &middot; <a href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS1">See materials</a></p></article>
     </div>
 
+    <p class="eyebrow mt-6">CS2 &mdash; Chapter 10</p>
+    <p class="muted mt-2" style="max-inline-size:var(--measure)">CS2 puts more weight on programming: the
+      unplugged activities are still there, but they generally lead into a programming assignment.</p>
+    <div class="grid grid--three mt-4">
+      <article class="card reveal"><span class="pill pill--brand">Unplugged</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=ocm#explorer">Overly Complicated Machine</a></h3>
+        <p>Teams build a Rube Goldberg&ndash;style chain of five events, then map it to events, responses and
+          event handlers &mdash; event-driven programming before any code.</p>
+        <p class="card-foot">30&ndash;35 min &middot; <a href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2">See materials</a></p></article>
+
+      <article class="card reveal"><span class="pill pill--accent">Plugged-in</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=fork-join#explorer">Fork&ndash;Join</a></h3>
+        <p>From fork/join notation and dependency graphs to Java&rsquo;s Fork/Join framework, recursive tasks,
+          reductions, and work and span beside the course&rsquo;s asymptotic analysis.</p>
+        <p class="card-foot">15 min to a week-long project &middot; 3 institutions &middot; <a href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2">See materials</a></p></article>
+
+      <article class="card reveal"><span class="pill pill--accent">Plugged-in</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=sorting-cs2#explorer">Sorting algorithm comparison</a></h3>
+        <p>Sequential against parallel sorts, varying thread counts and timing them, to explain when
+          parallelization helps and when its overhead hurts.</p>
+        <p class="card-foot">2 hours to 3 weeks &middot; 4 institutions &middot; <a href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2">See materials</a></p></article>
+
+      <article class="card reveal"><span class="pill pill--accent">Plugged-in</span><h3 class="mt-2"><a class="stretch" href="ebook.php?activity=image-processing#explorer">Parallel image processing</a></h3>
+        <p>Partition image kernels across threads or processes, check the output still matches, then measure
+          speedup and reason about synchronization and overhead.</p>
+        <p class="card-foot">About 135 min over two sessions &middot; 3 institutions &middot; <a href="https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2">See materials</a></p></article>
+    </div>
+
     <div class="cluster mt-5">
-      <a class="btn btn--primary" href="ebook.php#activities">Browse all 17 activities</a>
-      <a class="btn btn--ghost" href="download.php?f=book&amp;p=26">Chapter 1 &mdash; Common CS1 activities</a>
+      <a class="btn btn--primary" href="ebook.php#activities">Browse all 31 activities</a>
+      <a class="btn btn--ghost" href="download.php?f=book&amp;p=28">Chapter 1 &mdash; Common CS1 activities</a>
+      <a class="btn btn--ghost" href="download.php?f=book&amp;p=288">Chapter 10 &mdash; Common CS2 activities</a>
     </div>
   </div>
 </div>

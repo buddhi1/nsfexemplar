@@ -1,7 +1,7 @@
 <?php
 $PAGE  = 'research';
 $PAGE_TITLE = 'Research';
-$DESC  = 'Publications, presentations, evaluation methodology and selected results from the NSF Modern Course Exemplars project — baseline versus intervention data across eight CS1 courses.';
+$DESC  = 'Publications, presentations, evaluation methodology and selected results from the NSF Modern Course Exemplars project — baseline versus intervention data across the CS1 and CS2 courses.';
 include 'partials/header.php';
 ?>
 
@@ -48,7 +48,8 @@ include 'partials/header.php';
   <div class="callout mt-5">
     <strong>The volume itself</strong> is the primary publication: <em>Toward Modern Models of Introductory
     Computing Courses &mdash; CS1 and CS2 Course Exemplars infused with Parallel and Distributed Computing
-    Concepts</em>. <a href="download.php?f=book" target="_blank" rel="noopener">Full PDF <?= icon_new_tab() ?></a> &middot;
+    Concepts</em>, First Edition, November 2026 (DOI <a href="<?= e($DOI_URL) ?>"><?= e($DOI) ?></a>).
+    <a href="download.php?f=book" target="_blank" rel="noopener">Full PDF <?= icon_new_tab() ?></a> &middot;
     <a href="ebook.php#chapters">by chapter</a>. The wider CDER book series (Volumes 1 and 2, Morgan
     Kaufmann and Springer) is available as free preprint chapters; Volume 3 is expected from Springer in
     late 2026.
@@ -144,24 +145,26 @@ include 'partials/header.php';
     <p class="eyebrow">What the data shows</p>
     <h2 class="mt-2">Findings</h2>
     <p class="lede mt-2">Full tables, figures and anonymized datasets are in each chapter&rsquo;s results
-      sections and appendices.</p>
+      sections and appendices. The CS1 and CS2 studies ran in different terms with different cohorts, so
+      read each card within its own institution rather than across them.</p>
 
-    <div class="grid grid--halves mt-4">
+    <h3 class="mt-5" id="findings-cs1">CS1 &mdash; Part I</h3>
+    <div class="grid grid--halves mt-3">
       <article class="card">
         <div class="split"><h3>TNTECH</h3><span class="pill push">Chapter 2</span></div>
         <p class="card-sub"><span class="sub-short" tabindex="0" role="note"
           aria-label="Chapter 2 subtitle: Large-Section C++ Infusion with Unplugged Activities, OpenMP, and Remote Data"
           data-tip="Large-Section C++ Infusion with Unplugged Activities, OpenMP, and Remote Data">Large-section C++ infusion</span></p>
         <p>Baseline Spring 2024 against four combined intervention semesters (Fall 2024, Spring 2025, Fall 2025, Spring 2026), with per-assignment agreement data and time-on-task for the Earthquake Tracker and OpenMP labs.</p>
-        <p class="card-foot"><a href="download.php?f=book&amp;p=63">Chapter 2 &middot; p.&nbsp;63</a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=65">Chapter 2 &middot; p.&nbsp;65</a></p></article>
 
       <article class="card">
         <div class="split"><h3>Knox</h3><span class="pill push">Chapter 3</span></div>
         <p class="card-sub"><span class="sub-short" tabindex="0" role="note"
           aria-label="Chapter 3 subtitle: Java-Based Liberal-Arts Adaptation with Flag Maker, Greenfoot, and Knoxcraft"
           data-tip="Java-Based Liberal-Arts Adaptation with Flag Maker, Greenfoot, and Knoxcraft">Java liberal-arts adaptation</span></p>
-        <p>Pre- and post-surveys were given every term the course ran, but the results are held back from this early release and will be added in a later update. What the chapter does carry is the qualitative account: which material was displaced, why it mattered less than expected, and the departmental conditions that made the change straightforward.</p>
-        <p class="card-foot">Survey results pending &middot; <a href="download.php?f=book&amp;p=107">Chapter 3 &middot; p.&nbsp;107</a></p></article>
+        <p>Pre- and post-surveys in Winter 2024 (19 matched students) and Winter 2026 (25) found significant gains in self-reported understanding of both computing and PDC, with no drop in interest in computing or PDC &mdash; alongside a candid account of which material was displaced and why it mattered less than expected.</p>
+        <p class="card-foot">Wilcoxon signed-rank, two cohorts &middot; <a href="download.php?f=book&amp;p=105">Chapter 3 &middot; p.&nbsp;105</a></p></article>
 
       <article class="card">
         <div class="split"><h3>USI</h3><span class="pill push">Chapter 4</span></div>
@@ -169,7 +172,7 @@ include 'partials/header.php';
           aria-label="Chapter 4 subtitle: Structured Java Activity Adoption with Evidence-Rich Unplugged and Plugged-In Modules"
           data-tip="Structured Java Activity Adoption with Evidence-Rich Unplugged and Plugged-In Modules">Structured Java adoption</span></p>
         <p>Fall 2024 benchmark (N = 24) and Fall 2025 PDC-intervention (N = 33) cohorts compared item by item, with pre-to-post gains on four PDC measures including parallel processing, distributed computing and overall PDC understanding. Includes diverging Likert distributions of engagement items and thematic coding of open responses.</p>
-        <p class="card-foot"><a href="download.php?f=book&amp;p=122">Chapter 4 &middot; p.&nbsp;122</a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=123">Chapter 4 &middot; p.&nbsp;123</a></p></article>
 
       <article class="card">
         <div class="split"><h3>UNL</h3><span class="pill push">Chapter 5</span></div>
@@ -177,7 +180,7 @@ include 'partials/header.php';
           aria-label="Chapter 5 subtitle: Scalable Codeless and Low-Code PDC Modules for Large and Online CS1 Contexts"
           data-tip="Scalable Codeless and Low-Code PDC Modules for Large and Online CS1 Contexts">Codeless and low-code modules</span></p>
         <p>Codeless modules evaluated across Fall 2024 and Fall 2025 with Wilcoxon signed-rank testing and Cliff&rsquo;s delta effect sizes reported per item, with significance interpreted at p &lt; 0.05.</p>
-        <p class="card-foot">n = 125 &middot; <a href="download.php?f=book&amp;p=166">Chapter 5 &middot; p.&nbsp;166</a></p></article>
+        <p class="card-foot">n = 125 &middot; <a href="download.php?f=book&amp;p=163">Chapter 5 &middot; p.&nbsp;163</a></p></article>
 
       <article class="card">
         <div class="split"><h3>Webster</h3><span class="pill push">Chapter 6</span></div>
@@ -185,15 +188,15 @@ include 'partials/header.php';
           aria-label="Chapter 6 subtitle: Visualization-First C++ Infusion through Animations, Simulations, and Game-Based Activities"
           data-tip="Visualization-First C++ Infusion through Animations, Simulations, and Game-Based Activities">Visualization-first C++</span></p>
         <p>Pre/post comparison of self-reported PDC experience and core C++ topic experience on a seven-point scale, plus attitudes and interest, and post-survey ratings of learning activities and outcomes.</p>
-        <p class="card-foot"><a href="download.php?f=book&amp;p=182">Chapter 6 &middot; p.&nbsp;182</a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=179">Chapter 6 &middot; p.&nbsp;179</a></p></article>
 
       <article class="card">
         <div class="split"><h3>Casper</h3><span class="pill push">Chapter 7</span></div>
         <p class="card-sub"><span class="sub-short" tabindex="0" role="note"
-          aria-label="Chapter 7 subtitle: Community-College Adoption across Unplugged, OpenMP, Remote-Data, and Physical-Computing Activities"
-          data-tip="Community-College Adoption across Unplugged, OpenMP, Remote-Data, and Physical-Computing Activities">Community-college adoption</span></p>
+          aria-label="Chapter 7 subtitle: Community College Adoption across Unplugged, OpenMP, Remote-Data, and Physical-Computing Activities"
+          data-tip="Community College Adoption across Unplugged, OpenMP, Remote-Data, and Physical-Computing Activities">Community-college adoption</span></p>
         <p>Perception of learning gains in non-PDC topics stayed broadly flat while perception of gains in PDC topics rose in the intervention semester &mdash; the clearest available check that PDC content did not displace core learning.</p>
-        <p class="card-foot">8-week summer and 16-week semester runs &middot; <a href="download.php?f=book&amp;p=202">Chapter 7 &middot; p.&nbsp;202</a></p></article>
+        <p class="card-foot">8-week summer and 16-week semester runs &middot; <a href="download.php?f=book&amp;p=197">Chapter 7 &middot; p.&nbsp;197</a></p></article>
 
       <article class="card">
         <div class="split"><h3>HPU</h3><span class="pill push">Chapter 8</span></div>
@@ -201,7 +204,7 @@ include 'partials/header.php';
           aria-label="Chapter 8 subtitle: Low-Preparation Unplugged and Plugged-in PDC Activities for Small Classes"
           data-tip="Low-Preparation Unplugged and Plugged-in PDC Activities for Small Classes">Low-preparation activities</span></p>
         <p>Pre-test and post-test performance by question, plus adapted ASPECT engagement results grouped by category for both the Flag Maker and Penny activities, across Fall 2024, Fall 2025 and Spring 2026.</p>
-        <p class="card-foot"><a href="download.php?f=book&amp;p=236">Chapter 8 &middot; p.&nbsp;236</a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=229">Chapter 8 &middot; p.&nbsp;229</a></p></article>
 
       <article class="card">
         <div class="split"><h3>MSU</h3><span class="pill push">Chapter 9</span></div>
@@ -209,7 +212,7 @@ include 'partials/header.php';
           aria-label="Chapter 9 subtitle: Focused Java Minimal-Infusion Model Centered on Flag Maker and Data Parallelism"
           data-tip="Focused Java Minimal-Infusion Model Centered on Flag Maker and Data Parallelism">Minimal-infusion model</span></p>
         <p>A no-intervention semester compared against the Flag Maker intervention semester shows gains from pre- to post-survey across all basic programming categories in both, with comparable post-survey means &mdash; evidence that adding a short unplugged activity did not reduce students&rsquo; perceived progress in core CS1 content.</p>
-        <p class="card-foot"><a href="download.php?f=book&amp;p=276">Chapter 9 &middot; p.&nbsp;276</a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=267">Chapter 9 &middot; p.&nbsp;267</a></p></article>
 
       <article class="card">
         <div class="split"><h3>Across all eight</h3><span class="pill push">Chapter 1</span></div>
@@ -217,7 +220,85 @@ include 'partials/header.php';
           aria-label="Chapter 1 subtitle: Shared Activity Families, Adoption Guidance, and Evidence"
           data-tip="Shared Activity Families, Adoption Guidance, and Evidence">Shared activity families</span></p>
         <p>The shared lesson is that PDC works best in CS1 when it reframes and enriches existing course goals rather than appearing as disconnected additional content &mdash; starting with intuition, using unplugged or visual activities before code, and keeping programming tasks lightweight.</p>
-        <p class="card-foot"><a href="download.php?f=book&amp;p=26">Chapter 1 &middot; p.&nbsp;26</a></p></article>
+        <p class="card-foot"><a href="download.php?f=book&amp;p=28">Chapter 1 &middot; p.&nbsp;28</a></p></article>
+    </div>
+
+    <h3 class="mt-6" id="findings-cs2">CS2 &mdash; Part II</h3>
+    <p class="muted mt-2" style="max-inline-size:var(--measure)">Every CS2 package used the common
+      pre/post survey in Chapter&nbsp;10 &sect;&thinsp;10.5. How firmly each result can be read depends on
+      the sample, and the chapters say so; the cards keep their wording.</p>
+    <div class="grid grid--halves mt-3">
+      <article class="card">
+        <div class="split"><h3>TNTECH</h3><span class="pill push">Chapter 11</span></div>
+        <p class="card-sub"><span class="sub-short" tabindex="0" role="note"
+          aria-label="Chapter 11 subtitle: Large-Section C++ Infusion with Plugged-In Activities using OpenMP"
+          data-tip="Large-Section C++ Infusion with Plugged-In Activities using OpenMP">Large-section C++ with OpenMP</span></p>
+        <p>Across three intervention semesters, 285 students completed both surveys. Gains were large on the core data-structures and algorithms topics, and significant on all three PDC topics &mdash; largest for parallel processing (2.68 to 4.40 on a 7-point scale), then distributed computing, with event handling smallest.</p>
+        <p class="card-foot">n = 285, Spring 2025 &ndash; Spring 2026 &middot; <a href="download.php?f=book&amp;p=320">Chapter 11 &middot; p.&nbsp;320</a></p></article>
+
+      <article class="card">
+        <div class="split"><h3>Knox</h3><span class="pill push">Chapter 12</span></div>
+        <p class="card-sub"><span class="sub-short" tabindex="0" role="note"
+          aria-label="Chapter 12 subtitle: Java-Based Liberal-Arts Adaptation using the Fork-Join Framework"
+          data-tip="Java-Based Liberal-Arts Adaptation using the Fork-Join Framework">Fork&ndash;Join in Java</span></p>
+        <p>Two cohorts, 22 students in Winter 2025 and 17 in Winter 2026. Every data-structure and algorithm topic improved significantly. Comfort with PDC rose by a small-to-medium effect in the first year and medium-to-large in the second &mdash; perhaps, the authors suggest, because the instructor was more at ease with the material. Understanding of computing and of PDC rose; interest did not fall.</p>
+        <p class="card-foot">Wilcoxon signed-rank, two cohorts &middot; <a href="download.php?f=book&amp;p=343">Chapter 12 &middot; p.&nbsp;343</a></p></article>
+
+      <article class="card">
+        <div class="split"><h3>USI</h3><span class="pill push">Chapter 13</span></div>
+        <p class="card-sub"><span class="sub-short" tabindex="0" role="note"
+          aria-label="Chapter 13 subtitle: Structured Java Infusion through Event-Driven Programming, Fork–Join, and Parallel Image Processing"
+          data-tip="Structured Java Infusion through Event-Driven Programming, Fork–Join, and Parallel Image Processing">Events, Fork&ndash;Join and images</span></p>
+        <p>A baseline year with no PDC (Spring 2025, 12 matched students) against the intervention year (Spring 2026, 18 matched). With the intervention, students rated themselves higher on every construct, the largest gains in event handling (+2.28) and events (+2.06). Before the course no student named PDC, decomposition or event handling as a goal; afterwards 6 of 18 did, unprompted.</p>
+        <p class="card-foot">Baseline against intervention &middot; <a href="download.php?f=book&amp;p=357">Chapter 13 &middot; p.&nbsp;357</a></p></article>
+
+      <article class="card">
+        <div class="split"><h3>UNL</h3><span class="pill push">Chapter 14</span></div>
+        <p class="card-sub"><span class="sub-short" tabindex="0" role="note"
+          aria-label="Chapter 14 subtitle: Minimal-Change Java Integration through Connection Pooling and Parallel Sorting"
+          data-tip="Minimal-Change Java Integration through Connection Pooling and Parallel Sorting">Minimal-change Java integration</span></p>
+        <p>Thirty-three students in Spring 2025. Large gains across CS2 topics &mdash; Big-O and maps both +2.88 &mdash; and medium, significant gains in parallel (+0.94) and distributed computing (+1.33) and in understanding of PDC (+1.12). Event-driven experience did not move, and interest in computing and in PDC dipped slightly.</p>
+        <p class="card-foot">n = 33 &middot; <a href="download.php?f=book&amp;p=404">Chapter 14 &middot; p.&nbsp;404</a></p></article>
+
+      <article class="card">
+        <div class="split"><h3>Webster &middot; C++</h3><span class="pill push">Chapter 15</span></div>
+        <p class="card-sub"><span class="sub-short" tabindex="0" role="note"
+          aria-label="Chapter 15 subtitle: C++ Infusion through Parallel Merge Sort, OpenMP, and Performance Analysis"
+          data-tip="C++ Infusion through Parallel Merge Sort, OpenMP, and Performance Analysis">Parallel merge sort in C++</span></p>
+        <p>Reported as descriptive only, and plainly so: the pre and post surveys (9 and 10 respondents, collected across different terms) could not be matched, so the chapter claims no learning gain. Students still saw PDC as worthwhile &mdash; 9 of 10 post-survey respondents agreed that learning it is important.</p>
+        <p class="card-foot">Descriptive, unmatched samples &middot; <a href="download.php?f=book&amp;p=414">Chapter 15 &middot; p.&nbsp;414</a></p></article>
+
+      <article class="card">
+        <div class="split"><h3>Webster &middot; Python</h3><span class="pill push">Chapter 16</span></div>
+        <p class="card-sub"><span class="sub-short" tabindex="0" role="note"
+          aria-label="Chapter 16 subtitle: Python-Based Infusion through Multiprocessing, Parallel Image Processing, and Performance Engineering"
+          data-tip="Python-Based Infusion through Multiprocessing, Parallel Image Processing, and Performance Engineering">Python multiprocessing and performance</span></p>
+        <p>Pooled, unmatched responses (10 pre, 21 post) are summarized descriptively: interest in PDC and its perceived importance sat above neutral in both, and PDC experience below problem-decomposition experience. The chapter also reports speedup and efficiency measured from students&rsquo; own runs.</p>
+        <p class="card-foot">Descriptive, unmatched samples &middot; <a href="download.php?f=book&amp;p=440">Chapter 16 &middot; p.&nbsp;440</a></p></article>
+
+      <article class="card">
+        <div class="split"><h3>Casper</h3><span class="pill push">Chapter 17</span></div>
+        <p class="card-sub"><span class="sub-short" tabindex="0" role="note"
+          aria-label="Chapter 17 subtitle: Community College Adoption across Unplugged, OpenMP, and Greenfoot Activities"
+          data-tip="Community College Adoption across Unplugged, OpenMP, and Greenfoot Activities">Community-college CS2 adoption</span></p>
+        <p>Very small cohorts &mdash; 7 matched students in the Fall 2024 baseline, 2 in the Fall 2025 intervention &mdash; so the results are exploratory. Perceived PDC gains were similar to those for standard CS2 topics, but late-term topics (hashing, heaps) gained less, and a student asked for more repetition of the one-week topics.</p>
+        <p class="card-foot">Exploratory, 2 against 7 matched &middot; <a href="download.php?f=book&amp;p=457">Chapter 17 &middot; p.&nbsp;457</a></p></article>
+
+      <article class="card">
+        <div class="split"><h3>MSU</h3><span class="pill push">Chapter 18</span></div>
+        <p class="card-sub"><span class="sub-short" tabindex="0" role="note"
+          aria-label="Chapter 18 subtitle: Java Infusion through Event-Driven Greenfoot Game and Parallel Image Processing"
+          data-tip="Java Infusion through Event-Driven Greenfoot Game and Parallel Image Processing">Greenfoot events and image processing</span></p>
+        <p>After the parallel image processing module, self-rated understanding was highest for data parallelism, speedup, multithreading, synchronization and race conditions, and open responses describe how a problem divides into tasks. Enjoyment was mixed; one student found it too close to the midterm, so it will move earlier.</p>
+        <p class="card-foot">Activity survey and open responses &middot; <a href="download.php?f=book&amp;p=481">Chapter 18 &middot; p.&nbsp;481</a></p></article>
+
+      <article class="card">
+        <div class="split"><h3>Across CS2</h3><span class="pill push">Chapter 10</span></div>
+        <p class="card-sub"><span class="sub-short" tabindex="0" role="note"
+          aria-label="Chapter 10 subtitle: Shared Activity Families, Adoption Guidance, and Evidence"
+          data-tip="Shared Activity Families, Adoption Guidance, and Evidence">Shared CS2 activity families</span></p>
+        <p>CS2 put more weight on programming than CS1: unplugged activities still appear, but generally lead into a programming assignment. CS2 activities were also less widely adopted &mdash; departments define &ldquo;CS2&rdquo; more differently than CS1 &mdash; which suggests modernizing CS2 and later courses will be the harder task.</p>
+        <p class="card-foot">Common chapter &middot; <a href="download.php?f=book&amp;p=288">Chapter 10 &middot; p.&nbsp;288</a></p></article>
     </div>
   </div>
 </div>

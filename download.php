@@ -2,14 +2,20 @@
 /* =============================================================================
    Counted download endpoint.
 
-     download.php?f=book                 → Version 1 (cder_exemplar_cs1_cs2.pdf)
-     download.php?f=book&p=63            → Version 1, opened at page 63
+     download.php?f=book                 → the first edition
+                                           (cder_exemplar_cs1_cs2_first_edition.pdf)
+     download.php?f=book&p=28            → the first edition, opened at printed page 28
      download.php?f=early                → the early release
                                            (cder_exemplar_cs1_cs2_early_release.pdf)
-     download.php?f=03-cs1-tntech        → Version 1. Chapters are no longer
-                                           published separately; the old keys
-                                           still resolve so existing links and
-                                           bookmarks do not 404.
+     download.php?f=03-cs1-tntech        → the first edition. Chapters are no
+                                           longer published separately; the old
+                                           keys still resolve so existing links
+                                           and bookmarks do not 404.
+
+   p= is the book's printed page number — the one the site quotes and the
+   book's own contents give. It is turned into a PDF page here, using the
+   file's page_offset in lib/counters.php, so no link on the site has to know
+   how many unnumbered pages precede page 1.
 
    Records the download (lib/counters.php), then redirects to the real file so
    the browser handles range requests and resuming itself. The PDFs stay
@@ -36,7 +42,7 @@ counters_bump_download($version, $key, $page);
    relying on the fragment surviving the redirect — a client is only obliged to
    carry one across by convention, and not all of them do. */
 $target = BOOK_FILES[$version]['file'];
-if ($page !== null) $target .= '#page=' . $page;
+if ($page !== null) $target .= '#page=' . ($page + (int) (BOOK_FILES[$version]['page_offset'] ?? 0));
 
 header('Cache-Control: no-store');
 header('Location: ' . $target, true, 302);

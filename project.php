@@ -42,8 +42,8 @@ include 'partials/header.php';
         find it difficult to visualize what a different approach would look like &mdash; and most feel such a
         change is simply not possible. What the workshops heard repeatedly was:
         <em>&ldquo;someone else needs to go first.&rdquo;</em></p>
-      <p class="small faint"><a href="download.php?f=book&amp;p=9">Read this in full &mdash; Chapter 0
-        &sect;&thinsp;0.1, p.&nbsp;9 &rarr;</a></p>
+      <p class="small faint"><a href="download.php?f=book&amp;p=8">Read this in full &mdash; Chapter 0
+        &sect;&thinsp;0.1, p.&nbsp;8 &rarr;</a></p>
     </div>
     <ol class="goal-list">
       <li><span class="goal-n">1</span><span><b>Build</b> a modern first-year sequence around a computing
@@ -173,8 +173,9 @@ include 'partials/header.php';
     <li>
       <span class="year">2026&ndash;27</span>
       <h4>Analysis and publication</h4>
-      <p>Cross-institution analysis, this e-book and conference reports &mdash; plus a follow-on NSF award
-        extending training to AI and Big Data.</p>
+      <p>This e-book &mdash; an early release of the CS1 chapters in August 2026, then the First Edition with
+        CS1 and CS2 in November 2026 &mdash; with cross-institution analysis and conference reports, plus a
+        follow-on NSF award extending training to AI and Big Data.</p>
     </li>
   </ol>
 </div>
@@ -273,7 +274,7 @@ include 'partials/header.php';
       instructor backgrounds. This project emphasizes multiple pathways for PDC infusion.</p>
     <div class="table-wrap mt-4" id="glance">
       <table class="data data--glance">
-        <caption>Quick comparison of CS1 institutional exemplars for potential adopters (Table 1, Chapter 0).</caption>
+        <caption>Quick comparison of CS1 and CS2 institutional exemplars for potential adopters (Chapter 0, Table 2). Where an institution has both, its CS1 and CS2 rows are grouped, so the progression across the sequence reads down the group.</caption>
         <colgroup>
           <col class="col-ch"><col class="col-ctx"><col class="col-lang">
           <col class="col-style"><col class="col-start">
@@ -283,14 +284,30 @@ include 'partials/header.php';
           <th scope="col">Primary PDC infusion style</th><th scope="col">Good starting point for</th>
         </tr></thead>
         <tbody>
-          <tr><th scope="row">2 · TNTECH</th><td>Mid-sized public university; large CS1 lecture/lab setting</td><td>C++</td><td>Unplugged Penny and Flag Maker activities; OpenMP/data-parallel programming; remote-data/API assignment</td><td>Large-section CS1 adoption; programming-linked PDC infusion; multi-semester evidence</td></tr>
-          <tr><th scope="row">3 · Knox</th><td>Small residential liberal arts college; Java-based introductory sequence</td><td>Java</td><td>Conceptual and programming-oriented CS1 activities adapted to a small-college context</td><td>Liberal-arts setting; smaller classes; Java-based adaptation</td></tr>
-          <tr><th scope="row">4 · USI</th><td>Public master&rsquo;s-level institution; introductory object-oriented CS1 course</td><td>Java</td><td>Unplugged Flag Maker and Penny activities, plugged-in Flag Maker and Parallel Sort, Greenfoot, and activity-level assessment</td><td>Structured activity adoption; evidence-rich unplugged and plugged-in examples</td></tr>
-          <tr><th scope="row">5 · UNL</th><td>Large R1 institution; multiple CS1 sections and computing majors</td><td>C, Java</td><td>Codeless modules, visual and conceptual activities, remote-data ideas, scalable conceptual infusion</td><td>Low-code pathway; large-institution adaptation; conceptual modules; online classes</td></tr>
-          <tr><th scope="row">6 · Webster</th><td>Private primarily undergraduate institution; small-to-moderate CS1 sections</td><td>C++</td><td>Animations, visualizations, performance examples, and game/simulation-oriented activities</td><td>Visualization-first adoption; low-barrier conceptual entry points</td></tr>
-          <tr><th scope="row">7 · Casper</th><td>Two-year public community college; small cohorts and mixed student pathways</td><td>C++, Python</td><td>Custom digital-textbook material, unplugged activities, OpenMP, remote data, and physical computing</td><td>Community-college setting; small cohorts; varied delivery formats</td></tr>
-          <tr><th scope="row">8 · HPU</th><td>Private undergraduate-serving institution with small class sizes</td><td>Java</td><td>Flag Maker, Penny Sorting, lightweight plugged/code-review extension, and low-resource activities</td><td>Small-scale first adoption; low-preparation unplugged activities</td></tr>
-          <tr><th scope="row">9 · MSU</th><td>Public university; focused CS1 intervention</td><td>Java</td><td>Flag Maker-centered data-parallelism activity with supporting animations and assessment</td><td>Minimal-infusion model; short, focused CS1 intervention</td></tr>
+          <tr class="glance-inst"><th scope="rowgroup" colspan="5">TNTECH <span>&middot; Mid-sized, public university</span></th></tr>
+          <tr><th scope="row">Ch.&nbsp;2 <span class="glance-course">CS1</span></th><td>Large CS1 lecture/lab setting</td><td>C++</td><td>Unplugged Penny and Flag Maker activities; OpenMP/data-parallel programming; remote-data/API assignment</td><td>Large-section CS1 adoption; programming-linked PDC infusion; multi-semester evidence</td></tr>
+          <tr><th scope="row">Ch.&nbsp;11 <span class="glance-course">CS2</span></th><td>Large Data Structures and Algorithms lecture/lab course with multiple sections</td><td>C++</td><td>OpenMP integrated with sorting and algorithm analysis; sequential/parallel comparison, timing, speedup, and scalability</td><td>Large-section CS2 adoption; parallel sorting and performance analysis</td></tr>
+          <tr class="glance-inst"><th scope="rowgroup" colspan="5">Knox <span>&middot; Small residential liberal arts college</span></th></tr>
+          <tr><th scope="row">Ch.&nbsp;3 <span class="glance-course">CS1</span></th><td>Java-based introductory sequence</td><td>Java</td><td>Conceptual and programming-oriented CS1 activities adapted to a small-college context</td><td>Liberal-arts setting; smaller classes; Java-based adaptation</td></tr>
+          <tr><th scope="row">Ch.&nbsp;12 <span class="glance-course">CS2</span></th><td>Java-based CS2/Data Structures course</td><td>Java</td><td>Fork&ndash;Join framework integrated with recursion and algorithm analysis; work/span, dependency graphs, reductions, and race conditions</td><td>Small-class Java CS2; task parallelism through recursion and divide-and-conquer</td></tr>
+          <tr class="glance-inst"><th scope="rowgroup" colspan="5">USI <span>&middot; Public master&rsquo;s-level institution</span></th></tr>
+          <tr><th scope="row">Ch.&nbsp;4 <span class="glance-course">CS1</span></th><td>Introductory object-oriented CS1 course</td><td>Java</td><td>Unplugged Flag Maker and Penny activities; plugged-in Flag Maker, Parallel Sort Penny, and Greenfoot; activity-level assessment</td><td>Structured activity adoption; evidence-rich unplugged and plugged-in examples</td></tr>
+          <tr><th scope="row">Ch.&nbsp;13 <span class="glance-course">CS2</span></th><td>Intermediate object-oriented programming course</td><td>Java</td><td>Event-driven unplugged/plugged activities; Fork&ndash;Join decomposition and parallel sum; multithreaded parallel image processing</td><td>Structured multi-activity CS2 infusion; progression from conceptual activities to parallel implementation and performance analysis</td></tr>
+          <tr class="glance-inst"><th scope="rowgroup" colspan="5">UNL <span>&middot; Large R1 institution</span></th></tr>
+          <tr><th scope="row">Ch.&nbsp;5 <span class="glance-course">CS1</span></th><td>Multiple CS1 sections and computing majors</td><td>C, Java</td><td>Codeless modules, visual/conceptual activities, remote-data activities; low/no-code pathway; large-institution adaptation</td><td>Large-enrollment, online/asynchronous/hybrid courses; low-code entry introduction</td></tr>
+          <tr><th scope="row">Ch.&nbsp;14 <span class="glance-course">CS2</span></th><td>Java-based CS2 course; selected existing labs modified</td><td>Java, JDBC, SQL</td><td>Parallel merge-sort benchmarking and connection pooling in a multithreaded application</td><td>Minimal-change CS2 adoption through existing sorting and database-oriented labs</td></tr>
+          <tr class="glance-inst"><th scope="rowgroup" colspan="5">Webster <span>&middot; Private primarily undergraduate institution</span></th></tr>
+          <tr><th scope="row">Ch.&nbsp;6 <span class="glance-course">CS1</span></th><td>Small-to-moderate CS1 sections</td><td>C++</td><td>Animations, visualizations, performance examples, and game/simulation-oriented activities</td><td>Visualization-first adoption; low-barrier conceptual entry points</td></tr>
+          <tr><th scope="row">Ch.&nbsp;15 <span class="glance-course">CS2</span></th><td>C++ CS2 course emphasizing recursion, sorting, data structures, and algorithmic problem solving</td><td>C++</td><td>Serial and OpenMP parallel merge sort; task decomposition, timing, parallel overhead, and performance interpretation</td><td>C++ CS2 adoption with limited curricular disruption; sorting- and performance-centered parallelism</td></tr>
+          <tr><th scope="row">Ch.&nbsp;16 <span class="glance-course">CS2</span></th><td>Python-based CS2/Data Structures pathway</td><td>Python</td><td>Threading and multiprocessing; parallel image processing with OpenCV; speedup, efficiency, scaling, overhead, and memory effects</td><td>Python CS2 adoption; multiprocessing, image processing, and experimental performance analysis</td></tr>
+          <tr class="glance-inst"><th scope="rowgroup" colspan="5">Casper <span>&middot; Two-year community college</span></th></tr>
+          <tr><th scope="row">Ch.&nbsp;7 <span class="glance-course">CS1</span></th><td>Small cohorts and mixed student pathways</td><td>C++, Python</td><td>Custom digital-textbook material, unplugged activities, OpenMP, remote data, and physical computing</td><td>Community-college setting; small cohorts; varied delivery formats</td></tr>
+          <tr><th scope="row">Ch.&nbsp;17 <span class="glance-course">CS2</span></th><td>CS2 course with small cohorts and varied prior PDC exposure</td><td>C++, Java</td><td>Unplugged Penny, Coin Addition, and Fork&ndash;Join activities; OpenMP array/sorting exercises; Greenfoot project</td><td>Community-college CS2; conceptual plus programming activities; useful with limited prior CS1 PDC exposure</td></tr>
+          <tr class="glance-inst"><th scope="rowgroup" colspan="5">HPU <span>&middot; Private undergraduate institution</span></th></tr>
+          <tr><th scope="row">Ch.&nbsp;8 <span class="glance-course">CS1</span></th><td>Small class sizes</td><td>Java</td><td>Flag Maker, Penny Sorting, lightweight plugged/code-review extension, and low-resource activities</td><td>Small-scale first adoption; low-preparation unplugged activities</td></tr>
+          <tr class="glance-inst"><th scope="rowgroup" colspan="5">MSU <span>&middot; Public university</span></th></tr>
+          <tr><th scope="row">Ch.&nbsp;9 <span class="glance-course">CS1</span></th><td>Focused CS1 intervention</td><td>Java</td><td>Flag Maker-centered data-parallelism activity with supporting animations and assessment</td><td>Minimal-infusion model; short, focused CS1 intervention</td></tr>
+          <tr><th scope="row">Ch.&nbsp;18 <span class="glance-course">CS2</span></th><td>Java CS2 course continuing the CS1 sequence</td><td>Java</td><td>Event-driven Greenfoot game and Java multithreaded image processing; data parallelism, synchronization, speedup, and Amdahl&rsquo;s Law</td><td>Focused two-module Java CS2 infusion; progression from conceptual CS1 exposure to multithreaded implementation</td></tr>
         </tbody>
       </table>
     </div>

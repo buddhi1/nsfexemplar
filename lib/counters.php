@@ -33,10 +33,17 @@
    download never waits on a third-party service.
    ========================================================================== */
 
-/* The published files, by version key. Rename here if a file is renamed. */
+/* The published files, by version key. Rename here if a file is renamed.
+   The key stays 'v1' for the current edition so the tally and the log keep one
+   name for it across editions; only the label and file change.
+
+   page_offset: the site quotes the book's printed page numbers (what its
+   contents pages and a PDF viewer's page box show), but #page=N in a link
+   opens the Nth page of the file. The first edition has a cover and a title
+   page before printed page 1, so PDF page = printed page + 2. */
 const BOOK_FILES = [
-    'v1'    => ['file' => 'cder_exemplar_cs1_cs2.pdf',               'label' => 'Version 1'],
-    'early' => ['file' => 'cder_exemplar_cs1_cs2_early_release.pdf', 'label' => 'Early release'],
+    'v1'    => ['file' => 'cder_exemplar_cs1_cs2_first_edition.pdf', 'label' => 'First edition', 'page_offset' => 2],
+    'early' => ['file' => 'cder_exemplar_cs1_cs2_early_release.pdf', 'label' => 'Early release', 'page_offset' => 0],
 ];
 
 const COUNTER_DIR   = __DIR__ . '/../data';

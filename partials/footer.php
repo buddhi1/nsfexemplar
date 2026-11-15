@@ -20,7 +20,7 @@ $FOOTER_COLS = [
     ],
     'eBook' => [
         ['ebook.php#explorer', 'Search exemplars'],
-        ['ebook.php#glance',   'CS1 at a glance'],
+        ['ebook.php#parts',    'CS1 & CS2 at a glance'],
         ['ebook.php#chapters', 'Chapter downloads'],
         ['ebook.php#repos',    'Repositories'],
     ],
@@ -118,7 +118,12 @@ function icon_github(): string {
   </svg>
 </button>
 
-<script src="assets/data.js"></script>
-<script src="assets/site.js"></script>
+<?php /* The in-page PDF reader (site.js) needs each edition's file and page
+   offset; lib/counters.php is the one place they are defined. */ ?>
+<script>window.BOOK_FILES = <?= json_encode(array_map(
+    fn($f) => ['file' => $f['file'], 'label' => $f['label'], 'offset' => (int) ($f['page_offset'] ?? 0)],
+    BOOK_FILES), JSON_UNESCAPED_SLASHES) ?>;</script>
+<script src="<?= e(asset_url('assets/data.js')) ?>"></script>
+<script src="<?= e(asset_url('assets/site.js')) ?>"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 $PAGE  = 'team';
 $PAGE_TITLE = 'About the Team';
-$DESC  = 'Authors and contributors of the CS1 course exemplars infused with parallel and distributed computing — backbone team, chapter authors at eight institutions, and the wider CDER community.';
+$DESC  = 'Authors and contributors of the CS1 and CS2 course exemplars infused with parallel and distributed computing — backbone team, chapter authors at eight institutions, and the wider CDER community.';
 include 'partials/header.php';
 ?>
 
@@ -36,17 +36,20 @@ include 'partials/header.php';
   <div class="shell section" id="common">
     <div class="grid grid--halves">
       <div class="prose">
-        <p class="eyebrow">Chapter 1</p>
-        <h2 class="mt-2">Common CS1 Activities and Lessons</h2>
-        <p>Chapter 1 is the shared resource chapter that sits between the project overview and the
-          institution-specific chapters. Rather than presenting another local implementation, it identifies
-          the recurring activity families and reusable guidance that cut across all eight exemplars &mdash;
-          and it is the chapter most readers should start from.</p>
-        <p class="muted">It is the volume&rsquo;s most broadly authored chapter &mdash; seventeen authors
-          drawn from every development team, every testing team and the backbone team, which is why it
-          reflects both building the material and adopting someone else&rsquo;s.</p>
-        <p><a href="download.php?f=book&amp;p=26">Chapter 1 in the e-book &rarr;</a>
-          &middot; <a href="ebook.php#chapters">chapter summary</a></p>
+        <p class="eyebrow">Chapters 1 and 10</p>
+        <h2 class="mt-2">Common CS1 and CS2 Activities and Lessons</h2>
+        <p>Chapter 1 and Chapter 10 are the shared resource chapters that open Part&nbsp;I (CS1) and
+          Part&nbsp;II (CS2). Rather than presenting another local implementation, each identifies the
+          recurring activity families and reusable guidance that cut across the institutional exemplars
+          &mdash; and they are the chapters most readers should start from.</p>
+        <p class="muted">They are the volume&rsquo;s most broadly authored chapters &mdash; seventeen
+          authors each, drawn from every development team, every testing team and the backbone team, which
+          is why they reflect both building the material and adopting someone else&rsquo;s. The contents
+          credit Chapter&nbsp;1 to April Crockett, Srishti Srivastava and the NSF Exemplar Project Team, and
+          Chapter&nbsp;10 to David Bunde, April Crockett and the NSF Exemplar Project Team.</p>
+        <p><a href="download.php?f=book&amp;p=28">Chapter 1 in the e-book &rarr;</a>
+          &middot; <a href="download.php?f=book&amp;p=288">Chapter 10 &rarr;</a>
+          &middot; <a href="ebook.php#chapters">chapter summaries</a></p>
       </div>
       <div>
         <div class="authorgrid">
@@ -74,7 +77,8 @@ include 'partials/header.php';
         </div>
         <button class="btn btn--quiet btn--sm mt-3" type="button"
                 data-author-toggle aria-expanded="true" hidden></button>
-        <p class="tiny faint mt-3">Listed in the order the volume gives them.</p>
+        <p class="tiny faint mt-3">Chapter&nbsp;1&rsquo;s authors, in the order the volume gives them.
+          Chapter&nbsp;10 has the same seventeen, with David P. Bunde listed first.</p>
       </div>
     </div>
   </div>

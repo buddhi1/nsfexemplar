@@ -24,21 +24,28 @@ $PROJECT_NAME  = 'Modern Course Exemplars infused with Parallel and Distributed 
 $PROJECT_SHORT = 'Modern Course Exemplars';
 $PROJECT_TAG   = 'Infused with Parallel &amp; Distributed Computing for the Introductory Computing Course Sequence';
 
-/* ---------------------------------------------------------------- citation --
-   The citation supplied by the project, used verbatim on the home page and
-   the resources page. Edit here and both follow. */
-$CITATION = 'Prasad, S. K., Weems, C., Thota, N., Sussman, A., Vaidyanathan, R., Gannod, G., '
-          . 'Crockett, A., Bunde, D., Spacco, J., Srivastava, S., Bourke, C., Suo, X., Maher, P., '
-          . 'Gruner, C., Smith, M., Zhu, M., and Wang, J. Aug. 2026 (early release). '
-          . 'Toward Modern Models of Introductory Computing Courses – CS1 and CS2 Course '
-          . 'Exemplars infused with Parallel and Distributed Computing Concepts. CDER Center. '
-          . 'NSF Award #2321015. https://NSFexemplar.CDERcenter.org/. pages 291.';
-
 /* -------------------------------------------------------------------- DOI --
-   The registered identifier for the volume. Change it here and the badge
-   changes on the home, eBook and resources pages. */
-$DOI     = '10.14809/4mcf-5jmt';
-$DOI_URL = 'https://doi.org/' . $DOI;
+   Each edition has its own registered identifier. The first edition is the
+   volume of record; the early release (August 2026, CS1 only) keeps its DOI
+   so anything that cited it still resolves. Change them here and every badge,
+   citation and BibTeX entry follows. */
+$DOI           = '10.14809/20.500.12588/7992.2';
+$DOI_URL       = 'https://doi.org/' . $DOI;
+$DOI_EARLY     = '10.14809/4mcf-5jmt';
+$DOI_EARLY_URL = 'https://doi.org/' . $DOI_EARLY;
+
+/* ---------------------------------------------------------------- citation --
+   The citations as the volumes print them ("How to cite this e-book" on the
+   title page), used verbatim wherever the site offers one to copy. */
+$CITE_AUTHORS = 'Prasad, S. K., Weems, C., Thota, N., Sussman, A., Vaidyanathan, R., Gannod, G., '
+              . 'Crockett, A., Bunde, D., Spacco, J., Srivastava, S., Bourke, C., Suo, X., Maher, P., '
+              . 'Gruner, C., Smith, M., Zhu, M., and Wang, J.';
+$CITE_TITLE   = 'Toward Modern Models of Introductory Computing Courses – CS1 and CS2 Course '
+              . 'Exemplars infused with Parallel and Distributed Computing Concepts.';
+$CITATION = $CITE_AUTHORS . ' Nov. 2026. ' . $CITE_TITLE . ' First Edition. CDER Center. '
+          . 'NSF Award #2321015-20. ' . $DOI_URL . '.';
+$CITATION_EARLY = $CITE_AUTHORS . ' Aug. 2026 (early release). ' . $CITE_TITLE . ' CDER Center. '
+                . 'NSF Award #2321015. ' . $DOI_EARLY_URL . '.';
 
 /**
  * A two-segment DOI badge in the Zenodo/shields idiom: a neutral label, then
@@ -47,7 +54,7 @@ $DOI_URL = 'https://doi.org/' . $DOI;
  * not much use. They are siblings rather than nested because a link inside a
  * button is not valid content — the pill shape is drawn by the wrapper.
  */
-function doi_badge(string $doi, string $url, string $class = ''): string {
+function doi_badge(string $doi, string $url, string $class = '', string $edition = ''): string {
     $copy = '<svg class="doi-ico doi-ico--copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
           . 'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" '
           . 'focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/>'
@@ -59,17 +66,24 @@ function doi_badge(string $doi, string $url, string $class = ''): string {
           . 'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'
           . '<path d="M7 17 17 7M9 7h8v8"/></svg>';
 
+    /* $edition names which volume the identifier belongs to, now that there
+       is more than one; it sits between the label and the identifier. */
+    $for  = $edition !== '' ? ' for the ' . strtolower($edition) : '';
+    /* a phone has room for "1st ed." beside the long identifier, not "First edition" */
+    $short = ['First edition' => '1st ed.', 'Early release' => 'Early'][$edition] ?? $edition;
     return '<span class="doi ' . e($class) . '">'
          . '<button class="doi-badge" type="button" data-copy="' . e($url) . '"'
          . ' data-copy-noun="DOI link"'
-         . ' aria-label="Copy the DOI link, ' . e($url) . '" title="Copy the DOI link">'
+         . ' aria-label="Copy the DOI link' . e($for) . ', ' . e($url) . '" title="Copy the DOI link">'
          . '<span class="doi-label">DOI</span>'
+         . ($edition !== '' ? '<span class="doi-ed" data-short="' . e($short) . '"><span class="doi-ed-full">'
+                              . e($edition) . '</span></span>' : '')
          . '<span class="doi-value">' . e($doi) . $copy . $done . '</span>'
          /* role=status so the copy is announced; the icon swap covers everyone else */
          . '<span class="visually-hidden" role="status" data-copy-label></span>'
          . '</button>'
          . '<a class="doi-open" href="' . e($url) . '" title="Open the DOI record">'
-         . $out . '<span class="visually-hidden">Open the DOI record at doi.org</span>'
+         . $out . '<span class="visually-hidden">Open the DOI record' . e($for) . ' at doi.org</span>'
          . '</a></span>';
 }
 
@@ -84,12 +98,31 @@ $BIBTEX = <<<BIB
                Vaidyanathan, R. and Gannod, G. and Crockett, A. and Bunde, D. and
                Spacco, J. and Srivastava, S. and Bourke, C. and Suo, X. and
                Maher, P. and Gruner, C. and Smith, M. and Zhu, M. and Wang, J.},
+  edition   = {First},
   year      = {2026},
-  month     = aug,
+  month     = nov,
   publisher = {CDER Center},
   doi       = {{$DOI}},
   url       = {{$DOI_URL}},
-  note      = {Early release. NSF Award #2321015}
+  note      = {NSF Award #2321015-20}
+}
+BIB;
+
+$BIBTEX_EARLY = <<<BIB
+@book{cder2026exemplarsearly,
+  title     = {Toward Modern Models of Introductory Computing Courses:
+               CS1 and CS2 Course Exemplars infused with Parallel and
+               Distributed Computing Concepts},
+  editor    = {Prasad, S. K. and Weems, C. and Thota, N. and Sussman, A. and
+               Vaidyanathan, R. and Gannod, G. and Crockett, A. and Bunde, D. and
+               Spacco, J. and Srivastava, S. and Bourke, C. and Suo, X. and
+               Maher, P. and Gruner, C. and Smith, M. and Zhu, M. and Wang, J.},
+  year      = {2026},
+  month     = aug,
+  publisher = {CDER Center},
+  doi       = {{$DOI_EARLY}},
+  url       = {{$DOI_EARLY_URL}},
+  note      = {Early release (CS1). NSF Award #2321015}
 }
 BIB;
 
@@ -114,6 +147,15 @@ $OG         = $OG         ?? null;
 $TITLE = $PAGE_TITLE === null
     ? $PROJECT_SHORT . ' — infused with Parallel and Distributed Computing'
     : $PAGE_TITLE . ' · ' . $PROJECT_SHORT;
+
+/**
+ * A site file's URL with ?v=<modification time>, so a browser fetches the new
+ * copy as soon as one is uploaded instead of waiting out its cache.
+ */
+function asset_url(string $path): string {
+    $t = @filemtime(__DIR__ . '/../' . $path);
+    return $path . ($t ? '?v=' . $t : '');
+}
 
 /** Escape for HTML attribute/text context. */
 function e(string $s): string {
@@ -153,7 +195,7 @@ function brand_glyph(): string {
 <?php if ($DESC): ?>
 <meta name="description" content="<?= e($DESC) ?>">
 <?php endif; ?>
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="<?= e(asset_url('assets/site.css')) ?>">
 <script>
 /* Apply a stored theme before first paint — site.js runs at the end of the
    body, which would otherwise flash the wrong theme on every navigation. */

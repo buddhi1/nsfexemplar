@@ -38,6 +38,14 @@ DirectoryIndex index.php
     RewriteRule ^(.+?)/?$ $1.php [L]
 </IfModule>
 
+# --- Retired file names -------------------------------------------------------
+# cder_exemplar_cs1_cs2.pdf was the early release until the first edition
+# shipped under its own name. Old bookmarks and citations to the file go to the
+# early release, which is what that file contained.
+<IfModule mod_alias.c>
+    RedirectMatch 301 ^(.*/)?cder_exemplar_cs1_cs2\.pdf$ $1cder_exemplar_cs1_cs2_early_release.pdf
+</IfModule>
+
 # --- Force HTTPS -------------------------------------------------------------
 # OFF by default: turning this on before the domain has a certificate would
 # redirect every request to an address that does not answer, taking the site
@@ -64,13 +72,19 @@ DirectoryIndex index.php
 </IfModule>
 
 # --- Caching -----------------------------------------------------------------
+# One day for everything static, so a redeploy (a new stylesheet, a corrected
+# PDF under the same name, a new cover) reaches every visitor by the next day.
+# The stylesheet, scripts and cover are also requested with ?v=<file time>
+# (asset_url() in partials/header.php), so those change the moment a new copy
+# is uploaded, whatever a browser has cached.
 <IfModule mod_expires.c>
     ExpiresActive On
-    ExpiresByType text/css               "access plus 7 days"
-    ExpiresByType application/javascript "access plus 7 days"
-    ExpiresByType image/png              "access plus 30 days"
-    ExpiresByType image/webp             "access plus 30 days"
-    ExpiresByType image/svg+xml          "access plus 30 days"
-    ExpiresByType application/pdf        "access plus 30 days"
+    ExpiresByType text/css               "access plus 1 day"
+    ExpiresByType application/javascript "access plus 1 day"
+    ExpiresByType image/png              "access plus 1 day"
+    ExpiresByType image/jpeg             "access plus 1 day"
+    ExpiresByType image/webp             "access plus 1 day"
+    ExpiresByType image/svg+xml          "access plus 1 day"
+    ExpiresByType application/pdf        "access plus 1 day"
     ExpiresByType text/html              "access plus 0 seconds"
 </IfModule>

@@ -1,7 +1,7 @@
 <?php
 $PAGE  = 'resources';
 $PAGE_TITLE = 'Resources';
-$DESC  = 'Reusable assessment instruments, survey design, Bloom-level mapping and timing tables, plus answers to the questions instructors ask before adopting PDC material in CS1.';
+$DESC  = 'Reusable assessment instruments, survey design, Bloom-level mapping and timing tables, plus answers to the questions instructors ask before adopting PDC material in CS1 or CS2.';
 include 'partials/header.php';
 ?>
 
@@ -26,27 +26,31 @@ include 'partials/header.php';
 
   <div class="grid grid--auto mt-5">
     <article class="card"><h3>Pre- and post-course surveys</h3>
-      <p>The shared course-wide instrument: student background and demographics, self-reported experience
-        with general computing and with PDC topics, interest, perceived importance and understanding.</p>
-      <p class="card-foot">Used at all eight institutions &middot; <a href="#survey-design">what it asks</a> &middot; <a href="download.php?f=book&amp;p=26">Chapter 1 &sect; 1.5</a></p></article>
+      <p>The shared course-wide instrument, in a CS1 and a CS2 version: student background and demographics,
+        self-reported experience with the course&rsquo;s core topics and with PDC topics, interest, perceived
+        importance and understanding.</p>
+      <p class="card-foot">Used at all eight institutions &middot; <a href="#survey-design">what it asks</a> &middot; <a href="download.php?f=book&amp;p=62">CS1: Chapter 1 &sect; 1.5</a> &middot; <a href="download.php?f=book&amp;p=316">CS2: Chapter 10 &sect; 10.5</a></p></article>
     <article class="card"><h3>Activity pre/post quizzes</h3>
       <p>Short knowledge checks bracketing an individual activity, so its effect can be isolated from the
         rest of the semester.</p>
-      <p class="card-foot"><a href="download.php?f=book&amp;p=276">MSU</a> &middot; <a href="download.php?f=book&amp;p=122">USI</a> &middot; <a href="download.php?f=book&amp;p=236">HPU</a></p></article>
+      <p class="card-foot">CS1: <a href="download.php?f=book&amp;p=267">MSU</a> &middot; <a href="download.php?f=book&amp;p=123">USI</a> &middot; <a href="download.php?f=book&amp;p=229">HPU</a> &middot; CS2: <a href="download.php?f=book&amp;p=498">MSU image processing</a></p></article>
     <article class="card"><h3>Adapted ASPECT engagement survey</h3>
       <p>An engagement instrument adapted for unplugged activities, with results grouped by aspect category.
         Used with Penny Sorting and Flag Maker.</p>
-      <p class="card-foot"><a href="download.php?f=book&amp;p=26">Chapter 1</a> &middot; <a href="download.php?f=book&amp;p=236">HPU</a> &middot; <a href="download.php?f=book&amp;p=63">TNTECH</a></p></article>
+      <p class="card-foot"><a href="download.php?f=book&amp;p=28">Chapter 1</a> &middot; <a href="download.php?f=book&amp;p=229">HPU</a> &middot; <a href="download.php?f=book&amp;p=65">TNTECH</a></p></article>
     <article class="card"><h3>Bloom-level mapping tables</h3>
       <p>Per institution, a table mapping each PDC concept to the Bloom level reached by each activity &mdash;
-        the fastest way to check an activity against your own learning outcomes.</p>
-      <p class="card-foot">Tables 2.1, 4.1, 5.1, 6.1, 7.1, 8.1, 9.1 &middot; <a href="ebook.php#chapters">find the chapter &rarr;</a></p></article>
+        the fastest way to check an activity against your own learning outcomes. Knox&rsquo;s and
+        Webster&rsquo;s CS2 chapters give theirs in their descriptor elements.</p>
+      <p class="card-foot">CS1: Tables <a href="download.php?f=book&amp;p=69">2.1</a>, <a href="download.php?f=book&amp;p=127">4.1</a>, <a href="download.php?f=book&amp;p=165">5.1</a>, <a href="download.php?f=book&amp;p=181">6.1</a>, <a href="download.php?f=book&amp;p=201">7.1</a>, <a href="download.php?f=book&amp;p=232">8.1</a>, <a href="download.php?f=book&amp;p=270">9.1</a>
+        &middot; CS2: Tables <a href="download.php?f=book&amp;p=322">11.1&ndash;11.2</a>, <a href="download.php?f=book&amp;p=361">13.1</a>, <a href="download.php?f=book&amp;p=406">14.1</a>, <a href="download.php?f=book&amp;p=461">17.1</a>, <a href="download.php?f=book&amp;p=484">18.1</a></p></article>
     <article class="card"><h3>Activity timing tables</h3>
-      <p>Chapter 1&rsquo;s activity finder gives the time each activity takes and which institutions ran it,
-        in one place &mdash; so you can fit an activity into a real class period rather than discovering the
-        overrun live. Table 1.1 covers the activities described in that chapter; Table 1.2 the additional
-        institutional ones.</p>
-      <p class="card-foot"><a href="download.php?f=book&amp;p=30">Table 1.1 &middot; p.&nbsp;30</a> &middot; <a href="download.php?f=book&amp;p=32">Table 1.2 &middot; p.&nbsp;32</a></p></article>
+      <p>The activity finders in Chapters 1 and 10 give the time each activity takes and which institutions ran
+        it, in one place &mdash; so you can fit an activity into a real class period rather than discovering the
+        overrun live. The first table in each covers the activities that chapter describes; the second, the
+        additional institutional ones.</p>
+      <p class="card-foot">CS1: <a href="download.php?f=book&amp;p=32">Table 1.1 &middot; p.&nbsp;32</a> &middot; <a href="download.php?f=book&amp;p=33">Table 1.2 &middot; p.&nbsp;33</a>
+        &middot; CS2: <a href="download.php?f=book&amp;p=290">Table 10.1 &middot; p.&nbsp;290</a> &middot; <a href="download.php?f=book&amp;p=291">Table 10.2 &middot; p.&nbsp;291</a></p></article>
     <article class="card"><h3>Anonymized datasets &amp; analysis</h3>
       <p>Every chapter repository carries an <code>Evaluation_Data_and_Analysis</code> directory with survey
         instruments, de-identified responses, evaluation metrics and statistical analyses.</p>
@@ -55,7 +59,7 @@ include 'partials/header.php';
       <p>Pre-selection, post-selection, annual and post-adoption instruments for the instructors themselves
         &mdash; prior PDC background, perceived effectiveness, students taught, and whether interventions
         will be retained, reduced or expanded.</p>
-      <p class="card-foot"><a href="download.php?f=book&amp;p=5">Chapter 0, evaluation methods</a></p></article>
+      <p class="card-foot"><a href="download.php?f=book&amp;p=16">Chapter 0, evaluation methods</a></p></article>
     <article class="card"><h3>Consent and IRB material</h3>
       <p>Informed-consent forms alongside the surveys, quizzes, lab reports and programming-assignment
         reports collected between Spring 2024 and Spring 2026.</p>
@@ -70,24 +74,32 @@ include 'partials/header.php';
       <div class="prose">
         <p class="eyebrow">Survey design</p>
         <h2 class="mt-2">What the Shared Instrument Actually Asks</h2>
-        <p>Students rate their experience with basic programming skills, then their familiarity with PDC
-          concepts, then a short set of attitude statements. All items use a seven-point Likert scale:
+        <p>Students rate their experience with the course&rsquo;s core topics &mdash; basic programming skills
+          in CS1, data structures and algorithms in CS2 &mdash; then their familiarity with PDC concepts, then a
+          short set of attitude statements. All items use a seven-point Likert scale:
           programming and PDC concept questions run from <em>1 = no experience at all</em> to
           <em>7 = extremely experienced</em>; attitude questions from <em>1 = strongly disagree</em> to
           <em>7 = strongly agree</em>.</p>
         <p class="muted">Because every site ran the same items, an adopter can administer them locally and
           compare directly against the published per-institution tables.</p>
-        <p><a href="download.php?f=book&amp;p=26">Chapter 1 &sect; 1.5 &rarr;</a></p>
+        <p><a href="download.php?f=book&amp;p=62">CS1 instrument, Chapter 1 &sect; 1.5 &rarr;</a> &middot; <a href="download.php?f=book&amp;p=316">CS2 instrument, Chapter 10 &sect; 10.5 &rarr;</a></p>
       </div>
 
       <div class="panel">
         <h3>Instrument structure</h3>
         <dl class="deflist mt-4">
           <div>
-            <dt>Programming</dt>
+            <dt>Programming (CS1)</dt>
             <dd>Data and variable types · arithmetic expressions and operators · branching · loops · calling
               functions and methods · arrays · writing static functions · writing functions and methods ·
               writing classes · creating objects</dd>
+          </div>
+          <div>
+            <dt>Data structures &amp; algorithms (CS2)</dt>
+            <dd>Classes and objects · lists · generics · stacks · queues · sorting algorithms · comparators ·
+              recursion · maps · sets · trees and BSTs · priority queues · hashing · graphs · unit tests ·
+              Big-O · choosing a data structure · designing classes · decomposition &mdash; 23 items in all
+              with the PDC concepts; adopters can trim them to their own course</dd>
           </div>
           <div>
             <dt>PDC concepts</dt>
@@ -126,6 +138,8 @@ include 'partials/header.php';
         run in a single 40&ndash;75&nbsp;minute session, require no programming background, and surface
         speedup, load balance and race conditions concretely. Start with Chapter 1, then look at whichever
         institutional chapter most resembles your class size.</p>
+        <p>In CS2, the Overly Complicated Machine (Chapter 10 &sect;&thinsp;10.3.1) takes about 30&ndash;35
+          minutes and introduces event-driven programming with no code at all.</p>
         <p><a href="ebook.php#activities">Browse activities by duration &rarr;</a></p></div></div></div>
       </div>
       <div class="faq">
@@ -133,11 +147,16 @@ include 'partials/header.php';
           <span>Will adding PDC hurt my core learning outcomes?</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
         </button>
-        <div class="disclose-panel"><div><div class="inner"><p>That was the explicit design constraint &mdash; the basic CS1 learning outcomes
-        are preserved. Two checks are available. Casper&rsquo;s data shows perception of learning gains in
-        non-PDC topics stayed broadly flat between baseline and intervention semesters while PDC gains rose.
-        MSU compared a no-intervention semester against the Flag Maker intervention semester and found gains
-        across all basic programming categories in both, with comparable post-survey means.</p></div></div></div>
+        <div class="disclose-panel"><div><div class="inner"><p>That was the explicit design constraint &mdash; the basic CS1 and CS2 learning
+        outcomes are preserved. In CS1, Casper&rsquo;s data shows perception of learning gains in non-PDC topics
+        stayed broadly flat between baseline and intervention semesters while PDC gains rose, and MSU found
+        gains across all basic programming categories in both a no-intervention and a Flag Maker semester, with
+        comparable post-survey means.</p>
+        <p>In CS2, TNTECH (285 students), Knox and UNL all report large, significant gains on the core
+          data-structures and algorithms topics alongside the PDC ones. One caution: in Casper&rsquo;s very
+          small intervention cohort, the topics taught late in the term gained less, and a student asked for
+          more repetition.</p>
+        <p><a href="research.php#findings">The findings, by institution &rarr;</a></p></div></div></div>
       </div>
       <div class="faq">
         <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
@@ -151,7 +170,11 @@ include 'partials/header.php';
         coverable more briefly or revisitable in CS2.</p>
         <p>Some institutions removed nothing at all. One placed three asynchronous PDC modules outside class
           time; another used existing lab and recitation periods. Scheduled PDC instructional time ranged from
-          none to about seven hours.</p></div></div></div>
+          none to about seven hours.</p>
+        <p>CS2 followed the same three routes &mdash; using slack in the course, removing or de-emphasizing
+          material taught elsewhere, and re-covering existing topics with new goals: a sorting lab becomes a
+          parallel-sorting lab, recursion becomes fork&ndash;join (Chapter 10 &sect;&thinsp;10.2,
+          <a href="download.php?f=book&amp;p=292">p.&nbsp;292</a>).</p></div></div></div>
       </div>
       <div class="faq">
         <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
@@ -161,8 +184,9 @@ include 'partials/header.php';
         <div class="disclose-panel"><div><div class="inner"><p>Yes. All unplugged activities &mdash; Flag Maker, Penny Search and Sorting,
         Coin Addition, the More Processors writing activity &mdash; are language-neutral, as are the
         animations and the codeless modules. Casper College&rsquo;s physical computing projects use
-        Python&rsquo;s multiprocessing package. A Python CS2 package covering threading, multiprocessing,
-        OpenCV image processing and performance engineering is planned for the CS2 release.</p></div></div></div>
+        Python&rsquo;s multiprocessing package. For CS2, Webster&rsquo;s Python package (Chapter&nbsp;16,
+        <a href="download.php?f=book&amp;p=440">p.&nbsp;440</a>) covers multiprocessing, OpenCV image
+        processing and performance engineering.</p></div></div></div>
       </div>
       <div class="faq">
         <button class="disclose-btn" type="button" aria-expanded="false" data-disclose>
@@ -245,6 +269,8 @@ include 'partials/header.php';
         <p class="muted mt-3">Flag Maker · Penny Search · Penny Sorting · OpenMP · Earthquake Tracker ·
           Greenfoot · animation · visualization · data parallelism · speedup · load balance · event handling ·
           remote data · API</p>
+        <p class="muted mt-2"><strong>CS2:</strong> Fork-Join · work and span · race condition ·
+          synchronization · parallel sorting · parallel image processing · benchmarking · scalability</p>
       </div>
       <div class="panel">
         <h3>For assessment material</h3>
