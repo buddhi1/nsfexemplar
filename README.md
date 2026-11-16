@@ -459,7 +459,7 @@ that is not in `ACT_FACETS` means the activity is simply never matched by that f
 the two in step.
 
 Each activity also carries `materials`, a repository URL. Activities run at one institution point at
-that institution's chapter folder; ones run at several point at `CS1/` or `CS2/chapter10-CDER`, and
+that institution's chapter folder; ones run at several point at `CS1/` or `CS2/` (the common chapters 1 and 10 have no folder), and
 the detail sheet then links each institution's own chapter for the same course through `EX[].ch`.
 
 ---

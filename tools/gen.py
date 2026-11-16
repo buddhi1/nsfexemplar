@@ -94,10 +94,12 @@ AUTHORS = {
 def part(ch):
     return 'Front' if ch == 0 else ('Part I · CS1' if ch <= 9 else 'Part II · CS2')
 
+# The common chapters (1 and 10) have no repository folder of their own: their
+# activities' material sits in the institutional folders, so they get no link.
 REPO = 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main'
 DIR = {2: 'CS1/chapter2-TTU', 3: 'CS1/chapter3-Knox', 4: 'CS1/chapter4-USI', 5: 'CS1/chapter5-UNL',
        6: 'CS1/chapter6-Webster', 7: 'CS1/chapter7-Casper', 8: 'CS1/chapter8-HPU', 9: 'CS1/chapter9-MSU',
-       10: 'CS2/chapter10-CDER', 11: 'CS2/chapter11-TTU', 12: 'CS2/chapter12-Knox',
+       11: 'CS2/chapter11-TTU', 12: 'CS2/chapter12-Knox',
        13: 'CS2/chapter13-USI', 14: 'CS2/chapter14-UNL', 15: 'CS2/chapter15-Webster',
        16: 'CS2/chapter16-Webster', 17: 'CS2/chapter17-Casper', 18: 'CS2/chapter18-MSU'}
 

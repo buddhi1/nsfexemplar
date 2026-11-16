@@ -639,7 +639,7 @@ const ACTIVITIES = [
     time: 'One class', prep: 'Classroom materials', lang: ['Language-independent'],
     topic: ['Event-driven processing'], anchor: ['Objects & classes'],
     where: 'USI §13.3.1',
-    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2/chapter10-CDER',
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2',
   },
   {
     id: 'greenfoot-cs2', course: 'CS2', name: 'Greenfoot event-driven game project', kind: 'Plugged-in', family: 'Plugged-in programming (CS2)',
@@ -653,7 +653,7 @@ const ACTIVITIES = [
     time: 'Multi-session', prep: 'Software setup', lang: ['Java'],
     topic: ['Event-driven processing'], anchor: ['Objects & classes', 'Graphics & output'],
     where: 'USI one-week team project §13.4.1 · Casper 5-hour midterm project §17.4.3 · MSU two-week project with presentations §18.3.1',
-    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2/chapter10-CDER',
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2',
   },
   {
     id: 'fork-join', course: 'CS2', name: 'Fork–Join', kind: 'Plugged-in', family: 'Plugged-in programming (CS2)',
@@ -667,7 +667,7 @@ const ACTIVITIES = [
     time: 'Multi-session', prep: 'Software setup', lang: ['Java'],
     topic: ['Task parallelism', 'Performance & speedup'], anchor: ['Recursion', 'Algorithm analysis'],
     where: 'Knox §12.3 · USI 40-min unplugged §13.3.2 and week-long project §13.4.2 · Casper 15-min precedence-graph activity §17.3.3',
-    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2/chapter10-CDER',
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2',
   },
   {
     id: 'sorting-cs2', course: 'CS2', name: 'Sorting algorithm comparison', kind: 'Plugged-in', family: 'Plugged-in programming (CS2)',
@@ -681,7 +681,7 @@ const ACTIVITIES = [
     time: 'Multi-session', prep: 'Software setup', lang: ['C++', 'Java'],
     topic: ['Data parallelism', 'Performance & speedup'], anchor: ['Sorting & searching', 'Algorithm analysis'],
     where: 'TNTECH 3-week C++ assignment §11.3.1 · UNL Java parallel-sort lab §14.4.2 · Webster C++ parallel merge sort (Chapter 15) · Casper 2-hour parallel QuickSort §17.4.4',
-    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2/chapter10-CDER',
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2',
   },
   {
     id: 'image-processing', course: 'CS2', name: 'Parallel image processing', kind: 'Plugged-in', family: 'Plugged-in programming (CS2)',
@@ -695,7 +695,7 @@ const ACTIVITIES = [
     time: 'Multi-session', prep: 'Software setup', lang: ['Java', 'Python'],
     topic: ['Data parallelism', 'Performance & speedup', 'Synchronization'], anchor: ['Arrays & collections', 'Loops'],
     where: 'USI week-long team project, about 7.5 hours §13.4.3 · Webster 50-minute module (Chapter 16) · MSU two sessions and a box-blur lab §18.3.2',
-    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2/chapter10-CDER',
+    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2',
   },
   {
     id: 'penny-cs2', course: 'CS2', name: 'Unplugged Penny Activity (CS2)', kind: 'Unplugged', family: 'Additional institutional activities (CS2)',
@@ -1141,7 +1141,6 @@ const CHAPTERS = [
       { n: '10.5', t: 'Course-wide Pre and Post Course Surveys', sub: [] },
       { n: '10.6', t: 'Conclusion', sub: [] },
     ],
-    materials: 'https://github.com/CDER-Center/CS1-CS2_Exemplar_Ebook/tree/main/CS2/chapter10-CDER',
   },
   {
     title: 'Chapter 11 — CS2: Tennessee Technological University', part: 'Part II · CS2',

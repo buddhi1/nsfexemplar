@@ -242,7 +242,7 @@ include 'partials/header.php';
         <p class="muted">Everything lives in this one repository: <code>CS1/</code> for Part&nbsp;I and
           <code>CS2/</code> for Part&nbsp;II, with a directory per chapter named
           <code>chapterN-INSTITUTION</code> &mdash; matching the chapter numbers in the volume, so CS1 runs from
-          <code>chapter2-TTU</code> to <code>chapter9-MSU</code> and CS2 from <code>chapter10-CDER</code> to
+          <code>chapter2-TTU</code> to <code>chapter9-MSU</code> and CS2 from <code>chapter11-TTU</code> to
           <code>chapter18-MSU</code>. Chapter directories follow the same layout, so material is where you
           expect it regardless of which exemplar you open.</p>
         <ul class="mt-3 muted small" style="padding-inline-start:1.1rem; display:grid; gap:.4rem">
